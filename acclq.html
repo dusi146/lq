@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUẢN LÝ ACC VANCAU88</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --primary: #8b5cf6;
+            --primary-glow: rgba(139, 92, 246, 0.4);
+            --cyan: #06b6d4;
+            --cyan-glow: rgba(6, 182, 212, 0.35);
+            --live: #10b981;
+            --live-glow: rgba(16, 185, 129, 0.3);
+            --ban: #f43f5e;
+            --ban-glow: rgba(244, 63, 94, 0.3);
+            --glass-bg: rgba(15, 23, 42, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --glass-shine: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 100%);
+        }
+
+        body {
+            min-height: 100vh;
+            background: #060913;
+            color: #f1f5f9;
+            padding: 40px 16px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Hiệu ứng Aurora Glow động */
+        .ambient-glow {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.5;
+            animation: float 14s infinite alternate ease-in-out;
+        }
+        .glow-1 {
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, #6366f1, #a855f7);
+            top: -100px;
+            left: -100px;
+        }
+        .glow-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #06b6d4, #3b82f6);
+            bottom: -150px;
+            right: -150px;
+            animation-duration: 18s;
+        }
+        .glow-3 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #ec4899, #8b5cf6);
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.25;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(60px, 40px) scale(1.15); }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Glassmorphism Classes */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px) saturate(190%);
+            -webkit-backdrop-filter: blur(20px) saturate(190%);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .glass::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+        }
+
+        /* Tiêu đề Neon Shimmer */
+        .header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+        .brand-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: rgba(139, 92, 246, 0.15);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 999px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #c4b5fd;
+            margin-bottom: 12px;
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+        .brand-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #a855f7;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #a855f7;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ffffff 0%, #38bdf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
+        }
+
+        /* Thống kê nhanh */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+        .stat-info span {
+            font-size: 12px;
+            color: #94a3b8;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .stat-info h2 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-top: 4px;
+        }
+        .stat-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        /* Form Nhập Liệu */
+        .card-form {
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 2fr 1.1fr 1.2fr auto;
+            gap: 12px;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .form-grid { grid-template-columns: 1fr; }
+        }
+
+        .input-box {
+            position: relative;
+        }
+        input, select {
+            width: 100%;
+            padding: 13px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(2, 6, 23, 0.6);
+            color: #f8fafc;
+            outline: none;
+            font-size: 14px;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        input:focus, select:focus {
+            border-color: #38bdf8;
+            background: rgba(2, 6, 23, 0.85);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.25), inset 0 0 10px rgba(56, 189, 248, 0.1);
+        }
+        select option {
+            background: #0f172a;
+            color: #fff;
+        }
+
+        .btn-add {
+            background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%);
+            background-size: 200% 200%;
+            color: #fff;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            padding: 13px 24px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .btn-add:hover {
+            background-position: right center;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(139, 92, 246, 0.4);
+        }
+        .btn-add:active { transform: translateY(0); }
+
+        .hint {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Toolbar & Filters */
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .filter-group {
+            display: flex;
+            background: rgba(2, 6, 23, 0.5);
+            padding: 4px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            gap: 4px;
+        }
+        .btn-filter {
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .btn-filter.active {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(139, 92, 246, 0.2));
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.15);
+        }
+
+        .btn-sync {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #e2e8f0;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+        .btn-sync:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #38bdf8;
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        /* Table Design */
+        .table-wrap {
+            overflow-x: auto;
+            border-radius: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        th, td {
+            padding: 16px 20px;
+            font-size: 14px;
+            vertical-align: middle;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        th {
+            background: rgba(2, 6, 23, 0.7);
+            color: #94a3b8;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+        tr {
+            transition: all 0.2s ease;
+        }
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .acc-text {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #f8fafc;
+            word-break: break-all;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .badge-live {
+            background: rgba(16, 185, 129, 0.12);
+            color: #34d399;
+            border: 1px solid rgba(52, 211, 153, 0.25);
+            box-shadow: 0 0 15px var(--live-glow);
+        }
+        .badge-banned {
+            background: rgba(244, 63, 94, 0.12);
+            color: #fb7185;
+            border: 1px solid rgba(251, 113, 133, 0.25);
+            box-shadow: 0 0 15px var(--ban-glow);
+        }
+        .badge-days {
+            background: rgba(245, 158, 11, 0.12);
+            color: #fcd34d;
+            border: 1px solid rgba(252, 211, 77, 0.2);
+            margin-left: 6px;
+            font-weight: 500;
+            text-transform: none;
+        }
+        .badge-today {
+            background: rgba(6, 182, 212, 0.15);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            margin-left: 6px;
+        }
+        .badge-auto {
+            background: rgba(168, 85, 247, 0.15);
+            color: #d8b4fe;
+            border: 1px solid rgba(216, 180, 254, 0.3);
+            margin-left: 6px;
+            font-size: 10px;
+        }
+
+        /* Action Buttons */
+        .actions {
+            display: flex;
+            gap: 6px;
+        }
+        .btn-act {
+            padding: 7px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: #cbd5e1;
+            transition: all 0.2s ease;
+        }
+        .btn-act:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+        .btn-act.copy:hover { border-color: #38bdf8; color: #38bdf8; box-shadow: 0 0 10px rgba(56, 189, 248, 0.2); }
+        .btn-act.edit:hover { border-color: #fbbf24; color: #fbbf24; box-shadow: 0 0 10px rgba(251, 191, 36, 0.2); }
+        .btn-act.del:hover { border-color: #f43f5e; color: #f43f5e; box-shadow: 0 0 10px rgba(244, 63, 94, 0.2); }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(2, 6, 23, 0.75);
+            backdrop-filter: blur(12px);
+            justify-content: center;
+            align-items: center;
+            z-index: 99;
+            padding: 16px;
+        }
+        .modal {
+            background: #0f172a;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 28px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 440px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 40px rgba(139, 92, 246, 0.15);
+            animation: modalPop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes modalPop {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .modal h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #38bdf8;
+        }
+        .modal-field { margin-bottom: 16px; }
+        .modal-field label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #94a3b8;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        /* Toast Thông Báo Siêu Mượt */
+        #toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.25);
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+        }
+        #toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Glowing Orbs -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="ambient-glow glow-3"></div>
+
+    <div class="container">
+        
+        <!-- Header -->
+        <div class="header">
+            <div class="brand-badge">HỆ THỐNG QUẢN TRỊ</div>
+            <h1>QUẢN LÝ ACC VANCAU88</h1>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="stats-grid">
+            <div class="stat-card glass">
+                <div class="stat-info">
+                    <span>Tổng Tài Khoản</span>
+                    <h2 id="cntAll" style="color: #f8fafc;">0</h2>
+                </div>
+                <div class="stat-icon" style="background: rgba(255,255,255,0.05); color: #94a3b8;">🎮</div>
+            </div>
+            <div class="stat-card glass">
+                <div class="stat-info">
+                    <span>Đang Hoạt Động</span>
+                    <h2 id="cntLive" style="color: #34d399;">0</h2>
+                </div>
+                <div class="stat-icon" style="background: rgba(16, 185, 129, 0.15); color: #34d399;">⚡</div>
+            </div>
+            <div class="stat-card glass">
+                <div class="stat-info">
+                    <span>Đang Bị Ban</span>
+                    <h2 id="cntBanned" style="color: #fb7185;">0</h2>
+                </div>
+                <div class="stat-icon" style="background: rgba(244, 63, 94, 0.15); color: #fb7185;">🔒</div>
+            </div>
+        </div>
+
+        <!-- Card Nhập -->
+        <div class="card-form glass">
+            <form id="accForm" onsubmit="handleAdd(event)">
+                <div class="form-grid">
+                    <div class="input-box">
+                        <input type="text" id="accInfo" placeholder="taikhoan:matkhau" required autocomplete="off">
+                    </div>
+                    <div class="input-box">
+                        <select id="accStatus" onchange="toggleDateInput('accStatus', 'unbanDate')">
+                            <option value="sống">Sống (Hoạt động)</option>
+                            <option value="ban">Bị Ban (Khóa)</option>
+                        </select>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" id="unbanDate" placeholder="Mở ban (vd: 100826)" style="display: none;" onblur="formatDateInput(this)">
+                    </div>
+                    <button type="submit" class="btn-add">+ Thêm Acc</button>
+                </div>
+                <div class="hint">
+                    💡 Nhập nhanh ngày dạng 6 số (100826 ➜ 10/08/2026). Khi đến hoặc qua ngày hẹn, acc sẽ tự mở ban.
+                </div>
+            </form>
+        </div>
+
+        <!-- Controls Toolbar -->
+        <div class="toolbar">
+            <div class="filter-group">
+                <button class="btn-filter active" onclick="setFilter('all', this)">Tất cả</button>
+                <button class="btn-filter" onclick="setFilter('sống', this)">Acc Sống</button>
+                <button class="btn-filter" onclick="setFilter('ban', this)">Bị Ban</button>
+            </div>
+            <button type="button" class="btn-sync" onclick="loadFromDataTxt(true)">↻ Đồng bộ data.txt</button>
+        </div>
+
+        <!-- Accounts Table -->
+        <div class="table-wrap glass">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tài khoản : Mật khẩu</th>
+                        <th>Trạng thái</th>
+                        <th>Thời hạn mở ban</th>
+                        <th style="text-align: right;">Hành động</th>
+                    </tr>
+                </thead>
+                <tbody id="accList"></tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal-overlay" id="editModal">
+        <div class="modal">
+            <h3>Chỉnh sửa tài khoản</h3>
+            <input type="hidden" id="editId">
+            <div class="modal-field">
+                <label>Tài khoản : Mật khẩu</label>
+                <input type="text" id="editAcc" required>
+            </div>
+            <div class="modal-field">
+                <label>Trạng thái</label>
+                <select id="editStatus" onchange="toggleDateInput('editStatus', 'editDate')">
+                    <option value="sống">Sống (Hoạt động)</option>
+                    <option value="ban">Bị Ban (Khóa)</option>
+                </select>
+            </div>
+            <div class="modal-field" id="editDateField">
+                <label>Ngày mở ban (dd/mm/yyyy hoặc 6 số)</label>
+                <input type="text" id="editDate" placeholder="dd/mm/yyyy" onblur="formatDateInput(this)">
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-act" onclick="closeEditModal()">Hủy</button>
+                <button type="button" class="btn-add" style="padding: 10px 20px;" onclick="saveEdit()">Lưu lại</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast"></div>
+
+    <script>
+        let accounts = JSON.parse(localStorage.getItem('vancau88_accounts')) || [];
+        let currentFilter = 'all';
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2400);
+        }
+
+        function parseDateString(str) {
+            if (!str || str === '-' || str === 'Chưa rõ') return null;
+            const parts = str.split('/');
+            if (parts.length !== 3) return null;
+            return new Date(parseInt(parts[2], 10), parseInt(parts[1], 10) - 1, parseInt(parts[0], 10), 0, 0, 0);
+        }
+
+        function checkAutoUnban() {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            let updated = false;
+
+            accounts.forEach(acc => {
+                if (acc.status === 'ban') {
+                    const target = parseDateString(acc.unbanDate);
+                    if (target && today >= target) {
+                        acc.status = 'sống';
+                        acc.autoUnbanned = true;
+                        acc.unbanDate = '-';
+                        updated = true;
+                    }
+                }
+            });
+
+            if (updated) {
+                localStorage.setItem('vancau88_accounts', JSON.stringify(accounts));
+            }
+        }
+
+        function formatRawDate(str) {
+            if (!str) return '';
+            let val = str.trim().replace(/\D/g, '');
+            if (val.length === 6) return `${val.slice(0, 2)}/${val.slice(2, 4)}/20${val.slice(4, 6)}`;
+            if (val.length === 8) return `${val.slice(0, 2)}/${val.slice(2, 4)}/${val.slice(4, 8)}`;
+            return str;
+        }
+
+        function formatDateInput(input) {
+            input.value = formatRawDate(input.value);
+        }
+
+        function toggleDateInput(selectId, inputId) {
+            const status = document.getElementById(selectId).value;
+            const input = document.getElementById(inputId);
+            if (status === 'ban') {
+                input.style.display = 'block';
+                input.focus();
+            } else {
+                input.style.display = 'none';
+                input.value = '';
+            }
+        }
+
+        function getRemainingBadge(dateStr) {
+            const target = parseDateString(dateStr);
+            if (!target) return '';
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const diffDays = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
+            if (diffDays === 0) return '<span class="badge badge-today">Mở hôm nay</span>';
+            if (diffDays > 0) return `<span class="badge badge-days">Còn ${diffDays} ngày</span>`;
+            return '';
+        }
+
+        async function loadFromDataTxt(isManual = false) {
+            try {
+                const res = await fetch('./data.txt?t=' + Date.now());
+                if (!res.ok) throw new Error('Không tìm thấy file data.txt');
+                const text = await res.text();
+                const lines = text.split('\n');
+                const loaded = [];
+
+                lines.forEach((line, idx) => {
+                    const clean = line.trim();
+                    if (!clean) return;
+                    const parts = clean.split('|');
+                    const acc = parts[0].trim();
+                    const status = (parts[1] && parts[1].trim().toLowerCase() === 'ban') ? 'ban' : 'sống';
+                    let date = '-';
+                    if (status === 'ban') {
+                        date = parts[2] ? formatRawDate(parts[2]) : 'Chưa rõ';
+                    }
+                    loaded.push({
+                        id: Date.now() + idx,
+                        acc: acc,
+                        status: status,
+                        unbanDate: date,
+                        autoUnbanned: false
+                    });
+                });
+
+                if (loaded.length > 0) {
+                    accounts = loaded;
+                    saveAndRender();
+                    showToast(`Đã đồng bộ ${loaded.length} tài khoản từ data.txt!`);
+                }
+            } catch (err) {
+                if (isManual) showToast('Lỗi: ' + err.message);
+            }
+        }
+
+        function handleAdd(e) {
+            e.preventDefault();
+            const accInfo = document.getElementById('accInfo').value.trim();
+            const status = document.getElementById('accStatus').value;
+            let dateVal = document.getElementById('unbanDate').value.trim();
+
+            if (status === 'ban') {
+                dateVal = formatRawDate(dateVal);
+            }
+
+            accounts.unshift({
+                id: Date.now(),
+                acc: accInfo,
+                status: status,
+                unbanDate: status === 'ban' ? (dateVal || 'Chưa rõ') : '-',
+                autoUnbanned: false
+            });
+
+            saveAndRender();
+            document.getElementById('accForm').reset();
+            toggleDateInput('accStatus', 'unbanDate');
+            showToast('Đã thêm tài khoản thành công!');
+        }
+
+        function openEditModal(id) {
+            const item = accounts.find(a => a.id === id);
+            if (!item) return;
+
+            document.getElementById('editId').value = item.id;
+            document.getElementById('editAcc').value = item.acc;
+            document.getElementById('editStatus').value = item.status;
+            document.getElementById('editDate').value = item.unbanDate === '-' ? '' : item.unbanDate;
+            
+            toggleDateInput('editStatus', 'editDate');
+            document.getElementById('editModal').style.display = 'flex';
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').style.display = 'none';
+        }
+
+        function saveEdit() {
+            const id = parseInt(document.getElementById('editId').value, 10);
+            const item = accounts.find(a => a.id === id);
+            if (!item) return;
+
+            item.acc = document.getElementById('editAcc').value.trim();
+            item.status = document.getElementById('editStatus').value;
+            let dateVal = document.getElementById('editDate').value.trim();
+
+            if (item.status === 'ban') {
+                item.unbanDate = formatRawDate(dateVal) || 'Chưa rõ';
+                item.autoUnbanned = false;
+            } else {
+                item.unbanDate = '-';
+            }
+
+            closeEditModal();
+            saveAndRender();
+            showToast('Đã cập nhật tài khoản!');
+        }
+
+        function deleteAcc(id) {
+            accounts = accounts.filter(item => item.id !== id);
+            saveAndRender();
+            showToast('Đã xóa tài khoản!');
+        }
+
+        function copyAcc(text) {
+            navigator.clipboard.writeText(text);
+            showToast('Đã copy: ' + text);
+        }
+
+        function setFilter(filter, el) {
+            currentFilter = filter;
+            document.querySelectorAll('.btn-filter').forEach(btn => btn.classList.remove('active'));
+            el.classList.add('active');
+            render();
+        }
+
+        function saveAndRender() {
+            checkAutoUnban();
+            localStorage.setItem('vancau88_accounts', JSON.stringify(accounts));
+            render();
+        }
+
+        function render() {
+            const cntLive = accounts.filter(a => a.status === 'sống').length;
+            const cntBanned = accounts.filter(a => a.status === 'ban').length;
+            
+            document.getElementById('cntAll').innerText = accounts.length;
+            document.getElementById('cntLive').innerText = cntLive;
+            document.getElementById('cntBanned').innerText = cntBanned;
+
+            const filtered = accounts.filter(item => {
+                if (currentFilter === 'all') return true;
+                return item.status === currentFilter;
+            });
+
+            const tbody = document.getElementById('accList');
+            tbody.innerHTML = '';
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #64748b; padding: 40px 0;">Không có tài khoản nào được tìm thấy</td></tr>`;
+                return;
+            }
+
+            filtered.forEach(item => {
+                const isBan = item.status === 'ban';
+                const remaining = isBan ? getRemainingBadge(item.unbanDate) : '';
+                const autoBadge = item.autoUnbanned ? '<span class="badge badge-auto">Vừa hết hạn</span>' : '';
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><span class="acc-text">${item.acc}</span></td>
+                    <td>
+                        <span class="badge ${isBan ? 'badge-banned' : 'badge-live'}">
+                            ${isBan ? '🔒 BỊ BAN' : '⚡ SỐNG'}
+                        </span>
+                        ${autoBadge}
+                    </td>
+                    <td><span style="color: ${isBan ? '#f1f5f9' : '#64748b'}">${item.unbanDate}</span> ${remaining}</td>
+                    <td>
+                        <div class="actions" style="justify-content: flex-end;">
+                            <button class="btn-act copy" onclick="copyAcc('${item.acc}')">Copy</button>
+                            <button class="btn-act edit" onclick="openEditModal(${item.id})">Sửa</button>
+                            <button class="btn-act del" onclick="deleteAcc(${item.id})">Xóa</button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        saveAndRender();
+        loadFromDataTxt();
+    </script>
+</body>
+</html>

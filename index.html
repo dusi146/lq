@@ -8,22 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        :root {
-            --primary-glow: rgba(139, 92, 246, 0.4);
-            --cyan-glow: rgba(6, 182, 212, 0.35);
-            --live-glow: rgba(16, 185, 129, 0.3);
-            --ban-glow: rgba(244, 63, 94, 0.3);
-        }
-
-        /* Dynamic Gradient Fluid Background */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
+        :root { --primary-glow: rgba(139, 92, 246, 0.4); --live-glow: rgba(16, 185, 129, 0.3); --ban-glow: rgba(244, 63, 94, 0.3); }
+        
         body {
             min-height: 100vh;
             background: linear-gradient(-45deg, #050512, #0d122b, #19092c, #061e29, #090919);
@@ -33,8 +20,8 @@
             padding: 30px 14px 70px;
             display: flex;
             justify-content: center;
-            position: relative;
             overflow-x: hidden;
+            position: relative;
         }
 
         @keyframes fluidBg {
@@ -43,470 +30,143 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Glowing Aurora Orbs */
         .ambient-glow {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(100px);
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.6;
+            position: fixed; border-radius: 50%; filter: blur(100px); z-index: 0; pointer-events: none; opacity: 0.6;
             animation: floatGlow 12s infinite alternate ease-in-out;
         }
         .glow-1 { width: 450px; height: 450px; background: radial-gradient(circle, #6366f1, #a855f7); top: -100px; left: -100px; }
         .glow-2 { width: 450px; height: 450px; background: radial-gradient(circle, #06b6d4, #3b82f6); bottom: -120px; right: -120px; animation-duration: 16s; }
-        .glow-3 { width: 320px; height: 320px; background: radial-gradient(circle, #ec4899, #8b5cf6); top: 40%; left: 50%; transform: translate(-50%, -50%); opacity: 0.25; }
+        @keyframes floatGlow { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(50px,40px) scale(1.18); } }
 
-        @keyframes floatGlow {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(50px, 40px) scale(1.18); }
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1020px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Liquid Glass Card */
+        .container { width: 100%; max-width: 1020px; position: relative; z-index: 1; }
         .liquid-glass {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
-            backdrop-filter: blur(24px) saturate(200%);
-            -webkit-backdrop-filter: blur(24px) saturate(200%);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            border-radius: 28px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.25);
-            position: relative;
+            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
+            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255,255,255,0.14); border-radius: 28px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.25);
         }
 
-        /* Liquid Glass Buttons */
         .btn-liquid {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.03) 100%);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #fff;
-            font-weight: 700;
-            border-radius: 18px;
-            cursor: pointer;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+            background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.03) 100%);
+            backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.2);
+            color: #fff; font-weight: 700; border-radius: 18px; cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.4);
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            position: relative;
-            overflow: hidden;
         }
-        .btn-liquid::after {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-        .btn-liquid:hover::after { left: 100%; }
-        .btn-liquid:hover {
-            transform: translateY(-2px);
-            border-color: rgba(255, 255, 255, 0.4);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.6);
-        }
+        .btn-liquid:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.4); }
         .btn-liquid:active { transform: scale(0.96); }
 
         .btn-primary-liquid {
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.7) 0%, rgba(139, 92, 246, 0.7) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.5);
-        }
-        .btn-primary-liquid:hover {
-            box-shadow: 0 12px 35px rgba(139, 92, 246, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.7);
+            background: linear-gradient(135deg, rgba(6,182,212,0.7) 0%, rgba(139,92,246,0.7) 100%);
+            border: 1px solid rgba(255,255,255,0.35);
+            box-shadow: 0 8px 25px rgba(6,182,212,0.35), inset 0 1px 1px rgba(255,255,255,0.5);
         }
 
-        /* Header */
         .header { text-align: center; margin-bottom: 24px; }
         .brand-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 16px;
-            background: rgba(139, 92, 246, 0.15);
-            border: 1px solid rgba(139, 92, 246, 0.35);
-            border-radius: 999px;
-            font-size: 11px;
-            letter-spacing: 2px;
-            font-weight: 800;
-            color: #d8b4fe;
-            margin-bottom: 12px;
-            box-shadow: 0 0 20px var(--primary-glow);
+            display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px;
+            background: rgba(139,92,246,0.15); border: 1px solid rgba(139,92,246,0.35);
+            border-radius: 999px; font-size: 11px; letter-spacing: 2px; font-weight: 800; color: #d8b4fe;
+            margin-bottom: 12px; box-shadow: 0 0 20px var(--primary-glow);
         }
-        .brand-badge span {
-            width: 7px; height: 7px; background: #c084fc; border-radius: 50%; box-shadow: 0 0 10px #c084fc;
-        }
+        .brand-badge span { width: 7px; height: 7px; background: #c084fc; border-radius: 50%; }
         h1 {
-            font-size: clamp(24px, 5.5vw, 36px);
-            font-weight: 900;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            background: linear-gradient(135deg, #ffffff 0%, #38bdf8 45%, #c084fc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
+            font-size: clamp(24px, 5.5vw, 36px); font-weight: 900; letter-spacing: 1px; text-transform: uppercase;
+            background: linear-gradient(135deg, #fff 0%, #38bdf8 45%, #c084fc 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-bottom: 18px;
-        }
-        .stat-card {
-            padding: 16px 20px;
-            border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: all 0.3s ease;
-        }
-        .stat-card:hover { transform: translateY(-2px); border-color: rgba(255, 255, 255, 0.3); }
-        .stat-info span {
-            font-size: 11px;
-            color: #94a3b8;
-            font-weight: 700;
-            text-transform: uppercase;
-            display: block;
-            letter-spacing: 0.5px;
-        }
-        .stat-info h2 {
-            font-size: clamp(20px, 4.5vw, 28px);
-            font-weight: 900;
-            margin-top: 2px;
-        }
-        .stat-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 18px; }
+        .stat-card { padding: 16px 20px; border-radius: 24px; display: flex; align-items: center; justify-content: space-between; }
+        .stat-info span { font-size: 11px; color: #94a3b8; font-weight: 700; text-transform: uppercase; display: block; }
+        .stat-info h2 { font-size: clamp(20px, 4.5vw, 28px); font-weight: 900; margin-top: 2px; }
+        .stat-icon { width: 44px; height: 44px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 20px; background: rgba(255,255,255,0.06); }
 
-        /* Form Container */
         .card-form { padding: 22px; margin-bottom: 22px; }
-        .form-grid {
-            display: grid;
-            grid-template-columns: 2fr 1.5fr 1.1fr 1.1fr auto;
-            gap: 12px;
-            align-items: center;
-        }
+        .form-grid { display: grid; grid-template-columns: 2fr 1.5fr 1.1fr 1.1fr auto; gap: 12px; align-items: center; }
         
         input, select {
-            width: 100%;
-            padding: 14px 18px;
-            border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            background: rgba(4, 7, 20, 0.6);
-            color: #f8fafc;
-            outline: none;
-            font-size: 14px;
-            transition: all 0.25s ease;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+            width: 100%; padding: 14px 18px; border-radius: 18px; border: 1px solid rgba(255,255,255,0.14);
+            background: rgba(4,7,20,0.6); color: #f8fafc; outline: none; font-size: 14px;
         }
-        input:focus, select:focus {
-            border-color: #38bdf8;
-            background: rgba(4, 7, 20, 0.85);
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.25), inset 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
+        input:focus, select:focus { border-color: #38bdf8; background: rgba(4,7,20,0.85); }
         select option { background: #0b1120; color: #fff; }
+        .btn-add { padding: 14px 26px; white-space: nowrap; }
 
-        .btn-add {
-            padding: 14px 26px;
-            font-size: 14px;
-            white-space: nowrap;
-        }
+        .toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 12px; }
+        .filter-group { display: flex; background: rgba(4,7,20,0.5); padding: 5px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); gap: 5px; }
+        .btn-filter { background: transparent; border: none; color: #94a3b8; cursor: pointer; padding: 8px 16px; border-radius: 14px; font-size: 13px; font-weight: 700; }
+        .btn-filter.active { background: linear-gradient(135deg, rgba(56,189,248,0.3), rgba(139,92,246,0.3)); color: #38bdf8; border: 1px solid rgba(56,189,248,0.4); }
 
-        .hint {
-            font-size: 12px;
-            color: #94a3b8;
-            margin-top: 12px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            line-height: 1.5;
-        }
-        .hint b { color: #38bdf8; font-weight: 700; }
+        .toolbar-btns { display: flex; gap: 8px; }
+        .btn-tool { padding: 10px 16px; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; }
 
-        /* Toolbar */
-        .toolbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-        .filter-group {
-            display: flex;
-            background: rgba(4, 7, 20, 0.5);
-            padding: 5px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            gap: 5px;
-        }
-        .btn-filter {
-            background: transparent;
-            border: none;
-            color: #94a3b8;
-            cursor: pointer;
-            padding: 8px 16px;
-            border-radius: 14px;
-            font-size: 13px;
-            font-weight: 700;
-            transition: all 0.2s ease;
-        }
-        .btn-filter.active {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(139, 92, 246, 0.3));
-            color: #38bdf8;
-            border: 1px solid rgba(56, 189, 248, 0.4);
-            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
-        }
-
-        .btn-sync {
-            padding: 10px 18px;
-            font-size: 13px;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        /* Table */
         .table-wrap { border-radius: 28px; overflow: hidden; }
         table { width: 100%; border-collapse: collapse; text-align: left; }
-        th, td {
-            padding: 16px 22px;
-            font-size: 14px;
-            vertical-align: middle;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        th {
-            background: rgba(4, 7, 20, 0.7);
-            color: #94a3b8;
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: 11px;
-            letter-spacing: 1px;
-        }
-        tr:hover td { background: rgba(255, 255, 255, 0.025); }
+        th, td { padding: 16px 22px; font-size: 14px; vertical-align: middle; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        th { background: rgba(4,7,20,0.7); color: #94a3b8; font-weight: 800; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; }
 
-        .acc-name {
-            font-weight: 700;
-            color: #f8fafc;
-            letter-spacing: 0.4px;
-            word-break: break-all;
-        }
-        .acc-note {
-            font-size: 12px;
-            color: #38bdf8;
-            margin-top: 4px;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            background: rgba(56, 189, 248, 0.1);
-            padding: 3px 10px;
-            border-radius: 10px;
-            border: 1px solid rgba(56, 189, 248, 0.25);
-            max-width: 100%;
-            word-break: break-word;
-        }
+        .acc-name { font-weight: 700; color: #f8fafc; word-break: break-all; }
+        .acc-note { font-size: 12px; color: #38bdf8; margin-top: 4px; display: inline-flex; align-items: center; gap: 4px; background: rgba(56,189,248,0.1); padding: 3px 10px; border-radius: 10px; border: 1px solid rgba(56,189,248,0.25); }
 
-        /* Badges */
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 5px 12px;
-            border-radius: 12px;
-            font-size: 11.5px;
-            font-weight: 800;
-            letter-spacing: 0.4px;
-            text-transform: uppercase;
-        }
-        .badge-live { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.35); box-shadow: 0 0 15px var(--live-glow); }
-        .badge-banned { background: rgba(244, 63, 94, 0.15); color: #fb7185; border: 1px solid rgba(251, 113, 133, 0.35); box-shadow: 0 0 15px var(--ban-glow); }
-        .badge-days { background: rgba(245, 158, 11, 0.15); color: #fcd34d; border: 1px solid rgba(252, 211, 77, 0.3); margin-left: 6px; font-weight: 600; text-transform: none; }
-        .badge-today { background: rgba(6, 182, 212, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); margin-left: 6px; }
-        .badge-auto { background: rgba(168, 85, 247, 0.2); color: #d8b4fe; border: 1px solid rgba(216, 180, 254, 0.4); margin-left: 6px; font-size: 10.5px; }
+        .badge { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 12px; font-size: 11.5px; font-weight: 800; text-transform: uppercase; }
+        .badge-live { background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(52,211,153,0.35); box-shadow: 0 0 15px var(--live-glow); }
+        .badge-banned { background: rgba(244,63,94,0.15); color: #fb7185; border: 1px solid rgba(251,113,133,0.35); box-shadow: 0 0 15px var(--ban-glow); }
+        .badge-days { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(252,211,77,0.3); margin-left: 6px; font-weight: 600; text-transform: none; }
+        .badge-today { background: rgba(6,182,212,0.2); color: #38bdf8; border: 1px solid rgba(56,189,248,0.4); margin-left: 6px; }
 
-        /* Action Buttons */
         .actions { display: flex; gap: 8px; justify-content: flex-end; }
-        .btn-act {
-            padding: 7px 14px;
-            font-size: 12.5px;
-            font-weight: 700;
-            border-radius: 12px;
-        }
-        .btn-act.copy:hover { border-color: #38bdf8; color: #38bdf8; }
-        .btn-act.edit:hover { border-color: #fbbf24; color: #fbbf24; }
-        .btn-act.del:hover { border-color: #f43f5e; color: #f43f5e; }
+        .btn-act { padding: 7px 14px; font-size: 12.5px; font-weight: 700; border-radius: 12px; }
 
-        /* Modal */
         .modal-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(3, 6, 18, 0.82);
-            backdrop-filter: blur(16px);
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
-            padding: 16px;
+            display: none; position: fixed; inset: 0; background: rgba(3,6,18,0.82); backdrop-filter: blur(16px);
+            justify-content: center; align-items: center; z-index: 999; padding: 16px;
         }
-        .modal {
-            background: #090e1c;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            padding: 28px;
-            border-radius: 28px;
-            width: 100%;
-            max-width: 450px;
-            box-shadow: 0 30px 70px rgba(0,0,0,0.95);
-            animation: modalPop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        @keyframes modalPop {
-            0% { opacity: 0; transform: scale(0.92); }
-            100% { opacity: 1; transform: scale(1); }
-        }
+        .modal { background: #090e1c; border: 1px solid rgba(255,255,255,0.18); padding: 28px; border-radius: 28px; width: 100%; max-width: 450px; box-shadow: 0 30px 70px rgba(0,0,0,0.95); }
         .modal h3 { margin-bottom: 18px; font-size: 18px; font-weight: 800; color: #38bdf8; }
         .modal-field { margin-bottom: 14px; }
         .modal-field label { display: block; font-size: 12px; font-weight: 700; color: #94a3b8; margin-bottom: 6px; text-transform: uppercase; }
         .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 22px; }
 
-        /* Custom Toast Notification */
-        #toastContainer {
-            position: fixed;
-            top: 24px;
-            right: 24px;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            pointer-events: none;
-            max-width: 380px;
-            width: calc(100% - 48px);
-        }
+        #toastContainer { position: fixed; top: 24px; right: 24px; z-index: 9999; display: flex; flex-direction: column; gap: 12px; pointer-events: none; max-width: 380px; width: calc(100% - 48px); }
         .custom-toast {
-            pointer-events: auto;
-            background: rgba(9, 14, 28, 0.94);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            border-radius: 18px;
-            padding: 14px 18px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            box-shadow: 0 16px 40px rgba(0,0,0,0.6);
-            overflow: hidden;
-            position: relative;
-            animation: toastIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-            transition: all 0.3s ease;
+            pointer-events: auto; background: rgba(9,14,28,0.94); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.16);
+            border-radius: 18px; padding: 14px 18px; display: flex; align-items: center; gap: 14px; box-shadow: 0 16px 40px rgba(0,0,0,0.6); position: relative; overflow: hidden;
+            animation: toastIn 0.3s cubic-bezier(0.175,0.885,0.32,1.275) forwards;
         }
         .custom-toast.hide { animation: toastOut 0.3s forwards ease; }
-        .toast-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 17px;
-            flex-shrink: 0;
-        }
-        .toast-msg {
-            font-size: 13.5px;
-            font-weight: 600;
-            color: #f1f5f9;
-            line-height: 1.4;
-            flex: 1;
-            word-break: break-word;
-        }
-        .toast-progress {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            height: 3px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.12);
-        }
-        .toast-progress-bar {
-            height: 100%;
-            width: 100%;
-            animation: progressCount 2.4s linear forwards;
-        }
+        .toast-icon { width: 36px; height: 36px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+        .toast-msg { font-size: 13.5px; font-weight: 600; color: #f1f5f9; flex: 1; word-break: break-word; }
+        .toast-progress { position: absolute; bottom: 0; left: 0; height: 3px; width: 100%; background: rgba(255,255,255,0.12); }
+        .toast-progress-bar { height: 100%; width: 100%; animation: progressCount 2.4s linear forwards; }
+        .toast-success { border-color: rgba(52,211,153,0.45); } .toast-success .toast-icon { background: rgba(16,185,129,0.25); color: #34d399; } .toast-success .toast-progress-bar { background: #34d399; }
+        .toast-info { border-color: rgba(56,189,248,0.45); } .toast-info .toast-icon { background: rgba(6,182,212,0.25); color: #38bdf8; } .toast-info .toast-progress-bar { background: #38bdf8; }
+        .toast-warn { border-color: rgba(244,63,94,0.45); } .toast-warn .toast-icon { background: rgba(244,63,94,0.25); color: #fb7185; } .toast-warn .toast-progress-bar { background: #fb7185; }
 
-        .toast-success { border-color: rgba(52, 211, 153, 0.45); box-shadow: 0 0 25px rgba(16, 185, 129, 0.3); }
-        .toast-success .toast-icon { background: rgba(16, 185, 129, 0.25); color: #34d399; }
-        .toast-success .toast-progress-bar { background: #34d399; }
+        @keyframes toastIn { 0% { opacity: 0; transform: translateY(-20px) scale(0.9); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes toastOut { 0% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-20px) scale(0.9); } }
+        @keyframes progressCount { 0% { width: 100%; } 100% { width: 0%; } }
 
-        .toast-info { border-color: rgba(56, 189, 248, 0.45); box-shadow: 0 0 25px rgba(6, 182, 212, 0.3); }
-        .toast-info .toast-icon { background: rgba(6, 182, 212, 0.25); color: #38bdf8; }
-        .toast-info .toast-progress-bar { background: #38bdf8; }
-
-        .toast-warn { border-color: rgba(244, 63, 94, 0.45); box-shadow: 0 0 25px rgba(244, 63, 94, 0.3); }
-        .toast-warn .toast-icon { background: rgba(244, 63, 94, 0.25); color: #fb7185; }
-        .toast-warn .toast-progress-bar { background: #fb7185; }
-
-        @keyframes toastIn {
-            0% { opacity: 0; transform: translateY(-20px) scale(0.9); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        @keyframes toastOut {
-            0% { opacity: 1; transform: translateY(0) scale(1); }
-            100% { opacity: 0; transform: translateY(-20px) scale(0.9); }
-        }
-        @keyframes progressCount {
-            0% { width: 100%; }
-            100% { width: 0%; }
-        }
-
-        /* Mobile Optimization */
         @media (max-width: 720px) {
             body { padding: 16px 8px 60px; }
-            .liquid-glass { border-radius: 22px; }
-            .card-form { padding: 16px; }
             .form-grid { grid-template-columns: 1fr; gap: 10px; }
             .btn-add { width: 100%; padding: 15px; font-size: 15px; }
-
             .toolbar { flex-direction: column; align-items: stretch; }
             .filter-group { width: 100%; justify-content: space-between; }
-            .btn-filter { flex: 1; text-align: center; padding: 10px 4px; font-size: 12px; }
-            .btn-sync { justify-content: center; width: 100%; padding: 12px; }
-
-            .table-wrap { background: transparent; border: none; box-shadow: none; border-radius: 0; }
+            .toolbar-btns { width: 100%; }
+            .btn-tool { flex: 1; justify-content: center; }
+            .table-wrap { background: transparent; border: none; box-shadow: none; }
             table, thead, tbody, th, td, tr { display: block; width: 100%; }
             thead { display: none; }
             tbody { display: flex; flex-direction: column; gap: 12px; }
             tr {
-                background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
-                backdrop-filter: blur(20px);
-                border: 1px solid rgba(255, 255, 255, 0.14);
-                border-radius: 22px;
-                padding: 16px;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+                background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
+                backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.14); border-radius: 22px; padding: 16px;
             }
-            td {
-                padding: 4px 0;
-                border-bottom: none;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-            }
-            td:first-child {
-                display: block;
-                margin-bottom: 10px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-                padding-bottom: 10px;
-            }
-            .acc-name { font-size: 15px; }
-            .actions { width: 100%; margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.06); }
-            .btn-act { flex: 1; text-align: center; padding: 10px; font-size: 13px; }
+            td { padding: 4px 0; border-bottom: none; display: flex; align-items: center; justify-content: space-between; }
+            td:first-child { display: block; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 10px; }
+            .actions { width: 100%; margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); }
+            .btn-act { flex: 1; text-align: center; }
             #toastContainer { top: 14px; right: 14px; left: 14px; width: auto; max-width: none; }
         }
     </style>
@@ -515,12 +175,9 @@
 
     <div class="ambient-glow glow-1"></div>
     <div class="ambient-glow glow-2"></div>
-    <div class="ambient-glow glow-3"></div>
-
     <div id="toastContainer"></div>
 
     <div class="container">
-        
         <div class="header">
             <div class="brand-badge"><span></span> HỆ THỐNG QUẢN LÝ ACC</div>
             <h1>QUẢN LÝ ACC VANCAU88</h1>
@@ -528,25 +185,16 @@
 
         <div class="stats-grid">
             <div class="stat-card liquid-glass">
-                <div class="stat-info">
-                    <span>Tổng Acc</span>
-                    <h2 id="cntAll" style="color: #f8fafc;">0</h2>
-                </div>
-                <div class="stat-icon" style="color: #94a3b8;">🎮</div>
+                <div class="stat-info"><span>Tổng Acc</span><h2 id="cntAll" style="color: #f8fafc;">0</h2></div>
+                <div class="stat-icon">🎮</div>
             </div>
             <div class="stat-card liquid-glass">
-                <div class="stat-info">
-                    <span>Đang Sống</span>
-                    <h2 id="cntLive" style="color: #34d399;">0</h2>
-                </div>
-                <div class="stat-icon" style="background: rgba(16, 185, 129, 0.15); color: #34d399;">⚡</div>
+                <div class="stat-info"><span>Đang Sống</span><h2 id="cntLive" style="color: #34d399;">0</h2></div>
+                <div class="stat-icon" style="background: rgba(16,185,129,0.15); color: #34d399;">⚡</div>
             </div>
             <div class="stat-card liquid-glass">
-                <div class="stat-info">
-                    <span>Bị Khóa</span>
-                    <h2 id="cntBanned" style="color: #fb7185;">0</h2>
-                </div>
-                <div class="stat-icon" style="background: rgba(244, 63, 94, 0.15); color: #fb7185;">🔒</div>
+                <div class="stat-info"><span>Bị Khóa</span><h2 id="cntBanned" style="color: #fb7185;">0</h2></div>
+                <div class="stat-icon" style="background: rgba(244,63,94,0.15); color: #fb7185;">🔒</div>
             </div>
         </div>
 
@@ -554,16 +202,13 @@
             <form id="accForm" onsubmit="handleAdd(event)">
                 <div class="form-grid">
                     <input type="text" id="accInfo" placeholder="taikhoan:matkhau" required autocomplete="off">
-                    <input type="text" id="accNote" placeholder="Ghi chú (Skin, Rank, vv...)" autocomplete="off">
+                    <input type="text" id="accNote" placeholder="Ghi chú (Skin, Rank...)" autocomplete="off">
                     <select id="accStatus" onchange="toggleDateInput('accStatus', 'unbanDate')">
                         <option value="sống">Sống</option>
                         <option value="ban">Bị Ban</option>
                     </select>
                     <input type="text" id="unbanDate" placeholder="Mở ban (100826)" style="display: none;" onblur="formatDateInput(this)">
                     <button type="submit" class="btn-liquid btn-primary-liquid btn-add">+ Thêm Acc</button>
-                </div>
-                <div class="hint">
-                    💡 <b>Cơ chế thông minh:</b> Trùng tên tài khoản sẽ tự động xóa acc cũ và cập nhật thông tin mới. Hỗ trợ gõ nhanh 6 số (vd: 100826 -> 10/08/2026).
                 </div>
             </form>
         </div>
@@ -574,7 +219,10 @@
                 <button class="btn-filter" onclick="setFilter('sống', this)">Sống (<span id="btnCntLive">0</span>)</button>
                 <button class="btn-filter" onclick="setFilter('ban', this)">Bị Ban (<span id="btnCntBanned">0</span>)</button>
             </div>
-            <button type="button" class="btn-liquid btn-sync" onclick="loadFromDataTxt(true)">↻ Đọc lại data.txt</button>
+            <div class="toolbar-btns">
+                <button type="button" class="btn-liquid btn-tool" onclick="openConfigModal()">⚙ Cấu hình GitHub</button>
+                <button type="button" class="btn-liquid btn-tool" onclick="loadFromDataTxt(true)">↻ Tải lại data.txt</button>
+            </div>
         </div>
 
         <div class="table-wrap liquid-glass">
@@ -590,10 +238,32 @@
                 <tbody id="accList"></tbody>
             </table>
         </div>
-
     </div>
 
-    <!-- Modal Chỉnh Sửa -->
+    <!-- Modal Cấu hình GitHub -->
+    <div class="modal-overlay" id="configModal">
+        <div class="modal">
+            <h3>Cấu hình Đồng Bộ GitHub</h3>
+            <div class="modal-field">
+                <label>GitHub Username (Tên chủ sở hữu)</label>
+                <input type="text" id="ghUser" placeholder="vd: vancau88">
+            </div>
+            <div class="modal-field">
+                <label>Repository Name (Tên repo)</label>
+                <input type="text" id="ghRepo" placeholder="vd: quanly-acc">
+            </div>
+            <div class="modal-field">
+                <label>Personal Access Token (ghp_...)</label>
+                <input type="password" id="ghToken" placeholder="Dán mã Token có quyền repo vào đây">
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-liquid btn-act" onclick="closeConfigModal()">Đóng</button>
+                <button type="button" class="btn-liquid btn-primary-liquid" style="padding: 10px 22px;" onclick="saveConfig()">Lưu Cấu Hình</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Sửa -->
     <div class="modal-overlay" id="editModal">
         <div class="modal">
             <h3>Chỉnh sửa tài khoản</h3>
@@ -604,7 +274,7 @@
             </div>
             <div class="modal-field">
                 <label>Ghi chú</label>
-                <input type="text" id="editNote" placeholder="Ghi chú (Skin, Rank, vv...)">
+                <input type="text" id="editNote" placeholder="Ghi chú (Skin, Rank...)">
             </div>
             <div class="modal-field">
                 <label>Trạng thái</label>
@@ -626,98 +296,116 @@
 
     <script>
         let accounts = JSON.parse(localStorage.getItem('vancau88_accounts')) || [];
+        let ghConfig = JSON.parse(localStorage.getItem('vancau88_gh_config')) || { user: '', repo: '', token: '' };
         let currentFilter = 'all';
 
         function showCustomToast(message, type = 'success') {
             const container = document.getElementById('toastContainer');
             const toast = document.createElement('div');
             toast.className = `custom-toast toast-${type}`;
-            
-            let icon = '✓';
-            if (type === 'info') icon = '⚡';
-            if (type === 'warn') icon = '✕';
-
+            const icon = type === 'info' ? '⚡' : (type === 'warn' ? '✕' : '✓');
             toast.innerHTML = `
                 <div class="toast-icon">${icon}</div>
                 <div class="toast-msg">${message}</div>
                 <div class="toast-progress"><div class="toast-progress-bar"></div></div>
             `;
-
             container.appendChild(toast);
-
-            setTimeout(() => {
-                toast.classList.add('hide');
-                setTimeout(() => toast.remove(), 300);
-            }, 2400);
+            setTimeout(() => { toast.classList.add('hide'); setTimeout(() => toast.remove(), 300); }, 2400);
         }
 
         function extractUsername(accStr) {
-            if (!accStr) return '';
-            return accStr.split(':')[0].trim().toLowerCase();
+            return (accStr || '').split(':')[0].trim().toLowerCase();
         }
 
         function parseDateString(str) {
             if (!str || str === '-' || str === 'Chưa rõ') return null;
-            const parts = str.split('/');
-            if (parts.length !== 3) return null;
-            return new Date(parseInt(parts[2], 10), parseInt(parts[1], 10) - 1, parseInt(parts[0], 10), 0, 0, 0);
-        }
-
-        function checkAutoUnban() {
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-            let updated = false;
-
-            accounts.forEach(acc => {
-                if (acc.status === 'ban') {
-                    const target = parseDateString(acc.unbanDate);
-                    if (target && today >= target) {
-                        acc.status = 'sống';
-                        acc.autoUnbanned = true;
-                        acc.unbanDate = '-';
-                        updated = true;
-                    }
-                }
-            });
-
-            if (updated) {
-                localStorage.setItem('vancau88_accounts', JSON.stringify(accounts));
-            }
+            const p = str.split('/');
+            return p.length === 3 ? new Date(parseInt(p[2]), parseInt(p[1]) - 1, parseInt(p[0])) : null;
         }
 
         function formatRawDate(str) {
             if (!str) return '';
             let val = str.trim().replace(/\D/g, '');
-            if (val.length === 6) return `${val.slice(0, 2)}/${val.slice(2, 4)}/20${val.slice(4, 6)}`;
-            if (val.length === 8) return `${val.slice(0, 2)}/${val.slice(2, 4)}/${val.slice(4, 8)}`;
+            if (val.length === 6) return `${val.slice(0,2)}/${val.slice(2,4)}/20${val.slice(4,6)}`;
+            if (val.length === 8) return `${val.slice(0,2)}/${val.slice(2,4)}/${val.slice(4,8)}`;
             return str;
         }
 
-        function formatDateInput(input) {
-            input.value = formatRawDate(input.value);
-        }
+        function formatDateInput(input) { input.value = formatRawDate(input.value); }
 
         function toggleDateInput(selectId, inputId) {
             const status = document.getElementById(selectId).value;
             const input = document.getElementById(inputId);
-            if (status === 'ban') {
-                input.style.display = 'block';
-                input.focus();
-            } else {
-                input.style.display = 'none';
-                input.value = '';
-            }
+            input.style.display = status === 'ban' ? 'block' : 'none';
+            if (status === 'ban') input.focus(); else input.value = '';
         }
 
         function getRemainingBadge(dateStr) {
             const target = parseDateString(dateStr);
             if (!target) return '';
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-            const diffDays = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
-            if (diffDays === 0) return '<span class="badge badge-today">Mở hôm nay</span>';
-            if (diffDays > 0) return `<span class="badge badge-days">Còn ${diffDays} ngày</span>`;
+            const today = new Date(); today.setHours(0,0,0,0);
+            const diff = Math.ceil((target - today) / 86400000);
+            if (diff === 0) return '<span class="badge badge-today">Mở hôm nay</span>';
+            if (diff > 0) return `<span class="badge badge-days">Còn ${diff} ngày</span>`;
             return '';
+        }
+
+        function openConfigModal() {
+            document.getElementById('ghUser').value = ghConfig.user || '';
+            document.getElementById('ghRepo').value = ghConfig.repo || '';
+            document.getElementById('ghToken').value = ghConfig.token || '';
+            document.getElementById('configModal').style.display = 'flex';
+        }
+        function closeConfigModal() { document.getElementById('configModal').style.display = 'none'; }
+
+        function saveConfig() {
+            ghConfig = {
+                user: document.getElementById('ghUser').value.trim(),
+                repo: document.getElementById('ghRepo').value.trim(),
+                token: document.getElementById('ghToken').value.trim()
+            };
+            localStorage.setItem('vancau88_gh_config', JSON.stringify(ghConfig));
+            closeConfigModal();
+            showCustomToast('Đã lưu cấu hình GitHub!', 'success');
+        }
+
+        // Tự động Commit đè lên file data.txt qua GitHub API
+        async function syncToGitHub() {
+            if (!ghConfig.user || !ghConfig.repo || !ghConfig.token) return;
+
+            const textLines = accounts.map(a => `${a.acc}|${a.status}|${a.unbanDate}|${a.note || ''}`).join('\n');
+            const encodedContent = btoa(unescape(encodeURIComponent(textLines)));
+            const url = `https://api.github.com/repos/${ghConfig.user}/${ghConfig.repo}/contents/data.txt`;
+
+            try {
+                let sha = null;
+                const getRes = await fetch(url, { headers: { 'Authorization': `Bearer ${ghConfig.token}` } });
+                if (getRes.ok) {
+                    const getData = await getRes.json();
+                    sha = getData.sha;
+                }
+
+                const putRes = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `Bearer ${ghConfig.token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: 'Cập nhật data.txt từ web',
+                        content: encodedContent,
+                        sha: sha || undefined
+                    })
+                });
+
+                if (putRes.ok) {
+                    showCustomToast('Đã đồng bộ lên file data.txt trên GitHub!', 'success');
+                } else {
+                    showCustomToast('Không thể lưu lên GitHub. Kiểm tra lại Token!', 'warn');
+                }
+            } catch (err) {
+                showCustomToast('Lỗi đồng bộ GitHub: ' + err.message, 'warn');
+            }
         }
 
         async function loadFromDataTxt(isManual = false) {
@@ -731,35 +419,23 @@
                 lines.forEach((line, idx) => {
                     const clean = line.trim();
                     if (!clean) return;
-                    const parts = clean.split('|');
-                    const acc = parts[0].trim();
-                    const status = (parts[1] && parts[1].trim().toLowerCase() === 'ban') ? 'ban' : 'sống';
-                    let date = '-';
-                    if (status === 'ban') {
-                        date = (parts[2] && parts[2].trim()) ? formatRawDate(parts[2].trim()) : 'Chưa rõ';
-                    }
-                    const note = parts[3] ? parts[3].trim() : '';
+                    const p = clean.split('|');
+                    const acc = p[0].trim();
+                    const status = (p[1] && p[1].trim().toLowerCase() === 'ban') ? 'ban' : 'sống';
+                    const date = status === 'ban' ? (p[2] ? formatRawDate(p[2]) : 'Chưa rõ') : '-';
+                    const note = p[3] ? p[3].trim() : '';
 
                     const uname = extractUsername(acc);
-                    const existingIdx = loaded.findIndex(item => extractUsername(item.acc) === uname);
-                    if (existingIdx !== -1) {
-                        loaded.splice(existingIdx, 1);
-                    }
+                    const exist = loaded.findIndex(item => extractUsername(item.acc) === uname);
+                    if (exist !== -1) loaded.splice(exist, 1);
 
-                    loaded.push({
-                        id: Date.now() + idx,
-                        acc: acc,
-                        note: note,
-                        status: status,
-                        unbanDate: date,
-                        autoUnbanned: false
-                    });
+                    loaded.push({ id: Date.now() + idx, acc, note, status, unbanDate: date });
                 });
 
                 if (loaded.length > 0) {
                     accounts = loaded;
-                    saveAndRender();
-                    showCustomToast(`Đã đồng bộ ${loaded.length} tài khoản từ data.txt!`, 'info');
+                    saveAndRender(false);
+                    if (isManual) showCustomToast(`Đồng bộ thành công ${loaded.length} acc từ data.txt!`, 'info');
                 }
             } catch (err) {
                 if (isManual) showCustomToast('Lỗi: ' + err.message, 'warn');
@@ -772,92 +448,61 @@
             const accNote = document.getElementById('accNote').value.trim();
             const status = document.getElementById('accStatus').value;
             let dateVal = document.getElementById('unbanDate').value.trim();
+            if (status === 'ban') dateVal = formatRawDate(dateVal);
 
-            if (status === 'ban') {
-                dateVal = formatRawDate(dateVal);
-            }
-
-            const newUsername = extractUsername(accInfo);
-            const existingIndex = accounts.findIndex(item => extractUsername(item.acc) === newUsername);
-            let isOverwritten = false;
-
-            if (existingIndex !== -1) {
-                accounts.splice(existingIndex, 1);
-                isOverwritten = true;
-            }
+            const uname = extractUsername(accInfo);
+            const existIndex = accounts.findIndex(item => extractUsername(item.acc) === uname);
+            if (existIndex !== -1) accounts.splice(existIndex, 1);
 
             accounts.unshift({
                 id: Date.now(),
                 acc: accInfo,
                 note: accNote,
                 status: status,
-                unbanDate: status === 'ban' ? (dateVal || 'Chưa rõ') : '-',
-                autoUnbanned: false
+                unbanDate: status === 'ban' ? (dateVal || 'Chưa rõ') : '-'
             });
 
-            saveAndRender();
+            saveAndRender(true);
             document.getElementById('accForm').reset();
             toggleDateInput('accStatus', 'unbanDate');
-
-            if (isOverwritten) {
-                showCustomToast(`Đã ghi đè & cập nhật lại tài khoản: ${newUsername}`, 'info');
-            } else {
-                showCustomToast('Đã thêm tài khoản mới thành công!', 'success');
-            }
         }
 
         function openEditModal(id) {
             const item = accounts.find(a => a.id === id);
             if (!item) return;
-
             document.getElementById('editId').value = item.id;
             document.getElementById('editAcc').value = item.acc;
             document.getElementById('editNote').value = item.note || '';
             document.getElementById('editStatus').value = item.status;
             document.getElementById('editDate').value = item.unbanDate === '-' ? '' : item.unbanDate;
-            
             toggleDateInput('editStatus', 'editDate');
             document.getElementById('editModal').style.display = 'flex';
         }
-
-        function closeEditModal() {
-            document.getElementById('editModal').style.display = 'none';
-        }
+        function closeEditModal() { document.getElementById('editModal').style.display = 'none'; }
 
         function saveEdit() {
-            const id = parseInt(document.getElementById('editId').value, 10);
+            const id = parseInt(document.getElementById('editId').value);
             const item = accounts.find(a => a.id === id);
             if (!item) return;
 
-            const updatedAcc = document.getElementById('editAcc').value.trim();
-            const newUsername = extractUsername(updatedAcc);
+            const accStr = document.getElementById('editAcc').value.trim();
+            const uname = extractUsername(accStr);
+            const dup = accounts.findIndex(a => a.id !== id && extractUsername(a.acc) === uname);
+            if (dup !== -1) accounts.splice(dup, 1);
 
-            const duplicateIndex = accounts.findIndex(a => a.id !== id && extractUsername(a.acc) === newUsername);
-            if (duplicateIndex !== -1) {
-                accounts.splice(duplicateIndex, 1);
-            }
-
-            item.acc = updatedAcc;
+            item.acc = accStr;
             item.note = document.getElementById('editNote').value.trim();
             item.status = document.getElementById('editStatus').value;
             let dateVal = document.getElementById('editDate').value.trim();
-
-            if (item.status === 'ban') {
-                item.unbanDate = formatRawDate(dateVal) || 'Chưa rõ';
-                item.autoUnbanned = false;
-            } else {
-                item.unbanDate = '-';
-            }
+            item.unbanDate = item.status === 'ban' ? (formatRawDate(dateVal) || 'Chưa rõ') : '-';
 
             closeEditModal();
-            saveAndRender();
-            showCustomToast('Đã cập nhật thông tin tài khoản!', 'success');
+            saveAndRender(true);
         }
 
         function deleteAcc(id) {
             accounts = accounts.filter(item => item.id !== id);
-            saveAndRender();
-            showCustomToast('Đã xóa tài khoản!', 'warn');
+            saveAndRender(true);
         }
 
         function copyAcc(text) {
@@ -865,36 +510,31 @@
             showCustomToast('Đã copy: ' + text, 'info');
         }
 
-        function setFilter(filter, el) {
-            currentFilter = filter;
-            document.querySelectorAll('.btn-filter').forEach(btn => btn.classList.remove('active'));
+        function setFilter(f, el) {
+            currentFilter = f;
+            document.querySelectorAll('.btn-filter').forEach(b => b.classList.remove('active'));
             el.classList.add('active');
             render();
         }
 
-        function saveAndRender() {
-            checkAutoUnban();
+        function saveAndRender(autoSync = false) {
             localStorage.setItem('vancau88_accounts', JSON.stringify(accounts));
             render();
+            if (autoSync) syncToGitHub();
         }
 
         function render() {
             const cntLive = accounts.filter(a => a.status === 'sống').length;
             const cntBanned = accounts.filter(a => a.status === 'ban').length;
-            
+
             document.getElementById('cntAll').innerText = accounts.length;
             document.getElementById('cntLive').innerText = cntLive;
             document.getElementById('cntBanned').innerText = cntBanned;
-
             document.getElementById('btnCntAll').innerText = accounts.length;
             document.getElementById('btnCntLive').innerText = cntLive;
             document.getElementById('btnCntBanned').innerText = cntBanned;
 
-            const filtered = accounts.filter(item => {
-                if (currentFilter === 'all') return true;
-                return item.status === currentFilter;
-            });
-
+            const filtered = accounts.filter(item => currentFilter === 'all' ? true : item.status === currentFilter);
             const tbody = document.getElementById('accList');
             tbody.innerHTML = '';
 
@@ -905,28 +545,17 @@
 
             filtered.forEach(item => {
                 const isBan = item.status === 'ban';
-                const remaining = isBan ? getRemainingBadge(item.unbanDate) : '';
-                const autoBadge = item.autoUnbanned ? '<span class="badge badge-auto">Vừa mở</span>' : '';
                 const noteHtml = item.note ? `<div class="acc-note">📝 ${item.note}</div>` : '';
-
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td>
-                        <div class="acc-name">${item.acc}</div>
-                        ${noteHtml}
-                    </td>
-                    <td>
-                        <span class="badge ${isBan ? 'badge-banned' : 'badge-live'}">
-                            ${isBan ? '🔒 BAN' : '⚡ SỐNG'}
-                        </span>
-                        ${autoBadge}
-                    </td>
-                    <td><span style="color: ${isBan ? '#f1f5f9' : '#64748b'}">${item.unbanDate}</span> ${remaining}</td>
+                    <td><div class="acc-name">${item.acc}</div>${noteHtml}</td>
+                    <td><span class="badge ${isBan ? 'badge-banned' : 'badge-live'}">${isBan ? '🔒 BAN' : '⚡ SỐNG'}</span></td>
+                    <td><span style="color: ${isBan ? '#f1f5f9' : '#64748b'}">${item.unbanDate}</span> ${isBan ? getRemainingBadge(item.unbanDate) : ''}</td>
                     <td>
                         <div class="actions">
-                            <button class="btn-liquid btn-act copy" onclick="copyAcc('${item.acc}')">Copy</button>
-                            <button class="btn-liquid btn-act edit" onclick="openEditModal(${item.id})">Sửa</button>
-                            <button class="btn-liquid btn-act del" onclick="deleteAcc(${item.id})">Xóa</button>
+                            <button class="btn-liquid btn-act" onclick="copyAcc('${item.acc}')">Copy</button>
+                            <button class="btn-liquid btn-act" onclick="openEditModal(${item.id})">Sửa</button>
+                            <button class="btn-liquid btn-act" onclick="deleteAcc(${item.id})">Xóa</button>
                         </div>
                     </td>
                 `;
@@ -934,7 +563,7 @@
             });
         }
 
-        saveAndRender();
+        saveAndRender(false);
         loadFromDataTxt();
     </script>
 </body>

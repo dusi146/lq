@@ -6,7 +6,7 @@
     <title>QUẢN LÝ ACC VANCAU88</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -17,251 +17,286 @@
         }
 
         :root {
-            --primary: #8b5cf6;
-            --primary-glow: rgba(139, 92, 246, 0.45);
-            --cyan: #06b6d4;
-            --cyan-glow: rgba(6, 182, 212, 0.4);
-            --live: #10b981;
-            --ban: #f43f5e;
-            --glass-bg: rgba(15, 23, 42, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.12);
+            --primary-glow: rgba(139, 92, 246, 0.4);
+            --cyan-glow: rgba(6, 182, 212, 0.35);
+            --live-glow: rgba(16, 185, 129, 0.3);
+            --ban-glow: rgba(244, 63, 94, 0.3);
         }
 
+        /* Dynamic Gradient Fluid Background */
         body {
             min-height: 100vh;
-            background: #040711;
+            background: linear-gradient(-45deg, #050512, #0d122b, #19092c, #061e29, #090919);
+            background-size: 400% 400%;
+            animation: fluidBg 15s ease infinite;
             color: #f1f5f9;
-            padding: 24px 12px 60px;
+            padding: 30px 14px 70px;
             display: flex;
             justify-content: center;
             position: relative;
             overflow-x: hidden;
         }
 
-        /* Ambient Glow Background */
+        @keyframes fluidBg {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glowing Aurora Orbs */
         .ambient-glow {
             position: fixed;
             border-radius: 50%;
-            filter: blur(90px);
+            filter: blur(100px);
             z-index: 0;
             pointer-events: none;
-            opacity: 0.55;
-            animation: floatGlow 14s infinite alternate ease-in-out;
+            opacity: 0.6;
+            animation: floatGlow 12s infinite alternate ease-in-out;
         }
-        .glow-1 { width: 380px; height: 380px; background: radial-gradient(circle, #6366f1, #a855f7); top: -80px; left: -80px; }
-        .glow-2 { width: 420px; height: 420px; background: radial-gradient(circle, #06b6d4, #3b82f6); bottom: -100px; right: -100px; animation-duration: 18s; }
-        .glow-3 { width: 280px; height: 280px; background: radial-gradient(circle, #ec4899, #8b5cf6); top: 35%; left: 50%; transform: translate(-50%, -50%); opacity: 0.3; }
+        .glow-1 { width: 450px; height: 450px; background: radial-gradient(circle, #6366f1, #a855f7); top: -100px; left: -100px; }
+        .glow-2 { width: 450px; height: 450px; background: radial-gradient(circle, #06b6d4, #3b82f6); bottom: -120px; right: -120px; animation-duration: 16s; }
+        .glow-3 { width: 320px; height: 320px; background: radial-gradient(circle, #ec4899, #8b5cf6); top: 40%; left: 50%; transform: translate(-50%, -50%); opacity: 0.25; }
 
         @keyframes floatGlow {
             0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(45px, 35px) scale(1.15); }
+            100% { transform: translate(50px, 40px) scale(1.18); }
         }
 
         .container {
             width: 100%;
-            max-width: 1000px;
+            max-width: 1020px;
             position: relative;
             z-index: 1;
         }
 
-        /* Liquid Glass Card Base */
-        .glass {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px) saturate(190%);
-            -webkit-backdrop-filter: blur(20px) saturate(190%);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        /* Liquid Glass Card */
+        .liquid-glass {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+            backdrop-filter: blur(24px) saturate(200%);
+            -webkit-backdrop-filter: blur(24px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 28px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.25);
             position: relative;
         }
 
+        /* Liquid Glass Buttons */
+        .btn-liquid {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.03) 100%);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-weight: 700;
+            border-radius: 18px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-liquid::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        .btn-liquid:hover::after { left: 100%; }
+        .btn-liquid:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+        }
+        .btn-liquid:active { transform: scale(0.96); }
+
+        .btn-primary-liquid {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.7) 0%, rgba(139, 92, 246, 0.7) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+        }
+        .btn-primary-liquid:hover {
+            box-shadow: 0 12px 35px rgba(139, 92, 246, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.7);
+        }
+
         /* Header */
-        .header { text-align: center; margin-bottom: 20px; }
+        .header { text-align: center; margin-bottom: 24px; }
         .brand-badge {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            padding: 5px 12px;
+            gap: 8px;
+            padding: 6px 16px;
             background: rgba(139, 92, 246, 0.15);
             border: 1px solid rgba(139, 92, 246, 0.35);
             border-radius: 999px;
-            font-size: 10px;
-            letter-spacing: 1.8px;
+            font-size: 11px;
+            letter-spacing: 2px;
             font-weight: 800;
-            color: #c4b5fd;
-            margin-bottom: 10px;
-            box-shadow: 0 0 16px var(--primary-glow);
+            color: #d8b4fe;
+            margin-bottom: 12px;
+            box-shadow: 0 0 20px var(--primary-glow);
         }
-        .brand-badge::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: #a855f7;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #a855f7;
+        .brand-badge span {
+            width: 7px; height: 7px; background: #c084fc; border-radius: 50%; box-shadow: 0 0 10px #c084fc;
         }
         h1 {
-            font-size: clamp(22px, 5vw, 32px);
-            font-weight: 800;
+            font-size: clamp(24px, 5.5vw, 36px);
+            font-weight: 900;
             letter-spacing: 1px;
             text-transform: uppercase;
-            background: linear-gradient(135deg, #ffffff 0%, #38bdf8 50%, #c084fc 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #38bdf8 45%, #c084fc 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
         }
 
-        /* Stats */
+        /* Stats Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-bottom: 16px;
+            gap: 12px;
+            margin-bottom: 18px;
         }
         .stat-card {
-            padding: 12px 14px;
-            border-radius: 16px;
+            padding: 16px 20px;
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            transition: all 0.3s ease;
         }
+        .stat-card:hover { transform: translateY(-2px); border-color: rgba(255, 255, 255, 0.3); }
         .stat-info span {
-            font-size: 10.5px;
+            font-size: 11px;
             color: #94a3b8;
             font-weight: 700;
             text-transform: uppercase;
             display: block;
+            letter-spacing: 0.5px;
         }
         .stat-info h2 {
-            font-size: clamp(18px, 4vw, 24px);
-            font-weight: 800;
+            font-size: clamp(20px, 4.5vw, 28px);
+            font-weight: 900;
             margin-top: 2px;
         }
         .stat-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
+            width: 44px;
+            height: 44px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
+            font-size: 20px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Form Nhập */
-        .card-form { padding: 18px; margin-bottom: 18px; }
+        /* Form Container */
+        .card-form { padding: 22px; margin-bottom: 22px; }
         .form-grid {
             display: grid;
-            grid-template-columns: 2fr 1.5fr 1fr 1fr auto;
-            gap: 10px;
+            grid-template-columns: 2fr 1.5fr 1.1fr 1.1fr auto;
+            gap: 12px;
             align-items: center;
         }
         
         input, select {
             width: 100%;
-            padding: 12px 14px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            background: rgba(2, 6, 23, 0.65);
+            padding: 14px 18px;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: rgba(4, 7, 20, 0.6);
             color: #f8fafc;
             outline: none;
-            font-size: 13.5px;
-            transition: all 0.2s ease;
+            font-size: 14px;
+            transition: all 0.25s ease;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
         }
         input:focus, select:focus {
             border-color: #38bdf8;
-            background: rgba(2, 6, 23, 0.9);
-            box-shadow: 0 0 16px rgba(56, 189, 248, 0.25);
+            background: rgba(4, 7, 20, 0.85);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.25), inset 0 2px 4px rgba(0, 0, 0, 0.3);
         }
-        select option { background: #0f172a; color: #fff; }
+        select option { background: #0b1120; color: #fff; }
 
         .btn-add {
-            background: linear-gradient(135deg, #06b6d4, #3b82f6, #8b5cf6);
-            background-size: 200% 200%;
-            color: #fff;
-            font-weight: 700;
-            border: none;
-            cursor: pointer;
-            padding: 12px 20px;
-            border-radius: 12px;
+            padding: 14px 26px;
             font-size: 14px;
-            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.35);
-            transition: all 0.25s ease;
             white-space: nowrap;
         }
-        .btn-add:active { transform: scale(0.96); }
 
         .hint {
-            font-size: 11.5px;
-            color: #64748b;
-            margin-top: 10px;
-            line-height: 1.4;
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.5;
         }
+        .hint b { color: #38bdf8; font-weight: 700; }
 
         /* Toolbar */
         .toolbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
         }
         .filter-group {
             display: flex;
-            background: rgba(2, 6, 23, 0.6);
-            padding: 4px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            gap: 4px;
+            background: rgba(4, 7, 20, 0.5);
+            padding: 5px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            gap: 5px;
         }
         .btn-filter {
             background: transparent;
             border: none;
             color: #94a3b8;
             cursor: pointer;
-            padding: 7px 14px;
-            border-radius: 8px;
-            font-size: 12.5px;
+            padding: 8px 16px;
+            border-radius: 14px;
+            font-size: 13px;
             font-weight: 700;
+            transition: all 0.2s ease;
         }
         .btn-filter.active {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(139, 92, 246, 0.25));
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(139, 92, 246, 0.3));
             color: #38bdf8;
-            border: 1px solid rgba(56, 189, 248, 0.35);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
         }
 
         .btn-sync {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            color: #e2e8f0;
-            cursor: pointer;
-            padding: 8px 14px;
-            border-radius: 10px;
-            font-size: 12.5px;
-            font-weight: 600;
+            padding: 10px 18px;
+            font-size: 13px;
             display: inline-flex;
             align-items: center;
             gap: 6px;
         }
-        .btn-sync:active { transform: scale(0.96); }
 
-        /* Bảng Table trên PC */
-        .table-wrap { border-radius: 20px; overflow: hidden; }
+        /* Table */
+        .table-wrap { border-radius: 28px; overflow: hidden; }
         table { width: 100%; border-collapse: collapse; text-align: left; }
         th, td {
-            padding: 14px 18px;
-            font-size: 13.5px;
+            padding: 16px 22px;
+            font-size: 14px;
             vertical-align: middle;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
         th {
-            background: rgba(2, 6, 23, 0.7);
+            background: rgba(4, 7, 20, 0.7);
             color: #94a3b8;
-            font-weight: 700;
+            font-weight: 800;
             text-transform: uppercase;
             font-size: 11px;
-            letter-spacing: 0.8px;
+            letter-spacing: 1px;
         }
-        tr:hover td { background: rgba(255, 255, 255, 0.02); }
+        tr:hover td { background: rgba(255, 255, 255, 0.025); }
 
         .acc-name {
             font-weight: 700;
@@ -277,9 +312,9 @@
             align-items: center;
             gap: 4px;
             background: rgba(56, 189, 248, 0.1);
-            padding: 2px 8px;
-            border-radius: 6px;
-            border: 1px solid rgba(56, 189, 248, 0.2);
+            padding: 3px 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(56, 189, 248, 0.25);
             max-width: 100%;
             word-break: break-word;
         }
@@ -288,33 +323,27 @@
         .badge {
             display: inline-flex;
             align-items: center;
-            padding: 4px 8px;
-            border-radius: 7px;
-            font-size: 11px;
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 11.5px;
             font-weight: 800;
             letter-spacing: 0.4px;
             text-transform: uppercase;
         }
-        .badge-live { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); }
-        .badge-banned { background: rgba(244, 63, 94, 0.15); color: #fb7185; border: 1px solid rgba(251, 113, 133, 0.3); }
-        .badge-days { background: rgba(245, 158, 11, 0.15); color: #fcd34d; border: 1px solid rgba(252, 211, 77, 0.25); margin-left: 6px; font-weight: 600; text-transform: none; }
-        .badge-today { background: rgba(6, 182, 212, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35); margin-left: 6px; }
-        .badge-auto { background: rgba(168, 85, 247, 0.2); color: #d8b4fe; border: 1px solid rgba(216, 180, 254, 0.35); margin-left: 6px; font-size: 10px; }
+        .badge-live { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.35); box-shadow: 0 0 15px var(--live-glow); }
+        .badge-banned { background: rgba(244, 63, 94, 0.15); color: #fb7185; border: 1px solid rgba(251, 113, 133, 0.35); box-shadow: 0 0 15px var(--ban-glow); }
+        .badge-days { background: rgba(245, 158, 11, 0.15); color: #fcd34d; border: 1px solid rgba(252, 211, 77, 0.3); margin-left: 6px; font-weight: 600; text-transform: none; }
+        .badge-today { background: rgba(6, 182, 212, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); margin-left: 6px; }
+        .badge-auto { background: rgba(168, 85, 247, 0.2); color: #d8b4fe; border: 1px solid rgba(216, 180, 254, 0.4); margin-left: 6px; font-size: 10.5px; }
 
         /* Action Buttons */
-        .actions { display: flex; gap: 6px; justify-content: flex-end; }
+        .actions { display: flex; gap: 8px; justify-content: flex-end; }
         .btn-act {
-            padding: 6px 12px;
-            font-size: 12px;
+            padding: 7px 14px;
+            font-size: 12.5px;
             font-weight: 700;
-            cursor: pointer;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            background: rgba(255, 255, 255, 0.05);
-            color: #cbd5e1;
-            transition: all 0.2s ease;
+            border-radius: 12px;
         }
-        .btn-act:active { transform: scale(0.94); }
         .btn-act.copy:hover { border-color: #38bdf8; color: #38bdf8; }
         .btn-act.edit:hover { border-color: #fbbf24; color: #fbbf24; }
         .btn-act.del:hover { border-color: #f43f5e; color: #f43f5e; }
@@ -324,76 +353,74 @@
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(2, 6, 23, 0.8);
-            backdrop-filter: blur(12px);
+            background: rgba(3, 6, 18, 0.82);
+            backdrop-filter: blur(16px);
             justify-content: center;
             align-items: center;
             z-index: 999;
             padding: 16px;
         }
         .modal {
-            background: #0b1120;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 24px;
-            border-radius: 20px;
+            background: #090e1c;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 28px;
+            border-radius: 28px;
             width: 100%;
-            max-width: 440px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.9);
+            max-width: 450px;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.95);
             animation: modalPop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         @keyframes modalPop {
             0% { opacity: 0; transform: scale(0.92); }
             100% { opacity: 1; transform: scale(1); }
         }
-        .modal h3 { margin-bottom: 16px; font-size: 17px; font-weight: 800; color: #38bdf8; }
+        .modal h3 { margin-bottom: 18px; font-size: 18px; font-weight: 800; color: #38bdf8; }
         .modal-field { margin-bottom: 14px; }
-        .modal-field label { display: block; font-size: 11.5px; font-weight: 700; color: #94a3b8; margin-bottom: 5px; text-transform: uppercase; }
-        .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 20px; }
+        .modal-field label { display: block; font-size: 12px; font-weight: 700; color: #94a3b8; margin-bottom: 6px; text-transform: uppercase; }
+        .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 22px; }
 
-        /* Custom Designed Toast System */
+        /* Custom Toast Notification */
         #toastContainer {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 24px;
+            right: 24px;
             z-index: 9999;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
             pointer-events: none;
-            max-width: 350px;
-            width: calc(100% - 40px);
+            max-width: 380px;
+            width: calc(100% - 48px);
         }
         .custom-toast {
             pointer-events: auto;
-            background: rgba(11, 17, 32, 0.92);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 14px;
-            padding: 12px 16px;
+            background: rgba(9, 14, 28, 0.94);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 18px;
+            padding: 14px 18px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+            gap: 14px;
+            box-shadow: 0 16px 40px rgba(0,0,0,0.6);
             overflow: hidden;
             position: relative;
             animation: toastIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
             transition: all 0.3s ease;
         }
-        .custom-toast.hide {
-            animation: toastOut 0.3s forwards ease;
-        }
+        .custom-toast.hide { animation: toastOut 0.3s forwards ease; }
         .toast-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 10px;
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 15px;
+            font-size: 17px;
             flex-shrink: 0;
         }
         .toast-msg {
-            font-size: 13px;
+            font-size: 13.5px;
             font-weight: 600;
             color: #f1f5f9;
             line-height: 1.4;
@@ -406,7 +433,7 @@
             left: 0;
             height: 3px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.12);
         }
         .toast-progress-bar {
             height: 100%;
@@ -414,17 +441,16 @@
             animation: progressCount 2.4s linear forwards;
         }
 
-        /* Toast Colors */
-        .toast-success { border-color: rgba(52, 211, 153, 0.4); box-shadow: 0 0 20px rgba(16, 185, 129, 0.25); }
-        .toast-success .toast-icon { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+        .toast-success { border-color: rgba(52, 211, 153, 0.45); box-shadow: 0 0 25px rgba(16, 185, 129, 0.3); }
+        .toast-success .toast-icon { background: rgba(16, 185, 129, 0.25); color: #34d399; }
         .toast-success .toast-progress-bar { background: #34d399; }
 
-        .toast-info { border-color: rgba(56, 189, 248, 0.4); box-shadow: 0 0 20px rgba(6, 182, 212, 0.25); }
-        .toast-info .toast-icon { background: rgba(6, 182, 212, 0.2); color: #38bdf8; }
+        .toast-info { border-color: rgba(56, 189, 248, 0.45); box-shadow: 0 0 25px rgba(6, 182, 212, 0.3); }
+        .toast-info .toast-icon { background: rgba(6, 182, 212, 0.25); color: #38bdf8; }
         .toast-info .toast-progress-bar { background: #38bdf8; }
 
-        .toast-warn { border-color: rgba(244, 63, 94, 0.4); box-shadow: 0 0 20px rgba(244, 63, 94, 0.25); }
-        .toast-warn .toast-icon { background: rgba(244, 63, 94, 0.2); color: #fb7185; }
+        .toast-warn { border-color: rgba(244, 63, 94, 0.45); box-shadow: 0 0 25px rgba(244, 63, 94, 0.3); }
+        .toast-warn .toast-icon { background: rgba(244, 63, 94, 0.25); color: #fb7185; }
         .toast-warn .toast-progress-bar { background: #fb7185; }
 
         @keyframes toastIn {
@@ -440,30 +466,30 @@
             100% { width: 0%; }
         }
 
-        /* Responsive Mobile Tối Ưu Tột Đỉnh */
-        @media (max-width: 680px) {
-            body { padding: 16px 8px 50px; }
-            .card-form { padding: 14px; }
-            .form-grid { grid-template-columns: 1fr; gap: 8px; }
-            .btn-add { width: 100%; padding: 13px; font-size: 15px; }
+        /* Mobile Optimization */
+        @media (max-width: 720px) {
+            body { padding: 16px 8px 60px; }
+            .liquid-glass { border-radius: 22px; }
+            .card-form { padding: 16px; }
+            .form-grid { grid-template-columns: 1fr; gap: 10px; }
+            .btn-add { width: 100%; padding: 15px; font-size: 15px; }
 
             .toolbar { flex-direction: column; align-items: stretch; }
             .filter-group { width: 100%; justify-content: space-between; }
-            .btn-filter { flex: 1; text-align: center; padding: 8px 4px; font-size: 12px; }
-            .btn-sync { justify-content: center; width: 100%; }
+            .btn-filter { flex: 1; text-align: center; padding: 10px 4px; font-size: 12px; }
+            .btn-sync { justify-content: center; width: 100%; padding: 12px; }
 
-            /* Chuyển bảng Table thành các Card Liquid Glass */
-            .table-wrap { background: transparent; border: none; box-shadow: none; }
+            .table-wrap { background: transparent; border: none; box-shadow: none; border-radius: 0; }
             table, thead, tbody, th, td, tr { display: block; width: 100%; }
             thead { display: none; }
-            tbody { display: flex; flex-direction: column; gap: 10px; }
+            tbody { display: flex; flex-direction: column; gap: 12px; }
             tr {
-                background: var(--glass-bg);
-                backdrop-filter: blur(16px);
-                border: 1px solid var(--glass-border);
-                border-radius: 16px;
-                padding: 14px;
-                box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(255, 255, 255, 0.14);
+                border-radius: 22px;
+                padding: 16px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.45);
             }
             td {
                 padding: 4px 0;
@@ -474,14 +500,14 @@
             }
             td:first-child {
                 display: block;
-                margin-bottom: 8px;
+                margin-bottom: 10px;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-                padding-bottom: 8px;
+                padding-bottom: 10px;
             }
             .acc-name { font-size: 15px; }
-            .actions { width: 100%; margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255, 255, 255, 0.06); }
-            .btn-act { flex: 1; text-align: center; padding: 8px; font-size: 13px; }
-            #toastContainer { top: 12px; right: 12px; left: 12px; width: auto; max-width: none; }
+            .actions { width: 100%; margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.06); }
+            .btn-act { flex: 1; text-align: center; padding: 10px; font-size: 13px; }
+            #toastContainer { top: 14px; right: 14px; left: 14px; width: auto; max-width: none; }
         }
     </style>
 </head>
@@ -491,32 +517,31 @@
     <div class="ambient-glow glow-2"></div>
     <div class="ambient-glow glow-3"></div>
 
-    <!-- Container Toast Riêng Biệt -->
     <div id="toastContainer"></div>
 
     <div class="container">
         
         <div class="header">
-            <div class="brand-badge">HỆ THỐNG PRO</div>
+            <div class="brand-badge"><span></span> HỆ THỐNG QUẢN LÝ ACC</div>
             <h1>QUẢN LÝ ACC VANCAU88</h1>
         </div>
 
         <div class="stats-grid">
-            <div class="stat-card glass">
+            <div class="stat-card liquid-glass">
                 <div class="stat-info">
                     <span>Tổng Acc</span>
                     <h2 id="cntAll" style="color: #f8fafc;">0</h2>
                 </div>
-                <div class="stat-icon" style="background: rgba(255,255,255,0.05); color: #94a3b8;">🎮</div>
+                <div class="stat-icon" style="color: #94a3b8;">🎮</div>
             </div>
-            <div class="stat-card glass">
+            <div class="stat-card liquid-glass">
                 <div class="stat-info">
                     <span>Đang Sống</span>
                     <h2 id="cntLive" style="color: #34d399;">0</h2>
                 </div>
                 <div class="stat-icon" style="background: rgba(16, 185, 129, 0.15); color: #34d399;">⚡</div>
             </div>
-            <div class="stat-card glass">
+            <div class="stat-card liquid-glass">
                 <div class="stat-info">
                     <span>Bị Khóa</span>
                     <h2 id="cntBanned" style="color: #fb7185;">0</h2>
@@ -525,7 +550,7 @@
             </div>
         </div>
 
-        <div class="card-form glass">
+        <div class="card-form liquid-glass">
             <form id="accForm" onsubmit="handleAdd(event)">
                 <div class="form-grid">
                     <input type="text" id="accInfo" placeholder="taikhoan:matkhau" required autocomplete="off">
@@ -535,10 +560,10 @@
                         <option value="ban">Bị Ban</option>
                     </select>
                     <input type="text" id="unbanDate" placeholder="Mở ban (100826)" style="display: none;" onblur="formatDateInput(this)">
-                    <button type="submit" class="btn-add">+ Thêm</button>
+                    <button type="submit" class="btn-liquid btn-primary-liquid btn-add">+ Thêm Acc</button>
                 </div>
                 <div class="hint">
-                    💡 Hỗ trợ gõ nhanh ngày 6 số (vd: 100826 -> 10/08/2026). Khi đến hoặc qua ngày hẹn, web tự đổi sang <b>Sống</b>.
+                    💡 <b>Cơ chế thông minh:</b> Trùng tên tài khoản sẽ tự động xóa acc cũ và cập nhật thông tin mới. Hỗ trợ gõ nhanh 6 số (vd: 100826 -> 10/08/2026).
                 </div>
             </form>
         </div>
@@ -549,10 +574,10 @@
                 <button class="btn-filter" onclick="setFilter('sống', this)">Sống (<span id="btnCntLive">0</span>)</button>
                 <button class="btn-filter" onclick="setFilter('ban', this)">Bị Ban (<span id="btnCntBanned">0</span>)</button>
             </div>
-            <button type="button" class="btn-sync" onclick="loadFromDataTxt(true)">↻ Đọc lại data.txt</button>
+            <button type="button" class="btn-liquid btn-sync" onclick="loadFromDataTxt(true)">↻ Đọc lại data.txt</button>
         </div>
 
-        <div class="table-wrap glass">
+        <div class="table-wrap liquid-glass">
             <table>
                 <thead>
                     <tr>
@@ -584,8 +609,8 @@
             <div class="modal-field">
                 <label>Trạng thái</label>
                 <select id="editStatus" onchange="toggleDateInput('editStatus', 'editDate')">
-                    <option value="sống">Sống (Hoạt động)</option>
-                    <option value="ban">Bị Ban (Khóa)</option>
+                    <option value="sống">Sống</option>
+                    <option value="ban">Bị Ban</option>
                 </select>
             </div>
             <div class="modal-field" id="editDateField">
@@ -593,8 +618,8 @@
                 <input type="text" id="editDate" placeholder="dd/mm/yyyy" onblur="formatDateInput(this)">
             </div>
             <div class="modal-actions">
-                <button type="button" class="btn-act" onclick="closeEditModal()">Hủy</button>
-                <button type="button" class="btn-add" style="padding: 10px 20px;" onclick="saveEdit()">Lưu lại</button>
+                <button type="button" class="btn-liquid btn-act" onclick="closeEditModal()">Hủy</button>
+                <button type="button" class="btn-liquid btn-primary-liquid" style="padding: 10px 22px;" onclick="saveEdit()">Lưu lại</button>
             </div>
         </div>
     </div>
@@ -603,14 +628,13 @@
         let accounts = JSON.parse(localStorage.getItem('vancau88_accounts')) || [];
         let currentFilter = 'all';
 
-        // Hệ thống Thông Báo Toast Tuỳ Biến
         function showCustomToast(message, type = 'success') {
             const container = document.getElementById('toastContainer');
             const toast = document.createElement('div');
             toast.className = `custom-toast toast-${type}`;
             
             let icon = '✓';
-            if (type === 'info') icon = 'ℹ';
+            if (type === 'info') icon = '⚡';
             if (type === 'warn') icon = '✕';
 
             toast.innerHTML = `
@@ -625,6 +649,11 @@
                 toast.classList.add('hide');
                 setTimeout(() => toast.remove(), 300);
             }, 2400);
+        }
+
+        function extractUsername(accStr) {
+            if (!accStr) return '';
+            return accStr.split(':')[0].trim().toLowerCase();
         }
 
         function parseDateString(str) {
@@ -691,7 +720,6 @@
             return '';
         }
 
-        /* Đồng bộ định dạng: tk:mk|status|unbanDate|ghiChu */
         async function loadFromDataTxt(isManual = false) {
             try {
                 const res = await fetch('./data.txt?t=' + Date.now());
@@ -712,6 +740,12 @@
                     }
                     const note = parts[3] ? parts[3].trim() : '';
 
+                    const uname = extractUsername(acc);
+                    const existingIdx = loaded.findIndex(item => extractUsername(item.acc) === uname);
+                    if (existingIdx !== -1) {
+                        loaded.splice(existingIdx, 1);
+                    }
+
                     loaded.push({
                         id: Date.now() + idx,
                         acc: acc,
@@ -725,7 +759,7 @@
                 if (loaded.length > 0) {
                     accounts = loaded;
                     saveAndRender();
-                    showCustomToast(`Đồng bộ thành công ${loaded.length} tài khoản!`, 'info');
+                    showCustomToast(`Đã đồng bộ ${loaded.length} tài khoản từ data.txt!`, 'info');
                 }
             } catch (err) {
                 if (isManual) showCustomToast('Lỗi: ' + err.message, 'warn');
@@ -743,6 +777,15 @@
                 dateVal = formatRawDate(dateVal);
             }
 
+            const newUsername = extractUsername(accInfo);
+            const existingIndex = accounts.findIndex(item => extractUsername(item.acc) === newUsername);
+            let isOverwritten = false;
+
+            if (existingIndex !== -1) {
+                accounts.splice(existingIndex, 1);
+                isOverwritten = true;
+            }
+
             accounts.unshift({
                 id: Date.now(),
                 acc: accInfo,
@@ -755,7 +798,12 @@
             saveAndRender();
             document.getElementById('accForm').reset();
             toggleDateInput('accStatus', 'unbanDate');
-            showCustomToast('Đã thêm tài khoản thành công!', 'success');
+
+            if (isOverwritten) {
+                showCustomToast(`Đã ghi đè & cập nhật lại tài khoản: ${newUsername}`, 'info');
+            } else {
+                showCustomToast('Đã thêm tài khoản mới thành công!', 'success');
+            }
         }
 
         function openEditModal(id) {
@@ -781,7 +829,15 @@
             const item = accounts.find(a => a.id === id);
             if (!item) return;
 
-            item.acc = document.getElementById('editAcc').value.trim();
+            const updatedAcc = document.getElementById('editAcc').value.trim();
+            const newUsername = extractUsername(updatedAcc);
+
+            const duplicateIndex = accounts.findIndex(a => a.id !== id && extractUsername(a.acc) === newUsername);
+            if (duplicateIndex !== -1) {
+                accounts.splice(duplicateIndex, 1);
+            }
+
+            item.acc = updatedAcc;
             item.note = document.getElementById('editNote').value.trim();
             item.status = document.getElementById('editStatus').value;
             let dateVal = document.getElementById('editDate').value.trim();
@@ -795,7 +851,7 @@
 
             closeEditModal();
             saveAndRender();
-            showCustomToast('Đã lưu thông tin tài khoản!', 'success');
+            showCustomToast('Đã cập nhật thông tin tài khoản!', 'success');
         }
 
         function deleteAcc(id) {
@@ -806,7 +862,7 @@
 
         function copyAcc(text) {
             navigator.clipboard.writeText(text);
-            showCustomToast('Đã chép tài khoản: ' + text, 'info');
+            showCustomToast('Đã copy: ' + text, 'info');
         }
 
         function setFilter(filter, el) {
@@ -843,7 +899,7 @@
             tbody.innerHTML = '';
 
             if (filtered.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #64748b; padding: 36px 0;">Không có tài khoản nào</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #64748b; padding: 40px 0;">Không có tài khoản nào</td></tr>`;
                 return;
             }
 
@@ -868,9 +924,9 @@
                     <td><span style="color: ${isBan ? '#f1f5f9' : '#64748b'}">${item.unbanDate}</span> ${remaining}</td>
                     <td>
                         <div class="actions">
-                            <button class="btn-act copy" onclick="copyAcc('${item.acc}')">Copy</button>
-                            <button class="btn-act edit" onclick="openEditModal(${item.id})">Sửa</button>
-                            <button class="btn-act del" onclick="deleteAcc(${item.id})">Xóa</button>
+                            <button class="btn-liquid btn-act copy" onclick="copyAcc('${item.acc}')">Copy</button>
+                            <button class="btn-liquid btn-act edit" onclick="openEditModal(${item.id})">Sửa</button>
+                            <button class="btn-liquid btn-act del" onclick="deleteAcc(${item.id})">Xóa</button>
                         </div>
                     </td>
                 `;

@@ -635,11 +635,26 @@
             });
         }
 
-        render();
+                render();
+        
+        // 1. Kéo dữ liệu về ngay khi vừa mở web
         autoPullData();
 
-        // Tự động kiểm tra và đồng bộ liên tục mỗi 1 giây
-        setInterval(autoPullData, 1000);
+        // 2. CƠ CHẾ THÔNG MINH: Chỉ tự động kéo dữ liệu khi mày bật màn hình hoặc quay lại Tab này
+        document.addEventListener("visibilitychange", () => {
+            if (document.visibilityState === "visible") {
+                setSyncStatus('🔄 Đang kiểm tra dữ liệu mới...', true);
+                autoPullData();
+            }
+        });
+
+        // 3. Đồng bộ ngầm định kỳ mỗi 60 giây (Thay vì 1 giây để chống lag web và chống bị GitHub khóa API)
+        setInterval(() => {
+            if (document.visibilityState === "visible") {
+                autoPullData();
+            }
+        }, 60000);
+
     </script>
 </body>
 </html>

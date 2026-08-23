@@ -29,7 +29,6 @@
 
         .container { width: 100%; max-width: 1020px; position: relative; z-index: 1; }
 
-        /* Card Giao diện Kính Siêu Nhẹ (Không gây lỗi GPU) */
         .liquid-glass {
             background: rgba(18, 24, 43, 0.85);
             border: 1px solid rgba(255, 255, 255, 0.12);
@@ -82,15 +81,16 @@
         .stat-icon { width: 38px; height: 38px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; background: rgba(255,255,255,0.06); }
 
         .card-form { padding: 18px; margin-bottom: 16px; }
-        .form-grid { display: grid; grid-template-columns: 2fr 1.5fr 1.1fr 1.1fr auto; gap: 10px; align-items: center; }
+        .form-grid { display: grid; grid-template-columns: 2fr 1.5fr 1.1fr 1.1fr auto; gap: 10px; align-items: start; }
         
-        input, select {
+        input, select, textarea {
             width: 100%; padding: 12px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.14);
-            background: #0b1120; color: #f8fafc; outline: none; font-size: 13.5px;
+            background: #0b1120; color: #f8fafc; outline: none; font-size: 13.5px; font-family: 'Plus Jakarta Sans', sans-serif;
         }
-        input:focus, select:focus { border-color: #38bdf8; background: #0f172a; }
+        input:focus, select:focus, textarea:focus { border-color: #38bdf8; background: #0f172a; }
         select option { background: #0b1120; color: #fff; }
-        .btn-add { padding: 13px 22px; white-space: nowrap; }
+        textarea { resize: vertical; min-height: 45px; }
+        .btn-add { padding: 13px 22px; white-space: nowrap; height: 45px; }
 
         .toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px; }
         .filter-group { display: flex; background: rgba(11, 17, 32, 0.8); padding: 4px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); gap: 4px; }
@@ -112,13 +112,14 @@
         th { background: #0b1120; color: #94a3b8; font-weight: 800; text-transform: uppercase; font-size: 11px; letter-spacing: 0.8px; }
 
         .acc-name { font-weight: 700; color: #f8fafc; word-break: break-all; }
-        .acc-note { font-size: 12px; color: #38bdf8; margin-top: 3px; display: inline-flex; align-items: center; gap: 4px; background: rgba(56,189,248,0.1); padding: 2px 8px; border-radius: 8px; border: 1px solid rgba(56,189,248,0.25); }
+        .acc-note { font-size: 12px; color: #38bdf8; margin-top: 4px; display: inline-flex; align-items: center; gap: 4px; background: rgba(56,189,248,0.1); padding: 2px 8px; border-radius: 8px; border: 1px solid rgba(56,189,248,0.25); max-width: 100%; word-break: break-word;}
 
         .badge { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 10px; font-size: 11px; font-weight: 800; text-transform: uppercase; }
         .badge-live { background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(52,211,153,0.35); }
         .badge-banned { background: rgba(244,63,94,0.15); color: #fb7185; border: 1px solid rgba(251,113,133,0.35); }
         .badge-days { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(252,211,77,0.3); margin-left: 6px; font-weight: 600; text-transform: none; }
         .badge-today { background: rgba(6,182,212,0.2); color: #38bdf8; border: 1px solid rgba(56,189,248,0.4); margin-left: 6px; }
+        .badge-auto { background: rgba(168, 85, 247, 0.2); color: #d8b4fe; border: 1px solid rgba(216, 180, 254, 0.35); margin-left: 6px; font-size: 10px; }
 
         .actions { display: flex; gap: 6px; justify-content: flex-end; }
         .btn-act { padding: 6px 12px; font-size: 12px; font-weight: 700; border-radius: 10px; }
@@ -157,7 +158,7 @@
             .header-bar { flex-direction: column; align-items: stretch; gap: 10px; }
             .btn-config-main { justify-content: center; width: 100%; padding: 12px; }
             .form-grid { grid-template-columns: 1fr; gap: 8px; }
-            .btn-add { width: 100%; padding: 14px; font-size: 15px; }
+            .btn-add { width: 100%; font-size: 15px; }
             .toolbar { flex-direction: column; align-items: stretch; }
             .filter-group { width: 100%; justify-content: space-between; }
             .sync-badge { width: 100%; justify-content: center; }
@@ -210,7 +211,7 @@
         <div class="card-form liquid-glass">
             <form id="accForm" onsubmit="handleAdd(event)">
                 <div class="form-grid">
-                    <input type="text" id="accInfo" placeholder="taikhoan:matkhau" required autocomplete="off">
+                    <textarea id="accInfo" placeholder="Nhập nhiều acc bằng cách xuống dòng&#10;tk1:mk1&#10;tk2:mk2" required></textarea>
                     <input type="text" id="accNote" placeholder="Ghi chú (Skin, Rank...)" autocomplete="off">
                     <select id="accStatus" onchange="toggleDateInput('accStatus', 'unbanDate')">
                         <option value="sống">Sống</option>
@@ -453,9 +454,28 @@
             }
         }
 
+        // Auto Unban logic (Kiểm tra xem quá hạn chưa thì mở Sống)
+        function checkAutoUnban() {
+            const today = new Date(); today.setHours(0,0,0,0);
+            let updated = false;
+            accounts.forEach(acc => {
+                if (acc.status === 'ban') {
+                    const target = parseDateString(acc.unbanDate);
+                    if (target && today >= target) {
+                        acc.status = 'sống';
+                        acc.autoUnbanned = true;
+                        acc.unbanDate = '-';
+                        updated = true;
+                    }
+                }
+            });
+            return updated;
+        }
+
         async function autoPullData() {
             if (isSyncing) return;
             
+            let dataLoaded = false;
             if (ghConfig.user && ghConfig.repo && ghConfig.token) {
                 const url = `https://api.github.com/repos/${ghConfig.user}/${ghConfig.repo}/contents/data.txt?t=` + Date.now();
                 try {
@@ -463,19 +483,26 @@
                     if (res.ok) {
                         const data = await res.json();
                         parseAndLoadText(base64ToUtf8(data.content));
+                        dataLoaded = true;
                         setSyncStatus('🟢 Đã đồng bộ mới nhất');
-                        return;
                     }
                 } catch(e) {}
             }
 
-            try {
-                const res = await fetch('./data.txt?t=' + Date.now());
-                if (res.ok) {
-                    const text = await res.text();
-                    parseAndLoadText(text);
-                }
-            } catch (e) {}
+            if (!dataLoaded) {
+                try {
+                    const res = await fetch('./data.txt?t=' + Date.now());
+                    if (res.ok) {
+                        const text = await res.text();
+                        parseAndLoadText(text);
+                    }
+                } catch (e) {}
+            }
+            
+            // Xử lý auto unban cục bộ sau khi đã pull xong
+            if (checkAutoUnban()) {
+                saveAndSync();
+            }
         }
 
         function parseAndLoadText(text) {
@@ -494,7 +521,7 @@
                 const exist = loaded.findIndex(item => extractUsername(item.acc) === uname);
                 if (exist !== -1) loaded.splice(exist, 1);
 
-                loaded.push({ id: Date.now() + idx, acc, note, status, unbanDate: date });
+                loaded.push({ id: Date.now() + idx, acc, note, status, unbanDate: date, autoUnbanned: false });
             });
 
             if (loaded.length > 0 && JSON.stringify(loaded) !== JSON.stringify(accounts)) {
@@ -504,30 +531,43 @@
             }
         }
 
+        // Chức năng thêm nhiều tài khoản bằng dấu xuống dòng
         function handleAdd(e) {
             e.preventDefault();
-            const accInfo = document.getElementById('accInfo').value.trim();
+            const accText = document.getElementById('accInfo').value.trim();
             const accNote = document.getElementById('accNote').value.trim();
             const status = document.getElementById('accStatus').value;
             let dateVal = document.getElementById('unbanDate').value.trim();
             if (status === 'ban') dateVal = formatRawDate(dateVal);
 
-            const uname = extractUsername(accInfo);
-            const existIndex = accounts.findIndex(item => extractUsername(item.acc) === uname);
-            if (existIndex !== -1) accounts.splice(existIndex, 1);
+            const lines = accText.split('\n');
+            let addedCount = 0;
 
-            accounts.unshift({
-                id: Date.now(),
-                acc: accInfo,
-                note: accNote,
-                status: status,
-                unbanDate: status === 'ban' ? (dateVal || 'Chưa rõ') : '-'
+            lines.forEach((line, idx) => {
+                const accInfo = line.trim();
+                if (!accInfo) return;
+
+                const uname = extractUsername(accInfo);
+                const existIndex = accounts.findIndex(item => extractUsername(item.acc) === uname);
+                if (existIndex !== -1) accounts.splice(existIndex, 1);
+
+                accounts.unshift({
+                    id: Date.now() + idx, // Đảm bảo ID không trùng
+                    acc: accInfo,
+                    note: accNote,
+                    status: status,
+                    unbanDate: status === 'ban' ? (dateVal || 'Chưa rõ') : '-',
+                    autoUnbanned: false
+                });
+                addedCount++;
             });
 
-            saveAndSync();
-            document.getElementById('accForm').reset();
-            toggleDateInput('accStatus', 'unbanDate');
-            showCustomToast('Đã thêm & Tự động lưu!', 'success');
+            if (addedCount > 0) {
+                saveAndSync();
+                document.getElementById('accForm').reset();
+                toggleDateInput('accStatus', 'unbanDate');
+                showCustomToast(`Đã thêm ${addedCount} acc & Tự lưu!`, 'success');
+            }
         }
 
         function openEditModal(id) {
@@ -558,6 +598,7 @@
             item.status = document.getElementById('editStatus').value;
             let dateVal = document.getElementById('editDate').value.trim();
             item.unbanDate = item.status === 'ban' ? (formatRawDate(dateVal) || 'Chưa rõ') : '-';
+            item.autoUnbanned = false; // Reset cờ vừa mở
 
             closeEditModal();
             saveAndSync();
@@ -583,6 +624,7 @@
         }
 
         function saveAndSync() {
+            checkAutoUnban(); // Luôn ktra xem có acc nào vừa đến hạn không
             localStorage.setItem('vancau88_accounts', JSON.stringify(accounts));
             render();
             syncToGitHub();
@@ -611,10 +653,15 @@
             filtered.forEach(item => {
                 const isBan = item.status === 'ban';
                 const noteHtml = item.note ? `<div class="acc-note">📝 ${item.note}</div>` : '';
+                const autoBadge = item.autoUnbanned ? `<span class="badge badge-auto">Vừa Mở</span>` : '';
+                
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td><div class="acc-name">${item.acc}</div>${noteHtml}</td>
-                    <td><span class="badge ${isBan ? 'badge-banned' : 'badge-live'}">${isBan ? '🔒 BAN' : '⚡ SỐNG'}</span></td>
+                    <td>
+                        <span class="badge ${isBan ? 'badge-banned' : 'badge-live'}">${isBan ? '🔒 BAN' : '⚡ SỐNG'}</span>
+                        ${autoBadge}
+                    </td>
                     <td><span style="color: ${isBan ? '#f1f5f9' : '#64748b'}">${item.unbanDate}</span> ${isBan ? getRemainingBadge(item.unbanDate) : ''}</td>
                     <td>
                         <div class="actions">
@@ -629,19 +676,25 @@
         }
 
         render();
+        
+        // 1. Kéo dữ liệu về ngay khi vừa mở web
         autoPullData();
 
+        // 2. CƠ CHẾ THÔNG MINH: Chỉ kéo dữ liệu khi bật sáng màn hình hoặc mở lại Tab
         document.addEventListener("visibilitychange", () => {
             if (document.visibilityState === "visible") {
+                setSyncStatus('🔄 Đang kiểm tra dữ liệu mới...', true);
                 autoPullData();
             }
         });
 
+        // 3. Đồng bộ ngầm định kỳ mỗi 60 giây (Chống lag web, chống khóa API)
         setInterval(() => {
             if (document.visibilityState === "visible") {
                 autoPullData();
             }
         }, 60000);
+
     </script>
 </body>
 </html>

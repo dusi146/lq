@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <style>
         /* ============================================================
-           RESET & ROOT TOKENS
+           RESET & DESIGN TOKENS
         ============================================================ */
         *, *::before, *::after {
             box-sizing: border-box;
@@ -19,54 +19,53 @@
         }
 
         :root {
-            --violet:      #7c3aed;
-            --indigo:      #4f46e5;
-            --cyan:        #06b6d4;
-            --sky:         #38bdf8;
-            --purple:      #a855f7;
-            --rose:        #f43f5e;
-            --amber:       #f59e0b;
-            --emerald:     #10b981;
+            /* Brand Colors */
+            --sky: #38bdf8;
+            --sky-glow: rgba(56, 189, 248, 0.35);
+            --violet: #8b5cf6;
+            --violet-glow: rgba(139, 92, 246, 0.35);
+            --cyan: #06b6d4;
+            --cyan-glow: rgba(6, 182, 212, 0.35);
+            --emerald: #10b981;
+            --emerald-glow: rgba(16, 185, 129, 0.35);
+            --rose: #f43f5e;
+            --rose-glow: rgba(244, 63, 94, 0.35);
+            --amber: #f59e0b;
+            --amber-glow: rgba(245, 158, 11, 0.3);
 
-            --violet-glow: rgba(124, 58, 237, 0.45);
-            --cyan-glow:   rgba(6, 182, 212, 0.4);
-            --live-glow:   rgba(16, 185, 129, 0.38);
-            --ban-glow:    rgba(244, 63, 94, 0.38);
-            --amber-glow:  rgba(245, 158, 11, 0.32);
+            /* Liquid Glass Theme */
+            --bg-base: #040612;
+            --glass-card: rgba(13, 20, 42, 0.72);
+            --glass-row: rgba(255, 255, 255, 0.025);
+            --glass-row-hover: rgba(255, 255, 255, 0.06);
+            --glass-border: rgba(255, 255, 255, 0.11);
+            --glass-border-bright: rgba(255, 255, 255, 0.25);
+            --glass-inset-hi: rgba(255, 255, 255, 0.15);
+            --glass-inset-lo: rgba(0, 0, 0, 0.35);
 
-            --glass-deep:      rgba(8, 12, 28, 0.70);
-            --glass-card:      rgba(14, 20, 44, 0.72);
-            --glass-row:       rgba(255, 255, 255, 0.028);
-            --glass-row-hover: rgba(255, 255, 255, 0.055);
-            --glass-border:    rgba(255, 255, 255, 0.10);
-            --glass-border-bright: rgba(255, 255, 255, 0.24);
-            --glass-inset-hi:  rgba(255, 255, 255, 0.18);
-            --glass-inset-lo:  rgba(0, 0, 0, 0.32);
+            /* Radius */
+            --r-xl: 24px;
+            --r-lg: 16px;
+            --r-md: 12px;
+            --r-sm: 8px;
 
-            --r-xl: 28px;
-            --r-lg: 20px;
-            --r-md: 14px;
-            --r-sm: 10px;
-            --r-xs: 8px;
-
+            /* Physics & Animation curves */
             --spring: cubic-bezier(0.16, 1, 0.3, 1);
             --smooth: cubic-bezier(0.4, 0, 0.2, 1);
 
+            /* Fonts */
             --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-mono: 'JetBrains Mono', 'Fira Mono', monospace;
+            --font-mono: 'JetBrains Mono', monospace;
         }
 
-        /* ============================================================
-           BODY & BACKGROUND
-        ============================================================ */
         html { scroll-behavior: smooth; }
 
         body {
             font-family: var(--font-sans);
             min-height: 100vh;
-            background-color: #04060f;
-            color: #e8edf5;
-            padding: 32px 16px 100px;
+            background-color: var(--bg-base);
+            color: #f1f5f9;
+            padding: 28px 16px 90px;
             display: flex;
             justify-content: center;
             overflow-x: hidden;
@@ -74,7 +73,7 @@
             line-height: 1.5;
         }
 
-        /* Mesh Aurora Background */
+        /* ── Aurora Mesh Gradient Background ── */
         .aurora-bg {
             position: fixed;
             inset: 0;
@@ -87,96 +86,91 @@
             position: absolute;
             border-radius: 50%;
             filter: blur(100px);
-            opacity: 0.38;
+            opacity: 0.40;
             mix-blend-mode: screen;
             will-change: transform;
         }
 
         .blob-1 {
-            width: 560px; height: 560px;
-            background: radial-gradient(circle at 40% 40%, #4f46e5 0%, transparent 68%);
-            top: -12%; left: -8%;
-            animation: aurora1 24s ease-in-out infinite alternate;
+            width: 550px; height: 550px;
+            background: radial-gradient(circle at 40% 40%, #6366f1 0%, transparent 70%);
+            top: -12%; left: -10%;
+            animation: aurora1 22s ease-in-out infinite alternate;
         }
         .blob-2 {
-            width: 640px; height: 640px;
-            background: radial-gradient(circle at 60% 50%, #06b6d4 0%, transparent 68%);
-            bottom: -18%; right: -12%;
-            animation: aurora2 28s ease-in-out infinite alternate;
+            width: 620px; height: 620px;
+            background: radial-gradient(circle at 60% 50%, #06b6d4 0%, transparent 70%);
+            bottom: -15%; right: -10%;
+            animation: aurora2 26s ease-in-out infinite alternate;
         }
         .blob-3 {
-            width: 480px; height: 480px;
-            background: radial-gradient(circle at 50% 50%, #7c3aed 0%, transparent 65%);
-            top: 38%; left: 48%;
+            width: 460px; height: 460px;
+            background: radial-gradient(circle at 50% 50%, #a855f7 0%, transparent 68%);
+            top: 40%; left: 50%;
             transform: translate(-50%, -50%);
             animation: aurora3 20s ease-in-out infinite alternate;
         }
         .blob-4 {
-            width: 420px; height: 420px;
-            background: radial-gradient(circle at 50% 60%, #0e7490 0%, transparent 65%);
-            top: 70%; left: 8%;
-            animation: aurora4 26s ease-in-out infinite alternate;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle at 50% 60%, #ec4899 0%, transparent 68%);
+            top: 75%; left: 6%;
+            animation: aurora4 24s ease-in-out infinite alternate;
         }
 
         @keyframes aurora1 {
-            0%   { transform: translate(0,0) scale(1.00); }
-            50%  { transform: translate(70px,-50px) scale(1.15); }
-            100% { transform: translate(30px,40px) scale(0.90); }
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(60px, -45px) scale(1.12); }
+            100% { transform: translate(25px, 35px) scale(0.92); }
         }
         @keyframes aurora2 {
-            0%   { transform: translate(0,0) scale(1.00); }
-            50%  { transform: translate(-60px,55px) scale(1.12); }
-            100% { transform: translate(50px,-35px) scale(0.95); }
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-50px, 50px) scale(1.10); }
+            100% { transform: translate(45px, -30px) scale(0.96); }
         }
         @keyframes aurora3 {
-            0%   { transform: translate(-50%,-50%) scale(1.00); }
-            50%  { transform: translate(-50%,-50%) scale(1.20); }
-            100% { transform: translate(-50%,-50%) scale(0.88); }
+            0% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.18); }
+            100% { transform: translate(-50%, -50%) scale(0.90); }
         }
         @keyframes aurora4 {
-            0%   { transform: translate(0,0) scale(1.00); }
-            50%  { transform: translate(80px,-40px) scale(1.10); }
-            100% { transform: translate(-30px,60px) scale(0.92); }
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(70px, -35px) scale(1.08); }
+            100% { transform: translate(-25px, 50px) scale(0.94); }
         }
 
         .noise-overlay {
             position: fixed;
             inset: 0;
-            background-image: radial-gradient(rgba(255,255,255,0.025) 1px, transparent 0);
-            background-size: 26px 26px;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
+            background-size: 24px 24px;
             pointer-events: none;
             z-index: 0;
         }
 
-        /* ============================================================
-           CONTAINER
-        ============================================================ */
+        /* ── Container ── */
         .container {
             width: 100%;
             max-width: 1140px;
             position: relative;
             z-index: 1;
-            animation: containerIn 0.7s var(--spring) both;
+            animation: containerIn 0.6s var(--spring) both;
         }
 
         @keyframes containerIn {
-            from { opacity: 0; transform: translateY(24px); }
-            to   { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ============================================================
-           LIQUID GLASS BASE
-        ============================================================ */
+        /* ── Liquid Glass Card System ── */
         .liquid-glass {
             background: var(--glass-card);
-            backdrop-filter: blur(28px) saturate(180%);
-            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
             border: 1px solid var(--glass-border);
             border-radius: var(--r-xl);
             box-shadow:
-                0 4px 6px rgba(0,0,0,0.12),
-                0 16px 40px rgba(0,0,0,0.50),
-                0 40px 80px rgba(0,0,0,0.30),
+                0 6px 16px rgba(0, 0, 0, 0.25),
+                0 20px 48px rgba(0, 0, 0, 0.45),
                 inset 0 1px 0 var(--glass-inset-hi),
                 inset 0 -1px 0 var(--glass-inset-lo);
             position: relative;
@@ -189,66 +183,55 @@
             position: absolute;
             inset: 0;
             border-radius: inherit;
-            background: linear-gradient(135deg,
-                rgba(255,255,255,0.10) 0%,
-                rgba(255,255,255,0.02) 50%,
-                transparent 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 50%, transparent 100%);
             pointer-events: none;
             z-index: 0;
         }
 
-        /* Light sweep */
         .liquid-glass::after {
             content: '';
             position: absolute;
-            top: 0; left: -80%;
+            top: 0;
+            left: -80%;
             width: 55%;
             height: 100%;
-            background: linear-gradient(90deg,
-                transparent 0%,
-                rgba(255,255,255,0.06) 50%,
-                transparent 100%);
-            transform: skewX(-18deg);
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.05) 50%, transparent 100%);
+            transform: skewX(-20deg);
             pointer-events: none;
             animation: glassSweep 14s ease-in-out infinite;
             z-index: 1;
         }
 
         @keyframes glassSweep {
-            0%, 70%  { left: -80%; opacity: 0; }
-            72%      { opacity: 1; }
-            100%     { left: 220%; opacity: 0; }
+            0%, 72% { left: -80%; opacity: 0; }
+            74% { opacity: 1; }
+            100% { left: 220%; opacity: 0; }
         }
 
-        /* ============================================================
-           SCROLL REVEAL — Intersection Observer driven
-        ============================================================ */
+        /* ── Scroll Reveal System ── */
         .reveal {
             opacity: 0;
-            transform: translateY(32px) scale(0.97);
+            transform: translateY(28px) scale(0.98);
             will-change: transform, opacity;
-            transition:
-                opacity 0.65s var(--spring),
-                transform 0.65s var(--spring);
+            transition: opacity 0.55s var(--spring), transform 0.55s var(--spring);
         }
+
         .reveal.is-visible {
             opacity: 1;
             transform: translateY(0) scale(1);
         }
 
-        /* ============================================================
-           BUTTONS
-        ============================================================ */
+        /* ── Buttons ── */
         .btn-liquid {
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.14);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.16);
             color: #fff;
             font-family: var(--font-sans);
             font-weight: 700;
             font-size: 13px;
-            border-radius: var(--r-lg);
+            border-radius: var(--r-md);
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.14);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
             transition: all 0.22s var(--spring);
             display: inline-flex;
             align-items: center;
@@ -257,138 +240,140 @@
             position: relative;
             overflow: hidden;
             will-change: transform;
-        }
-
-        .btn-liquid::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 60%);
-            opacity: 0;
-            transition: opacity 0.22s var(--smooth);
-            pointer-events: none;
+            user-select: none;
         }
 
         .btn-liquid:hover {
-            transform: translateY(-2px) scale(1.01);
-            border-color: rgba(255,255,255,0.30);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.28);
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.32);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.28);
         }
-        .btn-liquid:hover::after { opacity: 1; }
-        .btn-liquid:active { transform: scale(0.96) translateY(0); box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
+
+        .btn-liquid:active {
+            transform: scale(0.96);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
 
         .btn-primary-liquid {
-            background: linear-gradient(130deg, #0ea5e9 0%, #7c3aed 55%, #db2777 100%);
+            background: linear-gradient(130deg, #0ea5e9 0%, #8b5cf6 50%, #ec4899 100%);
             background-size: 200% 200%;
             animation: btnGradient 7s ease infinite;
-            border-color: rgba(255,255,255,0.30);
-            box-shadow: 0 4px 20px rgba(6,182,212,0.32), 0 8px 32px rgba(124,58,237,0.25), inset 0 1px 0 rgba(255,255,255,0.38);
+            border-color: rgba(255, 255, 255, 0.32);
+            box-shadow: 0 4px 18px rgba(6, 182, 212, 0.35), 0 8px 30px rgba(139, 92, 246, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.4);
         }
+
         .btn-primary-liquid:hover {
-            box-shadow: 0 6px 28px rgba(6,182,212,0.48), 0 12px 40px rgba(124,58,237,0.40), inset 0 1px 0 rgba(255,255,255,0.45);
+            box-shadow: 0 8px 28px rgba(6, 182, 212, 0.45), 0 12px 36px rgba(139, 92, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.48);
         }
 
         @keyframes btnGradient {
-            0%   { background-position: 0%   50%; }
-            50%  { background-position: 100% 50%; }
-            100% { background-position: 0%   50%; }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .btn-danger-liquid {
             background: linear-gradient(135deg, #f43f5e 0%, #be123c 100%);
-            border-color: rgba(255,255,255,0.25);
-            box-shadow: 0 4px 18px rgba(244,63,94,0.38);
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 4px 18px rgba(244, 63, 94, 0.35);
         }
 
         .btn-config-main {
-            background: rgba(245,158,11,0.14);
-            border-color: rgba(245,158,11,0.38);
+            background: rgba(245, 158, 11, 0.16);
+            border-color: rgba(245, 158, 11, 0.42);
             color: #fbbf24;
         }
-        .btn-config-main:hover { background: rgba(245,158,11,0.24); box-shadow: 0 0 22px rgba(245,158,11,0.32); }
+
+        .btn-config-main:hover {
+            background: rgba(245, 158, 11, 0.26);
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.32);
+        }
 
         .btn-mask-toggle {
-            background: rgba(14,165,233,0.14);
-            border-color: rgba(14,165,233,0.38);
+            background: rgba(14, 165, 233, 0.16);
+            border-color: rgba(14, 165, 233, 0.42);
             color: var(--sky);
         }
+
         .btn-mask-toggle.active {
-            background: rgba(124,58,237,0.24);
-            border-color: rgba(167,139,250,0.55);
-            color: #c4b5fd;
-            box-shadow: 0 0 22px rgba(124,58,237,0.32);
+            background: rgba(139, 92, 246, 0.25);
+            border-color: rgba(168, 85, 247, 0.6);
+            color: #d8b4fe;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.35);
         }
 
-        /* ============================================================
-           HEADER
-        ============================================================ */
+        /* ── Header ── */
         .header-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 26px;
+            margin-bottom: 22px;
             flex-wrap: wrap;
-            gap: 16px;
+            gap: 14px;
         }
 
         .brand-badge {
             display: inline-flex;
             align-items: center;
             gap: 7px;
-            padding: 5px 16px;
-            background: rgba(124,58,237,0.16);
-            border: 1px solid rgba(167,139,250,0.40);
+            padding: 5px 14px;
+            background: rgba(139, 92, 246, 0.16);
+            border: 1px solid rgba(168, 85, 247, 0.42);
             border-radius: 999px;
-            font-size: 10.5px;
-            letter-spacing: 1.8px;
+            font-size: 11px;
+            letter-spacing: 1.5px;
             font-weight: 800;
-            color: #c4b5fd;
+            color: #d8b4fe;
             text-transform: uppercase;
-            margin-bottom: 7px;
-            box-shadow: 0 0 20px rgba(124,58,237,0.20);
+            margin-bottom: 6px;
+            box-shadow: 0 0 18px rgba(139, 92, 246, 0.2);
         }
 
         .brand-badge-dot {
-            width: 7px; height: 7px;
-            background: #a78bfa;
+            width: 7px;
+            height: 7px;
+            background: #c084fc;
             border-radius: 50%;
-            box-shadow: 0 0 8px #a78bfa, 0 0 16px rgba(167,139,250,0.6);
-            animation: breatheDot 2.2s ease-in-out infinite;
+            box-shadow: 0 0 8px #c084fc;
+            animation: breatheDot 2s ease-in-out infinite;
         }
 
         @keyframes breatheDot {
-            0%, 100% { transform: scale(1);   opacity: 1; }
-            50%       { transform: scale(1.5); opacity: 0.55; }
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.4); opacity: 0.55; }
         }
 
         h1 {
-            font-size: clamp(22px, 5.5vw, 34px);
+            font-size: clamp(22px, 5.5vw, 32px);
             font-weight: 900;
-            letter-spacing: 0.8px;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
-            line-height: 1.1;
-            background: linear-gradient(130deg, #ffffff 0%, #7dd3fc 30%, #a78bfa 65%, #f9a8d4 100%);
+            line-height: 1.15;
+            background: linear-gradient(130deg, #ffffff 0%, #38bdf8 40%, #c084fc 80%, #f472b6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .header-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-        .btn-header { padding: 10px 18px; }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
 
-        /* ============================================================
-           STATS GRID
-        ============================================================ */
+        .btn-header { padding: 10px 16px; border-radius: var(--r-md); }
+
+        /* ── Stats Grid ── */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
-            margin-bottom: 20px;
+            gap: 12px;
+            margin-bottom: 18px;
         }
 
         .stat-card {
-            padding: 20px 22px;
+            padding: 16px 20px;
             border-radius: var(--r-xl);
             display: flex;
             align-items: center;
@@ -398,41 +383,50 @@
         }
 
         .stat-card:hover {
-            transform: translateY(-5px) scale(1.015);
+            transform: translateY(-4px) scale(1.01);
             border-color: var(--glass-border-bright);
-            box-shadow: 0 20px 45px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.28);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.28);
         }
 
-        .stat-card.tilt-active { transition: transform 0.1s linear; }
-
         .stat-info span {
-            display: block; font-size: 10.5px; color: #94a3b8;
-            font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px;
+            display: block;
+            font-size: 10.5px;
+            color: #94a3b8;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
         }
 
         .stat-info h2 {
-            font-size: clamp(22px, 4vw, 30px);
-            font-weight: 900; margin-top: 4px;
-            letter-spacing: -0.5px; line-height: 1;
+            font-size: clamp(20px, 4vw, 28px);
+            font-weight: 900;
+            margin-top: 3px;
+            letter-spacing: -0.5px;
+            line-height: 1;
         }
 
         .stat-icon {
-            width: 46px; height: 46px;
-            border-radius: var(--r-md);
-            display: flex; align-items: center; justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 20px;
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.10);
-            box-shadow: 0 4px 14px rgba(0,0,0,0.22);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             transition: transform 0.28s var(--spring);
             flex-shrink: 0;
         }
+
         .stat-card:hover .stat-icon { transform: scale(1.12) rotate(6deg); }
 
-        /* ============================================================
-           FORM CARD
-        ============================================================ */
-        .card-form { padding: 22px 24px; margin-bottom: 18px; }
+        /* ── Form Card ── */
+        .card-form {
+            padding: 20px;
+            margin-bottom: 16px;
+        }
 
         .form-grid {
             display: grid;
@@ -443,136 +437,250 @@
 
         input, select, textarea {
             width: 100%;
-            padding: 13px 18px;
+            padding: 13px 16px;
             border-radius: var(--r-md);
-            border: 1px solid rgba(255,255,255,0.12);
-            background: rgba(6,10,26,0.78);
-            color: #f1f5f9;
+            border: 1px solid rgba(255, 255, 255, 0.13);
+            background: rgba(8, 14, 32, 0.8);
+            color: #f8fafc;
             outline: none;
             font-size: 13.5px;
             font-family: var(--font-sans);
-            transition: border-color 0.22s var(--smooth), box-shadow 0.22s var(--smooth), background 0.22s var(--smooth);
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.35);
+            transition: all 0.22s var(--smooth);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         input::placeholder, textarea::placeholder { color: #475569; }
 
         input:focus, select:focus, textarea:focus {
             border-color: var(--sky);
-            background: rgba(8,14,36,0.95);
-            box-shadow: 0 0 0 3px rgba(56,189,248,0.12), 0 0 20px rgba(56,189,248,0.18), inset 0 2px 5px rgba(0,0,0,0.35);
+            background: rgba(12, 20, 44, 0.95);
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15), 0 0 18px rgba(56, 189, 248, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        select option { background: #0b1120; color: #f1f5f9; }
+        select option { background: #0b1120; color: #f8fafc; }
 
         textarea {
-            resize: vertical; min-height: 50px; line-height: 1.55;
-            font-family: var(--font-mono); font-size: 13px;
+            resize: vertical;
+            min-height: 48px;
+            line-height: 1.5;
+            font-family: var(--font-mono);
+            font-size: 13px;
         }
 
-        .btn-add { padding: 13px 26px; white-space: nowrap; height: 50px; font-size: 14px; }
+        .btn-add {
+            padding: 13px 24px;
+            white-space: nowrap;
+            height: 48px;
+            font-size: 14px;
+        }
 
         .hint {
-            font-size: 12.5px; color: #64748b; margin-top: 14px;
-            display: flex; align-items: flex-start; gap: 8px; line-height: 1.55;
+            font-size: 12.5px;
+            color: #94a3b8;
+            margin-top: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            line-height: 1.5;
         }
-        .hint b { color: #94a3b8; }
+        .hint b { color: #e2e8f0; }
 
-        /* ============================================================
-           CONTROLS PANEL
-        ============================================================ */
-        .controls-panel { padding: 18px 22px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 14px; }
+        /* ── Controls Panel ── */
+        .controls-panel {
+            padding: 16px 20px;
+            margin-bottom: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
 
-        .search-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+        .search-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
 
-        .search-box { flex: 1; min-width: 260px; position: relative; display: flex; align-items: center; }
-        .search-box input { padding-left: 46px; padding-right: 40px; height: 46px; }
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
 
-        .search-icon { position: absolute; left: 16px; font-size: 16px; color: #64748b; pointer-events: none; z-index: 1; }
+        .search-box input {
+            padding-left: 44px;
+            padding-right: 38px;
+            height: 45px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            font-size: 16px;
+            color: #64748b;
+            pointer-events: none;
+            z-index: 1;
+        }
 
         .btn-clear-search {
-            position: absolute; right: 14px; background: none; border: none;
-            color: #64748b; cursor: pointer; font-size: 15px; display: none;
-            transition: color 0.2s; z-index: 1;
+            position: absolute;
+            right: 14px;
+            background: none;
+            border: none;
+            color: #94a3b8;
+            cursor: pointer;
+            font-size: 15px;
+            display: none;
+            transition: color 0.2s;
+            z-index: 1;
         }
-        .btn-clear-search:hover { color: #f1f5f9; }
 
-        .sort-select-wrap { display: flex; align-items: center; gap: 8px; min-width: 195px; }
-        .sort-select-wrap select { height: 46px; padding: 8px 14px; font-size: 13px; font-weight: 700; }
+        .btn-clear-search:hover { color: #fff; }
 
-        .filter-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .sort-select-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 190px;
+        }
+
+        .sort-select-wrap select {
+            height: 45px;
+            padding: 8px 14px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .filter-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
 
         .filter-group {
             display: flex;
-            background: rgba(6,10,26,0.82);
-            padding: 4px; border-radius: var(--r-md);
-            border: 1px solid rgba(255,255,255,0.08);
-            gap: 3px; flex-wrap: wrap;
+            background: rgba(8, 14, 32, 0.85);
+            padding: 4px;
+            border-radius: var(--r-md);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            gap: 4px;
+            flex-wrap: wrap;
         }
 
         .btn-filter {
-            background: transparent; border: 1px solid transparent;
-            color: #64748b; cursor: pointer; padding: 8px 17px;
-            border-radius: var(--r-sm); font-size: 12.5px; font-weight: 700;
-            font-family: var(--font-sans); transition: all 0.22s var(--spring);
+            background: transparent;
+            border: 1px solid transparent;
+            color: #94a3b8;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: var(--r-sm);
+            font-size: 12.5px;
+            font-weight: 700;
+            font-family: var(--font-sans);
+            transition: all 0.22s var(--spring);
         }
-        .btn-filter:hover { color: #cbd5e1; background: rgba(255,255,255,0.05); }
+
+        .btn-filter:hover { color: #f1f5f9; background: rgba(255, 255, 255, 0.04); }
+
         .btn-filter.active {
-            background: rgba(56,189,248,0.18); color: var(--sky);
-            border-color: rgba(56,189,248,0.40); box-shadow: 0 0 14px rgba(56,189,248,0.22);
+            background: rgba(56, 189, 248, 0.2);
+            color: var(--sky);
+            border-color: rgba(56, 189, 248, 0.45);
+            box-shadow: 0 0 14px rgba(56, 189, 248, 0.2);
         }
 
         .sync-badge {
-            font-size: 12.5px; font-weight: 700; padding: 8px 16px;
-            border-radius: var(--r-md); display: inline-flex; align-items: center; gap: 7px;
-            background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.30);
-            color: #34d399; box-shadow: 0 0 14px rgba(16,185,129,0.12);
+            font-size: 12.5px;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: var(--r-md);
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(16, 185, 129, 0.14);
+            border: 1px solid rgba(16, 185, 129, 0.32);
+            color: #34d399;
+            box-shadow: 0 0 14px rgba(16, 185, 129, 0.12);
             transition: all 0.3s var(--smooth);
         }
+
         .sync-badge.syncing {
-            background: rgba(56,189,248,0.14); border-color: rgba(56,189,248,0.40);
-            color: var(--sky); box-shadow: 0 0 16px rgba(56,189,248,0.22);
+            background: rgba(56, 189, 248, 0.16);
+            border-color: rgba(56, 189, 248, 0.42);
+            color: var(--sky);
+            box-shadow: 0 0 16px rgba(56, 189, 248, 0.22);
         }
 
-        /* ============================================================
-           BULK ACTION BAR
-        ============================================================ */
+        /* ── Bulk Actions Toolbar ── */
         .bulk-bar {
             display: none;
-            background: rgba(15,25,52,0.95);
-            border: 1px solid rgba(56,189,248,0.45);
-            padding: 13px 20px; border-radius: var(--r-xl);
-            margin-bottom: 14px; align-items: center;
-            justify-content: space-between; flex-wrap: wrap; gap: 10px;
-            box-shadow: 0 12px 36px rgba(0,0,0,0.60), 0 0 28px rgba(56,189,248,0.18);
-            animation: slideDown 0.32s var(--spring);
+            background: rgba(16, 26, 54, 0.95);
+            border: 1px solid rgba(56, 189, 248, 0.5);
+            padding: 12px 18px;
+            border-radius: var(--r-xl);
+            margin-bottom: 14px;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 24px rgba(56, 189, 248, 0.2);
+            animation: slideDown 0.3s var(--spring);
         }
 
         @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-14px); }
-            to   { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(-12px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .bulk-info { font-size: 13.5px; font-weight: 800; color: var(--sky); display: flex; align-items: center; gap: 8px; }
+        .bulk-info {
+            font-size: 13.5px;
+            font-weight: 800;
+            color: var(--sky);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
         .bulk-btns { display: flex; gap: 8px; flex-wrap: wrap; }
-        .btn-bulk { padding: 7px 15px; font-size: 12px; font-weight: 700; border-radius: var(--r-sm); }
+        .btn-bulk { padding: 7px 14px; font-size: 12px; font-weight: 700; border-radius: var(--r-sm); }
 
-        /* ============================================================
-           TABLE
-        ============================================================ */
-        .table-wrap { border-radius: var(--r-xl); overflow: hidden; margin-bottom: 18px; }
+        /* ── Table (Desktop View) ── */
+        .table-wrap {
+            border-radius: var(--r-xl);
+            overflow: hidden;
+            margin-bottom: 18px;
+        }
 
-        table { width: 100%; border-collapse: collapse; text-align: left; position: relative; z-index: 2; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            position: relative;
+            z-index: 2;
+        }
 
-        th, td { padding: 15px 20px; font-size: 13.5px; vertical-align: middle; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        th, td {
+            padding: 14px 18px;
+            font-size: 13.5px;
+            vertical-align: middle;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
 
         th {
-            background: rgba(6,10,26,0.92); color: #64748b;
-            font-weight: 800; text-transform: uppercase; font-size: 11px;
-            letter-spacing: 1.1px; white-space: nowrap;
+            background: rgba(8, 14, 32, 0.94);
+            color: #94a3b8;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+            white-space: nowrap;
         }
 
-        /* Staggered row reveal — IO triggers */
+        /* Staggered Row Reveal Animation */
         tbody tr {
             background: var(--glass-row);
             transition: background 0.22s var(--smooth);
@@ -581,218 +689,481 @@
 
         tbody tr.row-animated {
             opacity: 0;
-            transform: translateY(18px) scale(0.97);
+            transform: translateY(16px) scale(0.98);
         }
 
         tbody tr.row-revealed {
-            animation: rowReveal 0.48s var(--spring) both;
-            animation-delay: calc(var(--row-index) * 32ms);
+            animation: rowReveal 0.45s var(--spring) both;
+            animation-delay: calc(var(--row-index) * 28ms);
         }
 
         @keyframes rowReveal {
-            from { opacity: 0; transform: translateY(18px) scale(0.96); }
-            to   { opacity: 1; transform: translateY(0) scale(1); }
+            from { opacity: 0; transform: translateY(16px) scale(0.97); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         tbody tr:hover { background: var(--glass-row-hover); }
 
         .col-check { width: 48px; text-align: center; }
 
-        .custom-check { width: 17px; height: 17px; accent-color: var(--sky); cursor: pointer; transition: transform 0.18s var(--spring); }
-        .custom-check:hover { transform: scale(1.2); }
+        .custom-check {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--sky);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: transform 0.18s var(--spring);
+        }
 
-        .acc-text-box { display: flex; flex-direction: column; gap: 6px; }
+        .custom-check:hover { transform: scale(1.18); }
+
+        .acc-text-box { display: flex; flex-direction: column; gap: 5px; }
 
         .acc-name {
-            font-family: var(--font-mono); font-size: 13.5px;
-            font-weight: 700; color: #f1f5f9; letter-spacing: -0.2px; word-break: break-all;
+            font-family: var(--font-mono);
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #f8fafc;
+            letter-spacing: -0.2px;
+            word-break: break-all;
         }
 
         .acc-tags-wrap { display: flex; flex-wrap: wrap; gap: 6px; }
 
         .acc-note {
-            font-size: 11.5px; font-weight: 600; color: #94a3b8;
-            display: inline-flex; align-items: center; gap: 5px;
-            background: rgba(255,255,255,0.05); padding: 3px 10px;
-            border-radius: 999px; border: 1px solid rgba(255,255,255,0.09);
-            word-break: break-word; backdrop-filter: blur(6px);
+            font-size: 11.5px;
+            font-weight: 600;
+            color: #94a3b8;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            word-break: break-word;
+            backdrop-filter: blur(6px);
         }
 
-        /* Rank badges */
-        .badge-rank-vang    { background:rgba(234,179,8,0.15);  color:#fde047; border:1px solid rgba(234,179,8,0.42);  box-shadow:0 0 14px rgba(234,179,8,0.18); }
-        .badge-rank-bkim    { background:rgba(56,189,248,0.15); color:#7dd3fc; border:1px solid rgba(56,189,248,0.42); box-shadow:0 0 14px rgba(56,189,248,0.18); }
-        .badge-rank-kcuong  { background:rgba(167,139,250,0.15);color:#c4b5fd; border:1px solid rgba(167,139,250,0.42);box-shadow:0 0 14px rgba(167,139,250,0.18); }
-        .badge-rank-tanhanh { background:rgba(236,72,153,0.15); color:#f9a8d4; border:1px solid rgba(236,72,153,0.42); box-shadow:0 0 14px rgba(236,72,153,0.18); }
-        .badge-rank-caothu  { background:rgba(239,68,68,0.15);  color:#fca5a5; border:1px solid rgba(239,68,68,0.42);  box-shadow:0 0 14px rgba(239,68,68,0.18); }
+        /* Smart Rank Badges */
+        .badge-rank-vang    { background: rgba(234, 179, 8, 0.16);  color: #fde047; border: 1px solid rgba(234, 179, 8, 0.45);  box-shadow: 0 0 12px rgba(234, 179, 8, 0.18); }
+        .badge-rank-bkim    { background: rgba(56, 189, 248, 0.16); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.45); box-shadow: 0 0 12px rgba(56, 189, 248, 0.18); }
+        .badge-rank-kcuong  { background: rgba(168, 85, 247, 0.16); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.45); box-shadow: 0 0 12px rgba(168, 85, 247, 0.18); }
+        .badge-rank-tanhanh { background: rgba(236, 72, 153, 0.16); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.45); box-shadow: 0 0 12px rgba(236, 72, 153, 0.18); }
+        .badge-rank-caothu  { background: rgba(239, 68, 68, 0.16);  color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.45);  box-shadow: 0 0 12px rgba(239, 68, 68, 0.18); }
 
-        /* Status badges */
+        /* Status & Time Badges */
         .badge {
-            display: inline-flex; align-items: center;
-            padding: 5px 13px; border-radius: 12px;
-            font-size: 10.5px; font-weight: 800;
-            text-transform: uppercase; letter-spacing: 0.6px;
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 10.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .badge-live {
-            background: rgba(16,185,129,0.13); color: #34d399;
-            border: 1px solid rgba(52,211,153,0.38); box-shadow: 0 0 16px rgba(16,185,129,0.18);
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(52, 211, 153, 0.4);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
         }
+
         .badge-banned {
-            background: rgba(244,63,94,0.13); color: #fb7185;
-            border: 1px solid rgba(251,113,133,0.38); box-shadow: 0 0 16px rgba(244,63,94,0.18);
+            background: rgba(244, 63, 94, 0.15);
+            color: #fb7185;
+            border: 1px solid rgba(251, 113, 133, 0.4);
+            box-shadow: 0 0 15px rgba(244, 63, 94, 0.2);
         }
+
         .badge-days {
-            background: rgba(245,158,11,0.16); color: #fcd34d;
-            border: 1px solid rgba(252,211,77,0.38); margin-left: 6px;
-            font-weight: 700; text-transform: none; box-shadow: 0 0 12px rgba(245,158,11,0.14);
+            background: rgba(245, 158, 11, 0.18);
+            color: #fcd34d;
+            border: 1px solid rgba(252, 211, 77, 0.4);
+            margin-left: 6px;
+            font-weight: 700;
+            text-transform: none;
+            box-shadow: 0 0 12px rgba(245, 158, 11, 0.15);
         }
+
         .badge-today {
-            background: rgba(6,182,212,0.20); color: var(--sky);
-            border: 1px solid rgba(56,189,248,0.46); margin-left: 6px;
-            box-shadow: 0 0 16px rgba(6,182,212,0.28); animation: pulseBadge 2s ease-in-out infinite;
+            background: rgba(6, 182, 212, 0.22);
+            color: var(--sky);
+            border: 1px solid rgba(56, 189, 248, 0.5);
+            margin-left: 6px;
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
+            animation: pulseBadge 2s ease-in-out infinite;
         }
+
         @keyframes pulseBadge {
-            0%, 100% { opacity: 1; box-shadow: 0 0 16px rgba(6,182,212,0.28); }
-            50%      { opacity: 0.65; box-shadow: 0 0 28px rgba(6,182,212,0.45); }
+            0%, 100% { opacity: 1; box-shadow: 0 0 15px rgba(6, 182, 212, 0.3); }
+            50% { opacity: 0.65; box-shadow: 0 0 25px rgba(6, 182, 212, 0.5); }
         }
+
         .badge-auto {
-            background: rgba(124,58,237,0.18); color: #c4b5fd;
-            border: 1px solid rgba(196,181,253,0.40); margin-left: 6px; font-size: 10px;
+            background: rgba(168, 85, 247, 0.22);
+            color: #d8b4fe;
+            border: 1px solid rgba(216, 180, 254, 0.45);
+            margin-left: 6px;
+            font-size: 10px;
         }
 
-        .actions { display: flex; gap: 7px; justify-content: flex-end; }
-        .btn-act { padding: 7px 14px; font-size: 12.5px; font-weight: 700; border-radius: var(--r-sm); }
-        .btn-act-copy { background: rgba(6,182,212,0.16); border-color: rgba(6,182,212,0.40); color: var(--sky); }
-        .btn-act-copy:hover { background: rgba(6,182,212,0.28); box-shadow: 0 0 18px rgba(6,182,212,0.32); }
+        .actions {
+            display: flex;
+            gap: 7px;
+            justify-content: flex-end;
+        }
 
-        /* ============================================================
-           PAGINATION
-        ============================================================ */
+        .btn-act {
+            padding: 7px 14px;
+            font-size: 12.5px;
+            font-weight: 700;
+            border-radius: var(--r-sm);
+        }
+
+        .btn-act-copy {
+            background: rgba(6, 182, 212, 0.18);
+            border-color: rgba(6, 182, 212, 0.45);
+            color: var(--sky);
+        }
+
+        .btn-act-copy:hover {
+            background: rgba(6, 182, 212, 0.32);
+            box-shadow: 0 0 16px rgba(6, 182, 212, 0.35);
+        }
+
+        /* ── Pagination ── */
         .pagination-bar {
-            padding: 14px 22px; display: flex; justify-content: space-between;
-            align-items: center; flex-wrap: wrap; gap: 12px;
-            border-top: 1px solid rgba(255,255,255,0.05); position: relative; z-index: 2;
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            position: relative;
+            z-index: 2;
         }
 
-        .page-info { font-size: 13px; color: #64748b; font-weight: 600; }
+        .page-info { font-size: 13px; color: #94a3b8; font-weight: 600; }
         .page-controls { display: flex; align-items: center; gap: 6px; }
         .btn-page { min-width: 36px; height: 36px; padding: 0 10px; font-size: 12.5px; font-weight: 700; border-radius: var(--r-sm); }
-        .btn-page.active { background: rgba(56,189,248,0.26); color: var(--sky); border-color: rgba(56,189,248,0.55); box-shadow: 0 0 16px rgba(56,189,248,0.30); }
-        .btn-page:disabled { opacity: 0.30; cursor: not-allowed; transform: none !important; }
+        .btn-page.active { background: rgba(56, 189, 248, 0.28); color: var(--sky); border-color: rgba(56, 189, 248, 0.55); box-shadow: 0 0 14px rgba(56, 189, 248, 0.3); }
+        .btn-page:disabled { opacity: 0.32; cursor: not-allowed; transform: none !important; }
         .rows-select { width: auto; padding: 7px 12px; font-size: 12.5px; border-radius: var(--r-sm); }
 
-        /* ============================================================
-           MODALS
-        ============================================================ */
+        /* ── Modals ── */
         .modal-overlay {
-            display: none; position: fixed; inset: 0;
-            background: rgba(0,0,0,0.80); backdrop-filter: blur(12px);
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.82);
+            backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            justify-content: center; align-items: center;
-            z-index: 999; padding: 16px; animation: overlayIn 0.22s var(--smooth);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            padding: 16px;
+            animation: overlayIn 0.22s var(--smooth);
         }
+
         @keyframes overlayIn { from { opacity: 0; } to { opacity: 1; } }
 
         .modal {
-            background: rgba(10,16,36,0.96);
-            border: 1px solid rgba(255,255,255,0.18);
-            padding: 28px; border-radius: var(--r-xl); width: 100%; max-width: 490px;
-            box-shadow: 0 30px 70px rgba(0,0,0,0.90), 0 0 40px rgba(124,58,237,0.18), inset 0 1px 0 rgba(255,255,255,0.14);
-            max-height: 92vh; overflow-y: auto;
-            animation: modalIn 0.32s var(--spring) both;
+            background: rgba(12, 18, 40, 0.96);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 26px;
+            border-radius: var(--r-xl);
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 35px rgba(139, 92, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalIn 0.3s var(--spring) both;
         }
+
         @keyframes modalIn {
-            from { opacity: 0; transform: scale(0.94) translateY(12px); }
-            to   { opacity: 1; transform: scale(1) translateY(0); }
+            from { opacity: 0; transform: scale(0.94) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        .modal h3 { margin-bottom: 20px; font-size: 18px; font-weight: 800; color: var(--sky); display: flex; align-items: center; gap: 9px; }
-        .modal-field { margin-bottom: 15px; }
-        .modal-field label { display: block; font-size: 11.5px; font-weight: 800; color: #64748b; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.7px; }
-        .modal-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 26px; gap: 10px; }
+        .modal h3 {
+            margin-bottom: 18px;
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--sky);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-        /* ============================================================
-           TOAST
-        ============================================================ */
+        .modal-field { margin-bottom: 14px; }
+        .modal-field label { display: block; font-size: 11.5px; font-weight: 800; color: #94a3b8; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.6px; }
+        .modal-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 24px; gap: 10px; }
+
+        /* ── Toasts ── */
         #toastContainer {
-            position: fixed; top: 24px; right: 24px; z-index: 9999;
-            display: flex; flex-direction: column; gap: 12px;
-            pointer-events: none; max-width: 380px; width: calc(100% - 48px);
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            pointer-events: none;
+            max-width: 380px;
+            width: calc(100% - 48px);
         }
+
         .custom-toast {
-            pointer-events: auto; background: rgba(10,16,36,0.95);
-            backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,0.15);
-            border-radius: var(--r-lg); padding: 14px 18px;
-            display: flex; align-items: center; gap: 12px;
-            box-shadow: 0 20px 48px rgba(0,0,0,0.70); position: relative; overflow: hidden;
+            pointer-events: auto;
+            background: rgba(12, 18, 40, 0.95);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: var(--r-md);
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.7);
+            position: relative;
+            overflow: hidden;
             animation: toastIn 0.35s var(--spring) both;
         }
+
         .custom-toast.hide { animation: toastOut 0.28s var(--spring) both; }
         .toast-icon { width: 36px; height: 36px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
         .toast-msg { font-size: 13.5px; font-weight: 700; color: #f1f5f9; flex: 1; word-break: break-word; line-height: 1.4; }
-        .toast-progress { position: absolute; bottom: 0; left: 0; height: 3px; width: 100%; background: rgba(255,255,255,0.10); }
+        .toast-progress { position: absolute; bottom: 0; left: 0; height: 3px; width: 100%; background: rgba(255, 255, 255, 0.1); }
         .toast-progress-bar { height: 100%; width: 100%; animation: progressCount 2.5s linear forwards; }
-        .toast-success { border-color: rgba(52,211,153,0.45); box-shadow: 0 10px 32px rgba(16,185,129,0.22); }
-        .toast-success .toast-icon { background:rgba(16,185,129,0.22); color:#34d399; }
+        .toast-success { border-color: rgba(52, 211, 153, 0.45); box-shadow: 0 10px 30px rgba(16, 185, 129, 0.22); }
+        .toast-success .toast-icon { background: rgba(16, 185, 129, 0.22); color: #34d399; }
         .toast-success .toast-progress-bar { background: #34d399; }
-        .toast-info { border-color: rgba(56,189,248,0.45); box-shadow: 0 10px 32px rgba(56,189,248,0.22); }
-        .toast-info .toast-icon { background:rgba(6,182,212,0.22); color:var(--sky); }
+        .toast-info { border-color: rgba(56, 189, 248, 0.45); box-shadow: 0 10px 30px rgba(56, 189, 248, 0.22); }
+        .toast-info .toast-icon { background: rgba(6, 182, 212, 0.22); color: var(--sky); }
         .toast-info .toast-progress-bar { background: var(--sky); }
-        .toast-warn { border-color: rgba(244,63,94,0.45); box-shadow: 0 10px 32px rgba(244,63,94,0.22); }
-        .toast-warn .toast-icon { background:rgba(244,63,94,0.22); color:#fb7185; }
+        .toast-warn { border-color: rgba(244, 63, 94, 0.45); box-shadow: 0 10px 30px rgba(244, 63, 94, 0.22); }
+        .toast-warn .toast-icon { background: rgba(244, 63, 94, 0.22); color: #fb7185; }
         .toast-warn .toast-progress-bar { background: #fb7185; }
-        @keyframes toastIn { from { opacity:0; transform: translateX(28px) scale(0.92); } to { opacity:1; transform: translateX(0) scale(1); } }
-        @keyframes toastOut { from { opacity:1; transform: translateX(0) scale(1); } to { opacity:0; transform: translateX(28px) scale(0.90); } }
+
+        @keyframes toastIn { from { opacity: 0; transform: translateX(28px) scale(0.92); } to { opacity: 1; transform: translateX(0) scale(1); } }
+        @keyframes toastOut { from { opacity: 1; transform: translateX(0) scale(1); } to { opacity: 0; transform: translateX(28px) scale(0.9); } }
         @keyframes progressCount { from { width: 100%; } to { width: 0%; } }
 
+        /* Desktop helper classes */
+        .mobile-card-top { display: none; }
+        .desktop-only { display: table-cell; }
+
         /* ============================================================
-           RESPONSIVE
+           📱 MOBILE RESPONSIVE POLISH (Clean Liquid Card Layout)
         ============================================================ */
         @media (max-width: 768px) {
-            body { padding: 18px 10px 80px; }
-            .header-bar { flex-direction: column; align-items: stretch; gap: 12px; }
-            .header-actions { width: 100%; }
-            .header-actions .btn-liquid { flex: 1; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .stat-card { padding: 16px 18px; }
+            body { padding: 16px 10px 85px; }
+
+            /* Header: stacked, quick-touch action buttons */
+            .header-bar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+                margin-bottom: 16px;
+            }
+            .header-title-box { text-align: left; }
+            .brand-badge { margin-bottom: 4px; font-size: 10px; }
+            .header-actions {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .header-actions .btn-config-main { grid-column: 1 / -1; }
+            .btn-header { padding: 11px 10px; font-size: 12.5px; border-radius: var(--r-md); justify-content: center; }
+
+            /* Stats Grid: 2 columns */
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 14px; }
+            .stat-card { padding: 14px 16px; border-radius: var(--r-lg); }
+            .stat-info span { font-size: 10px; }
+            .stat-info h2 { font-size: 24px; margin-top: 2px; }
+            .stat-icon { width: 40px; height: 40px; font-size: 18px; border-radius: 12px; }
+
+            /* Form */
+            .card-form { padding: 16px; margin-bottom: 12px; border-radius: var(--r-lg); }
             .form-grid { grid-template-columns: 1fr; gap: 10px; }
-            .btn-add { width: 100%; font-size: 15px; height: auto; padding: 14px; }
-            .search-row { flex-direction: column; align-items: stretch; }
+            .btn-add { width: 100%; height: auto; padding: 13px; font-size: 15px; border-radius: var(--r-md); }
+            textarea#accInfo { min-height: 68px; }
+            .hint { font-size: 12px; margin-top: 10px; }
+
+            /* Controls: Search, Sort, Filter */
+            .controls-panel { padding: 14px 16px; gap: 12px; margin-bottom: 12px; border-radius: var(--r-lg); }
+            .search-row { flex-direction: column; gap: 8px; }
+            .search-box { width: 100%; min-width: unset; }
+            .search-box input { height: 44px; font-size: 13.5px; }
             .sort-select-wrap { width: 100%; }
-            .filter-row { flex-direction: column; align-items: stretch; }
-            .filter-group { width: 100%; justify-content: space-between; }
-            .sync-badge { width: 100%; justify-content: center; }
-            .bulk-bar { flex-direction: column; align-items: stretch; }
-            .bulk-btns { justify-content: stretch; }
-            .bulk-btns button { flex: 1; }
-            .table-wrap { background: transparent; border: none; box-shadow: none; }
+            .sort-select-wrap select { width: 100%; height: 44px; font-size: 13px; }
+            .filter-row { flex-direction: column; align-items: stretch; gap: 8px; }
+            .filter-group {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 4px;
+                padding: 4px;
+            }
+            .btn-filter { padding: 9px 4px; font-size: 12px; text-align: center; }
+            .sync-badge { width: 100%; justify-content: center; font-size: 12px; }
+
+            /* Bulk Toolbar */
+            .bulk-bar {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 12px 14px;
+                border-radius: var(--r-lg);
+                gap: 10px;
+            }
+            .bulk-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+            .btn-bulk { padding: 9px 6px; font-size: 12px; justify-content: center; border-radius: var(--r-sm); }
+
+            /* ── Table converted to Pure Mobile Card List ── */
+            .table-wrap {
+                background: transparent !important;
+                border: none !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                overflow: visible !important;
+            }
+            .table-wrap::before, .table-wrap::after { display: none !important; }
+
             table, thead, tbody, th, td, tr { display: block; width: 100%; }
             thead { display: none; }
-            tbody { display: flex; flex-direction: column; gap: 12px; }
-            tbody tr {
-                background: var(--glass-card);
-                backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-                border: 1px solid var(--glass-border); border-radius: var(--r-xl);
-                padding: 16px 18px; box-shadow: 0 8px 28px rgba(0,0,0,0.42);
+
+            tbody {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
             }
-            td { padding: 7px 0; border-bottom: none; display: flex; align-items: center; justify-content: space-between; }
-            td.col-check { justify-content: flex-start; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 6px; }
-            td:nth-child(2) { display: block; margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; }
-            .actions { width: 100%; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.05); }
-            .btn-act { flex: 1; text-align: center; padding: 10px; font-size: 13px; }
-            .pagination-bar { flex-direction: column; align-items: center; gap: 12px; }
+
+            /* Each table row becomes a modern Glass Card */
+            tbody tr {
+                background: rgba(13, 20, 44, 0.85) !important;
+                backdrop-filter: blur(20px) saturate(160%);
+                -webkit-backdrop-filter: blur(20px) saturate(160%);
+                border: 1px solid rgba(255, 255, 255, 0.12) !important;
+                border-radius: var(--r-lg) !important;
+                padding: 16px !important;
+                box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45) !important;
+                position: relative;
+            }
+
+            /* Hide desktop table cells */
+            .desktop-only { display: none !important; }
+            td.col-check { display: none !important; }
+
+            /* Cells clean layout */
+            td {
+                padding: 0 !important;
+                border-bottom: none !important;
+                display: block !important;
+                width: 100% !important;
+            }
+
+            /* Mobile Card Top: Checkbox on Left + Status Badge on Right */
+            .mobile-card-top {
+                display: flex !important;
+                align-items: center;
+                justify-content: space-between;
+                padding-bottom: 10px;
+                margin-bottom: 10px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            }
+
+            .mobile-check-label {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 12px;
+                font-weight: 700;
+                color: #94a3b8;
+                cursor: pointer;
+            }
+
+            /* Account Text & Badges */
+            td.cell-acc-main {
+                padding-bottom: 8px !important;
+                margin-bottom: 8px;
+            }
+            .acc-name { font-size: 14px; word-break: break-all; }
+            .acc-note { font-size: 11px; }
+
+            /* Date info */
+            td.cell-date-info {
+                padding-bottom: 8px !important;
+                margin-bottom: 4px;
+            }
+
+            .mobile-date-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 6px;
+                font-size: 12px;
+                color: #94a3b8;
+            }
+
+            /* Actions: 3 equal buttons grid */
+            td.cell-actions {
+                margin-top: 6px;
+                padding-top: 10px !important;
+                border-top: 1px solid rgba(255, 255, 255, 0.07);
+            }
+
+            .actions {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 8px;
+                width: 100%;
+                justify-content: unset;
+            }
+
+            .btn-act {
+                padding: 10px 4px !important;
+                font-size: 13px;
+                font-weight: 700;
+                justify-content: center;
+                text-align: center;
+                border-radius: var(--r-sm);
+                width: 100%;
+            }
+
+            /* Pagination */
+            .pagination-bar {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+                padding: 14px 16px;
+            }
+            .page-info { font-size: 12px; text-align: center; }
+            .page-controls { flex-wrap: wrap; justify-content: center; gap: 5px; }
+            .btn-page { min-width: 34px; height: 34px; font-size: 12px; }
         }
 
         @media (max-width: 480px) {
-            h1 { font-size: 20px; }
+            body { padding: 12px 8px 85px; }
+            h1 { font-size: 19px; letter-spacing: 0.3px; }
+            .brand-badge { font-size: 9.5px; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+            .stat-card { padding: 12px 14px; }
             .stat-info h2 { font-size: 22px; }
+            .stat-icon { width: 36px; height: 36px; font-size: 16px; }
             .modal { padding: 20px; }
+            .bulk-btns { grid-template-columns: 1fr; }
+            .btn-bulk { grid-column: 1 / -1; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Ambient Dynamic Mesh Aurora Background -->
     <div class="aurora-bg">
         <div class="aurora-blob blob-1"></div>
         <div class="aurora-blob blob-2"></div>
@@ -805,6 +1176,7 @@
 
     <div class="container">
         
+        <!-- Header -->
         <div class="header-bar reveal">
             <div class="header-title-box">
                 <div class="brand-badge"><span class="brand-badge-dot"></span> ULTRA LIQUID SYSTEM</div>
@@ -812,36 +1184,38 @@
             </div>
             <div class="header-actions">
                 <button type="button" class="btn-liquid btn-header btn-mask-toggle" id="btnMaskToggle" onclick="toggleMaskMode()">
-                    &#128065; Ẩn MK
+                    👁️ Ẩn MK
                 </button>
                 <button type="button" class="btn-liquid btn-header" onclick="openImportExportModal()">
-                    &#128193; Nhập / Xuất
+                    📁 Nhập / Xuất
                 </button>
                 <button type="button" class="btn-liquid btn-header btn-config-main" onclick="openConfigModal()">
-                    &#9881; Cấu hình GitHub
+                    ⚙ Cấu hình GitHub
                 </button>
             </div>
         </div>
 
+        <!-- Dashboard Stats -->
         <div class="stats-grid">
             <div class="stat-card liquid-glass reveal" onclick="setFilter('all')">
-                <div class="stat-info"><span>Tổng Acc</span><h2 id="cntAll" style="color:#f1f5f9;">0</h2></div>
-                <div class="stat-icon">&#127918;</div>
+                <div class="stat-info"><span>Tổng Acc</span><h2 id="cntAll" style="color: #f1f5f9;">0</h2></div>
+                <div class="stat-icon">🎮</div>
             </div>
-            <div class="stat-card liquid-glass reveal" onclick="setFilter('sống')" style="transition-delay:0.06s">
-                <div class="stat-info"><span>Đang Sống</span><h2 id="cntLive" style="color:#34d399;">0</h2></div>
-                <div class="stat-icon" style="background:rgba(16,185,129,0.16);color:#34d399;">&#9889;</div>
+            <div class="stat-card liquid-glass reveal" onclick="setFilter('sống')" style="transition-delay: 0.05s">
+                <div class="stat-info"><span>Đang Sống</span><h2 id="cntLive" style="color: #34d399;">0</h2></div>
+                <div class="stat-icon" style="background: rgba(16,185,129,0.16); color: #34d399;">⚡</div>
             </div>
-            <div class="stat-card liquid-glass reveal" onclick="setFilter('ban')" style="transition-delay:0.12s">
-                <div class="stat-info"><span>Bị Khóa</span><h2 id="cntBanned" style="color:#fb7185;">0</h2></div>
-                <div class="stat-icon" style="background:rgba(244,63,94,0.16);color:#fb7185;">&#128274;</div>
+            <div class="stat-card liquid-glass reveal" onclick="setFilter('ban')" style="transition-delay: 0.1s">
+                <div class="stat-info"><span>Bị Khóa</span><h2 id="cntBanned" style="color: #fb7185;">0</h2></div>
+                <div class="stat-icon" style="background: rgba(244,63,94,0.16); color: #fb7185;">🔒</div>
             </div>
-            <div class="stat-card liquid-glass reveal" onclick="setFilter('today')" style="transition-delay:0.18s">
-                <div class="stat-info"><span>Mở Hôm Nay</span><h2 id="cntToday" style="color:var(--sky);">0</h2></div>
-                <div class="stat-icon" style="background:rgba(6,182,212,0.16);color:var(--sky);">&#10024;</div>
+            <div class="stat-card liquid-glass reveal" onclick="setFilter('today')" style="transition-delay: 0.15s">
+                <div class="stat-info"><span>Mở Hôm Nay</span><h2 id="cntToday" style="color: var(--sky);">0</h2></div>
+                <div class="stat-icon" style="background: rgba(6,182,212,0.16); color: var(--sky);">✨</div>
             </div>
         </div>
 
+        <!-- Form Thêm Acc -->
         <div class="card-form liquid-glass reveal">
             <form id="accForm" onsubmit="handleAdd(event)">
                 <div class="form-grid">
@@ -851,29 +1225,30 @@
                         <option value="sống">Sống</option>
                         <option value="ban">Bị Ban</option>
                     </select>
-                    <input type="text" id="unbanDate" placeholder="Mở ban (vd: 280826)" style="display:none;" onblur="formatDateInput(this)">
+                    <input type="text" id="unbanDate" placeholder="Mở ban (vd: 280826)" style="display: none;" onblur="formatDateInput(this)">
                     <button type="submit" class="btn-liquid btn-primary-liquid btn-add">+ Thêm Acc</button>
                 </div>
                 <div class="hint">
-                    &#128161; <b>Mẹo nhập liệu:</b> Hỗ trợ định dạng <b>tk:mk</b> hoặc <b>tk:mk:ghi_chú</b> (tự tách ghi chú). Nhập 6 số ngày như <b>280826</b> &rarr; <b>28/08/2026</b>.
+                    💡 <b>Mẹo nhập liệu:</b> Hỗ trợ định dạng <b>tk:mk</b> hoặc <b>tk:mk:ghi_chú</b> (tự tách ghi chú). Nhập 6 số ngày như <b>280826</b> → <b>28/08/2026</b>.
                 </div>
             </form>
         </div>
 
+        <!-- Controls Panel (Search, Sort, Filter) -->
         <div class="controls-panel liquid-glass reveal">
             <div class="search-row">
                 <div class="search-box">
-                    <span class="search-icon">&#128269;</span>
+                    <span class="search-icon">🔍</span>
                     <input type="text" id="searchInput" placeholder="Tìm kiếm theo tên tài khoản, mật khẩu, rank, ghi chú..." oninput="handleSearch(this.value)">
-                    <button type="button" class="btn-clear-search" id="btnClearSearch" onclick="clearSearch()">&#10005;</button>
+                    <button type="button" class="btn-clear-search" id="btnClearSearch" onclick="clearSearch()">✕</button>
                 </div>
                 <div class="sort-select-wrap">
                     <select id="sortSelect" onchange="handleSort(this.value)">
-                        <option value="newest">&#8987; Mới nhất trước</option>
-                        <option value="oldest">&#9203; Cũ nhất trước</option>
-                        <option value="unbanSoon">&#9203; Sắp mở ban nhất</option>
-                        <option value="nameAsc">&#128292; Tên A &rarr; Z</option>
-                        <option value="nameDesc">&#128292; Tên Z &rarr; A</option>
+                        <option value="newest">⏱ Mới nhất trước</option>
+                        <option value="oldest">⌛ Cũ nhất trước</option>
+                        <option value="unbanSoon">⏳ Sắp mở ban nhất</option>
+                        <option value="nameAsc">🔤 Tên A → Z</option>
+                        <option value="nameDesc">🔤 Tên Z → A</option>
                     </select>
                 </div>
             </div>
@@ -885,23 +1260,27 @@
                     <button class="btn-filter" data-filter="ban" onclick="setFilter('ban')">Bị Ban (<span id="btnCntBanned">0</span>)</button>
                     <button class="btn-filter" data-filter="today" onclick="setFilter('today')">Mở Hôm Nay (<span id="btnCntToday">0</span>)</button>
                 </div>
-                <div class="sync-badge" id="syncStatus">&#128994; Tự đồng bộ: Đang chạy</div>
+                <div class="sync-badge" id="syncStatus">
+                    🟢 Tự đồng bộ: Đang chạy
+                </div>
             </div>
         </div>
 
+        <!-- Bulk Action Bar -->
         <div class="bulk-bar" id="bulkBar">
             <div class="bulk-info">
-                <span>&#9745; Đã chọn: <b id="bulkCount">0</b> tài khoản</span>
+                <span>☑️ Đã chọn: <b id="bulkCount">0</b> tài khoản</span>
             </div>
             <div class="bulk-btns">
-                <button type="button" class="btn-liquid btn-bulk" onclick="bulkCopy()">&#128203; Sao chép đã chọn</button>
-                <button type="button" class="btn-liquid btn-bulk" onclick="bulkSetStatus('sống')">&#9889; Đặt là Sống</button>
-                <button type="button" class="btn-liquid btn-bulk" onclick="openBulkBanModal()">&#128274; Đặt Bị Ban</button>
-                <button type="button" class="btn-liquid btn-bulk" style="color:#fb7185;" onclick="openBulkDeleteModal()">&#128465; Xóa đã chọn</button>
-                <button type="button" class="btn-liquid btn-bulk" onclick="deselectAll()">&#10005; Bỏ chọn</button>
+                <button type="button" class="btn-liquid btn-bulk" onclick="bulkCopy()">📋 Sao chép đã chọn</button>
+                <button type="button" class="btn-liquid btn-bulk" onclick="bulkSetStatus('sống')">⚡ Đặt là Sống</button>
+                <button type="button" class="btn-liquid btn-bulk" onclick="openBulkBanModal()">🔒 Đặt Bị Ban</button>
+                <button type="button" class="btn-liquid btn-bulk" style="color: #fb7185;" onclick="openBulkDeleteModal()">🗑️ Xóa đã chọn</button>
+                <button type="button" class="btn-liquid btn-bulk" onclick="deselectAll()">✕ Bỏ chọn</button>
             </div>
         </div>
 
+        <!-- Table Container -->
         <div class="table-wrap liquid-glass">
             <table>
                 <thead>
@@ -912,11 +1291,13 @@
                         <th>Tài khoản / Ghi chú</th>
                         <th>Trạng thái</th>
                         <th>Thời hạn mở</th>
-                        <th style="text-align:right;">Thao tác</th>
+                        <th style="text-align: right;">Thao tác</th>
                     </tr>
                 </thead>
                 <tbody id="accList"></tbody>
             </table>
+
+            <!-- Pagination Controls -->
             <div class="pagination-bar" id="paginationBar">
                 <div class="page-info" id="pageInfo">Đang tải...</div>
                 <div class="page-controls">
@@ -927,58 +1308,77 @@
                         <option value="100">100 / trang</option>
                         <option value="999999">Tất cả</option>
                     </select>
-                    <button class="btn-liquid btn-page" id="btnPrevPage" onclick="prevPage()">&#8249;</button>
-                    <div id="pageNumbers" style="display:inline-flex;gap:5px;"></div>
-                    <button class="btn-liquid btn-page" id="btnNextPage" onclick="nextPage()">&#8250;</button>
+                    <button class="btn-liquid btn-page" id="btnPrevPage" onclick="prevPage()">‹</button>
+                    <div id="pageNumbers" style="display: inline-flex; gap: 5px;"></div>
+                    <button class="btn-liquid btn-page" id="btnNextPage" onclick="nextPage()">›</button>
                 </div>
             </div>
         </div>
 
     </div>
 
-    <!-- Modal GitHub -->
+    <!-- Modal Cấu hình GitHub -->
     <div class="modal-overlay" id="configModal">
         <div class="modal">
-            <h3>&#9881;&#65039; Cấu hình GitHub (Tự động lưu)</h3>
-            <div class="modal-field"><label>GitHub Username</label><input type="text" id="ghUser" placeholder="vd: vancau88" oninput="autoSaveConfig()"></div>
-            <div class="modal-field"><label>Repository Name</label><input type="text" id="ghRepo" placeholder="vd: lq-account" oninput="autoSaveConfig()"></div>
-            <div class="modal-field"><label>Personal Access Token (ghp_...)</label><input type="password" id="ghToken" placeholder="Dán token vào đây" oninput="autoSaveConfig()"></div>
+            <h3>⚙️ Cấu hình GitHub (Tự động lưu)</h3>
+            <div class="modal-field">
+                <label>GitHub Username</label>
+                <input type="text" id="ghUser" placeholder="vd: vancau88" oninput="autoSaveConfig()">
+            </div>
+            <div class="modal-field">
+                <label>Repository Name</label>
+                <input type="text" id="ghRepo" placeholder="vd: lq-account" oninput="autoSaveConfig()">
+            </div>
+            <div class="modal-field">
+                <label>Personal Access Token (ghp_...)</label>
+                <input type="password" id="ghToken" placeholder="Dán token vào đây" oninput="autoSaveConfig()">
+            </div>
             <div class="modal-actions">
-                <button type="button" class="btn-liquid btn-act" onclick="testConnection()">&#128269; Test Kết Nối</button>
-                <button type="button" class="btn-liquid btn-primary-liquid" style="padding:8px 18px;" onclick="closeModal('configModal')">Xong</button>
+                <button type="button" class="btn-liquid btn-act" onclick="testConnection()">🔍 Test Kết Nối</button>
+                <button type="button" class="btn-liquid btn-primary-liquid" style="padding: 8px 18px;" onclick="closeModal('configModal')">Xong</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal Edit -->
+    <!-- Modal Sửa Acc -->
     <div class="modal-overlay" id="editModal">
         <div class="modal">
-            <h3>&#9999;&#65039; Chỉnh sửa tài khoản</h3>
+            <h3>✏️ Chỉnh sửa tài khoản</h3>
             <input type="hidden" id="editId">
-            <div class="modal-field"><label>Tài khoản : Mật khẩu</label><input type="text" id="editAcc" required></div>
-            <div class="modal-field"><label>Ghi chú</label><input type="text" id="editNote" placeholder="Ghi chú (Rank, Skin, Tướng...)"></div>
-            <div class="modal-field"><label>Trạng thái</label>
-                <select id="editStatus" onchange="toggleDateInput('editStatus','editDate')">
+            <div class="modal-field">
+                <label>Tài khoản : Mật khẩu</label>
+                <input type="text" id="editAcc" required>
+            </div>
+            <div class="modal-field">
+                <label>Ghi chú</label>
+                <input type="text" id="editNote" placeholder="Ghi chú (Rank, Skin, Tướng...)">
+            </div>
+            <div class="modal-field">
+                <label>Trạng thái</label>
+                <select id="editStatus" onchange="toggleDateInput('editStatus', 'editDate')">
                     <option value="sống">Sống</option>
                     <option value="ban">Bị Ban</option>
                 </select>
             </div>
-            <div class="modal-field" id="editDateField"><label>Ngày mở ban (dd/mm/yyyy hoặc 6 số)</label><input type="text" id="editDate" placeholder="dd/mm/yyyy" onblur="formatDateInput(this)"></div>
-            <div class="modal-actions" style="justify-content:flex-end;">
+            <div class="modal-field" id="editDateField">
+                <label>Ngày mở ban (dd/mm/yyyy hoặc 6 số)</label>
+                <input type="text" id="editDate" placeholder="dd/mm/yyyy" onblur="formatDateInput(this)">
+            </div>
+            <div class="modal-actions" style="justify-content: flex-end;">
                 <button type="button" class="btn-liquid btn-act" onclick="closeModal('editModal')">Hủy</button>
-                <button type="button" class="btn-liquid btn-primary-liquid" style="padding:10px 20px;" onclick="saveEdit()">Lưu lại</button>
+                <button type="button" class="btn-liquid btn-primary-liquid" style="padding: 10px 20px;" onclick="saveEdit()">Lưu lại</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal Delete Confirm -->
+    <!-- Modal Xác nhận Xóa -->
     <div class="modal-overlay" id="confirmDeleteModal">
         <div class="modal">
-            <h3 style="color:#fb7185;">&#128465;&#65039; Xác nhận xóa tài khoản</h3>
-            <p id="confirmDeleteMsg" style="font-size:13.5px;color:#94a3b8;margin-bottom:20px;line-height:1.55;">Bạn có chắc chắn muốn xóa tài khoản này?</p>
-            <div class="modal-actions" style="justify-content:flex-end;">
+            <h3 style="color: #fb7185;">🗑️ Xác nhận xóa tài khoản</h3>
+            <p id="confirmDeleteMsg" style="font-size: 13.5px; color: #94a3b8; margin-bottom: 20px; line-height: 1.55;">Bạn có chắc chắn muốn xóa tài khoản này?</p>
+            <div class="modal-actions" style="justify-content: flex-end;">
                 <button type="button" class="btn-liquid btn-act" onclick="closeModal('confirmDeleteModal')">Hủy</button>
-                <button type="button" class="btn-liquid btn-danger-liquid" style="padding:10px 20px;" id="btnConfirmDeleteExec">Xác nhận Xóa</button>
+                <button type="button" class="btn-liquid btn-danger-liquid" style="padding: 10px 20px;" id="btnConfirmDeleteExec">Xác nhận Xóa</button>
             </div>
         </div>
     </div>
@@ -986,37 +1386,48 @@
     <!-- Modal Bulk Ban -->
     <div class="modal-overlay" id="bulkBanModal">
         <div class="modal">
-            <h3>&#128274; Khóa hàng loạt tài khoản đã chọn</h3>
-            <div class="modal-field"><label>Ngày mở ban (Để trống nếu chưa rõ, hoặc nhập 6 số: 280826)</label><input type="text" id="bulkBanDate" placeholder="dd/mm/yyyy hoặc 280826" onblur="formatDateInput(this)"></div>
-            <div class="modal-actions" style="justify-content:flex-end;">
+            <h3>🔒 Khóa hàng loạt tài khoản đã chọn</h3>
+            <div class="modal-field">
+                <label>Ngày mở ban (Để trống nếu chưa rõ, hoặc nhập 6 số: 280826)</label>
+                <input type="text" id="bulkBanDate" placeholder="dd/mm/yyyy hoặc 280826" onblur="formatDateInput(this)">
+            </div>
+            <div class="modal-actions" style="justify-content: flex-end;">
                 <button type="button" class="btn-liquid btn-act" onclick="closeModal('bulkBanModal')">Hủy</button>
-                <button type="button" class="btn-liquid btn-danger-liquid" style="padding:10px 20px;" onclick="executeBulkBan()">Khóa tất cả</button>
+                <button type="button" class="btn-liquid btn-danger-liquid" style="padding: 10px 20px;" onclick="executeBulkBan()">Khóa tất cả</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal Import/Export -->
+    <!-- Modal Nhập / Xuất Dữ Liệu -->
     <div class="modal-overlay" id="importExportModal">
-        <div class="modal" style="max-width:520px;">
-            <h3>&#128193; Nhập &amp; Xuất Dữ Liệu</h3>
-            <div style="margin-bottom:18px;">
-                <label style="display:block;font-size:12px;font-weight:800;color:var(--sky);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.7px;">&#128228; Xuất Dữ Liệu (Backup)</label>
-                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
-                    <button type="button" class="btn-liquid btn-act" onclick="exportData('txt')">&#128196; data.txt</button>
-                    <button type="button" class="btn-liquid btn-act" onclick="exportData('csv')">&#128202; Excel (.csv)</button>
-                    <button type="button" class="btn-liquid btn-act" onclick="exportData('json')">&#128230; JSON Backup</button>
+        <div class="modal" style="max-width: 520px;">
+            <h3>📁 Nhập &amp; Xuất Dữ Liệu</h3>
+            
+            <div style="margin-bottom: 18px;">
+                <label style="display: block; font-size: 12px; font-weight: 800; color: var(--sky); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.7px;">📤 Xuất Dữ Liệu (Backup)</label>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
+                    <button type="button" class="btn-liquid btn-act" onclick="exportData('txt')">📄 data.txt</button>
+                    <button type="button" class="btn-liquid btn-act" onclick="exportData('csv')">📊 Excel (.csv)</button>
+                    <button type="button" class="btn-liquid btn-act" onclick="exportData('json')">📦 JSON Backup</button>
                 </div>
             </div>
-            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:16px 0;">
+
+            <hr style="border: none; border-top: 1px solid rgba(255, 255, 255, 0.08); margin: 16px 0;">
+
             <div>
-                <label style="display:block;font-size:12px;font-weight:800;color:#34d399;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.7px;">&#128229; Nhập File từ Máy Tính</label>
-                <input type="file" id="fileInput" accept=".txt,.json,.csv" style="display:none;" onchange="handleFileSelected(event)">
-                <div style="display:flex;gap:8px;">
-                    <button type="button" class="btn-liquid btn-primary-liquid" style="flex:1;padding:12px;" onclick="document.getElementById('fileInput').click()">&#128194; Chọn File (.txt / .json)</button>
+                <label style="display: block; font-size: 12px; font-weight: 800; color: #34d399; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.7px;">📥 Nhập File từ Máy Tính</label>
+                <input type="file" id="fileInput" accept=".txt,.json,.csv" style="display: none;" onchange="handleFileSelected(event)">
+                <div style="display: flex; gap: 8px;">
+                    <button type="button" class="btn-liquid btn-primary-liquid" style="flex: 1; padding: 12px;" onclick="document.getElementById('fileInput').click()">
+                        📂 Chọn File (.txt / .json)
+                    </button>
                 </div>
-                <div style="margin-top:8px;font-size:11.5px;color:#475569;">Hỗ trợ định dạng file text gốc (tk:mk|status|unbanDate|note) hoặc tệp sao lưu JSON.</div>
+                <div style="margin-top: 8px; font-size: 11.5px; color: #64748b;">
+                    Hỗ trợ định dạng file text gốc (tk:mk|status|unbanDate|note) hoặc tệp sao lưu JSON.
+                </div>
             </div>
-            <div class="modal-actions" style="justify-content:flex-end;margin-top:24px;">
+
+            <div class="modal-actions" style="justify-content: flex-end; margin-top: 24px;">
                 <button type="button" class="btn-liquid btn-act" onclick="closeModal('importExportModal')">Đóng</button>
             </div>
         </div>
@@ -1038,9 +1449,15 @@
         let isSyncing = false;
         let pendingDeleteAction = null;
 
+        // --- UTILITY FUNCTIONS ---
         function escapeHtml(str) {
             if (!str) return '';
-            return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
         }
 
         function showCustomToast(message, type = 'success') {
@@ -1048,7 +1465,11 @@
             const toast = document.createElement('div');
             toast.className = `custom-toast toast-${type}`;
             const icon = type === 'info' ? '⚡' : (type === 'warn' ? '✕' : '✓');
-            toast.innerHTML = `<div class="toast-icon">${icon}</div><div class="toast-msg">${escapeHtml(message)}</div><div class="toast-progress"><div class="toast-progress-bar"></div></div>`;
+            toast.innerHTML = `
+                <div class="toast-icon">${icon}</div>
+                <div class="toast-msg">${escapeHtml(message)}</div>
+                <div class="toast-progress"><div class="toast-progress-bar"></div></div>
+            `;
             container.appendChild(toast);
             setTimeout(() => { toast.classList.add('hide'); setTimeout(() => toast.remove(), 300); }, 3000);
         }
@@ -1068,7 +1489,9 @@
             return decodeURIComponent(Array.prototype.map.call(atob(str), c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
         }
 
-        function extractUsername(accStr) { return (accStr || '').split(':')[0].trim().toLowerCase(); }
+        function extractUsername(accStr) {
+            return (accStr || '').split(':')[0].trim().toLowerCase();
+        }
 
         function parseDateString(str) {
             if (!str || str === '-' || str === 'Chưa rõ') return null;
@@ -1105,7 +1528,7 @@
             if (diff === null) return '';
             if (diff === 0) return '<span class="badge badge-today">Mở hôm nay</span>';
             if (diff > 0) return `<span class="badge badge-days">Còn ${diff} ngày</span>`;
-            return '<span class="badge badge-days" style="color:#64748b;border-color:rgba(255,255,255,0.12);">Đã quá hạn</span>';
+            return '<span class="badge badge-days" style="color: #94a3b8; border-color: rgba(255,255,255,0.12);">Đã quá hạn</span>';
         }
 
         function formatAccDisplay(accStr) {
@@ -1114,7 +1537,7 @@
             if (parts.length >= 2) {
                 const user = parts[0];
                 const pass = parts.slice(1).join(':');
-                return `${escapeHtml(user)}:<span style="letter-spacing:3px;color:#64748b;">${'•'.repeat(Math.min(Math.max(pass.length,6),12))}</span>`;
+                return `${escapeHtml(user)}:<span style="letter-spacing: 3px; color: #94a3b8;">${'•'.repeat(Math.min(Math.max(pass.length, 6), 12))}</span>`;
             }
             return escapeHtml(accStr);
         }
@@ -1129,127 +1552,202 @@
             else if (lower.includes('kim cương') || lower.includes('k.cương')) rankClass = 'badge-rank-kcuong';
             else if (lower.includes('bạch kim') || lower.includes('b.kim')) rankClass = 'badge-rank-bkim';
             else if (lower.includes('vàng')) rankClass = 'badge-rank-vang';
+
             return `<div class="acc-note ${rankClass}">📝 ${safeNote}</div>`;
         }
 
+        // --- MASK MODE TOGGLE ---
         function toggleMaskMode() {
             isMasked = !isMasked;
             appSettings.maskMode = isMasked;
             localStorage.setItem('vancau88_settings', JSON.stringify(appSettings));
-            updateMaskButton(); render();
+            updateMaskButton();
+            render();
             showCustomToast(isMasked ? 'Đã bật chế độ Ẩn Mật khẩu' : 'Đã hiện Mật khẩu', 'info');
         }
 
         function updateMaskButton() {
             const btn = document.getElementById('btnMaskToggle');
             if (!btn) return;
-            if (isMasked) { btn.innerHTML = '🔒 Đang Ẩn MK'; btn.classList.add('active'); }
-            else { btn.innerHTML = '👁️ Ẩn MK'; btn.classList.remove('active'); }
+            if (isMasked) {
+                btn.innerHTML = '🔒 Đang Ẩn MK';
+                btn.classList.add('active');
+            } else {
+                btn.innerHTML = '👁️ Ẩn MK';
+                btn.classList.remove('active');
+            }
         }
 
         // --- COPY FEATURE (GIỮ NGUYÊN TÍNH NĂNG SAO CHÉP CHUẨN XÁC) ---
         function copyAcc(text) {
             if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(text).then(() => { showCustomToast('Đã copy: ' + text, 'info'); }).catch(() => fallbackCopy(text));
-            } else { fallbackCopy(text); }
+                navigator.clipboard.writeText(text).then(() => {
+                    showCustomToast('Đã copy: ' + text, 'info');
+                }).catch(() => fallbackCopy(text));
+            } else {
+                fallbackCopy(text);
+            }
         }
 
         function fallbackCopy(text) {
             const ta = document.createElement('textarea');
-            ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-            document.body.appendChild(ta); ta.focus(); ta.select();
-            try { document.execCommand('copy'); showCustomToast('Đã copy: ' + text, 'info'); }
-            catch (err) { showCustomToast('Không thể sao chép!', 'warn'); }
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.select();
+            try {
+                document.execCommand('copy');
+                showCustomToast('Đã copy: ' + text, 'info');
+            } catch (err) {
+                showCustomToast('Không thể sao chép!', 'warn');
+            }
             document.body.removeChild(ta);
         }
 
+        // --- SEARCH, FILTER & SORT ---
         function handleSearch(val) {
             searchQuery = val.trim().toLowerCase();
             document.getElementById('btnClearSearch').style.display = searchQuery ? 'block' : 'none';
-            currentPage = 1; render();
+            currentPage = 1;
+            render();
         }
 
-        function clearSearch() { document.getElementById('searchInput').value = ''; handleSearch(''); }
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            handleSearch('');
+        }
 
         function setFilter(f) {
             currentFilter = f;
-            document.querySelectorAll('.btn-filter').forEach(b => b.classList.toggle('active', b.getAttribute('data-filter') === f));
-            currentPage = 1; render();
+            document.querySelectorAll('.btn-filter').forEach(b => {
+                b.classList.toggle('active', b.getAttribute('data-filter') === f);
+            });
+            currentPage = 1;
+            render();
         }
 
         function handleSort(sortKey) {
-            currentSort = sortKey; appSettings.sort = sortKey;
+            currentSort = sortKey;
+            appSettings.sort = sortKey;
             localStorage.setItem('vancau88_settings', JSON.stringify(appSettings));
-            currentPage = 1; render();
+            currentPage = 1;
+            render();
         }
 
         function getFilteredAndSortedAccounts() {
             let list = [...accounts];
-            if (currentFilter === 'sống') list = list.filter(a => a.status === 'sống');
-            else if (currentFilter === 'ban') list = list.filter(a => a.status === 'ban');
-            else if (currentFilter === 'today') list = list.filter(a => a.status === 'ban' && getRemainingDays(a.unbanDate) === 0);
 
+            // Filter by status/today
+            if (currentFilter === 'sống') {
+                list = list.filter(a => a.status === 'sống');
+            } else if (currentFilter === 'ban') {
+                list = list.filter(a => a.status === 'ban');
+            } else if (currentFilter === 'today') {
+                list = list.filter(a => a.status === 'ban' && getRemainingDays(a.unbanDate) === 0);
+            }
+
+            // Search Filter
             if (searchQuery) {
                 list = list.filter(a => {
-                    return (a.acc||'').toLowerCase().includes(searchQuery) ||
-                           (a.note||'').toLowerCase().includes(searchQuery) ||
-                           (a.unbanDate||'').toLowerCase().includes(searchQuery) ||
-                           (a.status||'').toLowerCase().includes(searchQuery);
+                    const accMatch = (a.acc || '').toLowerCase().includes(searchQuery);
+                    const noteMatch = (a.note || '').toLowerCase().includes(searchQuery);
+                    const dateMatch = (a.unbanDate || '').toLowerCase().includes(searchQuery);
+                    const statusMatch = (a.status || '').toLowerCase().includes(searchQuery);
+                    return accMatch || noteMatch || dateMatch || statusMatch;
                 });
             }
 
+            // Sorting
             list.sort((a, b) => {
-                if (currentSort === 'newest') return (b.id||0) - (a.id||0);
-                if (currentSort === 'oldest') return (a.id||0) - (b.id||0);
-                if (currentSort === 'nameAsc') return (a.acc||'').localeCompare(b.acc||'');
-                if (currentSort === 'nameDesc') return (b.acc||'').localeCompare(a.acc||'');
+                if (currentSort === 'newest') return (b.id || 0) - (a.id || 0);
+                if (currentSort === 'oldest') return (a.id || 0) - (b.id || 0);
+                if (currentSort === 'nameAsc') return (a.acc || '').localeCompare(b.acc || '');
+                if (currentSort === 'nameDesc') return (b.acc || '').localeCompare(a.acc || '');
                 if (currentSort === 'unbanSoon') {
-                    const da = parseDateString(a.unbanDate), db = parseDateString(b.unbanDate);
+                    const da = parseDateString(a.unbanDate);
+                    const db = parseDateString(b.unbanDate);
                     if (a.status !== 'ban' && b.status !== 'ban') return 0;
-                    if (a.status !== 'ban') return 1; if (b.status !== 'ban') return -1;
-                    if (!da && !db) return 0; if (!da) return 1; if (!db) return -1;
+                    if (a.status !== 'ban') return 1;
+                    if (b.status !== 'ban') return -1;
+                    if (!da && !db) return 0;
+                    if (!da) return 1;
+                    if (!db) return -1;
                     return da - db;
                 }
                 return 0;
             });
+
             return list;
         }
 
+        // --- PAGINATION ---
         function changeRowsPerPage(val) {
-            rowsPerPage = parseInt(val); appSettings.rowsPerPage = rowsPerPage;
+            rowsPerPage = parseInt(val);
+            appSettings.rowsPerPage = rowsPerPage;
             localStorage.setItem('vancau88_settings', JSON.stringify(appSettings));
-            currentPage = 1; render();
+            currentPage = 1;
+            render();
         }
 
-        function prevPage() { if (currentPage > 1) { currentPage--; render(); } }
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                render();
+            }
+        }
 
         function nextPage() {
             const filtered = getFilteredAndSortedAccounts();
             const totalPages = Math.ceil(filtered.length / rowsPerPage) || 1;
-            if (currentPage < totalPages) { currentPage++; render(); }
+            if (currentPage < totalPages) {
+                currentPage++;
+                render();
+            }
         }
 
-        function goToPage(p) { currentPage = p; render(); }
+        function goToPage(p) {
+            currentPage = p;
+            render();
+        }
 
+        // --- SELECTION & BULK ACTIONS ---
         function toggleSelectAll(checked) {
             const filtered = getFilteredAndSortedAccounts();
             const start = (currentPage - 1) * rowsPerPage;
             const pageItems = filtered.slice(start, start + rowsPerPage);
-            pageItems.forEach(item => { if (checked) selectedIds.add(item.id); else selectedIds.delete(item.id); });
-            updateBulkBar(); renderTableRowsOnly();
+
+            pageItems.forEach(item => {
+                if (checked) selectedIds.add(item.id);
+                else selectedIds.delete(item.id);
+            });
+            updateBulkBar();
+            renderTableRowsOnly();
         }
 
         function toggleSelectRow(id, checked) {
-            if (checked) selectedIds.add(id); else selectedIds.delete(id);
-            updateBulkBar(); updateCheckAllHeader();
+            if (checked) selectedIds.add(id);
+            else selectedIds.delete(id);
+            updateBulkBar();
+            updateCheckAllHeader();
         }
 
-        function deselectAll() { selectedIds.clear(); updateBulkBar(); renderTableRowsOnly(); }
+        function deselectAll() {
+            selectedIds.clear();
+            updateBulkBar();
+            renderTableRowsOnly();
+        }
 
         function updateBulkBar() {
-            const bar = document.getElementById('bulkBar'), cnt = document.getElementById('bulkCount');
-            if (selectedIds.size > 0) { bar.style.display = 'flex'; cnt.innerText = selectedIds.size; }
-            else { bar.style.display = 'none'; }
+            const bar = document.getElementById('bulkBar');
+            const cnt = document.getElementById('bulkCount');
+            if (selectedIds.size > 0) {
+                bar.style.display = 'flex';
+                cnt.innerText = selectedIds.size;
+            } else {
+                bar.style.display = 'none';
+            }
         }
 
         function updateCheckAllHeader() {
@@ -1258,14 +1756,18 @@
             const filtered = getFilteredAndSortedAccounts();
             const start = (currentPage - 1) * rowsPerPage;
             const pageItems = filtered.slice(start, start + rowsPerPage);
-            if (pageItems.length === 0) { chkAll.checked = false; return; }
+            if (pageItems.length === 0) {
+                chkAll.checked = false;
+                return;
+            }
             chkAll.checked = pageItems.every(item => selectedIds.has(item.id));
         }
 
         function bulkCopy() {
             const selectedAccs = accounts.filter(a => selectedIds.has(a.id));
             if (selectedAccs.length === 0) return;
-            copyAcc(selectedAccs.map(a => a.acc).join('\n'));
+            const text = selectedAccs.map(a => a.acc).join('\n');
+            copyAcc(text);
         }
 
         function bulkSetStatus(status) {
@@ -1273,24 +1775,38 @@
             accounts.forEach(a => {
                 if (selectedIds.has(a.id)) {
                     a.status = status;
-                    if (status === 'sống') { a.unbanDate = '-'; a.autoUnbanned = false; }
+                    if (status === 'sống') {
+                        a.unbanDate = '-';
+                        a.autoUnbanned = false;
+                    }
                     count++;
                 }
             });
-            deselectAll(); saveAndSync();
+            deselectAll();
+            saveAndSync();
             showCustomToast(`Đã chuyển ${count} tài khoản sang Sống!`, 'success');
         }
 
-        function openBulkBanModal() { document.getElementById('bulkBanDate').value = ''; openModal('bulkBanModal'); }
+        function openBulkBanModal() {
+            document.getElementById('bulkBanDate').value = '';
+            openModal('bulkBanModal');
+        }
 
         function executeBulkBan() {
             let dateVal = document.getElementById('bulkBanDate').value.trim();
             dateVal = formatRawDate(dateVal) || 'Chưa rõ';
             let count = 0;
             accounts.forEach(a => {
-                if (selectedIds.has(a.id)) { a.status = 'ban'; a.unbanDate = dateVal; a.autoUnbanned = false; count++; }
+                if (selectedIds.has(a.id)) {
+                    a.status = 'ban';
+                    a.unbanDate = dateVal;
+                    a.autoUnbanned = false;
+                    count++;
+                }
             });
-            closeModal('bulkBanModal'); deselectAll(); saveAndSync();
+            closeModal('bulkBanModal');
+            deselectAll();
+            saveAndSync();
             showCustomToast(`Đã khóa ${count} tài khoản!`, 'warn');
         }
 
@@ -1299,12 +1815,14 @@
             document.getElementById('confirmDeleteMsg').innerText = `Bạn có chắc chắn muốn xóa vĩnh viễn ${count} tài khoản đã chọn?`;
             pendingDeleteAction = () => {
                 accounts = accounts.filter(a => !selectedIds.has(a.id));
-                deselectAll(); saveAndSync();
+                deselectAll();
+                saveAndSync();
                 showCustomToast(`Đã xóa ${count} tài khoản!`, 'warn');
             };
             openModal('confirmDeleteModal');
         }
 
+        // --- MODAL CONTROLS ---
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
@@ -1317,8 +1835,8 @@
 
         function autoSaveConfig() {
             ghConfig = {
-                user: document.getElementById('ghUser').value.trim().replace('https://github.com/','').replace('/',''),
-                repo: document.getElementById('ghRepo').value.trim().replace('.git','').replace('/',''),
+                user: document.getElementById('ghUser').value.trim().replace('https://github.com/', '').replace('/', ''),
+                repo: document.getElementById('ghRepo').value.trim().replace('.git', '').replace('/', ''),
                 token: document.getElementById('ghToken').value.trim()
             };
             localStorage.setItem('vancau88_gh_config', JSON.stringify(ghConfig));
@@ -1326,7 +1844,10 @@
 
         async function testConnection() {
             autoSaveConfig();
-            if (!ghConfig.user || !ghConfig.repo || !ghConfig.token) { alert('Vui lòng điền đủ 3 ô: Username, Repo, và Token!'); return; }
+            if (!ghConfig.user || !ghConfig.repo || !ghConfig.token) {
+                alert('Vui lòng điền đủ 3 ô: Username, Repo, và Token!');
+                return;
+            }
             const url = `https://api.github.com/repos/${ghConfig.user}/${ghConfig.repo}`;
             try {
                 const res = await fetch(url, { headers: { 'Authorization': `token ${ghConfig.token}` } });
@@ -1335,28 +1856,54 @@
                 else if (res.status === 404) alert('❌ Sai Username hoặc Repo!');
                 else if (res.status === 403) alert('❌ Token thiếu quyền repo!');
                 else alert(`❌ Lỗi ${res.status}`);
-            } catch (e) { alert('Lỗi mạng: ' + e.message); }
+            } catch (e) {
+                alert('Lỗi mạng: ' + e.message);
+            }
         }
 
+        // --- GITHUB SYNC & AUTO UNBAN ---
         async function syncToGitHub() {
             if (isSyncing || !ghConfig.user || !ghConfig.repo || !ghConfig.token) return;
-            isSyncing = true; setSyncStatus('🔄 Đang lưu lên GitHub...', true);
-            const textLines = accounts.map(a => `${a.acc}|${a.status}|${a.unbanDate}|${a.note||''}`).join('\n');
+            isSyncing = true;
+            setSyncStatus('🔄 Đang lưu lên GitHub...', true);
+
+            const textLines = accounts.map(a => `${a.acc}|${a.status}|${a.unbanDate}|${a.note || ''}`).join('\n');
             const encodedContent = utf8ToBase64(textLines);
             const url = `https://api.github.com/repos/${ghConfig.user}/${ghConfig.repo}/contents/data.txt`;
+
             try {
                 let sha = null;
-                const getRes = await fetch(url + '?t=' + Date.now(), { headers: { 'Authorization': `token ${ghConfig.token}` } });
-                if (getRes.ok) { const getData = await getRes.json(); sha = getData.sha; }
+                const getRes = await fetch(url + '?t=' + Date.now(), {
+                    headers: { 'Authorization': `token ${ghConfig.token}` }
+                });
+                if (getRes.ok) {
+                    const getData = await getRes.json();
+                    sha = getData.sha;
+                }
+
                 const putRes = await fetch(url, {
                     method: 'PUT',
-                    headers: { 'Authorization': `token ${ghConfig.token}`, 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: 'Auto sync from web app ultra liquid', content: encodedContent, sha: sha || undefined })
+                    headers: {
+                        'Authorization': `token ${ghConfig.token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: 'Auto sync from web app ultra liquid',
+                        content: encodedContent,
+                        sha: sha || undefined
+                    })
                 });
-                if (putRes.ok) setSyncStatus('🟢 Đã lưu vào GitHub');
-                else setSyncStatus('⚠️ Lỗi lưu GitHub');
-            } catch (err) { setSyncStatus('⚠️ Lỗi kết nối'); }
-            finally { isSyncing = false; }
+
+                if (putRes.ok) {
+                    setSyncStatus('🟢 Đã lưu vào GitHub');
+                } else {
+                    setSyncStatus('⚠️ Lỗi lưu GitHub');
+                }
+            } catch (err) {
+                setSyncStatus('⚠️ Lỗi kết nối');
+            } finally {
+                isSyncing = false;
+            }
         }
 
         function checkAutoUnban() {
@@ -1365,7 +1912,12 @@
             accounts.forEach(acc => {
                 if (acc.status === 'ban') {
                     const target = parseDateString(acc.unbanDate);
-                    if (target && today >= target) { acc.status = 'sống'; acc.autoUnbanned = true; acc.unbanDate = '-'; updated = true; }
+                    if (target && today >= target) {
+                        acc.status = 'sống';
+                        acc.autoUnbanned = true;
+                        acc.unbanDate = '-';
+                        updated = true;
+                    }
                 }
             });
             return updated;
@@ -1373,27 +1925,41 @@
 
         async function autoPullData() {
             if (isSyncing) return;
+            
             let dataLoaded = false;
             if (ghConfig.user && ghConfig.repo && ghConfig.token) {
                 const url = `https://api.github.com/repos/${ghConfig.user}/${ghConfig.repo}/contents/data.txt?t=` + Date.now();
                 try {
                     const res = await fetch(url, { headers: { 'Authorization': `token ${ghConfig.token}` } });
-                    if (res.ok) { const data = await res.json(); parseAndLoadText(base64ToUtf8(data.content)); dataLoaded = true; setSyncStatus('🟢 Đã đồng bộ mới nhất'); }
+                    if (res.ok) {
+                        const data = await res.json();
+                        parseAndLoadText(base64ToUtf8(data.content));
+                        dataLoaded = true;
+                        setSyncStatus('🟢 Đã đồng bộ mới nhất');
+                    }
                 } catch(e) {}
             }
+
             if (!dataLoaded) {
                 try {
                     const res = await fetch('./data.txt?t=' + Date.now());
-                    if (res.ok) { const text = await res.text(); parseAndLoadText(text); }
+                    if (res.ok) {
+                        const text = await res.text();
+                        parseAndLoadText(text);
+                    }
                 } catch (e) {}
             }
-            if (checkAutoUnban()) saveAndSync();
+            
+            if (checkAutoUnban()) {
+                saveAndSync();
+            }
         }
 
         function parseAndLoadText(text, isAppend = false) {
             const lines = text.split('\n');
             const loaded = isAppend ? [...accounts] : [];
             let addedCount = 0;
+
             lines.forEach((line, idx) => {
                 const clean = line.trim();
                 if (!clean) return;
@@ -1402,16 +1968,24 @@
                 const status = (p[1] && p[1].trim().toLowerCase() === 'ban') ? 'ban' : 'sống';
                 const date = status === 'ban' ? (p[2] ? formatRawDate(p[2]) : 'Chưa rõ') : '-';
                 const note = p[3] ? p[3].trim() : '';
+
                 const uname = extractUsername(acc);
                 const exist = loaded.findIndex(item => extractUsername(item.acc) === uname);
                 if (exist !== -1) loaded.splice(exist, 1);
+
                 loaded.push({ id: Date.now() + idx + Math.floor(Math.random()*1000), acc, note, status, unbanDate: date, autoUnbanned: false });
                 addedCount++;
             });
-            if (loaded.length > 0) { accounts = loaded; localStorage.setItem('vancau88_accounts', JSON.stringify(accounts)); render(); }
+
+            if (loaded.length > 0) {
+                accounts = loaded;
+                localStorage.setItem('vancau88_accounts', JSON.stringify(accounts));
+                render();
+            }
             return addedCount;
         }
 
+        // --- THÊM / SỬA / XÓA ACC ---
         function handleAdd(e) {
             e.preventDefault();
             const accText = document.getElementById('accInfo').value.trim();
@@ -1419,21 +1993,44 @@
             const status = document.getElementById('accStatus').value;
             let dateVal = document.getElementById('unbanDate').value.trim();
             if (status === 'ban') dateVal = formatRawDate(dateVal);
+
             const lines = accText.split('\n');
             let addedCount = 0;
+
             lines.forEach((line, idx) => {
                 let rawLine = line.trim();
                 if (!rawLine) return;
-                let finalAcc = rawLine, finalNote = globalNote;
+
+                let finalAcc = rawLine;
+                let finalNote = globalNote;
+
                 const parts = rawLine.split(':');
-                if (parts.length >= 3) { finalAcc = parts[0].trim() + ':' + parts[1].trim(); finalNote = parts.slice(2).join(':').trim(); }
+                if (parts.length >= 3) {
+                    finalAcc = parts[0].trim() + ':' + parts[1].trim();
+                    finalNote = parts.slice(2).join(':').trim();
+                }
+
                 const uname = extractUsername(finalAcc);
                 const existIndex = accounts.findIndex(item => extractUsername(item.acc) === uname);
                 if (existIndex !== -1) accounts.splice(existIndex, 1);
-                accounts.unshift({ id: Date.now() + idx + Math.floor(Math.random()*1000), acc: finalAcc, note: finalNote, status, unbanDate: status === 'ban' ? (dateVal || 'Chưa rõ') : '-', autoUnbanned: false });
+
+                accounts.unshift({
+                    id: Date.now() + idx + Math.floor(Math.random()*1000),
+                    acc: finalAcc,
+                    note: finalNote,
+                    status: status,
+                    unbanDate: status === 'ban' ? (dateVal || 'Chưa rõ') : '-',
+                    autoUnbanned: false
+                });
                 addedCount++;
             });
-            if (addedCount > 0) { saveAndSync(); document.getElementById('accForm').reset(); toggleDateInput('accStatus','unbanDate'); showCustomToast(`Đã lưu ${addedCount} tài khoản!`, 'success'); }
+
+            if (addedCount > 0) {
+                saveAndSync();
+                document.getElementById('accForm').reset();
+                toggleDateInput('accStatus', 'unbanDate');
+                showCustomToast(`Đã lưu ${addedCount} tài khoản!`, 'success');
+            }
         }
 
         function openEditModal(id) {
@@ -1444,7 +2041,7 @@
             document.getElementById('editNote').value = item.note || '';
             document.getElementById('editStatus').value = item.status;
             document.getElementById('editDate').value = item.unbanDate === '-' ? '' : item.unbanDate;
-            toggleDateInput('editStatus','editDate');
+            toggleDateInput('editStatus', 'editDate');
             openModal('editModal');
         }
 
@@ -1452,17 +2049,22 @@
             const id = parseInt(document.getElementById('editId').value);
             const item = accounts.find(a => a.id === id);
             if (!item) return;
+
             const accStr = document.getElementById('editAcc').value.trim();
             const uname = extractUsername(accStr);
             const dup = accounts.findIndex(a => a.id !== id && extractUsername(a.acc) === uname);
             if (dup !== -1) accounts.splice(dup, 1);
+
             item.acc = accStr;
             item.note = document.getElementById('editNote').value.trim();
             item.status = document.getElementById('editStatus').value;
             let dateVal = document.getElementById('editDate').value.trim();
             item.unbanDate = item.status === 'ban' ? (formatRawDate(dateVal) || 'Chưa rõ') : '-';
-            item.autoUnbanned = false;
-            closeModal('editModal'); saveAndSync(); showCustomToast('Đã cập nhật!', 'success');
+            item.autoUnbanned = false; 
+
+            closeModal('editModal');
+            saveAndSync();
+            showCustomToast('Đã cập nhật!', 'success');
         }
 
         function confirmDeleteSingle(id) {
@@ -1471,98 +2073,154 @@
             document.getElementById('confirmDeleteMsg').innerText = `Bạn có chắc chắn muốn xóa tài khoản: ${item.acc}?`;
             pendingDeleteAction = () => {
                 accounts = accounts.filter(a => a.id !== id);
-                selectedIds.delete(id); updateBulkBar(); saveAndSync();
+                selectedIds.delete(id);
+                updateBulkBar();
+                saveAndSync();
                 showCustomToast('Đã xóa tài khoản!', 'warn');
             };
             openModal('confirmDeleteModal');
         }
 
         document.getElementById('btnConfirmDeleteExec').addEventListener('click', () => {
-            if (pendingDeleteAction) { pendingDeleteAction(); pendingDeleteAction = null; }
+            if (pendingDeleteAction) {
+                pendingDeleteAction();
+                pendingDeleteAction = null;
+            }
             closeModal('confirmDeleteModal');
         });
 
-        function openImportExportModal() { openModal('importExportModal'); }
+        // --- IMPORT / EXPORT MODAL ---
+        function openImportExportModal() {
+            openModal('importExportModal');
+        }
 
         function exportData(type) {
-            let dataStr = '', filename = '', mime = 'text/plain';
-            if (type === 'txt') { dataStr = accounts.map(a => `${a.acc}|${a.status}|${a.unbanDate}|${a.note||''}`).join('\n'); filename = 'data.txt'; }
-            else if (type === 'csv') {
-                const rows = [['Tài khoản : Mật khẩu','Trạng thái','Ngày mở ban','Ghi chú']];
-                accounts.forEach(a => rows.push([`"${(a.acc||'').replace(/"/g,'""')}"`,a.status,a.unbanDate,`"${(a.note||'').replace(/"/g,'""')}"`]));
-                dataStr = '\uFEFF' + rows.map(r => r.join(',')).join('\n'); filename = `accounts_${Date.now()}.csv`; mime = 'text/csv;charset=utf-8;';
-            } else if (type === 'json') { dataStr = JSON.stringify(accounts, null, 2); filename = `accounts_backup_${Date.now()}.json`; mime = 'application/json'; }
+            let dataStr = '';
+            let filename = '';
+            let mime = 'text/plain';
+
+            if (type === 'txt') {
+                dataStr = accounts.map(a => `${a.acc}|${a.status}|${a.unbanDate}|${a.note || ''}`).join('\n');
+                filename = 'data.txt';
+            } else if (type === 'csv') {
+                const rows = [['Tài khoản : Mật khẩu', 'Trạng thái', 'Ngày mở ban', 'Ghi chú']];
+                accounts.forEach(a => {
+                    rows.push([`"${(a.acc||'').replace(/"/g, '""')}"`, a.status, a.unbanDate, `"${(a.note||'').replace(/"/g, '""')}"`]);
+                });
+                dataStr = '\uFEFF' + rows.map(r => r.join(',')).join('\n');
+                filename = `accounts_${Date.now()}.csv`;
+                mime = 'text/csv;charset=utf-8;';
+            } else if (type === 'json') {
+                dataStr = JSON.stringify(accounts, null, 2);
+                filename = `accounts_backup_${Date.now()}.json`;
+                mime = 'application/json';
+            }
+
             const blob = new Blob([dataStr], { type: mime });
             const url = URL.createObjectURL(blob);
-            const a = document.createElement('a'); a.href = url; a.download = filename;
-            document.body.appendChild(a); a.click(); document.body.removeChild(a);
-            URL.revokeObjectURL(url); showCustomToast(`Đã xuất file ${filename}!`, 'success');
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showCustomToast(`Đã xuất file ${filename}!`, 'success');
         }
 
         function handleFileSelected(e) {
-            const file = e.target.files[0]; if (!file) return;
+            const file = e.target.files[0];
+            if (!file) return;
+
             const reader = new FileReader();
             reader.onload = function(evt) {
                 const content = evt.target.result;
                 try {
                     if (file.name.endsWith('.json')) {
                         const json = JSON.parse(content);
-                        if (Array.isArray(json)) { accounts = json; localStorage.setItem('vancau88_accounts', JSON.stringify(accounts)); saveAndSync(); showCustomToast(`Đã nạp ${accounts.length} acc từ file JSON!`, 'success'); }
-                    } else { const count = parseAndLoadText(content, false); saveAndSync(); showCustomToast(`Đã nạp ${count} tài khoản từ file!`, 'success'); }
-                } catch(err) { showCustomToast('File không đúng định dạng!', 'warn'); }
-                closeModal('importExportModal'); e.target.value = '';
+                        if (Array.isArray(json)) {
+                            accounts = json;
+                            localStorage.setItem('vancau88_accounts', JSON.stringify(accounts));
+                            saveAndSync();
+                            showCustomToast(`Đã nạp ${accounts.length} acc từ file JSON!`, 'success');
+                        }
+                    } else {
+                        const count = parseAndLoadText(content, false);
+                        saveAndSync();
+                        showCustomToast(`Đã nạp ${count} tài khoản từ file!`, 'success');
+                    }
+                } catch(err) {
+                    showCustomToast('File không đúng định dạng!', 'warn');
+                }
+                closeModal('importExportModal');
+                e.target.value = '';
             };
             reader.readAsText(file);
         }
 
-        function saveAndSync() { checkAutoUnban(); localStorage.setItem('vancau88_accounts', JSON.stringify(accounts)); render(); syncToGitHub(); }
+        function saveAndSync() {
+            checkAutoUnban(); 
+            localStorage.setItem('vancau88_accounts', JSON.stringify(accounts));
+            render();
+            syncToGitHub();
+        }
 
-        // --- INTERSECTION OBSERVER: Panel Reveal ---
+        // --- INTERSECTION OBSERVER FOR PANELS & ROWS ---
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) { entry.target.classList.add('is-visible'); revealObserver.unobserve(entry.target); }
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    revealObserver.unobserve(entry.target);
+                }
             });
-        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-        // --- INTERSECTION OBSERVER: Row Staggered Reveal ---
         let rowObserver = null;
-
         function initRowObserver() {
             if (rowObserver) rowObserver.disconnect();
             rowObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) { entry.target.classList.add('row-revealed'); rowObserver.unobserve(entry.target); }
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('row-revealed');
+                        rowObserver.unobserve(entry.target);
+                    }
                 });
-            }, { threshold: 0.05, rootMargin: '0px 0px -24px 0px' });
+            }, { threshold: 0.04, rootMargin: '0px 0px -20px 0px' });
+
             document.querySelectorAll('tbody tr.row-animated').forEach(tr => rowObserver.observe(tr));
         }
 
-        // --- DESKTOP 3D TILT on stat cards ---
+        // --- DESKTOP 3D TILT ON STAT CARDS ---
         document.querySelectorAll('.stat-card').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
-                const dx = (e.clientX - rect.left - rect.width/2) / (rect.width/2);
-                const dy = (e.clientY - rect.top - rect.height/2) / (rect.height/2);
-                card.style.transform = `perspective(600px) rotateY(${dx*6}deg) rotateX(${-dy*6}deg) translateY(-5px) scale(1.02)`;
-                card.classList.add('tilt-active');
+                const dx = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
+                const dy = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
+                card.style.transform = `perspective(600px) rotateY(${dx * 5}deg) rotateX(${-dy * 5}deg) translateY(-4px) scale(1.01)`;
             });
-            card.addEventListener('mouseleave', () => { card.style.transform = ''; card.classList.remove('tilt-active'); });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
         });
 
-        // --- RENDER ---
+        // --- RENDER FUNCTION ---
         function render() {
             const cntLive = accounts.filter(a => a.status === 'sống').length;
             const cntBanned = accounts.filter(a => a.status === 'ban').length;
             const cntToday = accounts.filter(a => a.status === 'ban' && getRemainingDays(a.unbanDate) === 0).length;
+
             document.getElementById('cntAll').innerText = accounts.length;
             document.getElementById('cntLive').innerText = cntLive;
             document.getElementById('cntBanned').innerText = cntBanned;
             document.getElementById('cntToday').innerText = cntToday;
+
             document.getElementById('btnCntAll').innerText = accounts.length;
             document.getElementById('btnCntLive').innerText = cntLive;
             document.getElementById('btnCntBanned').innerText = cntBanned;
             document.getElementById('btnCntToday').innerText = cntToday;
+
             renderTableRowsOnly();
         }
 
@@ -1570,71 +2228,135 @@
             const filtered = getFilteredAndSortedAccounts();
             const totalItems = filtered.length;
             const totalPages = Math.ceil(totalItems / rowsPerPage) || 1;
+
             if (currentPage > totalPages) currentPage = totalPages;
             if (currentPage < 1) currentPage = 1;
+
             const startIdx = (currentPage - 1) * rowsPerPage;
             const pageItems = filtered.slice(startIdx, startIdx + rowsPerPage);
+
             const tbody = document.getElementById('accList');
             tbody.innerHTML = '';
 
             if (totalItems === 0) {
-                tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:#475569;padding:52px 0;font-weight:600;font-size:14px;">Không tìm thấy tài khoản nào phù hợp</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #64748b; padding: 48px 0; font-weight: 600;">Không tìm thấy tài khoản nào phù hợp</td></tr>`;
             } else {
                 pageItems.forEach((item, index) => {
                     const isBan = item.status === 'ban';
                     const autoBadge = item.autoUnbanned ? `<span class="badge badge-auto">Vừa Mở</span>` : '';
                     const isChecked = selectedIds.has(item.id);
+
                     const tr = document.createElement('tr');
                     tr.className = 'row-animated';
                     tr.style.setProperty('--row-index', index);
+
                     tr.innerHTML = `
-                        <td class="col-check"><input type="checkbox" class="custom-check" ${isChecked ? 'checked' : ''} onchange="toggleSelectRow(${item.id}, this.checked)"></td>
-                        <td><div class="acc-text-box"><div class="acc-name">${formatAccDisplay(item.acc)}</div><div class="acc-tags-wrap">${formatNoteBadges(item.note)}</div></div></td>
-                        <td><span class="badge ${isBan ? 'badge-banned' : 'badge-live'}">${isBan ? '🔒 BAN' : '⚡ SỐNG'}</span>${autoBadge}</td>
-                        <td><span style="color:${isBan?'#e2e8f0':'#475569'};font-weight:600;">${escapeHtml(item.unbanDate)}</span>${isBan ? getRemainingBadge(item.unbanDate) : ''}</td>
-                        <td><div class="actions">
-                            <button type="button" class="btn-liquid btn-act btn-act-copy" data-id="${item.id}">Copy</button>
-                            <button type="button" class="btn-liquid btn-act" onclick="openEditModal(${item.id})">Sửa</button>
-                            <button type="button" class="btn-liquid btn-act" onclick="confirmDeleteSingle(${item.id})">Xóa</button>
-                        </div></td>
+                        <!-- Desktop Checkbox -->
+                        <td class="col-check">
+                            <input type="checkbox" class="custom-check" ${isChecked ? 'checked' : ''} onchange="toggleSelectRow(${item.id}, this.checked)">
+                        </td>
+
+                        <!-- Account & Notes Main Cell -->
+                        <td class="cell-acc-main">
+                            <!-- Mobile Card Top: Checkbox on Left + Status Badge on Right -->
+                            <div class="mobile-card-top">
+                                <label class="mobile-check-label">
+                                    <input type="checkbox" class="custom-check" ${isChecked ? 'checked' : ''} onchange="toggleSelectRow(${item.id}, this.checked)">
+                                    <span>Chọn</span>
+                                </label>
+                                <div>
+                                    <span class="badge ${isBan ? 'badge-banned' : 'badge-live'}">${isBan ? '🔒 BAN' : '⚡ SỐNG'}</span>
+                                    ${autoBadge}
+                                </div>
+                            </div>
+
+                            <!-- Account Details -->
+                            <div class="acc-text-box">
+                                <div class="acc-name">${formatAccDisplay(item.acc)}</div>
+                                <div class="acc-tags-wrap">${formatNoteBadges(item.note)}</div>
+                            </div>
+                        </td>
+
+                        <!-- Status (Desktop Only) -->
+                        <td class="desktop-only">
+                            <span class="badge ${isBan ? 'badge-banned' : 'badge-live'}">${isBan ? '🔒 BAN' : '⚡ SỐNG'}</span>
+                            ${autoBadge}
+                        </td>
+
+                        <!-- Expiration Date Cell -->
+                        <td class="cell-date-info">
+                            <div class="mobile-date-row">
+                                <span>Thời hạn: <b style="color: ${isBan ? '#f1f5f9' : '#64748b'};">${escapeHtml(item.unbanDate)}</b></span>
+                                ${isBan ? getRemainingBadge(item.unbanDate) : ''}
+                            </div>
+                        </td>
+
+                        <!-- Actions Cell -->
+                        <td class="cell-actions">
+                            <div class="actions">
+                                <button type="button" class="btn-liquid btn-act btn-act-copy" data-id="${item.id}">Copy</button>
+                                <button type="button" class="btn-liquid btn-act" onclick="openEditModal(${item.id})">Sửa</button>
+                                <button type="button" class="btn-liquid btn-act" onclick="confirmDeleteSingle(${item.id})">Xóa</button>
+                            </div>
+                        </td>
                     `;
-                    // Safe copy listener (giữ nguyên tính năng sao chép)
-                    tr.querySelector('.btn-act-copy').addEventListener('click', () => copyAcc(item.acc));
+
+                    // Safe Copy listener (1-click copy tk:mk with feedback toast)
+                    const copyBtn = tr.querySelector('.btn-act-copy');
+                    copyBtn.addEventListener('click', () => copyAcc(item.acc));
+
                     tbody.appendChild(tr);
                 });
+
                 requestAnimationFrame(() => initRowObserver());
             }
 
+            // Pagination info & controls
             const startDisplay = totalItems === 0 ? 0 : startIdx + 1;
             const endDisplay = Math.min(startIdx + rowsPerPage, totalItems);
-            document.getElementById('pageInfo').innerText = `Hiển thị ${startDisplay} – ${endDisplay} trong tổng số ${totalItems} tài khoản`;
+            document.getElementById('pageInfo').innerText = `Hiển thị ${startDisplay} - ${endDisplay} trong tổng số ${totalItems} tài khoản`;
+
             document.getElementById('btnPrevPage').disabled = currentPage <= 1;
             document.getElementById('btnNextPage').disabled = currentPage >= totalPages;
 
             const pageNumContainer = document.getElementById('pageNumbers');
             pageNumContainer.innerHTML = '';
+            
             let pStart = Math.max(1, currentPage - 2);
             let pEnd = Math.min(totalPages, pStart + 4);
             if (pEnd - pStart < 4) pStart = Math.max(1, pEnd - 4);
+
             for (let i = pStart; i <= pEnd; i++) {
                 const btn = document.createElement('button');
                 btn.className = `btn-liquid btn-page ${i === currentPage ? 'active' : ''}`;
-                btn.innerText = i; btn.onclick = () => goToPage(i);
+                btn.innerText = i;
+                btn.onclick = () => goToPage(i);
                 pageNumContainer.appendChild(btn);
             }
-            updateCheckAllHeader(); updateBulkBar();
+
+            updateCheckAllHeader();
+            updateBulkBar();
         }
 
         // --- INIT ---
         document.getElementById('sortSelect').value = currentSort;
         document.getElementById('rowsPerPageSelect').value = rowsPerPage;
-        updateMaskButton(); render(); autoPullData();
+        updateMaskButton();
+        render();
+        autoPullData();
 
         document.addEventListener("visibilitychange", () => {
-            if (document.visibilityState === "visible") { setSyncStatus('🔄 Đang kiểm tra dữ liệu mới...', true); autoPullData(); }
+            if (document.visibilityState === "visible") {
+                setSyncStatus('🔄 Đang kiểm tra dữ liệu mới...', true);
+                autoPullData();
+            }
         });
 
-        setInterval(() => { if (document.visibilityState === "visible") autoPullData(); }, 60000);
+        setInterval(() => {
+            if (document.visibilityState === "visible") {
+                autoPullData();
+            }
+        }, 60000);
     </script>
 </body>
 </html>

@@ -474,16 +474,92 @@
             font-size: 14px;
         }
 
-        .hint {
-            font-size: 12.5px;
-            color: #94a3b8;
-            margin-top: 12px;
+        /* ── Hint Box (Mẹo nhập liệu Liquid Glass Card) ── */
+        .hint-box {
+            margin-top: 14px;
+            padding: 12px 16px;
+            border-radius: var(--r-md);
+            background: rgba(56, 189, 248, 0.05);
+            border: 1px solid rgba(56, 189, 248, 0.18);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             display: flex;
             align-items: flex-start;
-            gap: 8px;
-            line-height: 1.5;
+            gap: 12px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
         }
-        .hint b { color: #e2e8f0; }
+
+        .hint-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            color: var(--sky);
+            flex-shrink: 0;
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+            margin-top: 1px;
+        }
+
+        .hint-content {
+            flex: 1;
+            font-size: 12.5px;
+            line-height: 1.55;
+            color: #94a3b8;
+        }
+
+        .hint-title {
+            font-weight: 800;
+            color: #e2e8f0;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hint-title span {
+            color: var(--sky);
+        }
+
+        .hint-list {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-top: 3px;
+        }
+
+        .hint-item {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .hint-code {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 11.5px;
+            font-weight: 700;
+            color: #7dd3fc;
+            background: rgba(14, 165, 233, 0.14);
+            border: 1px solid rgba(56, 189, 248, 0.28);
+            padding: 1px 7px;
+            border-radius: 6px;
+            letter-spacing: -0.2px;
+        }
+
+        .hint-arrow {
+            color: #38bdf8;
+            font-size: 12px;
+            font-weight: 700;
+        }
 
         /* ── Controls Panel ── */
         .controls-panel {
@@ -992,7 +1068,28 @@
             .form-grid { grid-template-columns: 1fr; gap: 10px; }
             .btn-add { width: 100%; height: auto; padding: 13px; font-size: 15px; border-radius: var(--r-md); }
             textarea#accInfo { min-height: 68px; }
-            .hint { font-size: 12px; margin-top: 10px; }
+            .hint-box {
+                padding: 10px 12px;
+                gap: 10px;
+                margin-top: 12px;
+            }
+            .hint-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 13px;
+                border-radius: 8px;
+            }
+            .hint-content {
+                font-size: 11.5px;
+            }
+            .hint-title {
+                font-size: 11px;
+                margin-bottom: 3px;
+            }
+            .hint-code {
+                font-size: 11px;
+                padding: 1px 5px;
+            }
 
             /* Controls: Search, Sort, Filter */
             .controls-panel { padding: 14px 16px; gap: 12px; margin-bottom: 12px; border-radius: var(--r-lg); }
@@ -1228,8 +1325,26 @@
                     <input type="text" id="unbanDate" placeholder="Mở ban (vd: 280826)" style="display: none;" onblur="formatDateInput(this)">
                     <button type="submit" class="btn-liquid btn-primary-liquid btn-add">+ Thêm Acc</button>
                 </div>
-                <div class="hint">
-                    💡 <b>Mẹo nhập liệu:</b> Hỗ trợ định dạng <b>tk:mk</b> hoặc <b>tk:mk:ghi_chú</b> (tự tách ghi chú). Nhập 6 số ngày như <b>280826</b> → <b>28/08/2026</b>.
+                <div class="hint-box">
+                    <div class="hint-icon">💡</div>
+                    <div class="hint-content">
+                        <div class="hint-title"><span>Mẹo Nhập Liệu</span> Nhanh &amp; Tự Động</div>
+                        <div class="hint-list">
+                            <div class="hint-item">
+                                <span>Định dạng:</span>
+                                <code class="hint-code">tk:mk</code>
+                                <span>hoặc</span>
+                                <code class="hint-code">tk:mk:ghi_chú</code>
+                                <span style="font-size: 11.5px; color: #64748b;">(tự tách rank/ghi chú)</span>
+                            </div>
+                            <div class="hint-item">
+                                <span>Ngày mở ban:</span>
+                                <code class="hint-code">280826</code>
+                                <span class="hint-arrow">➔</span>
+                                <code class="hint-code" style="color: #c084fc; border-color: rgba(192,132,252,0.35); background: rgba(192,132,252,0.14);">28/08/2026</code>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>

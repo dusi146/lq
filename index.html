@@ -89,8 +89,12 @@
         }
         input:focus, select:focus, textarea:focus { border-color: #38bdf8; background: #0f172a; }
         select option { background: #0b1120; color: #fff; }
-        textarea { resize: vertical; min-height: 45px; }
+        textarea { resize: vertical; min-height: 45px; line-height: 1.4; }
         .btn-add { padding: 13px 22px; white-space: nowrap; height: 45px; }
+
+        .hint {
+            font-size: 12.5px; color: #94a3b8; margin-top: 12px; display: flex; align-items: center; gap: 6px; line-height: 1.5;
+        }
 
         .toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px; }
         .filter-group { display: flex; background: rgba(11, 17, 32, 0.8); padding: 4px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); gap: 4px; }
@@ -211,14 +215,17 @@
         <div class="card-form liquid-glass">
             <form id="accForm" onsubmit="handleAdd(event)">
                 <div class="form-grid">
-                    <textarea id="accInfo" placeholder="Nhập nhiều acc bằng cách xuống dòng&#10;tk1:mk1&#10;tk2:mk2" required></textarea>
-                    <input type="text" id="accNote" placeholder="Ghi chú (Skin, Rank...)" autocomplete="off">
+                    <textarea id="accInfo" placeholder="Nhập nhiều acc (xuống dòng)&#10;tk1:mk1&#10;tk2:mk2:Acc rank vip" required></textarea>
+                    <input type="text" id="accNote" placeholder="Ghi chú chung (áp dụng cho acc không có ghi chú)" autocomplete="off">
                     <select id="accStatus" onchange="toggleDateInput('accStatus', 'unbanDate')">
                         <option value="sống">Sống</option>
                         <option value="ban">Bị Ban</option>
                     </select>
                     <input type="text" id="unbanDate" placeholder="Mở ban (100826)" style="display: none;" onblur="formatDateInput(this)">
                     <button type="submit" class="btn-liquid btn-primary-liquid btn-add">+ Thêm Acc</button>
+                </div>
+                <div class="hint">
+                    💡 <b>Mẹo nhập liệu:</b> Hỗ trợ định dạng <b>tk:mk</b> hoặc <b>tk:mk:ghi_chú</b> (hệ thống tự bóc tách Ghi chú ra khỏi tài khoản).
                 </div>
             </form>
         </div>
@@ -454,7 +461,6 @@
             }
         }
 
-        // Auto Unban logic (Kiểm tra xem quá hạn chưa thì mở Sống)
         function checkAutoUnban() {
             const today = new Date(); today.setHours(0,0,0,0);
             let updated = false;
@@ -499,7 +505,6 @@
                 } catch (e) {}
             }
             
-            // Xử lý auto unban cục bộ sau khi đã pull xong
             if (checkAutoUnban()) {
                 saveAndSync();
             }
@@ -531,11 +536,11 @@
             }
         }
 
-        // Chức năng thêm nhiều tài khoản bằng dấu xuống dòng
+        // --- XỬ LÝ TÁCH CHUỖI NHẬP ---
         function handleAdd(e) {
             e.preventDefault();
             const accText = document.getElementById('accInfo').value.trim();
-            const accNote = document.getElementById('accNote').value.trim();
+            const globalNote = document.getElementById('accNote').value.trim();
             const status = document.getElementById('accStatus').value;
             let dateVal = document.getElementById('unbanDate').value.trim();
             if (status === 'ban') dateVal = formatRawDate(dateVal);
@@ -544,17 +549,27 @@
             let addedCount = 0;
 
             lines.forEach((line, idx) => {
-                const accInfo = line.trim();
-                if (!accInfo) return;
+                let rawLine = line.trim();
+                if (!rawLine) return;
 
-                const uname = extractUsername(accInfo);
+                let finalAcc = rawLine;
+                let finalNote = globalNote;
+
+                // Nếu có định dạng tk:mk:ghichu (Cắt 2 cụm đầu làm tk:mk, phần còn lại làm Ghi chú)
+                const parts = rawLine.split(':');
+                if (parts.length >= 3) {
+                    finalAcc = parts[0].trim() + ':' + parts[1].trim();
+                    finalNote = parts.slice(2).join(':').trim(); // Lấy tất cả chữ sau dấu : thứ 2
+                }
+
+                const uname = extractUsername(finalAcc);
                 const existIndex = accounts.findIndex(item => extractUsername(item.acc) === uname);
                 if (existIndex !== -1) accounts.splice(existIndex, 1);
 
                 accounts.unshift({
-                    id: Date.now() + idx, // Đảm bảo ID không trùng
-                    acc: accInfo,
-                    note: accNote,
+                    id: Date.now() + idx,
+                    acc: finalAcc,
+                    note: finalNote,
                     status: status,
                     unbanDate: status === 'ban' ? (dateVal || 'Chưa rõ') : '-',
                     autoUnbanned: false
@@ -566,7 +581,7 @@
                 saveAndSync();
                 document.getElementById('accForm').reset();
                 toggleDateInput('accStatus', 'unbanDate');
-                showCustomToast(`Đã thêm ${addedCount} acc & Tự lưu!`, 'success');
+                showCustomToast(`Đã lưu ${addedCount} tài khoản!`, 'success');
             }
         }
 
@@ -598,17 +613,17 @@
             item.status = document.getElementById('editStatus').value;
             let dateVal = document.getElementById('editDate').value.trim();
             item.unbanDate = item.status === 'ban' ? (formatRawDate(dateVal) || 'Chưa rõ') : '-';
-            item.autoUnbanned = false; // Reset cờ vừa mở
+            item.autoUnbanned = false; 
 
             closeEditModal();
             saveAndSync();
-            showCustomToast('Đã cập nhật & Tự động lưu!', 'success');
+            showCustomToast('Đã cập nhật!', 'success');
         }
 
         function deleteAcc(id) {
             accounts = accounts.filter(item => item.id !== id);
             saveAndSync();
-            showCustomToast('Đã xóa & Tự động lưu!', 'warn');
+            showCustomToast('Đã xóa!', 'warn');
         }
 
         function copyAcc(text) {
@@ -624,7 +639,7 @@
         }
 
         function saveAndSync() {
-            checkAutoUnban(); // Luôn ktra xem có acc nào vừa đến hạn không
+            checkAutoUnban(); 
             localStorage.setItem('vancau88_accounts', JSON.stringify(accounts));
             render();
             syncToGitHub();
@@ -677,10 +692,8 @@
 
         render();
         
-        // 1. Kéo dữ liệu về ngay khi vừa mở web
         autoPullData();
 
-        // 2. CƠ CHẾ THÔNG MINH: Chỉ kéo dữ liệu khi bật sáng màn hình hoặc mở lại Tab
         document.addEventListener("visibilitychange", () => {
             if (document.visibilityState === "visible") {
                 setSyncStatus('🔄 Đang kiểm tra dữ liệu mới...', true);
@@ -688,7 +701,6 @@
             }
         });
 
-        // 3. Đồng bộ ngầm định kỳ mỗi 60 giây (Chống lag web, chống khóa API)
         setInterval(() => {
             if (document.visibilityState === "visible") {
                 autoPullData();

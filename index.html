@@ -3,216 +3,846 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>QUẢN LÝ ACC VANCAU88</title>
+    <title>QUẢN LÝ ACC VANCAU88 - ULTRA LIQUID PRO</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
-        :root { --primary-glow: rgba(139, 92, 246, 0.45); --live-glow: rgba(16, 185, 129, 0.3); --ban-glow: rgba(244, 63, 94, 0.3); }
+        /* ============================================================
+           RESET & ROOT TOKENS
+        ============================================================ */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --violet:      #7c3aed;
+            --indigo:      #4f46e5;
+            --cyan:        #06b6d4;
+            --sky:         #38bdf8;
+            --purple:      #a855f7;
+            --rose:        #f43f5e;
+            --amber:       #f59e0b;
+            --emerald:     #10b981;
+
+            --violet-glow: rgba(124, 58, 237, 0.45);
+            --cyan-glow:   rgba(6, 182, 212, 0.4);
+            --live-glow:   rgba(16, 185, 129, 0.38);
+            --ban-glow:    rgba(244, 63, 94, 0.38);
+            --amber-glow:  rgba(245, 158, 11, 0.32);
+
+            --glass-deep:      rgba(8, 12, 28, 0.70);
+            --glass-card:      rgba(14, 20, 44, 0.72);
+            --glass-row:       rgba(255, 255, 255, 0.028);
+            --glass-row-hover: rgba(255, 255, 255, 0.055);
+            --glass-border:    rgba(255, 255, 255, 0.10);
+            --glass-border-bright: rgba(255, 255, 255, 0.24);
+            --glass-inset-hi:  rgba(255, 255, 255, 0.18);
+            --glass-inset-lo:  rgba(0, 0, 0, 0.32);
+
+            --r-xl: 28px;
+            --r-lg: 20px;
+            --r-md: 14px;
+            --r-sm: 10px;
+            --r-xs: 8px;
+
+            --spring: cubic-bezier(0.16, 1, 0.3, 1);
+            --smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Fira Mono', monospace;
+        }
+
+        /* ============================================================
+           BODY & BACKGROUND
+        ============================================================ */
+        html { scroll-behavior: smooth; }
 
         body {
+            font-family: var(--font-sans);
             min-height: 100vh;
-            background-color: #060914;
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.25) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.2) 0px, transparent 50%),
-                radial-gradient(at 50% 50%, rgba(139, 92, 246, 0.15) 0px, transparent 50%);
-            background-attachment: fixed;
-            color: #f1f5f9;
-            padding: 24px 12px 60px;
+            background-color: #04060f;
+            color: #e8edf5;
+            padding: 32px 16px 100px;
             display: flex;
             justify-content: center;
             overflow-x: hidden;
             position: relative;
+            line-height: 1.5;
         }
 
-        .container { width: 100%; max-width: 1020px; position: relative; z-index: 1; }
+        /* Mesh Aurora Background */
+        .aurora-bg {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
 
-        .liquid-glass {
-            background: rgba(18, 24, 43, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 24px;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+        .aurora-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.38;
+            mix-blend-mode: screen;
+            will-change: transform;
+        }
+
+        .blob-1 {
+            width: 560px; height: 560px;
+            background: radial-gradient(circle at 40% 40%, #4f46e5 0%, transparent 68%);
+            top: -12%; left: -8%;
+            animation: aurora1 24s ease-in-out infinite alternate;
+        }
+        .blob-2 {
+            width: 640px; height: 640px;
+            background: radial-gradient(circle at 60% 50%, #06b6d4 0%, transparent 68%);
+            bottom: -18%; right: -12%;
+            animation: aurora2 28s ease-in-out infinite alternate;
+        }
+        .blob-3 {
+            width: 480px; height: 480px;
+            background: radial-gradient(circle at 50% 50%, #7c3aed 0%, transparent 65%);
+            top: 38%; left: 48%;
+            transform: translate(-50%, -50%);
+            animation: aurora3 20s ease-in-out infinite alternate;
+        }
+        .blob-4 {
+            width: 420px; height: 420px;
+            background: radial-gradient(circle at 50% 60%, #0e7490 0%, transparent 65%);
+            top: 70%; left: 8%;
+            animation: aurora4 26s ease-in-out infinite alternate;
+        }
+
+        @keyframes aurora1 {
+            0%   { transform: translate(0,0) scale(1.00); }
+            50%  { transform: translate(70px,-50px) scale(1.15); }
+            100% { transform: translate(30px,40px) scale(0.90); }
+        }
+        @keyframes aurora2 {
+            0%   { transform: translate(0,0) scale(1.00); }
+            50%  { transform: translate(-60px,55px) scale(1.12); }
+            100% { transform: translate(50px,-35px) scale(0.95); }
+        }
+        @keyframes aurora3 {
+            0%   { transform: translate(-50%,-50%) scale(1.00); }
+            50%  { transform: translate(-50%,-50%) scale(1.20); }
+            100% { transform: translate(-50%,-50%) scale(0.88); }
+        }
+        @keyframes aurora4 {
+            0%   { transform: translate(0,0) scale(1.00); }
+            50%  { transform: translate(80px,-40px) scale(1.10); }
+            100% { transform: translate(-30px,60px) scale(0.92); }
+        }
+
+        .noise-overlay {
+            position: fixed;
+            inset: 0;
+            background-image: radial-gradient(rgba(255,255,255,0.025) 1px, transparent 0);
+            background-size: 26px 26px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ============================================================
+           CONTAINER
+        ============================================================ */
+        .container {
+            width: 100%;
+            max-width: 1140px;
             position: relative;
+            z-index: 1;
+            animation: containerIn 0.7s var(--spring) both;
         }
 
-        .btn-liquid {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            color: #fff; font-weight: 700; border-radius: 16px; cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: all 0.2s ease;
+        @keyframes containerIn {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
-        .btn-liquid:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.3); }
-        .btn-liquid:active { transform: scale(0.96); }
+
+        /* ============================================================
+           LIQUID GLASS BASE
+        ============================================================ */
+        .liquid-glass {
+            background: var(--glass-card);
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--r-xl);
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.12),
+                0 16px 40px rgba(0,0,0,0.50),
+                0 40px 80px rgba(0,0,0,0.30),
+                inset 0 1px 0 var(--glass-inset-hi),
+                inset 0 -1px 0 var(--glass-inset-lo);
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s var(--smooth), box-shadow 0.3s var(--smooth);
+        }
+
+        .liquid-glass::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(135deg,
+                rgba(255,255,255,0.10) 0%,
+                rgba(255,255,255,0.02) 50%,
+                transparent 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Light sweep */
+        .liquid-glass::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -80%;
+            width: 55%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(255,255,255,0.06) 50%,
+                transparent 100%);
+            transform: skewX(-18deg);
+            pointer-events: none;
+            animation: glassSweep 14s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes glassSweep {
+            0%, 70%  { left: -80%; opacity: 0; }
+            72%      { opacity: 1; }
+            100%     { left: 220%; opacity: 0; }
+        }
+
+        /* ============================================================
+           SCROLL REVEAL — Intersection Observer driven
+        ============================================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px) scale(0.97);
+            will-change: transform, opacity;
+            transition:
+                opacity 0.65s var(--spring),
+                transform 0.65s var(--spring);
+        }
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* ============================================================
+           BUTTONS
+        ============================================================ */
+        .btn-liquid {
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.14);
+            color: #fff;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 13px;
+            border-radius: var(--r-lg);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.14);
+            transition: all 0.22s var(--spring);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            position: relative;
+            overflow: hidden;
+            will-change: transform;
+        }
+
+        .btn-liquid::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.22s var(--smooth);
+            pointer-events: none;
+        }
+
+        .btn-liquid:hover {
+            transform: translateY(-2px) scale(1.01);
+            border-color: rgba(255,255,255,0.30);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.28);
+        }
+        .btn-liquid:hover::after { opacity: 1; }
+        .btn-liquid:active { transform: scale(0.96) translateY(0); box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
 
         .btn-primary-liquid {
-            background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
-            border: 1px solid rgba(255,255,255,0.3);
-            box-shadow: 0 6px 20px rgba(6,182,212,0.3);
+            background: linear-gradient(130deg, #0ea5e9 0%, #7c3aed 55%, #db2777 100%);
+            background-size: 200% 200%;
+            animation: btnGradient 7s ease infinite;
+            border-color: rgba(255,255,255,0.30);
+            box-shadow: 0 4px 20px rgba(6,182,212,0.32), 0 8px 32px rgba(124,58,237,0.25), inset 0 1px 0 rgba(255,255,255,0.38);
+        }
+        .btn-primary-liquid:hover {
+            box-shadow: 0 6px 28px rgba(6,182,212,0.48), 0 12px 40px rgba(124,58,237,0.40), inset 0 1px 0 rgba(255,255,255,0.45);
         }
 
-        .header-bar {
-            display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;
+        @keyframes btnGradient {
+            0%   { background-position: 0%   50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0%   50%; }
         }
-        .brand-badge {
-            display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px;
-            background: rgba(139,92,246,0.15); border: 1px solid rgba(139,92,246,0.35);
-            border-radius: 999px; font-size: 10.5px; letter-spacing: 1.5px; font-weight: 800; color: #d8b4fe; margin-bottom: 6px;
-        }
-        .brand-badge span { width: 6px; height: 6px; background: #c084fc; border-radius: 50%; }
-        h1 {
-            font-size: clamp(22px, 5vw, 32px); font-weight: 900; letter-spacing: 0.5px; text-transform: uppercase;
-            background: linear-gradient(135deg, #fff 0%, #38bdf8 45%, #c084fc 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+
+        .btn-danger-liquid {
+            background: linear-gradient(135deg, #f43f5e 0%, #be123c 100%);
+            border-color: rgba(255,255,255,0.25);
+            box-shadow: 0 4px 18px rgba(244,63,94,0.38);
         }
 
         .btn-config-main {
-            padding: 10px 18px; font-size: 13px; display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(245, 158, 11, 0.2);
-            border: 1px solid rgba(245, 158, 11, 0.4); color: #fbbf24;
+            background: rgba(245,158,11,0.14);
+            border-color: rgba(245,158,11,0.38);
+            color: #fbbf24;
+        }
+        .btn-config-main:hover { background: rgba(245,158,11,0.24); box-shadow: 0 0 22px rgba(245,158,11,0.32); }
+
+        .btn-mask-toggle {
+            background: rgba(14,165,233,0.14);
+            border-color: rgba(14,165,233,0.38);
+            color: var(--sky);
+        }
+        .btn-mask-toggle.active {
+            background: rgba(124,58,237,0.24);
+            border-color: rgba(167,139,250,0.55);
+            color: #c4b5fd;
+            box-shadow: 0 0 22px rgba(124,58,237,0.32);
         }
 
-        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
-        .stat-card { padding: 14px 18px; border-radius: 20px; display: flex; align-items: center; justify-content: space-between; }
-        .stat-info span { font-size: 10.5px; color: #94a3b8; font-weight: 700; text-transform: uppercase; display: block; }
-        .stat-info h2 { font-size: clamp(18px, 4vw, 24px); font-weight: 900; margin-top: 2px; }
-        .stat-icon { width: 38px; height: 38px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; background: rgba(255,255,255,0.06); }
+        /* ============================================================
+           HEADER
+        ============================================================ */
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 26px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
 
-        .card-form { padding: 18px; margin-bottom: 16px; }
-        .form-grid { display: grid; grid-template-columns: 2fr 1.5fr 1.1fr 1.1fr auto; gap: 10px; align-items: start; }
-        
+        .brand-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 5px 16px;
+            background: rgba(124,58,237,0.16);
+            border: 1px solid rgba(167,139,250,0.40);
+            border-radius: 999px;
+            font-size: 10.5px;
+            letter-spacing: 1.8px;
+            font-weight: 800;
+            color: #c4b5fd;
+            text-transform: uppercase;
+            margin-bottom: 7px;
+            box-shadow: 0 0 20px rgba(124,58,237,0.20);
+        }
+
+        .brand-badge-dot {
+            width: 7px; height: 7px;
+            background: #a78bfa;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #a78bfa, 0 0 16px rgba(167,139,250,0.6);
+            animation: breatheDot 2.2s ease-in-out infinite;
+        }
+
+        @keyframes breatheDot {
+            0%, 100% { transform: scale(1);   opacity: 1; }
+            50%       { transform: scale(1.5); opacity: 0.55; }
+        }
+
+        h1 {
+            font-size: clamp(22px, 5.5vw, 34px);
+            font-weight: 900;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            line-height: 1.1;
+            background: linear-gradient(130deg, #ffffff 0%, #7dd3fc 30%, #a78bfa 65%, #f9a8d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .btn-header { padding: 10px 18px; }
+
+        /* ============================================================
+           STATS GRID
+        ============================================================ */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            padding: 20px 22px;
+            border-radius: var(--r-xl);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: transform 0.28s var(--spring), box-shadow 0.28s var(--spring), border-color 0.28s var(--smooth);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px) scale(1.015);
+            border-color: var(--glass-border-bright);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.28);
+        }
+
+        .stat-card.tilt-active { transition: transform 0.1s linear; }
+
+        .stat-info span {
+            display: block; font-size: 10.5px; color: #94a3b8;
+            font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px;
+        }
+
+        .stat-info h2 {
+            font-size: clamp(22px, 4vw, 30px);
+            font-weight: 900; margin-top: 4px;
+            letter-spacing: -0.5px; line-height: 1;
+        }
+
+        .stat-icon {
+            width: 46px; height: 46px;
+            border-radius: var(--r-md);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.10);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.22);
+            transition: transform 0.28s var(--spring);
+            flex-shrink: 0;
+        }
+        .stat-card:hover .stat-icon { transform: scale(1.12) rotate(6deg); }
+
+        /* ============================================================
+           FORM CARD
+        ============================================================ */
+        .card-form { padding: 22px 24px; margin-bottom: 18px; }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 2fr 1.6fr 1.1fr 1.1fr auto;
+            gap: 12px;
+            align-items: start;
+        }
+
         input, select, textarea {
-            width: 100%; padding: 12px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.14);
-            background: #0b1120; color: #f8fafc; outline: none; font-size: 13.5px; font-family: 'Plus Jakarta Sans', sans-serif;
+            width: 100%;
+            padding: 13px 18px;
+            border-radius: var(--r-md);
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(6,10,26,0.78);
+            color: #f1f5f9;
+            outline: none;
+            font-size: 13.5px;
+            font-family: var(--font-sans);
+            transition: border-color 0.22s var(--smooth), box-shadow 0.22s var(--smooth), background 0.22s var(--smooth);
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.35);
         }
-        input:focus, select:focus, textarea:focus { border-color: #38bdf8; background: #0f172a; }
-        select option { background: #0b1120; color: #fff; }
-        textarea { resize: vertical; min-height: 45px; line-height: 1.4; }
-        .btn-add { padding: 13px 22px; white-space: nowrap; height: 45px; }
+
+        input::placeholder, textarea::placeholder { color: #475569; }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--sky);
+            background: rgba(8,14,36,0.95);
+            box-shadow: 0 0 0 3px rgba(56,189,248,0.12), 0 0 20px rgba(56,189,248,0.18), inset 0 2px 5px rgba(0,0,0,0.35);
+        }
+
+        select option { background: #0b1120; color: #f1f5f9; }
+
+        textarea {
+            resize: vertical; min-height: 50px; line-height: 1.55;
+            font-family: var(--font-mono); font-size: 13px;
+        }
+
+        .btn-add { padding: 13px 26px; white-space: nowrap; height: 50px; font-size: 14px; }
 
         .hint {
-            font-size: 12.5px; color: #94a3b8; margin-top: 12px; display: flex; align-items: center; gap: 6px; line-height: 1.5;
+            font-size: 12.5px; color: #64748b; margin-top: 14px;
+            display: flex; align-items: flex-start; gap: 8px; line-height: 1.55;
+        }
+        .hint b { color: #94a3b8; }
+
+        /* ============================================================
+           CONTROLS PANEL
+        ============================================================ */
+        .controls-panel { padding: 18px 22px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 14px; }
+
+        .search-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+
+        .search-box { flex: 1; min-width: 260px; position: relative; display: flex; align-items: center; }
+        .search-box input { padding-left: 46px; padding-right: 40px; height: 46px; }
+
+        .search-icon { position: absolute; left: 16px; font-size: 16px; color: #64748b; pointer-events: none; z-index: 1; }
+
+        .btn-clear-search {
+            position: absolute; right: 14px; background: none; border: none;
+            color: #64748b; cursor: pointer; font-size: 15px; display: none;
+            transition: color 0.2s; z-index: 1;
+        }
+        .btn-clear-search:hover { color: #f1f5f9; }
+
+        .sort-select-wrap { display: flex; align-items: center; gap: 8px; min-width: 195px; }
+        .sort-select-wrap select { height: 46px; padding: 8px 14px; font-size: 13px; font-weight: 700; }
+
+        .filter-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+
+        .filter-group {
+            display: flex;
+            background: rgba(6,10,26,0.82);
+            padding: 4px; border-radius: var(--r-md);
+            border: 1px solid rgba(255,255,255,0.08);
+            gap: 3px; flex-wrap: wrap;
         }
 
-        .toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px; }
-        .filter-group { display: flex; background: rgba(11, 17, 32, 0.8); padding: 4px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); gap: 4px; }
-        .btn-filter { background: transparent; border: none; color: #94a3b8; cursor: pointer; padding: 7px 14px; border-radius: 12px; font-size: 12.5px; font-weight: 700; }
-        .btn-filter.active { background: rgba(56,189,248,0.25); color: #38bdf8; border: 1px solid rgba(56,189,248,0.4); }
+        .btn-filter {
+            background: transparent; border: 1px solid transparent;
+            color: #64748b; cursor: pointer; padding: 8px 17px;
+            border-radius: var(--r-sm); font-size: 12.5px; font-weight: 700;
+            font-family: var(--font-sans); transition: all 0.22s var(--spring);
+        }
+        .btn-filter:hover { color: #cbd5e1; background: rgba(255,255,255,0.05); }
+        .btn-filter.active {
+            background: rgba(56,189,248,0.18); color: var(--sky);
+            border-color: rgba(56,189,248,0.40); box-shadow: 0 0 14px rgba(56,189,248,0.22);
+        }
 
         .sync-badge {
-            font-size: 12px; font-weight: 600; padding: 7px 14px; border-radius: 12px;
-            display: inline-flex; align-items: center; gap: 6px;
-            background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399;
+            font-size: 12.5px; font-weight: 700; padding: 8px 16px;
+            border-radius: var(--r-md); display: inline-flex; align-items: center; gap: 7px;
+            background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.30);
+            color: #34d399; box-shadow: 0 0 14px rgba(16,185,129,0.12);
+            transition: all 0.3s var(--smooth);
         }
         .sync-badge.syncing {
-            background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.3); color: #38bdf8;
+            background: rgba(56,189,248,0.14); border-color: rgba(56,189,248,0.40);
+            color: var(--sky); box-shadow: 0 0 16px rgba(56,189,248,0.22);
         }
 
-        .table-wrap { border-radius: 22px; overflow: hidden; }
-        table { width: 100%; border-collapse: collapse; text-align: left; }
-        th, td { padding: 14px 18px; font-size: 13.5px; vertical-align: middle; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        th { background: #0b1120; color: #94a3b8; font-weight: 800; text-transform: uppercase; font-size: 11px; letter-spacing: 0.8px; }
+        /* ============================================================
+           BULK ACTION BAR
+        ============================================================ */
+        .bulk-bar {
+            display: none;
+            background: rgba(15,25,52,0.95);
+            border: 1px solid rgba(56,189,248,0.45);
+            padding: 13px 20px; border-radius: var(--r-xl);
+            margin-bottom: 14px; align-items: center;
+            justify-content: space-between; flex-wrap: wrap; gap: 10px;
+            box-shadow: 0 12px 36px rgba(0,0,0,0.60), 0 0 28px rgba(56,189,248,0.18);
+            animation: slideDown 0.32s var(--spring);
+        }
 
-        .acc-name { font-weight: 700; color: #f8fafc; word-break: break-all; }
-        .acc-note { font-size: 12px; color: #38bdf8; margin-top: 4px; display: inline-flex; align-items: center; gap: 4px; background: rgba(56,189,248,0.1); padding: 2px 8px; border-radius: 8px; border: 1px solid rgba(56,189,248,0.25); max-width: 100%; word-break: break-word;}
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-14px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
 
-        .badge { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 10px; font-size: 11px; font-weight: 800; text-transform: uppercase; }
-        .badge-live { background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(52,211,153,0.35); }
-        .badge-banned { background: rgba(244,63,94,0.15); color: #fb7185; border: 1px solid rgba(251,113,133,0.35); }
-        .badge-days { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(252,211,77,0.3); margin-left: 6px; font-weight: 600; text-transform: none; }
-        .badge-today { background: rgba(6,182,212,0.2); color: #38bdf8; border: 1px solid rgba(56,189,248,0.4); margin-left: 6px; }
-        .badge-auto { background: rgba(168, 85, 247, 0.2); color: #d8b4fe; border: 1px solid rgba(216, 180, 254, 0.35); margin-left: 6px; font-size: 10px; }
+        .bulk-info { font-size: 13.5px; font-weight: 800; color: var(--sky); display: flex; align-items: center; gap: 8px; }
+        .bulk-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+        .btn-bulk { padding: 7px 15px; font-size: 12px; font-weight: 700; border-radius: var(--r-sm); }
 
-        .actions { display: flex; gap: 6px; justify-content: flex-end; }
-        .btn-act { padding: 6px 12px; font-size: 12px; font-weight: 700; border-radius: 10px; }
+        /* ============================================================
+           TABLE
+        ============================================================ */
+        .table-wrap { border-radius: var(--r-xl); overflow: hidden; margin-bottom: 18px; }
 
+        table { width: 100%; border-collapse: collapse; text-align: left; position: relative; z-index: 2; }
+
+        th, td { padding: 15px 20px; font-size: 13.5px; vertical-align: middle; border-bottom: 1px solid rgba(255,255,255,0.05); }
+
+        th {
+            background: rgba(6,10,26,0.92); color: #64748b;
+            font-weight: 800; text-transform: uppercase; font-size: 11px;
+            letter-spacing: 1.1px; white-space: nowrap;
+        }
+
+        /* Staggered row reveal — IO triggers */
+        tbody tr {
+            background: var(--glass-row);
+            transition: background 0.22s var(--smooth);
+            will-change: transform, opacity;
+        }
+
+        tbody tr.row-animated {
+            opacity: 0;
+            transform: translateY(18px) scale(0.97);
+        }
+
+        tbody tr.row-revealed {
+            animation: rowReveal 0.48s var(--spring) both;
+            animation-delay: calc(var(--row-index) * 32ms);
+        }
+
+        @keyframes rowReveal {
+            from { opacity: 0; transform: translateY(18px) scale(0.96); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        tbody tr:hover { background: var(--glass-row-hover); }
+
+        .col-check { width: 48px; text-align: center; }
+
+        .custom-check { width: 17px; height: 17px; accent-color: var(--sky); cursor: pointer; transition: transform 0.18s var(--spring); }
+        .custom-check:hover { transform: scale(1.2); }
+
+        .acc-text-box { display: flex; flex-direction: column; gap: 6px; }
+
+        .acc-name {
+            font-family: var(--font-mono); font-size: 13.5px;
+            font-weight: 700; color: #f1f5f9; letter-spacing: -0.2px; word-break: break-all;
+        }
+
+        .acc-tags-wrap { display: flex; flex-wrap: wrap; gap: 6px; }
+
+        .acc-note {
+            font-size: 11.5px; font-weight: 600; color: #94a3b8;
+            display: inline-flex; align-items: center; gap: 5px;
+            background: rgba(255,255,255,0.05); padding: 3px 10px;
+            border-radius: 999px; border: 1px solid rgba(255,255,255,0.09);
+            word-break: break-word; backdrop-filter: blur(6px);
+        }
+
+        /* Rank badges */
+        .badge-rank-vang    { background:rgba(234,179,8,0.15);  color:#fde047; border:1px solid rgba(234,179,8,0.42);  box-shadow:0 0 14px rgba(234,179,8,0.18); }
+        .badge-rank-bkim    { background:rgba(56,189,248,0.15); color:#7dd3fc; border:1px solid rgba(56,189,248,0.42); box-shadow:0 0 14px rgba(56,189,248,0.18); }
+        .badge-rank-kcuong  { background:rgba(167,139,250,0.15);color:#c4b5fd; border:1px solid rgba(167,139,250,0.42);box-shadow:0 0 14px rgba(167,139,250,0.18); }
+        .badge-rank-tanhanh { background:rgba(236,72,153,0.15); color:#f9a8d4; border:1px solid rgba(236,72,153,0.42); box-shadow:0 0 14px rgba(236,72,153,0.18); }
+        .badge-rank-caothu  { background:rgba(239,68,68,0.15);  color:#fca5a5; border:1px solid rgba(239,68,68,0.42);  box-shadow:0 0 14px rgba(239,68,68,0.18); }
+
+        /* Status badges */
+        .badge {
+            display: inline-flex; align-items: center;
+            padding: 5px 13px; border-radius: 12px;
+            font-size: 10.5px; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 0.6px;
+        }
+
+        .badge-live {
+            background: rgba(16,185,129,0.13); color: #34d399;
+            border: 1px solid rgba(52,211,153,0.38); box-shadow: 0 0 16px rgba(16,185,129,0.18);
+        }
+        .badge-banned {
+            background: rgba(244,63,94,0.13); color: #fb7185;
+            border: 1px solid rgba(251,113,133,0.38); box-shadow: 0 0 16px rgba(244,63,94,0.18);
+        }
+        .badge-days {
+            background: rgba(245,158,11,0.16); color: #fcd34d;
+            border: 1px solid rgba(252,211,77,0.38); margin-left: 6px;
+            font-weight: 700; text-transform: none; box-shadow: 0 0 12px rgba(245,158,11,0.14);
+        }
+        .badge-today {
+            background: rgba(6,182,212,0.20); color: var(--sky);
+            border: 1px solid rgba(56,189,248,0.46); margin-left: 6px;
+            box-shadow: 0 0 16px rgba(6,182,212,0.28); animation: pulseBadge 2s ease-in-out infinite;
+        }
+        @keyframes pulseBadge {
+            0%, 100% { opacity: 1; box-shadow: 0 0 16px rgba(6,182,212,0.28); }
+            50%      { opacity: 0.65; box-shadow: 0 0 28px rgba(6,182,212,0.45); }
+        }
+        .badge-auto {
+            background: rgba(124,58,237,0.18); color: #c4b5fd;
+            border: 1px solid rgba(196,181,253,0.40); margin-left: 6px; font-size: 10px;
+        }
+
+        .actions { display: flex; gap: 7px; justify-content: flex-end; }
+        .btn-act { padding: 7px 14px; font-size: 12.5px; font-weight: 700; border-radius: var(--r-sm); }
+        .btn-act-copy { background: rgba(6,182,212,0.16); border-color: rgba(6,182,212,0.40); color: var(--sky); }
+        .btn-act-copy:hover { background: rgba(6,182,212,0.28); box-shadow: 0 0 18px rgba(6,182,212,0.32); }
+
+        /* ============================================================
+           PAGINATION
+        ============================================================ */
+        .pagination-bar {
+            padding: 14px 22px; display: flex; justify-content: space-between;
+            align-items: center; flex-wrap: wrap; gap: 12px;
+            border-top: 1px solid rgba(255,255,255,0.05); position: relative; z-index: 2;
+        }
+
+        .page-info { font-size: 13px; color: #64748b; font-weight: 600; }
+        .page-controls { display: flex; align-items: center; gap: 6px; }
+        .btn-page { min-width: 36px; height: 36px; padding: 0 10px; font-size: 12.5px; font-weight: 700; border-radius: var(--r-sm); }
+        .btn-page.active { background: rgba(56,189,248,0.26); color: var(--sky); border-color: rgba(56,189,248,0.55); box-shadow: 0 0 16px rgba(56,189,248,0.30); }
+        .btn-page:disabled { opacity: 0.30; cursor: not-allowed; transform: none !important; }
+        .rows-select { width: auto; padding: 7px 12px; font-size: 12.5px; border-radius: var(--r-sm); }
+
+        /* ============================================================
+           MODALS
+        ============================================================ */
         .modal-overlay {
-            display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85);
-            justify-content: center; align-items: center; z-index: 999; padding: 16px;
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.80); backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            justify-content: center; align-items: center;
+            z-index: 999; padding: 16px; animation: overlayIn 0.22s var(--smooth);
         }
-        .modal { background: #0f172a; border: 1px solid rgba(255,255,255,0.18); padding: 24px; border-radius: 24px; width: 100%; max-width: 440px; box-shadow: 0 25px 60px rgba(0,0,0,0.9); }
-        .modal h3 { margin-bottom: 16px; font-size: 17px; font-weight: 800; color: #38bdf8; }
-        .modal-field { margin-bottom: 12px; }
-        .modal-field label { display: block; font-size: 11.5px; font-weight: 700; color: #94a3b8; margin-bottom: 5px; text-transform: uppercase; }
-        .modal-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; gap: 8px; }
+        @keyframes overlayIn { from { opacity: 0; } to { opacity: 1; } }
 
-        #toastContainer { position: fixed; top: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; pointer-events: none; max-width: 360px; width: calc(100% - 40px); }
+        .modal {
+            background: rgba(10,16,36,0.96);
+            border: 1px solid rgba(255,255,255,0.18);
+            padding: 28px; border-radius: var(--r-xl); width: 100%; max-width: 490px;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.90), 0 0 40px rgba(124,58,237,0.18), inset 0 1px 0 rgba(255,255,255,0.14);
+            max-height: 92vh; overflow-y: auto;
+            animation: modalIn 0.32s var(--spring) both;
+        }
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.94) translateY(12px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .modal h3 { margin-bottom: 20px; font-size: 18px; font-weight: 800; color: var(--sky); display: flex; align-items: center; gap: 9px; }
+        .modal-field { margin-bottom: 15px; }
+        .modal-field label { display: block; font-size: 11.5px; font-weight: 800; color: #64748b; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.7px; }
+        .modal-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 26px; gap: 10px; }
+
+        /* ============================================================
+           TOAST
+        ============================================================ */
+        #toastContainer {
+            position: fixed; top: 24px; right: 24px; z-index: 9999;
+            display: flex; flex-direction: column; gap: 12px;
+            pointer-events: none; max-width: 380px; width: calc(100% - 48px);
+        }
         .custom-toast {
-            pointer-events: auto; background: #0f172a; border: 1px solid rgba(255,255,255,0.16);
-            border-radius: 16px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; box-shadow: 0 16px 40px rgba(0,0,0,0.6); position: relative; overflow: hidden;
-            animation: toastIn 0.3s forwards;
+            pointer-events: auto; background: rgba(10,16,36,0.95);
+            backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,0.15);
+            border-radius: var(--r-lg); padding: 14px 18px;
+            display: flex; align-items: center; gap: 12px;
+            box-shadow: 0 20px 48px rgba(0,0,0,0.70); position: relative; overflow: hidden;
+            animation: toastIn 0.35s var(--spring) both;
         }
-        .custom-toast.hide { animation: toastOut 0.3s forwards ease; }
-        .toast-icon { width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
-        .toast-msg { font-size: 13px; font-weight: 600; color: #f1f5f9; flex: 1; word-break: break-word; }
-        .toast-progress { position: absolute; bottom: 0; left: 0; height: 3px; width: 100%; background: rgba(255,255,255,0.12); }
-        .toast-progress-bar { height: 100%; width: 100%; animation: progressCount 2.4s linear forwards; }
-        .toast-success { border-color: rgba(52,211,153,0.45); } .toast-success .toast-icon { background: rgba(16,185,129,0.25); color: #34d399; } .toast-success .toast-progress-bar { background: #34d399; }
-        .toast-info { border-color: rgba(56,189,248,0.45); } .toast-info .toast-icon { background: rgba(6,182,212,0.25); color: #38bdf8; } .toast-info .toast-progress-bar { background: #38bdf8; }
-        .toast-warn { border-color: rgba(244,63,94,0.45); } .toast-warn .toast-icon { background: rgba(244,63,94,0.25); color: #fb7185; } .toast-warn .toast-progress-bar { background: #fb7185; }
+        .custom-toast.hide { animation: toastOut 0.28s var(--spring) both; }
+        .toast-icon { width: 36px; height: 36px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+        .toast-msg { font-size: 13.5px; font-weight: 700; color: #f1f5f9; flex: 1; word-break: break-word; line-height: 1.4; }
+        .toast-progress { position: absolute; bottom: 0; left: 0; height: 3px; width: 100%; background: rgba(255,255,255,0.10); }
+        .toast-progress-bar { height: 100%; width: 100%; animation: progressCount 2.5s linear forwards; }
+        .toast-success { border-color: rgba(52,211,153,0.45); box-shadow: 0 10px 32px rgba(16,185,129,0.22); }
+        .toast-success .toast-icon { background:rgba(16,185,129,0.22); color:#34d399; }
+        .toast-success .toast-progress-bar { background: #34d399; }
+        .toast-info { border-color: rgba(56,189,248,0.45); box-shadow: 0 10px 32px rgba(56,189,248,0.22); }
+        .toast-info .toast-icon { background:rgba(6,182,212,0.22); color:var(--sky); }
+        .toast-info .toast-progress-bar { background: var(--sky); }
+        .toast-warn { border-color: rgba(244,63,94,0.45); box-shadow: 0 10px 32px rgba(244,63,94,0.22); }
+        .toast-warn .toast-icon { background:rgba(244,63,94,0.22); color:#fb7185; }
+        .toast-warn .toast-progress-bar { background: #fb7185; }
+        @keyframes toastIn { from { opacity:0; transform: translateX(28px) scale(0.92); } to { opacity:1; transform: translateX(0) scale(1); } }
+        @keyframes toastOut { from { opacity:1; transform: translateX(0) scale(1); } to { opacity:0; transform: translateX(28px) scale(0.90); } }
+        @keyframes progressCount { from { width: 100%; } to { width: 0%; } }
 
-        @keyframes toastIn { 0% { opacity: 0; transform: translateY(-20px); } 100% { opacity: 1; transform: translateY(0); } }
-        @keyframes toastOut { 0% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(-20px); } }
-        @keyframes progressCount { 0% { width: 100%; } 100% { width: 0%; } }
-
-        @media (max-width: 720px) {
-            body { padding: 16px 8px 60px; }
-            .header-bar { flex-direction: column; align-items: stretch; gap: 10px; }
-            .btn-config-main { justify-content: center; width: 100%; padding: 12px; }
-            .form-grid { grid-template-columns: 1fr; gap: 8px; }
-            .btn-add { width: 100%; font-size: 15px; }
-            .toolbar { flex-direction: column; align-items: stretch; }
+        /* ============================================================
+           RESPONSIVE
+        ============================================================ */
+        @media (max-width: 768px) {
+            body { padding: 18px 10px 80px; }
+            .header-bar { flex-direction: column; align-items: stretch; gap: 12px; }
+            .header-actions { width: 100%; }
+            .header-actions .btn-liquid { flex: 1; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .stat-card { padding: 16px 18px; }
+            .form-grid { grid-template-columns: 1fr; gap: 10px; }
+            .btn-add { width: 100%; font-size: 15px; height: auto; padding: 14px; }
+            .search-row { flex-direction: column; align-items: stretch; }
+            .sort-select-wrap { width: 100%; }
+            .filter-row { flex-direction: column; align-items: stretch; }
             .filter-group { width: 100%; justify-content: space-between; }
             .sync-badge { width: 100%; justify-content: center; }
+            .bulk-bar { flex-direction: column; align-items: stretch; }
+            .bulk-btns { justify-content: stretch; }
+            .bulk-btns button { flex: 1; }
             .table-wrap { background: transparent; border: none; box-shadow: none; }
             table, thead, tbody, th, td, tr { display: block; width: 100%; }
             thead { display: none; }
-            tbody { display: flex; flex-direction: column; gap: 10px; }
-            tr {
-                background: #111827;
-                border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 14px;
+            tbody { display: flex; flex-direction: column; gap: 12px; }
+            tbody tr {
+                background: var(--glass-card);
+                backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+                border: 1px solid var(--glass-border); border-radius: var(--r-xl);
+                padding: 16px 18px; box-shadow: 0 8px 28px rgba(0,0,0,0.42);
             }
-            td { padding: 4px 0; border-bottom: none; display: flex; align-items: center; justify-content: space-between; }
-            td:first-child { display: block; margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 8px; }
-            .actions { width: 100%; margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.06); }
-            .btn-act { flex: 1; text-align: center; padding: 9px; font-size: 12.5px; }
+            td { padding: 7px 0; border-bottom: none; display: flex; align-items: center; justify-content: space-between; }
+            td.col-check { justify-content: flex-start; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 6px; }
+            td:nth-child(2) { display: block; margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; }
+            .actions { width: 100%; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.05); }
+            .btn-act { flex: 1; text-align: center; padding: 10px; font-size: 13px; }
+            .pagination-bar { flex-direction: column; align-items: center; gap: 12px; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 20px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+            .stat-info h2 { font-size: 22px; }
+            .modal { padding: 20px; }
         }
     </style>
 </head>
 <body>
 
+    <div class="aurora-bg">
+        <div class="aurora-blob blob-1"></div>
+        <div class="aurora-blob blob-2"></div>
+        <div class="aurora-blob blob-3"></div>
+        <div class="aurora-blob blob-4"></div>
+    </div>
+    <div class="noise-overlay"></div>
+
     <div id="toastContainer"></div>
 
     <div class="container">
         
-        <div class="header-bar">
+        <div class="header-bar reveal">
             <div class="header-title-box">
-                <div class="brand-badge"><span></span> HỆ THỐNG QUẢN LÝ ACC</div>
+                <div class="brand-badge"><span class="brand-badge-dot"></span> ULTRA LIQUID SYSTEM</div>
                 <h1>QUẢN LÝ ACC VANCAU88</h1>
             </div>
-            <button type="button" class="btn-liquid btn-config-main" onclick="openConfigModal()">
-                ⚙ Cấu hình GitHub (Tự Lưu)
-            </button>
+            <div class="header-actions">
+                <button type="button" class="btn-liquid btn-header btn-mask-toggle" id="btnMaskToggle" onclick="toggleMaskMode()">
+                    &#128065; Ẩn MK
+                </button>
+                <button type="button" class="btn-liquid btn-header" onclick="openImportExportModal()">
+                    &#128193; Nhập / Xuất
+                </button>
+                <button type="button" class="btn-liquid btn-header btn-config-main" onclick="openConfigModal()">
+                    &#9881; Cấu hình GitHub
+                </button>
+            </div>
         </div>
 
         <div class="stats-grid">
-            <div class="stat-card liquid-glass">
-                <div class="stat-info"><span>Tổng Acc</span><h2 id="cntAll" style="color: #f8fafc;">0</h2></div>
-                <div class="stat-icon">🎮</div>
+            <div class="stat-card liquid-glass reveal" onclick="setFilter('all')">
+                <div class="stat-info"><span>Tổng Acc</span><h2 id="cntAll" style="color:#f1f5f9;">0</h2></div>
+                <div class="stat-icon">&#127918;</div>
             </div>
-            <div class="stat-card liquid-glass">
-                <div class="stat-info"><span>Đang Sống</span><h2 id="cntLive" style="color: #34d399;">0</h2></div>
-                <div class="stat-icon" style="background: rgba(16,185,129,0.15); color: #34d399;">⚡</div>
+            <div class="stat-card liquid-glass reveal" onclick="setFilter('sống')" style="transition-delay:0.06s">
+                <div class="stat-info"><span>Đang Sống</span><h2 id="cntLive" style="color:#34d399;">0</h2></div>
+                <div class="stat-icon" style="background:rgba(16,185,129,0.16);color:#34d399;">&#9889;</div>
             </div>
-            <div class="stat-card liquid-glass">
-                <div class="stat-info"><span>Bị Khóa</span><h2 id="cntBanned" style="color: #fb7185;">0</h2></div>
-                <div class="stat-icon" style="background: rgba(244,63,94,0.15); color: #fb7185;">🔒</div>
+            <div class="stat-card liquid-glass reveal" onclick="setFilter('ban')" style="transition-delay:0.12s">
+                <div class="stat-info"><span>Bị Khóa</span><h2 id="cntBanned" style="color:#fb7185;">0</h2></div>
+                <div class="stat-icon" style="background:rgba(244,63,94,0.16);color:#fb7185;">&#128274;</div>
+            </div>
+            <div class="stat-card liquid-glass reveal" onclick="setFilter('today')" style="transition-delay:0.18s">
+                <div class="stat-info"><span>Mở Hôm Nay</span><h2 id="cntToday" style="color:var(--sky);">0</h2></div>
+                <div class="stat-icon" style="background:rgba(6,182,212,0.16);color:var(--sky);">&#10024;</div>
             </div>
         </div>
 
-        <div class="card-form liquid-glass">
+        <div class="card-form liquid-glass reveal">
             <form id="accForm" onsubmit="handleAdd(event)">
                 <div class="form-grid">
                     <textarea id="accInfo" placeholder="Nhập nhiều acc (xuống dòng)&#10;tk1:mk1&#10;tk2:mk2:Acc rank vip" required></textarea>
@@ -221,23 +851,54 @@
                         <option value="sống">Sống</option>
                         <option value="ban">Bị Ban</option>
                     </select>
-                    <input type="text" id="unbanDate" placeholder="Mở ban (100826)" style="display: none;" onblur="formatDateInput(this)">
+                    <input type="text" id="unbanDate" placeholder="Mở ban (vd: 280826)" style="display:none;" onblur="formatDateInput(this)">
                     <button type="submit" class="btn-liquid btn-primary-liquid btn-add">+ Thêm Acc</button>
                 </div>
                 <div class="hint">
-                    💡 <b>Mẹo nhập liệu:</b> Hỗ trợ định dạng <b>tk:mk</b> hoặc <b>tk:mk:ghi_chú</b> (hệ thống tự bóc tách Ghi chú ra khỏi tài khoản).
+                    &#128161; <b>Mẹo nhập liệu:</b> Hỗ trợ định dạng <b>tk:mk</b> hoặc <b>tk:mk:ghi_chú</b> (tự tách ghi chú). Nhập 6 số ngày như <b>280826</b> &rarr; <b>28/08/2026</b>.
                 </div>
             </form>
         </div>
 
-        <div class="toolbar">
-            <div class="filter-group">
-                <button class="btn-filter active" onclick="setFilter('all', this)">Tất cả (<span id="btnCntAll">0</span>)</button>
-                <button class="btn-filter" onclick="setFilter('sống', this)">Sống (<span id="btnCntLive">0</span>)</button>
-                <button class="btn-filter" onclick="setFilter('ban', this)">Bị Ban (<span id="btnCntBanned">0</span>)</button>
+        <div class="controls-panel liquid-glass reveal">
+            <div class="search-row">
+                <div class="search-box">
+                    <span class="search-icon">&#128269;</span>
+                    <input type="text" id="searchInput" placeholder="Tìm kiếm theo tên tài khoản, mật khẩu, rank, ghi chú..." oninput="handleSearch(this.value)">
+                    <button type="button" class="btn-clear-search" id="btnClearSearch" onclick="clearSearch()">&#10005;</button>
+                </div>
+                <div class="sort-select-wrap">
+                    <select id="sortSelect" onchange="handleSort(this.value)">
+                        <option value="newest">&#8987; Mới nhất trước</option>
+                        <option value="oldest">&#9203; Cũ nhất trước</option>
+                        <option value="unbanSoon">&#9203; Sắp mở ban nhất</option>
+                        <option value="nameAsc">&#128292; Tên A &rarr; Z</option>
+                        <option value="nameDesc">&#128292; Tên Z &rarr; A</option>
+                    </select>
+                </div>
             </div>
-            <div class="sync-badge" id="syncStatus">
-                🟢 Tự đồng bộ: Đang chạy
+
+            <div class="filter-row">
+                <div class="filter-group">
+                    <button class="btn-filter active" data-filter="all" onclick="setFilter('all')">Tất cả (<span id="btnCntAll">0</span>)</button>
+                    <button class="btn-filter" data-filter="sống" onclick="setFilter('sống')">Sống (<span id="btnCntLive">0</span>)</button>
+                    <button class="btn-filter" data-filter="ban" onclick="setFilter('ban')">Bị Ban (<span id="btnCntBanned">0</span>)</button>
+                    <button class="btn-filter" data-filter="today" onclick="setFilter('today')">Mở Hôm Nay (<span id="btnCntToday">0</span>)</button>
+                </div>
+                <div class="sync-badge" id="syncStatus">&#128994; Tự đồng bộ: Đang chạy</div>
+            </div>
+        </div>
+
+        <div class="bulk-bar" id="bulkBar">
+            <div class="bulk-info">
+                <span>&#9745; Đã chọn: <b id="bulkCount">0</b> tài khoản</span>
+            </div>
+            <div class="bulk-btns">
+                <button type="button" class="btn-liquid btn-bulk" onclick="bulkCopy()">&#128203; Sao chép đã chọn</button>
+                <button type="button" class="btn-liquid btn-bulk" onclick="bulkSetStatus('sống')">&#9889; Đặt là Sống</button>
+                <button type="button" class="btn-liquid btn-bulk" onclick="openBulkBanModal()">&#128274; Đặt Bị Ban</button>
+                <button type="button" class="btn-liquid btn-bulk" style="color:#fb7185;" onclick="openBulkDeleteModal()">&#128465; Xóa đã chọn</button>
+                <button type="button" class="btn-liquid btn-bulk" onclick="deselectAll()">&#10005; Bỏ chọn</button>
             </div>
         </div>
 
@@ -245,93 +906,156 @@
             <table>
                 <thead>
                     <tr>
+                        <th class="col-check">
+                            <input type="checkbox" class="custom-check" id="checkAll" onchange="toggleSelectAll(this.checked)" title="Chọn tất cả">
+                        </th>
                         <th>Tài khoản / Ghi chú</th>
                         <th>Trạng thái</th>
                         <th>Thời hạn mở</th>
-                        <th style="text-align: right;">Thao tác</th>
+                        <th style="text-align:right;">Thao tác</th>
                     </tr>
                 </thead>
                 <tbody id="accList"></tbody>
             </table>
+            <div class="pagination-bar" id="paginationBar">
+                <div class="page-info" id="pageInfo">Đang tải...</div>
+                <div class="page-controls">
+                    <select class="rows-select btn-liquid" id="rowsPerPageSelect" onchange="changeRowsPerPage(this.value)">
+                        <option value="15">15 / trang</option>
+                        <option value="25" selected>25 / trang</option>
+                        <option value="50">50 / trang</option>
+                        <option value="100">100 / trang</option>
+                        <option value="999999">Tất cả</option>
+                    </select>
+                    <button class="btn-liquid btn-page" id="btnPrevPage" onclick="prevPage()">&#8249;</button>
+                    <div id="pageNumbers" style="display:inline-flex;gap:5px;"></div>
+                    <button class="btn-liquid btn-page" id="btnNextPage" onclick="nextPage()">&#8250;</button>
+                </div>
+            </div>
         </div>
+
     </div>
 
-    <!-- Modal Cấu hình GitHub -->
+    <!-- Modal GitHub -->
     <div class="modal-overlay" id="configModal">
         <div class="modal">
-            <h3>Cấu hình GitHub (Tự động lưu)</h3>
-            <div class="modal-field">
-                <label>GitHub Username</label>
-                <input type="text" id="ghUser" placeholder="vd: vancau88" oninput="autoSaveConfig()">
-            </div>
-            <div class="modal-field">
-                <label>Repository Name</label>
-                <input type="text" id="ghRepo" placeholder="vd: lq-account" oninput="autoSaveConfig()">
-            </div>
-            <div class="modal-field">
-                <label>Personal Access Token (ghp_...)</label>
-                <input type="password" id="ghToken" placeholder="Dán token vào đây" oninput="autoSaveConfig()">
-            </div>
+            <h3>&#9881;&#65039; Cấu hình GitHub (Tự động lưu)</h3>
+            <div class="modal-field"><label>GitHub Username</label><input type="text" id="ghUser" placeholder="vd: vancau88" oninput="autoSaveConfig()"></div>
+            <div class="modal-field"><label>Repository Name</label><input type="text" id="ghRepo" placeholder="vd: lq-account" oninput="autoSaveConfig()"></div>
+            <div class="modal-field"><label>Personal Access Token (ghp_...)</label><input type="password" id="ghToken" placeholder="Dán token vào đây" oninput="autoSaveConfig()"></div>
             <div class="modal-actions">
-                <button type="button" class="btn-liquid btn-act" onclick="testConnection()">🔍 Test Kết Nối</button>
-                <button type="button" class="btn-liquid btn-primary-liquid" style="padding: 8px 18px;" onclick="closeConfigModal()">Xong</button>
+                <button type="button" class="btn-liquid btn-act" onclick="testConnection()">&#128269; Test Kết Nối</button>
+                <button type="button" class="btn-liquid btn-primary-liquid" style="padding:8px 18px;" onclick="closeModal('configModal')">Xong</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal Sửa -->
+    <!-- Modal Edit -->
     <div class="modal-overlay" id="editModal">
         <div class="modal">
-            <h3>Chỉnh sửa tài khoản</h3>
+            <h3>&#9999;&#65039; Chỉnh sửa tài khoản</h3>
             <input type="hidden" id="editId">
-            <div class="modal-field">
-                <label>Tài khoản : Mật khẩu</label>
-                <input type="text" id="editAcc" required>
-            </div>
-            <div class="modal-field">
-                <label>Ghi chú</label>
-                <input type="text" id="editNote" placeholder="Ghi chú (Skin, Rank...)">
-            </div>
-            <div class="modal-field">
-                <label>Trạng thái</label>
-                <select id="editStatus" onchange="toggleDateInput('editStatus', 'editDate')">
+            <div class="modal-field"><label>Tài khoản : Mật khẩu</label><input type="text" id="editAcc" required></div>
+            <div class="modal-field"><label>Ghi chú</label><input type="text" id="editNote" placeholder="Ghi chú (Rank, Skin, Tướng...)"></div>
+            <div class="modal-field"><label>Trạng thái</label>
+                <select id="editStatus" onchange="toggleDateInput('editStatus','editDate')">
                     <option value="sống">Sống</option>
                     <option value="ban">Bị Ban</option>
                 </select>
             </div>
-            <div class="modal-field" id="editDateField">
-                <label>Ngày mở ban (dd/mm/yyyy hoặc 6 số)</label>
-                <input type="text" id="editDate" placeholder="dd/mm/yyyy" onblur="formatDateInput(this)">
+            <div class="modal-field" id="editDateField"><label>Ngày mở ban (dd/mm/yyyy hoặc 6 số)</label><input type="text" id="editDate" placeholder="dd/mm/yyyy" onblur="formatDateInput(this)"></div>
+            <div class="modal-actions" style="justify-content:flex-end;">
+                <button type="button" class="btn-liquid btn-act" onclick="closeModal('editModal')">Hủy</button>
+                <button type="button" class="btn-liquid btn-primary-liquid" style="padding:10px 20px;" onclick="saveEdit()">Lưu lại</button>
             </div>
-            <div class="modal-actions" style="justify-content: flex-end;">
-                <button type="button" class="btn-liquid btn-act" onclick="closeEditModal()">Hủy</button>
-                <button type="button" class="btn-liquid btn-primary-liquid" style="padding: 10px 20px;" onclick="saveEdit()">Lưu lại</button>
+        </div>
+    </div>
+
+    <!-- Modal Delete Confirm -->
+    <div class="modal-overlay" id="confirmDeleteModal">
+        <div class="modal">
+            <h3 style="color:#fb7185;">&#128465;&#65039; Xác nhận xóa tài khoản</h3>
+            <p id="confirmDeleteMsg" style="font-size:13.5px;color:#94a3b8;margin-bottom:20px;line-height:1.55;">Bạn có chắc chắn muốn xóa tài khoản này?</p>
+            <div class="modal-actions" style="justify-content:flex-end;">
+                <button type="button" class="btn-liquid btn-act" onclick="closeModal('confirmDeleteModal')">Hủy</button>
+                <button type="button" class="btn-liquid btn-danger-liquid" style="padding:10px 20px;" id="btnConfirmDeleteExec">Xác nhận Xóa</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Bulk Ban -->
+    <div class="modal-overlay" id="bulkBanModal">
+        <div class="modal">
+            <h3>&#128274; Khóa hàng loạt tài khoản đã chọn</h3>
+            <div class="modal-field"><label>Ngày mở ban (Để trống nếu chưa rõ, hoặc nhập 6 số: 280826)</label><input type="text" id="bulkBanDate" placeholder="dd/mm/yyyy hoặc 280826" onblur="formatDateInput(this)"></div>
+            <div class="modal-actions" style="justify-content:flex-end;">
+                <button type="button" class="btn-liquid btn-act" onclick="closeModal('bulkBanModal')">Hủy</button>
+                <button type="button" class="btn-liquid btn-danger-liquid" style="padding:10px 20px;" onclick="executeBulkBan()">Khóa tất cả</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Import/Export -->
+    <div class="modal-overlay" id="importExportModal">
+        <div class="modal" style="max-width:520px;">
+            <h3>&#128193; Nhập &amp; Xuất Dữ Liệu</h3>
+            <div style="margin-bottom:18px;">
+                <label style="display:block;font-size:12px;font-weight:800;color:var(--sky);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.7px;">&#128228; Xuất Dữ Liệu (Backup)</label>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+                    <button type="button" class="btn-liquid btn-act" onclick="exportData('txt')">&#128196; data.txt</button>
+                    <button type="button" class="btn-liquid btn-act" onclick="exportData('csv')">&#128202; Excel (.csv)</button>
+                    <button type="button" class="btn-liquid btn-act" onclick="exportData('json')">&#128230; JSON Backup</button>
+                </div>
+            </div>
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:16px 0;">
+            <div>
+                <label style="display:block;font-size:12px;font-weight:800;color:#34d399;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.7px;">&#128229; Nhập File từ Máy Tính</label>
+                <input type="file" id="fileInput" accept=".txt,.json,.csv" style="display:none;" onchange="handleFileSelected(event)">
+                <div style="display:flex;gap:8px;">
+                    <button type="button" class="btn-liquid btn-primary-liquid" style="flex:1;padding:12px;" onclick="document.getElementById('fileInput').click()">&#128194; Chọn File (.txt / .json)</button>
+                </div>
+                <div style="margin-top:8px;font-size:11.5px;color:#475569;">Hỗ trợ định dạng file text gốc (tk:mk|status|unbanDate|note) hoặc tệp sao lưu JSON.</div>
+            </div>
+            <div class="modal-actions" style="justify-content:flex-end;margin-top:24px;">
+                <button type="button" class="btn-liquid btn-act" onclick="closeModal('importExportModal')">Đóng</button>
             </div>
         </div>
     </div>
 
     <script>
+        // --- DATA & STATE ---
         let accounts = JSON.parse(localStorage.getItem('vancau88_accounts')) || [];
         let ghConfig = JSON.parse(localStorage.getItem('vancau88_gh_config')) || { user: '', repo: '', token: '' };
+        let appSettings = JSON.parse(localStorage.getItem('vancau88_settings')) || { maskMode: false, rowsPerPage: 25, sort: 'newest' };
+        
         let currentFilter = 'all';
+        let searchQuery = '';
+        let currentSort = appSettings.sort || 'newest';
+        let currentPage = 1;
+        let rowsPerPage = parseInt(appSettings.rowsPerPage) || 25;
+        let isMasked = !!appSettings.maskMode;
+        let selectedIds = new Set();
         let isSyncing = false;
+        let pendingDeleteAction = null;
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+        }
 
         function showCustomToast(message, type = 'success') {
             const container = document.getElementById('toastContainer');
             const toast = document.createElement('div');
             toast.className = `custom-toast toast-${type}`;
             const icon = type === 'info' ? '⚡' : (type === 'warn' ? '✕' : '✓');
-            toast.innerHTML = `
-                <div class="toast-icon">${icon}</div>
-                <div class="toast-msg">${message}</div>
-                <div class="toast-progress"><div class="toast-progress-bar"></div></div>
-            `;
+            toast.innerHTML = `<div class="toast-icon">${icon}</div><div class="toast-msg">${escapeHtml(message)}</div><div class="toast-progress"><div class="toast-progress-bar"></div></div>`;
             container.appendChild(toast);
             setTimeout(() => { toast.classList.add('hide'); setTimeout(() => toast.remove(), 300); }, 3000);
         }
 
         function setSyncStatus(text, syncing = false) {
             const el = document.getElementById('syncStatus');
+            if (!el) return;
             el.innerText = text;
             if (syncing) el.classList.add('syncing'); else el.classList.remove('syncing');
         }
@@ -344,9 +1068,7 @@
             return decodeURIComponent(Array.prototype.map.call(atob(str), c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
         }
 
-        function extractUsername(accStr) {
-            return (accStr || '').split(':')[0].trim().toLowerCase();
-        }
+        function extractUsername(accStr) { return (accStr || '').split(':')[0].trim().toLowerCase(); }
 
         function parseDateString(str) {
             if (!str || str === '-' || str === 'Chưa rõ') return null;
@@ -371,28 +1093,232 @@
             if (status === 'ban') input.focus(); else input.value = '';
         }
 
-        function getRemainingBadge(dateStr) {
+        function getRemainingDays(dateStr) {
             const target = parseDateString(dateStr);
-            if (!target) return '';
+            if (!target) return null;
             const today = new Date(); today.setHours(0,0,0,0);
-            const diff = Math.ceil((target - today) / 86400000);
+            return Math.ceil((target - today) / 86400000);
+        }
+
+        function getRemainingBadge(dateStr) {
+            const diff = getRemainingDays(dateStr);
+            if (diff === null) return '';
             if (diff === 0) return '<span class="badge badge-today">Mở hôm nay</span>';
             if (diff > 0) return `<span class="badge badge-days">Còn ${diff} ngày</span>`;
-            return '';
+            return '<span class="badge badge-days" style="color:#64748b;border-color:rgba(255,255,255,0.12);">Đã quá hạn</span>';
         }
+
+        function formatAccDisplay(accStr) {
+            if (!isMasked) return escapeHtml(accStr);
+            const parts = accStr.split(':');
+            if (parts.length >= 2) {
+                const user = parts[0];
+                const pass = parts.slice(1).join(':');
+                return `${escapeHtml(user)}:<span style="letter-spacing:3px;color:#64748b;">${'•'.repeat(Math.min(Math.max(pass.length,6),12))}</span>`;
+            }
+            return escapeHtml(accStr);
+        }
+
+        function formatNoteBadges(noteStr) {
+            if (!noteStr) return '';
+            const safeNote = escapeHtml(noteStr);
+            const lower = noteStr.toLowerCase();
+            let rankClass = '';
+            if (lower.includes('cao thủ') || lower.includes('chiến tướng')) rankClass = 'badge-rank-caothu';
+            else if (lower.includes('tinh anh')) rankClass = 'badge-rank-tanhanh';
+            else if (lower.includes('kim cương') || lower.includes('k.cương')) rankClass = 'badge-rank-kcuong';
+            else if (lower.includes('bạch kim') || lower.includes('b.kim')) rankClass = 'badge-rank-bkim';
+            else if (lower.includes('vàng')) rankClass = 'badge-rank-vang';
+            return `<div class="acc-note ${rankClass}">📝 ${safeNote}</div>`;
+        }
+
+        function toggleMaskMode() {
+            isMasked = !isMasked;
+            appSettings.maskMode = isMasked;
+            localStorage.setItem('vancau88_settings', JSON.stringify(appSettings));
+            updateMaskButton(); render();
+            showCustomToast(isMasked ? 'Đã bật chế độ Ẩn Mật khẩu' : 'Đã hiện Mật khẩu', 'info');
+        }
+
+        function updateMaskButton() {
+            const btn = document.getElementById('btnMaskToggle');
+            if (!btn) return;
+            if (isMasked) { btn.innerHTML = '🔒 Đang Ẩn MK'; btn.classList.add('active'); }
+            else { btn.innerHTML = '👁️ Ẩn MK'; btn.classList.remove('active'); }
+        }
+
+        // --- COPY FEATURE (GIỮ NGUYÊN TÍNH NĂNG SAO CHÉP CHUẨN XÁC) ---
+        function copyAcc(text) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => { showCustomToast('Đã copy: ' + text, 'info'); }).catch(() => fallbackCopy(text));
+            } else { fallbackCopy(text); }
+        }
+
+        function fallbackCopy(text) {
+            const ta = document.createElement('textarea');
+            ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+            document.body.appendChild(ta); ta.focus(); ta.select();
+            try { document.execCommand('copy'); showCustomToast('Đã copy: ' + text, 'info'); }
+            catch (err) { showCustomToast('Không thể sao chép!', 'warn'); }
+            document.body.removeChild(ta);
+        }
+
+        function handleSearch(val) {
+            searchQuery = val.trim().toLowerCase();
+            document.getElementById('btnClearSearch').style.display = searchQuery ? 'block' : 'none';
+            currentPage = 1; render();
+        }
+
+        function clearSearch() { document.getElementById('searchInput').value = ''; handleSearch(''); }
+
+        function setFilter(f) {
+            currentFilter = f;
+            document.querySelectorAll('.btn-filter').forEach(b => b.classList.toggle('active', b.getAttribute('data-filter') === f));
+            currentPage = 1; render();
+        }
+
+        function handleSort(sortKey) {
+            currentSort = sortKey; appSettings.sort = sortKey;
+            localStorage.setItem('vancau88_settings', JSON.stringify(appSettings));
+            currentPage = 1; render();
+        }
+
+        function getFilteredAndSortedAccounts() {
+            let list = [...accounts];
+            if (currentFilter === 'sống') list = list.filter(a => a.status === 'sống');
+            else if (currentFilter === 'ban') list = list.filter(a => a.status === 'ban');
+            else if (currentFilter === 'today') list = list.filter(a => a.status === 'ban' && getRemainingDays(a.unbanDate) === 0);
+
+            if (searchQuery) {
+                list = list.filter(a => {
+                    return (a.acc||'').toLowerCase().includes(searchQuery) ||
+                           (a.note||'').toLowerCase().includes(searchQuery) ||
+                           (a.unbanDate||'').toLowerCase().includes(searchQuery) ||
+                           (a.status||'').toLowerCase().includes(searchQuery);
+                });
+            }
+
+            list.sort((a, b) => {
+                if (currentSort === 'newest') return (b.id||0) - (a.id||0);
+                if (currentSort === 'oldest') return (a.id||0) - (b.id||0);
+                if (currentSort === 'nameAsc') return (a.acc||'').localeCompare(b.acc||'');
+                if (currentSort === 'nameDesc') return (b.acc||'').localeCompare(a.acc||'');
+                if (currentSort === 'unbanSoon') {
+                    const da = parseDateString(a.unbanDate), db = parseDateString(b.unbanDate);
+                    if (a.status !== 'ban' && b.status !== 'ban') return 0;
+                    if (a.status !== 'ban') return 1; if (b.status !== 'ban') return -1;
+                    if (!da && !db) return 0; if (!da) return 1; if (!db) return -1;
+                    return da - db;
+                }
+                return 0;
+            });
+            return list;
+        }
+
+        function changeRowsPerPage(val) {
+            rowsPerPage = parseInt(val); appSettings.rowsPerPage = rowsPerPage;
+            localStorage.setItem('vancau88_settings', JSON.stringify(appSettings));
+            currentPage = 1; render();
+        }
+
+        function prevPage() { if (currentPage > 1) { currentPage--; render(); } }
+
+        function nextPage() {
+            const filtered = getFilteredAndSortedAccounts();
+            const totalPages = Math.ceil(filtered.length / rowsPerPage) || 1;
+            if (currentPage < totalPages) { currentPage++; render(); }
+        }
+
+        function goToPage(p) { currentPage = p; render(); }
+
+        function toggleSelectAll(checked) {
+            const filtered = getFilteredAndSortedAccounts();
+            const start = (currentPage - 1) * rowsPerPage;
+            const pageItems = filtered.slice(start, start + rowsPerPage);
+            pageItems.forEach(item => { if (checked) selectedIds.add(item.id); else selectedIds.delete(item.id); });
+            updateBulkBar(); renderTableRowsOnly();
+        }
+
+        function toggleSelectRow(id, checked) {
+            if (checked) selectedIds.add(id); else selectedIds.delete(id);
+            updateBulkBar(); updateCheckAllHeader();
+        }
+
+        function deselectAll() { selectedIds.clear(); updateBulkBar(); renderTableRowsOnly(); }
+
+        function updateBulkBar() {
+            const bar = document.getElementById('bulkBar'), cnt = document.getElementById('bulkCount');
+            if (selectedIds.size > 0) { bar.style.display = 'flex'; cnt.innerText = selectedIds.size; }
+            else { bar.style.display = 'none'; }
+        }
+
+        function updateCheckAllHeader() {
+            const chkAll = document.getElementById('checkAll');
+            if (!chkAll) return;
+            const filtered = getFilteredAndSortedAccounts();
+            const start = (currentPage - 1) * rowsPerPage;
+            const pageItems = filtered.slice(start, start + rowsPerPage);
+            if (pageItems.length === 0) { chkAll.checked = false; return; }
+            chkAll.checked = pageItems.every(item => selectedIds.has(item.id));
+        }
+
+        function bulkCopy() {
+            const selectedAccs = accounts.filter(a => selectedIds.has(a.id));
+            if (selectedAccs.length === 0) return;
+            copyAcc(selectedAccs.map(a => a.acc).join('\n'));
+        }
+
+        function bulkSetStatus(status) {
+            let count = 0;
+            accounts.forEach(a => {
+                if (selectedIds.has(a.id)) {
+                    a.status = status;
+                    if (status === 'sống') { a.unbanDate = '-'; a.autoUnbanned = false; }
+                    count++;
+                }
+            });
+            deselectAll(); saveAndSync();
+            showCustomToast(`Đã chuyển ${count} tài khoản sang Sống!`, 'success');
+        }
+
+        function openBulkBanModal() { document.getElementById('bulkBanDate').value = ''; openModal('bulkBanModal'); }
+
+        function executeBulkBan() {
+            let dateVal = document.getElementById('bulkBanDate').value.trim();
+            dateVal = formatRawDate(dateVal) || 'Chưa rõ';
+            let count = 0;
+            accounts.forEach(a => {
+                if (selectedIds.has(a.id)) { a.status = 'ban'; a.unbanDate = dateVal; a.autoUnbanned = false; count++; }
+            });
+            closeModal('bulkBanModal'); deselectAll(); saveAndSync();
+            showCustomToast(`Đã khóa ${count} tài khoản!`, 'warn');
+        }
+
+        function openBulkDeleteModal() {
+            const count = selectedIds.size;
+            document.getElementById('confirmDeleteMsg').innerText = `Bạn có chắc chắn muốn xóa vĩnh viễn ${count} tài khoản đã chọn?`;
+            pendingDeleteAction = () => {
+                accounts = accounts.filter(a => !selectedIds.has(a.id));
+                deselectAll(); saveAndSync();
+                showCustomToast(`Đã xóa ${count} tài khoản!`, 'warn');
+            };
+            openModal('confirmDeleteModal');
+        }
+
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
         function openConfigModal() {
             document.getElementById('ghUser').value = ghConfig.user || '';
             document.getElementById('ghRepo').value = ghConfig.repo || '';
             document.getElementById('ghToken').value = ghConfig.token || '';
-            document.getElementById('configModal').style.display = 'flex';
+            openModal('configModal');
         }
-        function closeConfigModal() { document.getElementById('configModal').style.display = 'none'; }
 
         function autoSaveConfig() {
             ghConfig = {
-                user: document.getElementById('ghUser').value.trim().replace('https://github.com/', '').replace('/', ''),
-                repo: document.getElementById('ghRepo').value.trim().replace('.git', '').replace('/', ''),
+                user: document.getElementById('ghUser').value.trim().replace('https://github.com/','').replace('/',''),
+                repo: document.getElementById('ghRepo').value.trim().replace('.git','').replace('/',''),
                 token: document.getElementById('ghToken').value.trim()
             };
             localStorage.setItem('vancau88_gh_config', JSON.stringify(ghConfig));
@@ -400,10 +1326,7 @@
 
         async function testConnection() {
             autoSaveConfig();
-            if (!ghConfig.user || !ghConfig.repo || !ghConfig.token) {
-                alert('Vui lòng điền đủ 3 ô: Username, Repo, và Token!');
-                return;
-            }
+            if (!ghConfig.user || !ghConfig.repo || !ghConfig.token) { alert('Vui lòng điền đủ 3 ô: Username, Repo, và Token!'); return; }
             const url = `https://api.github.com/repos/${ghConfig.user}/${ghConfig.repo}`;
             try {
                 const res = await fetch(url, { headers: { 'Authorization': `token ${ghConfig.token}` } });
@@ -412,53 +1335,28 @@
                 else if (res.status === 404) alert('❌ Sai Username hoặc Repo!');
                 else if (res.status === 403) alert('❌ Token thiếu quyền repo!');
                 else alert(`❌ Lỗi ${res.status}`);
-            } catch (e) {
-                alert('Lỗi mạng: ' + e.message);
-            }
+            } catch (e) { alert('Lỗi mạng: ' + e.message); }
         }
 
         async function syncToGitHub() {
             if (isSyncing || !ghConfig.user || !ghConfig.repo || !ghConfig.token) return;
-            isSyncing = true;
-            setSyncStatus('🔄 Đang lưu lên GitHub...', true);
-
-            const textLines = accounts.map(a => `${a.acc}|${a.status}|${a.unbanDate}|${a.note || ''}`).join('\n');
+            isSyncing = true; setSyncStatus('🔄 Đang lưu lên GitHub...', true);
+            const textLines = accounts.map(a => `${a.acc}|${a.status}|${a.unbanDate}|${a.note||''}`).join('\n');
             const encodedContent = utf8ToBase64(textLines);
             const url = `https://api.github.com/repos/${ghConfig.user}/${ghConfig.repo}/contents/data.txt`;
-
             try {
                 let sha = null;
-                const getRes = await fetch(url + '?t=' + Date.now(), {
-                    headers: { 'Authorization': `token ${ghConfig.token}` }
-                });
-                if (getRes.ok) {
-                    const getData = await getRes.json();
-                    sha = getData.sha;
-                }
-
+                const getRes = await fetch(url + '?t=' + Date.now(), { headers: { 'Authorization': `token ${ghConfig.token}` } });
+                if (getRes.ok) { const getData = await getRes.json(); sha = getData.sha; }
                 const putRes = await fetch(url, {
                     method: 'PUT',
-                    headers: {
-                        'Authorization': `token ${ghConfig.token}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        message: 'Auto sync from web app',
-                        content: encodedContent,
-                        sha: sha || undefined
-                    })
+                    headers: { 'Authorization': `token ${ghConfig.token}`, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: 'Auto sync from web app ultra liquid', content: encodedContent, sha: sha || undefined })
                 });
-
-                if (putRes.ok) {
-                    setSyncStatus('🟢 Đã lưu vào GitHub');
-                } else {
-                    setSyncStatus('⚠️ Lỗi lưu GitHub');
-                }
-            } catch (err) {
-                setSyncStatus('⚠️ Lỗi kết nối');
-            } finally {
-                isSyncing = false;
-            }
+                if (putRes.ok) setSyncStatus('🟢 Đã lưu vào GitHub');
+                else setSyncStatus('⚠️ Lỗi lưu GitHub');
+            } catch (err) { setSyncStatus('⚠️ Lỗi kết nối'); }
+            finally { isSyncing = false; }
         }
 
         function checkAutoUnban() {
@@ -467,12 +1365,7 @@
             accounts.forEach(acc => {
                 if (acc.status === 'ban') {
                     const target = parseDateString(acc.unbanDate);
-                    if (target && today >= target) {
-                        acc.status = 'sống';
-                        acc.autoUnbanned = true;
-                        acc.unbanDate = '-';
-                        updated = true;
-                    }
+                    if (target && today >= target) { acc.status = 'sống'; acc.autoUnbanned = true; acc.unbanDate = '-'; updated = true; }
                 }
             });
             return updated;
@@ -480,39 +1373,27 @@
 
         async function autoPullData() {
             if (isSyncing) return;
-            
             let dataLoaded = false;
             if (ghConfig.user && ghConfig.repo && ghConfig.token) {
                 const url = `https://api.github.com/repos/${ghConfig.user}/${ghConfig.repo}/contents/data.txt?t=` + Date.now();
                 try {
                     const res = await fetch(url, { headers: { 'Authorization': `token ${ghConfig.token}` } });
-                    if (res.ok) {
-                        const data = await res.json();
-                        parseAndLoadText(base64ToUtf8(data.content));
-                        dataLoaded = true;
-                        setSyncStatus('🟢 Đã đồng bộ mới nhất');
-                    }
+                    if (res.ok) { const data = await res.json(); parseAndLoadText(base64ToUtf8(data.content)); dataLoaded = true; setSyncStatus('🟢 Đã đồng bộ mới nhất'); }
                 } catch(e) {}
             }
-
             if (!dataLoaded) {
                 try {
                     const res = await fetch('./data.txt?t=' + Date.now());
-                    if (res.ok) {
-                        const text = await res.text();
-                        parseAndLoadText(text);
-                    }
+                    if (res.ok) { const text = await res.text(); parseAndLoadText(text); }
                 } catch (e) {}
             }
-            
-            if (checkAutoUnban()) {
-                saveAndSync();
-            }
+            if (checkAutoUnban()) saveAndSync();
         }
 
-        function parseAndLoadText(text) {
+        function parseAndLoadText(text, isAppend = false) {
             const lines = text.split('\n');
-            const loaded = [];
+            const loaded = isAppend ? [...accounts] : [];
+            let addedCount = 0;
             lines.forEach((line, idx) => {
                 const clean = line.trim();
                 if (!clean) return;
@@ -521,22 +1402,16 @@
                 const status = (p[1] && p[1].trim().toLowerCase() === 'ban') ? 'ban' : 'sống';
                 const date = status === 'ban' ? (p[2] ? formatRawDate(p[2]) : 'Chưa rõ') : '-';
                 const note = p[3] ? p[3].trim() : '';
-
                 const uname = extractUsername(acc);
                 const exist = loaded.findIndex(item => extractUsername(item.acc) === uname);
                 if (exist !== -1) loaded.splice(exist, 1);
-
-                loaded.push({ id: Date.now() + idx, acc, note, status, unbanDate: date, autoUnbanned: false });
+                loaded.push({ id: Date.now() + idx + Math.floor(Math.random()*1000), acc, note, status, unbanDate: date, autoUnbanned: false });
+                addedCount++;
             });
-
-            if (loaded.length > 0 && JSON.stringify(loaded) !== JSON.stringify(accounts)) {
-                accounts = loaded;
-                localStorage.setItem('vancau88_accounts', JSON.stringify(accounts));
-                render();
-            }
+            if (loaded.length > 0) { accounts = loaded; localStorage.setItem('vancau88_accounts', JSON.stringify(accounts)); render(); }
+            return addedCount;
         }
 
-        // --- XỬ LÝ TÁCH CHUỖI NHẬP ---
         function handleAdd(e) {
             e.preventDefault();
             const accText = document.getElementById('accInfo').value.trim();
@@ -544,45 +1419,21 @@
             const status = document.getElementById('accStatus').value;
             let dateVal = document.getElementById('unbanDate').value.trim();
             if (status === 'ban') dateVal = formatRawDate(dateVal);
-
             const lines = accText.split('\n');
             let addedCount = 0;
-
             lines.forEach((line, idx) => {
                 let rawLine = line.trim();
                 if (!rawLine) return;
-
-                let finalAcc = rawLine;
-                let finalNote = globalNote;
-
-                // Nếu có định dạng tk:mk:ghichu (Cắt 2 cụm đầu làm tk:mk, phần còn lại làm Ghi chú)
+                let finalAcc = rawLine, finalNote = globalNote;
                 const parts = rawLine.split(':');
-                if (parts.length >= 3) {
-                    finalAcc = parts[0].trim() + ':' + parts[1].trim();
-                    finalNote = parts.slice(2).join(':').trim(); // Lấy tất cả chữ sau dấu : thứ 2
-                }
-
+                if (parts.length >= 3) { finalAcc = parts[0].trim() + ':' + parts[1].trim(); finalNote = parts.slice(2).join(':').trim(); }
                 const uname = extractUsername(finalAcc);
                 const existIndex = accounts.findIndex(item => extractUsername(item.acc) === uname);
                 if (existIndex !== -1) accounts.splice(existIndex, 1);
-
-                accounts.unshift({
-                    id: Date.now() + idx,
-                    acc: finalAcc,
-                    note: finalNote,
-                    status: status,
-                    unbanDate: status === 'ban' ? (dateVal || 'Chưa rõ') : '-',
-                    autoUnbanned: false
-                });
+                accounts.unshift({ id: Date.now() + idx + Math.floor(Math.random()*1000), acc: finalAcc, note: finalNote, status, unbanDate: status === 'ban' ? (dateVal || 'Chưa rõ') : '-', autoUnbanned: false });
                 addedCount++;
             });
-
-            if (addedCount > 0) {
-                saveAndSync();
-                document.getElementById('accForm').reset();
-                toggleDateInput('accStatus', 'unbanDate');
-                showCustomToast(`Đã lưu ${addedCount} tài khoản!`, 'success');
-            }
+            if (addedCount > 0) { saveAndSync(); document.getElementById('accForm').reset(); toggleDateInput('accStatus','unbanDate'); showCustomToast(`Đã lưu ${addedCount} tài khoản!`, 'success'); }
         }
 
         function openEditModal(id) {
@@ -593,120 +1444,197 @@
             document.getElementById('editNote').value = item.note || '';
             document.getElementById('editStatus').value = item.status;
             document.getElementById('editDate').value = item.unbanDate === '-' ? '' : item.unbanDate;
-            toggleDateInput('editStatus', 'editDate');
-            document.getElementById('editModal').style.display = 'flex';
+            toggleDateInput('editStatus','editDate');
+            openModal('editModal');
         }
-        function closeEditModal() { document.getElementById('editModal').style.display = 'none'; }
 
         function saveEdit() {
             const id = parseInt(document.getElementById('editId').value);
             const item = accounts.find(a => a.id === id);
             if (!item) return;
-
             const accStr = document.getElementById('editAcc').value.trim();
             const uname = extractUsername(accStr);
             const dup = accounts.findIndex(a => a.id !== id && extractUsername(a.acc) === uname);
             if (dup !== -1) accounts.splice(dup, 1);
-
             item.acc = accStr;
             item.note = document.getElementById('editNote').value.trim();
             item.status = document.getElementById('editStatus').value;
             let dateVal = document.getElementById('editDate').value.trim();
             item.unbanDate = item.status === 'ban' ? (formatRawDate(dateVal) || 'Chưa rõ') : '-';
-            item.autoUnbanned = false; 
-
-            closeEditModal();
-            saveAndSync();
-            showCustomToast('Đã cập nhật!', 'success');
+            item.autoUnbanned = false;
+            closeModal('editModal'); saveAndSync(); showCustomToast('Đã cập nhật!', 'success');
         }
 
-        function deleteAcc(id) {
-            accounts = accounts.filter(item => item.id !== id);
-            saveAndSync();
-            showCustomToast('Đã xóa!', 'warn');
+        function confirmDeleteSingle(id) {
+            const item = accounts.find(a => a.id === id);
+            if (!item) return;
+            document.getElementById('confirmDeleteMsg').innerText = `Bạn có chắc chắn muốn xóa tài khoản: ${item.acc}?`;
+            pendingDeleteAction = () => {
+                accounts = accounts.filter(a => a.id !== id);
+                selectedIds.delete(id); updateBulkBar(); saveAndSync();
+                showCustomToast('Đã xóa tài khoản!', 'warn');
+            };
+            openModal('confirmDeleteModal');
         }
 
-        function copyAcc(text) {
-            navigator.clipboard.writeText(text);
-            showCustomToast('Đã copy: ' + text, 'info');
+        document.getElementById('btnConfirmDeleteExec').addEventListener('click', () => {
+            if (pendingDeleteAction) { pendingDeleteAction(); pendingDeleteAction = null; }
+            closeModal('confirmDeleteModal');
+        });
+
+        function openImportExportModal() { openModal('importExportModal'); }
+
+        function exportData(type) {
+            let dataStr = '', filename = '', mime = 'text/plain';
+            if (type === 'txt') { dataStr = accounts.map(a => `${a.acc}|${a.status}|${a.unbanDate}|${a.note||''}`).join('\n'); filename = 'data.txt'; }
+            else if (type === 'csv') {
+                const rows = [['Tài khoản : Mật khẩu','Trạng thái','Ngày mở ban','Ghi chú']];
+                accounts.forEach(a => rows.push([`"${(a.acc||'').replace(/"/g,'""')}"`,a.status,a.unbanDate,`"${(a.note||'').replace(/"/g,'""')}"`]));
+                dataStr = '\uFEFF' + rows.map(r => r.join(',')).join('\n'); filename = `accounts_${Date.now()}.csv`; mime = 'text/csv;charset=utf-8;';
+            } else if (type === 'json') { dataStr = JSON.stringify(accounts, null, 2); filename = `accounts_backup_${Date.now()}.json`; mime = 'application/json'; }
+            const blob = new Blob([dataStr], { type: mime });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a'); a.href = url; a.download = filename;
+            document.body.appendChild(a); a.click(); document.body.removeChild(a);
+            URL.revokeObjectURL(url); showCustomToast(`Đã xuất file ${filename}!`, 'success');
         }
 
-        function setFilter(f, el) {
-            currentFilter = f;
-            document.querySelectorAll('.btn-filter').forEach(b => b.classList.remove('active'));
-            el.classList.add('active');
-            render();
+        function handleFileSelected(e) {
+            const file = e.target.files[0]; if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                const content = evt.target.result;
+                try {
+                    if (file.name.endsWith('.json')) {
+                        const json = JSON.parse(content);
+                        if (Array.isArray(json)) { accounts = json; localStorage.setItem('vancau88_accounts', JSON.stringify(accounts)); saveAndSync(); showCustomToast(`Đã nạp ${accounts.length} acc từ file JSON!`, 'success'); }
+                    } else { const count = parseAndLoadText(content, false); saveAndSync(); showCustomToast(`Đã nạp ${count} tài khoản từ file!`, 'success'); }
+                } catch(err) { showCustomToast('File không đúng định dạng!', 'warn'); }
+                closeModal('importExportModal'); e.target.value = '';
+            };
+            reader.readAsText(file);
         }
 
-        function saveAndSync() {
-            checkAutoUnban(); 
-            localStorage.setItem('vancau88_accounts', JSON.stringify(accounts));
-            render();
-            syncToGitHub();
+        function saveAndSync() { checkAutoUnban(); localStorage.setItem('vancau88_accounts', JSON.stringify(accounts)); render(); syncToGitHub(); }
+
+        // --- INTERSECTION OBSERVER: Panel Reveal ---
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('is-visible'); revealObserver.unobserve(entry.target); }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // --- INTERSECTION OBSERVER: Row Staggered Reveal ---
+        let rowObserver = null;
+
+        function initRowObserver() {
+            if (rowObserver) rowObserver.disconnect();
+            rowObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) { entry.target.classList.add('row-revealed'); rowObserver.unobserve(entry.target); }
+                });
+            }, { threshold: 0.05, rootMargin: '0px 0px -24px 0px' });
+            document.querySelectorAll('tbody tr.row-animated').forEach(tr => rowObserver.observe(tr));
         }
 
+        // --- DESKTOP 3D TILT on stat cards ---
+        document.querySelectorAll('.stat-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const dx = (e.clientX - rect.left - rect.width/2) / (rect.width/2);
+                const dy = (e.clientY - rect.top - rect.height/2) / (rect.height/2);
+                card.style.transform = `perspective(600px) rotateY(${dx*6}deg) rotateX(${-dy*6}deg) translateY(-5px) scale(1.02)`;
+                card.classList.add('tilt-active');
+            });
+            card.addEventListener('mouseleave', () => { card.style.transform = ''; card.classList.remove('tilt-active'); });
+        });
+
+        // --- RENDER ---
         function render() {
             const cntLive = accounts.filter(a => a.status === 'sống').length;
             const cntBanned = accounts.filter(a => a.status === 'ban').length;
-
+            const cntToday = accounts.filter(a => a.status === 'ban' && getRemainingDays(a.unbanDate) === 0).length;
             document.getElementById('cntAll').innerText = accounts.length;
             document.getElementById('cntLive').innerText = cntLive;
             document.getElementById('cntBanned').innerText = cntBanned;
+            document.getElementById('cntToday').innerText = cntToday;
             document.getElementById('btnCntAll').innerText = accounts.length;
             document.getElementById('btnCntLive').innerText = cntLive;
             document.getElementById('btnCntBanned').innerText = cntBanned;
+            document.getElementById('btnCntToday').innerText = cntToday;
+            renderTableRowsOnly();
+        }
 
-            const filtered = accounts.filter(item => currentFilter === 'all' ? true : item.status === currentFilter);
+        function renderTableRowsOnly() {
+            const filtered = getFilteredAndSortedAccounts();
+            const totalItems = filtered.length;
+            const totalPages = Math.ceil(totalItems / rowsPerPage) || 1;
+            if (currentPage > totalPages) currentPage = totalPages;
+            if (currentPage < 1) currentPage = 1;
+            const startIdx = (currentPage - 1) * rowsPerPage;
+            const pageItems = filtered.slice(startIdx, startIdx + rowsPerPage);
             const tbody = document.getElementById('accList');
             tbody.innerHTML = '';
 
-            if (filtered.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #64748b; padding: 40px 0;">Không có tài khoản nào</td></tr>`;
-                return;
+            if (totalItems === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:#475569;padding:52px 0;font-weight:600;font-size:14px;">Không tìm thấy tài khoản nào phù hợp</td></tr>`;
+            } else {
+                pageItems.forEach((item, index) => {
+                    const isBan = item.status === 'ban';
+                    const autoBadge = item.autoUnbanned ? `<span class="badge badge-auto">Vừa Mở</span>` : '';
+                    const isChecked = selectedIds.has(item.id);
+                    const tr = document.createElement('tr');
+                    tr.className = 'row-animated';
+                    tr.style.setProperty('--row-index', index);
+                    tr.innerHTML = `
+                        <td class="col-check"><input type="checkbox" class="custom-check" ${isChecked ? 'checked' : ''} onchange="toggleSelectRow(${item.id}, this.checked)"></td>
+                        <td><div class="acc-text-box"><div class="acc-name">${formatAccDisplay(item.acc)}</div><div class="acc-tags-wrap">${formatNoteBadges(item.note)}</div></div></td>
+                        <td><span class="badge ${isBan ? 'badge-banned' : 'badge-live'}">${isBan ? '🔒 BAN' : '⚡ SỐNG'}</span>${autoBadge}</td>
+                        <td><span style="color:${isBan?'#e2e8f0':'#475569'};font-weight:600;">${escapeHtml(item.unbanDate)}</span>${isBan ? getRemainingBadge(item.unbanDate) : ''}</td>
+                        <td><div class="actions">
+                            <button type="button" class="btn-liquid btn-act btn-act-copy" data-id="${item.id}">Copy</button>
+                            <button type="button" class="btn-liquid btn-act" onclick="openEditModal(${item.id})">Sửa</button>
+                            <button type="button" class="btn-liquid btn-act" onclick="confirmDeleteSingle(${item.id})">Xóa</button>
+                        </div></td>
+                    `;
+                    // Safe copy listener (giữ nguyên tính năng sao chép)
+                    tr.querySelector('.btn-act-copy').addEventListener('click', () => copyAcc(item.acc));
+                    tbody.appendChild(tr);
+                });
+                requestAnimationFrame(() => initRowObserver());
             }
 
-            filtered.forEach(item => {
-                const isBan = item.status === 'ban';
-                const noteHtml = item.note ? `<div class="acc-note">📝 ${item.note}</div>` : '';
-                const autoBadge = item.autoUnbanned ? `<span class="badge badge-auto">Vừa Mở</span>` : '';
-                
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td><div class="acc-name">${item.acc}</div>${noteHtml}</td>
-                    <td>
-                        <span class="badge ${isBan ? 'badge-banned' : 'badge-live'}">${isBan ? '🔒 BAN' : '⚡ SỐNG'}</span>
-                        ${autoBadge}
-                    </td>
-                    <td><span style="color: ${isBan ? '#f1f5f9' : '#64748b'}">${item.unbanDate}</span> ${isBan ? getRemainingBadge(item.unbanDate) : ''}</td>
-                    <td>
-                        <div class="actions">
-                            <button class="btn-liquid btn-act" onclick="copyAcc('${item.acc}')">Copy</button>
-                            <button class="btn-liquid btn-act" onclick="openEditModal(${item.id})">Sửa</button>
-                            <button class="btn-liquid btn-act" onclick="deleteAcc(${item.id})">Xóa</button>
-                        </div>
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
+            const startDisplay = totalItems === 0 ? 0 : startIdx + 1;
+            const endDisplay = Math.min(startIdx + rowsPerPage, totalItems);
+            document.getElementById('pageInfo').innerText = `Hiển thị ${startDisplay} – ${endDisplay} trong tổng số ${totalItems} tài khoản`;
+            document.getElementById('btnPrevPage').disabled = currentPage <= 1;
+            document.getElementById('btnNextPage').disabled = currentPage >= totalPages;
+
+            const pageNumContainer = document.getElementById('pageNumbers');
+            pageNumContainer.innerHTML = '';
+            let pStart = Math.max(1, currentPage - 2);
+            let pEnd = Math.min(totalPages, pStart + 4);
+            if (pEnd - pStart < 4) pStart = Math.max(1, pEnd - 4);
+            for (let i = pStart; i <= pEnd; i++) {
+                const btn = document.createElement('button');
+                btn.className = `btn-liquid btn-page ${i === currentPage ? 'active' : ''}`;
+                btn.innerText = i; btn.onclick = () => goToPage(i);
+                pageNumContainer.appendChild(btn);
+            }
+            updateCheckAllHeader(); updateBulkBar();
         }
 
-        render();
-        
-        autoPullData();
+        // --- INIT ---
+        document.getElementById('sortSelect').value = currentSort;
+        document.getElementById('rowsPerPageSelect').value = rowsPerPage;
+        updateMaskButton(); render(); autoPullData();
 
         document.addEventListener("visibilitychange", () => {
-            if (document.visibilityState === "visible") {
-                setSyncStatus('🔄 Đang kiểm tra dữ liệu mới...', true);
-                autoPullData();
-            }
+            if (document.visibilityState === "visible") { setSyncStatus('🔄 Đang kiểm tra dữ liệu mới...', true); autoPullData(); }
         });
 
-        setInterval(() => {
-            if (document.visibilityState === "visible") {
-                autoPullData();
-            }
-        }, 60000);
-
+        setInterval(() => { if (document.visibilityState === "visible") autoPullData(); }, 60000);
     </script>
 </body>
 </html>

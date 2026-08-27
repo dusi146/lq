@@ -1,3 +1,4 @@
+test2:ok|sống|-|Vàng
 test:ok|sống|-|B.Kim 2
 thichgiku098:danchoi999|sống|-|B.Kim I - 1/5 sao,123,169
 thichladuoc2k2:hachuong997|sống|-|B.Kim II - 3/5 sao,110,130

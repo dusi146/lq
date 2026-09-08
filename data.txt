@@ -16,7 +16,7 @@ ThuyyChiina:TiengAnh|sống|-|B.Kim III - 4/5 sao,92,149
 Thy.vnaa:Van7524@|sống|-|B.Kim IV - 4/5 sao,123,136
 thuzina28:Tathithu26|sống|-|B.Kim V - 2/5 sao,110,111
 Tienganh003:LAJg4HfF|sống|-|B.Kim V - 1/5 sao,84,138
-Tienanhs2anh:htvldta36|sống|-|B.Kim III - 2/5 sao,116,175
+Tienanhs2anh:htvldta36|ban|04/09/2029|B.Kim III - 2/5 sao,116,175
 Tidaica.123:2603198100asd|sống|-|B.Kim II - 3/5 sao,102,139
 rdsotir0210:123456abc|sống|-|acc oke
 satthu77a:satthu77|sống|-|acc ngon xchu off binh thuogn

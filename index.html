@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>QUẢN LÝ ACC VANCAU88 - ULTRA LIQUID PRO</title>
+    <title>QUẢN LÝ ACC VANCAU88 - SMART PRO</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
     <style>
-        /* ============================================================
-           RESET & DESIGN TOKENS
-        ============================================================ */
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
@@ -19,373 +16,181 @@
         }
 
         :root {
-            /* Brand Colors */
             --sky: #38bdf8;
-            --sky-glow: rgba(56, 189, 248, 0.35);
-            --violet: #8b5cf6;
-            --violet-glow: rgba(139, 92, 246, 0.35);
             --cyan: #06b6d4;
-            --cyan-glow: rgba(6, 182, 212, 0.35);
             --emerald: #10b981;
-            --emerald-glow: rgba(16, 185, 129, 0.35);
             --rose: #f43f5e;
-            --rose-glow: rgba(244, 63, 94, 0.35);
             --amber: #f59e0b;
-            --amber-glow: rgba(245, 158, 11, 0.3);
+            --violet: #8b5cf6;
 
-            /* Liquid Glass Theme */
-            --bg-base: #040612;
-            --glass-card: rgba(13, 20, 42, 0.72);
-            --glass-row: rgba(255, 255, 255, 0.025);
-            --glass-row-hover: rgba(255, 255, 255, 0.06);
-            --glass-border: rgba(255, 255, 255, 0.11);
-            --glass-border-bright: rgba(255, 255, 255, 0.25);
-            --glass-inset-hi: rgba(255, 255, 255, 0.15);
-            --glass-inset-lo: rgba(0, 0, 0, 0.35);
+            --bg: #040714;
+            --card: rgba(12, 18, 38, 0.95);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-active: rgba(56, 189, 248, 0.4);
+            --row: rgba(15, 23, 48, 0.65);
+            --row-hover: rgba(26, 38, 76, 0.85);
 
-            /* Radius */
-            --r-xl: 24px;
-            --r-lg: 16px;
-            --r-md: 12px;
-            --r-sm: 8px;
+            --r-xl: 16px;
+            --r-lg: 12px;
+            --r-md: 8px;
+            --r-sm: 6px;
 
-            /* Physics & Animation curves */
-            --spring: cubic-bezier(0.16, 1, 0.3, 1);
-            --smooth: cubic-bezier(0.4, 0, 0.2, 1);
-
-            /* Fonts */
-            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
+            --font: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            --mono: 'JetBrains Mono', monospace;
         }
 
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: var(--font-sans);
+            font-family: var(--font);
             min-height: 100vh;
-            background-color: var(--bg-base);
+            background-color: var(--bg);
+            background-image:
+                radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 90% 15%, rgba(6, 182, 212, 0.10) 0%, transparent 40%),
+                radial-gradient(circle at 50% 85%, rgba(168, 85, 247, 0.08) 0%, transparent 45%);
+            background-attachment: fixed;
             color: #f1f5f9;
-            padding: 28px 16px 90px;
+            padding: 20px 14px 70px;
             display: flex;
             justify-content: center;
-            overflow-x: hidden;
-            position: relative;
-            line-height: 1.5;
         }
 
-        /* ── Aurora Mesh Gradient Background ── */
-        .aurora-bg {
-            position: fixed;
-            inset: 0;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .aurora-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.40;
-            mix-blend-mode: screen;
-            will-change: transform;
-        }
-
-        .blob-1 {
-            width: 550px; height: 550px;
-            background: radial-gradient(circle at 40% 40%, #6366f1 0%, transparent 70%);
-            top: -12%; left: -10%;
-            animation: aurora1 22s ease-in-out infinite alternate;
-        }
-        .blob-2 {
-            width: 620px; height: 620px;
-            background: radial-gradient(circle at 60% 50%, #06b6d4 0%, transparent 70%);
-            bottom: -15%; right: -10%;
-            animation: aurora2 26s ease-in-out infinite alternate;
-        }
-        .blob-3 {
-            width: 460px; height: 460px;
-            background: radial-gradient(circle at 50% 50%, #a855f7 0%, transparent 68%);
-            top: 40%; left: 50%;
-            transform: translate(-50%, -50%);
-            animation: aurora3 20s ease-in-out infinite alternate;
-        }
-        .blob-4 {
-            width: 400px; height: 400px;
-            background: radial-gradient(circle at 50% 60%, #ec4899 0%, transparent 68%);
-            top: 75%; left: 6%;
-            animation: aurora4 24s ease-in-out infinite alternate;
-        }
-
-        @keyframes aurora1 {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(60px, -45px) scale(1.12); }
-            100% { transform: translate(25px, 35px) scale(0.92); }
-        }
-        @keyframes aurora2 {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-50px, 50px) scale(1.10); }
-            100% { transform: translate(45px, -30px) scale(0.96); }
-        }
-        @keyframes aurora3 {
-            0% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.18); }
-            100% { transform: translate(-50%, -50%) scale(0.90); }
-        }
-        @keyframes aurora4 {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(70px, -35px) scale(1.08); }
-            100% { transform: translate(-25px, 50px) scale(0.94); }
-        }
-
-        .noise-overlay {
-            position: fixed;
-            inset: 0;
-            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
-            background-size: 24px 24px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* ── Container ── */
         .container {
             width: 100%;
-            max-width: 1140px;
-            position: relative;
-            z-index: 1;
-            animation: containerIn 0.6s var(--spring) both;
+            max-width: 1100px;
         }
 
-        @keyframes containerIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ── Liquid Glass Card System ── */
-        .liquid-glass {
-            background: var(--glass-card);
-            backdrop-filter: blur(24px) saturate(180%);
-            -webkit-backdrop-filter: blur(24px) saturate(180%);
-            border: 1px solid var(--glass-border);
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
             border-radius: var(--r-xl);
-            box-shadow:
-                0 6px 16px rgba(0, 0, 0, 0.25),
-                0 20px 48px rgba(0, 0, 0, 0.45),
-                inset 0 1px 0 var(--glass-inset-hi),
-                inset 0 -1px 0 var(--glass-inset-lo);
-            position: relative;
-            overflow: hidden;
-            transition: border-color 0.3s var(--smooth), box-shadow 0.3s var(--smooth);
-        }
-
-        .liquid-glass::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 50%, transparent 100%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .liquid-glass::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -80%;
-            width: 55%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.05) 50%, transparent 100%);
-            transform: skewX(-20deg);
-            pointer-events: none;
-            animation: glassSweep 14s ease-in-out infinite;
-            z-index: 1;
-        }
-
-        @keyframes glassSweep {
-            0%, 72% { left: -80%; opacity: 0; }
-            74% { opacity: 1; }
-            100% { left: 220%; opacity: 0; }
-        }
-
-        /* ── Scroll Reveal System ── */
-        .reveal {
-            opacity: 0;
-            transform: translateY(28px) scale(0.98);
-            will-change: transform, opacity;
-            transition: opacity 0.55s var(--spring), transform 0.55s var(--spring);
-        }
-
-        .reveal.is-visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
         }
 
         /* ── Buttons ── */
-        .btn-liquid {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            color: #fff;
-            font-family: var(--font-sans);
+        .btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #f1f5f9;
+            font-family: var(--font);
             font-weight: 700;
             font-size: 13px;
             border-radius: var(--r-md);
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-            transition: all 0.22s var(--spring);
+            transition: transform 0.12s ease, background-color 0.12s ease, border-color 0.12s ease;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 7px;
-            position: relative;
-            overflow: hidden;
-            will-change: transform;
+            gap: 6px;
             user-select: none;
+            padding: 8px 14px;
         }
 
-        .btn-liquid:hover {
+        .btn:hover {
             transform: translateY(-2px);
-            border-color: rgba(255, 255, 255, 0.32);
-            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+            border-color: rgba(255, 255, 255, 0.28);
+            background: rgba(255, 255, 255, 0.12);
         }
 
-        .btn-liquid:active {
-            transform: scale(0.96);
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        .btn:active { transform: scale(0.97); }
+
+        .btn-icon {
+            width: 15px;
+            height: 15px;
+            display: inline-block;
+            vertical-align: middle;
+            stroke-width: 2;
+            flex-shrink: 0;
         }
 
-        .btn-primary-liquid {
-            background: linear-gradient(130deg, #0ea5e9 0%, #8b5cf6 50%, #ec4899 100%);
-            background-size: 200% 200%;
-            animation: btnGradient 7s ease infinite;
-            border-color: rgba(255, 255, 255, 0.32);
-            box-shadow: 0 4px 18px rgba(6, 182, 212, 0.35), 0 8px 30px rgba(139, 92, 246, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        .btn-primary {
+            background: linear-gradient(135deg, #0284c7 0%, #6366f1 100%);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+        }
+        .btn-primary:hover { background: linear-gradient(135deg, #0ea5e9 0%, #4f46e5 100%); }
+
+        .btn-config { background: rgba(245, 158, 11, 0.12); border-color: rgba(245, 158, 11, 0.3); color: #fbbf24; }
+        .btn-mask { background: rgba(14, 165, 233, 0.12); border-color: rgba(14, 165, 233, 0.3); color: var(--sky); }
+        .btn-mask.active { background: rgba(139, 92, 246, 0.22); border-color: rgba(168, 85, 247, 0.5); color: #d8b4fe; }
+        .btn-danger { background: #e11d48; border-color: rgba(255, 255, 255, 0.2); color: #fff; }
+
+        /* Row Action Buttons */
+        .btn-copy { background: rgba(6, 182, 212, 0.15); border-color: rgba(6, 182, 212, 0.35); color: #38bdf8; }
+        .btn-edit { background: rgba(139, 92, 246, 0.15); border-color: rgba(139, 92, 246, 0.35); color: #c084fc; }
+        .btn-del { background: rgba(244, 63, 94, 0.15); border-color: rgba(244, 63, 94, 0.35); color: #fb7185; }
+
+        /* Presets Chips for Ban duration */
+        .presets-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 8px;
         }
 
-        .btn-primary-liquid:hover {
-            box-shadow: 0 8px 28px rgba(6, 182, 212, 0.45), 0 12px 36px rgba(139, 92, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.48);
+        .btn-preset {
+            padding: 5px 9px;
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: var(--r-sm);
+            background: rgba(244, 63, 94, 0.12);
+            border: 1px solid rgba(244, 63, 94, 0.3);
+            color: #fca5a5;
+            cursor: pointer;
+            transition: all 0.12s ease;
         }
-
-        @keyframes btnGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .btn-danger-liquid {
-            background: linear-gradient(135deg, #f43f5e 0%, #be123c 100%);
-            border-color: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 4px 18px rgba(244, 63, 94, 0.35);
-        }
-
-        .btn-config-main {
-            background: rgba(245, 158, 11, 0.16);
-            border-color: rgba(245, 158, 11, 0.42);
-            color: #fbbf24;
-        }
-
-        .btn-config-main:hover {
-            background: rgba(245, 158, 11, 0.26);
-            box-shadow: 0 0 20px rgba(245, 158, 11, 0.32);
-        }
-
-        .btn-mask-toggle {
-            background: rgba(14, 165, 233, 0.16);
-            border-color: rgba(14, 165, 233, 0.42);
-            color: var(--sky);
-        }
-
-        .btn-mask-toggle.active {
-            background: rgba(139, 92, 246, 0.25);
-            border-color: rgba(168, 85, 247, 0.6);
-            color: #d8b4fe;
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.35);
+        .btn-preset:hover {
+            background: rgba(244, 63, 94, 0.25);
+            border-color: rgba(244, 63, 94, 0.6);
+            color: #fff;
+            transform: translateY(-1px);
         }
 
         /* ── Header ── */
-        .header-bar {
+        .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 22px;
+            margin-bottom: 16px;
             flex-wrap: wrap;
-            gap: 14px;
-        }
-
-        .brand-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            padding: 5px 14px;
-            background: rgba(139, 92, 246, 0.16);
-            border: 1px solid rgba(168, 85, 247, 0.42);
-            border-radius: 999px;
-            font-size: 11px;
-            letter-spacing: 1.5px;
-            font-weight: 800;
-            color: #d8b4fe;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-            box-shadow: 0 0 18px rgba(139, 92, 246, 0.2);
-        }
-
-        .brand-badge-dot {
-            width: 7px;
-            height: 7px;
-            background: #c084fc;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #c084fc;
-            animation: breatheDot 2s ease-in-out infinite;
-        }
-
-        @keyframes breatheDot {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.4); opacity: 0.55; }
+            gap: 12px;
         }
 
         h1 {
-            font-size: clamp(22px, 5.5vw, 32px);
+            font-size: clamp(20px, 4.5vw, 26px);
             font-weight: 900;
             letter-spacing: 0.5px;
             text-transform: uppercase;
-            line-height: 1.15;
-            background: linear-gradient(130deg, #ffffff 0%, #38bdf8 40%, #c084fc 80%, #f472b6 100%);
+            background: linear-gradient(130deg, #ffffff 0%, #38bdf8 60%, #c084fc 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
+        .header-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 
-        .btn-header { padding: 10px 16px; border-radius: var(--r-md); }
-
-        /* ── Stats Grid ── */
-        .stats-grid {
+        /* ── Dashboard Stats ── */
+        .stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin-bottom: 18px;
+            gap: 10px;
+            margin-bottom: 14px;
         }
 
         .stat-card {
-            padding: 16px 20px;
-            border-radius: var(--r-xl);
+            padding: 14px 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             cursor: pointer;
-            transition: transform 0.28s var(--spring), box-shadow 0.28s var(--spring), border-color 0.28s var(--smooth);
+            transition: transform 0.15s ease, border-color 0.15s ease;
         }
 
         .stat-card:hover {
-            transform: translateY(-4px) scale(1.01);
-            border-color: var(--glass-border-bright);
-            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+            transform: translateY(-2px);
+            border-color: var(--border-active);
         }
 
         .stat-info span {
@@ -394,238 +199,134 @@
             color: #94a3b8;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.7px;
+            letter-spacing: 0.5px;
         }
 
         .stat-info h2 {
-            font-size: clamp(20px, 4vw, 28px);
+            font-size: clamp(19px, 3vw, 24px);
             font-weight: 900;
-            margin-top: 3px;
-            letter-spacing: -0.5px;
-            line-height: 1;
+            line-height: 1.1;
+            margin-top: 2px;
         }
 
         .stat-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 14px;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            transition: transform 0.28s var(--spring);
+            font-size: 18px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             flex-shrink: 0;
         }
 
-        .stat-card:hover .stat-icon { transform: scale(1.12) rotate(6deg); }
-
         /* ── Form Card ── */
-        .card-form {
-            padding: 20px;
-            margin-bottom: 16px;
+        .form-card {
+            padding: 16px;
+            margin-bottom: 14px;
         }
 
         .form-grid {
             display: grid;
             grid-template-columns: 2fr 1.6fr 1.1fr 1.1fr auto;
-            gap: 12px;
+            gap: 10px;
             align-items: start;
         }
 
         input, select, textarea {
             width: 100%;
-            padding: 13px 16px;
+            padding: 11px 13px;
             border-radius: var(--r-md);
-            border: 1px solid rgba(255, 255, 255, 0.13);
-            background: rgba(8, 14, 32, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(8, 13, 28, 0.85);
             color: #f8fafc;
             outline: none;
             font-size: 13.5px;
-            font-family: var(--font-sans);
-            transition: all 0.22s var(--smooth);
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+            font-family: var(--font);
+            transition: border-color 0.15s;
         }
-
-        input::placeholder, textarea::placeholder { color: #475569; }
 
         input:focus, select:focus, textarea:focus {
             border-color: var(--sky);
-            background: rgba(12, 20, 44, 0.95);
-            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15), 0 0 18px rgba(56, 189, 248, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.3);
+            background: rgba(11, 18, 38, 0.95);
         }
 
-        select option { background: #0b1120; color: #f8fafc; }
+        select option { background: #080d1c; color: #f8fafc; }
 
         textarea {
             resize: vertical;
-            min-height: 48px;
-            line-height: 1.5;
-            font-family: var(--font-mono);
+            min-height: 44px;
+            font-family: var(--mono);
             font-size: 13px;
+            line-height: 1.4;
         }
 
         .btn-add {
-            padding: 13px 24px;
+            height: 44px;
+            padding: 0 20px;
             white-space: nowrap;
-            height: 48px;
-            font-size: 14px;
-        }
-
-        /* ── Hint Box (Mẹo nhập liệu Liquid Glass Card) ── */
-        .hint-box {
-            margin-top: 14px;
-            padding: 12px 16px;
-            border-radius: var(--r-md);
-            background: rgba(56, 189, 248, 0.05);
-            border: 1px solid rgba(56, 189, 248, 0.18);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
-        }
-
-        .hint-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 10px;
-            background: rgba(56, 189, 248, 0.15);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 15px;
-            color: var(--sky);
-            flex-shrink: 0;
-            box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
-            margin-top: 1px;
-        }
-
-        .hint-content {
-            flex: 1;
-            font-size: 12.5px;
-            line-height: 1.55;
-            color: #94a3b8;
-        }
-
-        .hint-title {
-            font-weight: 800;
-            color: #e2e8f0;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .hint-title span {
-            color: var(--sky);
-        }
-
-        .hint-list {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            margin-top: 3px;
-        }
-
-        .hint-item {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        .hint-code {
-            display: inline-block;
-            font-family: var(--font-mono);
-            font-size: 11.5px;
-            font-weight: 700;
-            color: #7dd3fc;
-            background: rgba(14, 165, 233, 0.14);
-            border: 1px solid rgba(56, 189, 248, 0.28);
-            padding: 1px 7px;
-            border-radius: 6px;
-            letter-spacing: -0.2px;
-        }
-
-        .hint-arrow {
-            color: #38bdf8;
-            font-size: 12px;
-            font-weight: 700;
         }
 
         /* ── Controls Panel ── */
-        .controls-panel {
-            padding: 16px 20px;
-            margin-bottom: 16px;
+        .controls {
+            padding: 12px 16px;
+            margin-bottom: 14px;
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 10px;
         }
 
         .search-row {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             align-items: center;
             flex-wrap: wrap;
         }
 
         .search-box {
             flex: 1;
-            min-width: 250px;
+            min-width: 220px;
             position: relative;
             display: flex;
             align-items: center;
         }
 
         .search-box input {
-            padding-left: 44px;
-            padding-right: 38px;
-            height: 45px;
+            padding-left: 36px;
+            padding-right: 32px;
+            height: 40px;
         }
 
         .search-icon {
             position: absolute;
-            left: 15px;
-            font-size: 16px;
+            left: 12px;
             color: #64748b;
             pointer-events: none;
-            z-index: 1;
+            display: flex;
+            align-items: center;
         }
 
         .btn-clear-search {
             position: absolute;
-            right: 14px;
-            background: none;
-            border: none;
+            right: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             color: #94a3b8;
             cursor: pointer;
-            font-size: 15px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
             display: none;
-            transition: color 0.2s;
-            z-index: 1;
-        }
-
-        .btn-clear-search:hover { color: #fff; }
-
-        .sort-select-wrap {
-            display: flex;
             align-items: center;
-            gap: 8px;
-            min-width: 190px;
+            justify-content: center;
         }
 
-        .sort-select-wrap select {
-            height: 45px;
-            padding: 8px 14px;
-            font-size: 13px;
+        .sort-select {
+            height: 40px;
+            min-width: 170px;
+            font-size: 12.5px;
             font-weight: 700;
         }
 
@@ -634,16 +335,16 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 8px;
         }
 
         .filter-group {
             display: flex;
-            background: rgba(8, 14, 32, 0.85);
-            padding: 4px;
+            background: rgba(8, 13, 28, 0.85);
+            padding: 3px;
             border-radius: var(--r-md);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            gap: 4px;
+            gap: 3px;
             flex-wrap: wrap;
         }
 
@@ -652,322 +353,198 @@
             border: 1px solid transparent;
             color: #94a3b8;
             cursor: pointer;
-            padding: 8px 16px;
+            padding: 6px 12px;
             border-radius: var(--r-sm);
-            font-size: 12.5px;
+            font-size: 12px;
             font-weight: 700;
-            font-family: var(--font-sans);
-            transition: all 0.22s var(--spring);
+            font-family: var(--font);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
 
-        .btn-filter:hover { color: #f1f5f9; background: rgba(255, 255, 255, 0.04); }
-
         .btn-filter.active {
-            background: rgba(56, 189, 248, 0.2);
+            background: rgba(56, 189, 248, 0.18);
             color: var(--sky);
-            border-color: rgba(56, 189, 248, 0.45);
-            box-shadow: 0 0 14px rgba(56, 189, 248, 0.2);
+            border-color: rgba(56, 189, 248, 0.4);
         }
 
         .sync-badge {
-            font-size: 12.5px;
+            font-size: 11.5px;
             font-weight: 700;
-            padding: 8px 16px;
+            padding: 6px 12px;
             border-radius: var(--r-md);
             display: inline-flex;
             align-items: center;
-            gap: 7px;
-            background: rgba(16, 185, 129, 0.14);
-            border: 1px solid rgba(16, 185, 129, 0.32);
+            gap: 6px;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.28);
             color: #34d399;
-            box-shadow: 0 0 14px rgba(16, 185, 129, 0.12);
-            transition: all 0.3s var(--smooth);
         }
 
-        .sync-badge.syncing {
-            background: rgba(56, 189, 248, 0.16);
-            border-color: rgba(56, 189, 248, 0.42);
-            color: var(--sky);
-            box-shadow: 0 0 16px rgba(56, 189, 248, 0.22);
-        }
-
-        /* ── Bulk Actions Toolbar ── */
+        /* ── Bulk Toolbar ── */
         .bulk-bar {
             display: none;
-            background: rgba(16, 26, 54, 0.95);
-            border: 1px solid rgba(56, 189, 248, 0.5);
-            padding: 12px 18px;
-            border-radius: var(--r-xl);
-            margin-bottom: 14px;
+            background: rgba(14, 23, 48, 0.95);
+            border: 1px solid rgba(56, 189, 248, 0.45);
+            padding: 10px 14px;
+            border-radius: var(--r-lg);
+            margin-bottom: 12px;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 10px;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 24px rgba(56, 189, 248, 0.2);
-            animation: slideDown 0.3s var(--spring);
-        }
-
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-12px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .bulk-info {
-            font-size: 13.5px;
-            font-weight: 800;
-            color: var(--sky);
-            display: flex;
-            align-items: center;
             gap: 8px;
         }
 
-        .bulk-btns { display: flex; gap: 8px; flex-wrap: wrap; }
-        .btn-bulk { padding: 7px 14px; font-size: 12px; font-weight: 700; border-radius: var(--r-sm); }
+        .bulk-info {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--sky);
+        }
 
-        /* ── Table (Desktop View) ── */
+        .bulk-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+
+        /* ── Table & Cards ── */
         .table-wrap {
             border-radius: var(--r-xl);
             overflow: hidden;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             text-align: left;
-            position: relative;
-            z-index: 2;
         }
 
         th, td {
-            padding: 14px 18px;
-            font-size: 13.5px;
+            padding: 11px 14px;
+            font-size: 13px;
             vertical-align: middle;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         th {
-            background: rgba(8, 14, 32, 0.94);
+            background: rgba(8, 13, 28, 0.95);
             color: #94a3b8;
             font-weight: 800;
             text-transform: uppercase;
             font-size: 11px;
-            letter-spacing: 1px;
+            letter-spacing: 0.6px;
             white-space: nowrap;
         }
 
-        /* Staggered Row Reveal Animation */
         tbody tr {
-            background: var(--glass-row);
-            transition: background 0.22s var(--smooth);
-            will-change: transform, opacity;
+            background: var(--row);
+            transition: background-color 0.12s;
         }
 
-        tbody tr.row-animated {
-            opacity: 0;
-            transform: translateY(16px) scale(0.98);
-        }
+        tbody tr:hover { background: var(--row-hover); }
 
-        tbody tr.row-revealed {
-            animation: rowReveal 0.45s var(--spring) both;
-            animation-delay: calc(var(--row-index) * 28ms);
-        }
-
-        @keyframes rowReveal {
-            from { opacity: 0; transform: translateY(16px) scale(0.97); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        tbody tr:hover { background: var(--glass-row-hover); }
-
-        .col-check { width: 48px; text-align: center; }
+        .col-check { width: 42px; text-align: center; }
 
         .custom-check {
-            width: 18px;
-            height: 18px;
+            width: 17px;
+            height: 17px;
             accent-color: var(--sky);
             cursor: pointer;
-            border-radius: 6px;
-            transition: transform 0.18s var(--spring);
+            border-radius: 4px;
         }
 
-        .custom-check:hover { transform: scale(1.18); }
-
-        .acc-text-box { display: flex; flex-direction: column; gap: 5px; }
+        .acc-text-box { display: flex; flex-direction: column; gap: 3px; }
 
         .acc-name {
-            font-family: var(--font-mono);
+            font-family: var(--mono);
             font-size: 13.5px;
             font-weight: 700;
             color: #f8fafc;
-            letter-spacing: -0.2px;
             word-break: break-all;
         }
 
-        .acc-tags-wrap { display: flex; flex-wrap: wrap; gap: 6px; }
+        .acc-tags { display: flex; flex-wrap: wrap; gap: 4px; }
 
         .acc-note {
-            font-size: 11.5px;
+            font-size: 11px;
             font-weight: 600;
             color: #94a3b8;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
             background: rgba(255, 255, 255, 0.05);
-            padding: 3px 10px;
+            padding: 2px 7px;
             border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             word-break: break-word;
-            backdrop-filter: blur(6px);
         }
 
-        /* Smart Rank Badges */
-        .badge-rank-vang    { background: rgba(234, 179, 8, 0.16);  color: #fde047; border: 1px solid rgba(234, 179, 8, 0.45);  box-shadow: 0 0 12px rgba(234, 179, 8, 0.18); }
-        .badge-rank-bkim    { background: rgba(56, 189, 248, 0.16); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.45); box-shadow: 0 0 12px rgba(56, 189, 248, 0.18); }
-        .badge-rank-kcuong  { background: rgba(168, 85, 247, 0.16); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.45); box-shadow: 0 0 12px rgba(168, 85, 247, 0.18); }
-        .badge-rank-tanhanh { background: rgba(236, 72, 153, 0.16); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.45); box-shadow: 0 0 12px rgba(236, 72, 153, 0.18); }
-        .badge-rank-caothu  { background: rgba(239, 68, 68, 0.16);  color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.45);  box-shadow: 0 0 12px rgba(239, 68, 68, 0.18); }
+        .badge-rank-vang    { background: rgba(234, 179, 8, 0.15);  color: #fde047; border: 1px solid rgba(234, 179, 8, 0.4); }
+        .badge-rank-bkim    { background: rgba(56, 189, 248, 0.15); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.4); }
+        .badge-rank-kcuong  { background: rgba(168, 85, 247, 0.15); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.4); }
+        .badge-rank-tanhanh { background: rgba(236, 72, 153, 0.15); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.4); }
+        .badge-rank-caothu  { background: rgba(239, 68, 68, 0.15);  color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.4); }
 
-        /* Status & Time Badges */
         .badge {
             display: inline-flex;
             align-items: center;
-            padding: 5px 12px;
-            border-radius: 12px;
-            font-size: 10.5px;
+            gap: 4px;
+            padding: 4px 9px;
+            border-radius: 6px;
+            font-size: 11px;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
-        .badge-live {
-            background: rgba(16, 185, 129, 0.15);
-            color: #34d399;
-            border: 1px solid rgba(52, 211, 153, 0.4);
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
-        }
+        .badge-live { background: rgba(16, 185, 129, 0.14); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.35); }
+        .badge-banned { background: rgba(244, 63, 94, 0.14); color: #fb7185; border: 1px solid rgba(251, 113, 133, 0.35); }
+        .badge-days { background: rgba(245, 158, 11, 0.16); color: #fcd34d; border: 1px solid rgba(252, 211, 77, 0.35); margin-left: 6px; text-transform: none; }
+        .badge-today { background: rgba(6, 182, 212, 0.2); color: var(--sky); border: 1px solid rgba(56, 189, 248, 0.45); margin-left: 6px; }
 
-        .badge-banned {
-            background: rgba(244, 63, 94, 0.15);
-            color: #fb7185;
-            border: 1px solid rgba(251, 113, 133, 0.4);
-            box-shadow: 0 0 15px rgba(244, 63, 94, 0.2);
-        }
-
-        .badge-days {
-            background: rgba(245, 158, 11, 0.18);
-            color: #fcd34d;
-            border: 1px solid rgba(252, 211, 77, 0.4);
-            margin-left: 6px;
-            font-weight: 700;
-            text-transform: none;
-            box-shadow: 0 0 12px rgba(245, 158, 11, 0.15);
-        }
-
-        .badge-today {
-            background: rgba(6, 182, 212, 0.22);
-            color: var(--sky);
-            border: 1px solid rgba(56, 189, 248, 0.5);
-            margin-left: 6px;
-            box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
-            animation: pulseBadge 2s ease-in-out infinite;
-        }
-
-        @keyframes pulseBadge {
-            0%, 100% { opacity: 1; box-shadow: 0 0 15px rgba(6, 182, 212, 0.3); }
-            50% { opacity: 0.65; box-shadow: 0 0 25px rgba(6, 182, 212, 0.5); }
-        }
-
-        .badge-auto {
-            background: rgba(168, 85, 247, 0.22);
-            color: #d8b4fe;
-            border: 1px solid rgba(216, 180, 254, 0.45);
-            margin-left: 6px;
-            font-size: 10px;
-        }
-
-        .actions {
-            display: flex;
-            gap: 7px;
-            justify-content: flex-end;
-        }
-
-        .btn-act {
-            padding: 7px 14px;
-            font-size: 12.5px;
-            font-weight: 700;
-            border-radius: var(--r-sm);
-        }
-
-        .btn-act-copy {
-            background: rgba(6, 182, 212, 0.18);
-            border-color: rgba(6, 182, 212, 0.45);
-            color: var(--sky);
-        }
-
-        .btn-act-copy:hover {
-            background: rgba(6, 182, 212, 0.32);
-            box-shadow: 0 0 16px rgba(6, 182, 212, 0.35);
-        }
+        .actions { display: flex; gap: 6px; justify-content: flex-end; }
 
         /* ── Pagination ── */
-        .pagination-bar {
-            padding: 14px 20px;
+        .pagination {
+            padding: 10px 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 12px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            position: relative;
-            z-index: 2;
+            gap: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .page-info { font-size: 13px; color: #94a3b8; font-weight: 600; }
-        .page-controls { display: flex; align-items: center; gap: 6px; }
-        .btn-page { min-width: 36px; height: 36px; padding: 0 10px; font-size: 12.5px; font-weight: 700; border-radius: var(--r-sm); }
-        .btn-page.active { background: rgba(56, 189, 248, 0.28); color: var(--sky); border-color: rgba(56, 189, 248, 0.55); box-shadow: 0 0 14px rgba(56, 189, 248, 0.3); }
-        .btn-page:disabled { opacity: 0.32; cursor: not-allowed; transform: none !important; }
-        .rows-select { width: auto; padding: 7px 12px; font-size: 12.5px; border-radius: var(--r-sm); }
+        .page-info { font-size: 12px; color: #94a3b8; font-weight: 600; }
+        .page-ctrls { display: flex; align-items: center; gap: 4px; }
+        .btn-page { min-width: 32px; height: 32px; padding: 0 7px; font-size: 12px; }
+        .btn-page.active { background: rgba(56, 189, 248, 0.25); color: var(--sky); border-color: rgba(56, 189, 248, 0.5); }
+        .btn-page:disabled { opacity: 0.3; cursor: not-allowed; }
 
         /* ── Modals ── */
         .modal-overlay {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.82);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(0, 0, 0, 0.78);
             justify-content: center;
             align-items: center;
             z-index: 999;
             padding: 16px;
-            animation: overlayIn 0.22s var(--smooth);
         }
-
-        @keyframes overlayIn { from { opacity: 0; } to { opacity: 1; } }
 
         .modal {
-            background: rgba(12, 18, 40, 0.96);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            padding: 26px;
+            background: #0c1328;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            padding: 22px;
             border-radius: var(--r-xl);
             width: 100%;
-            max-width: 480px;
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 35px rgba(139, 92, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            max-width: 440px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
             max-height: 90vh;
             overflow-y: auto;
-            animation: modalIn 0.3s var(--spring) both;
-        }
-
-        @keyframes modalIn {
-            from { opacity: 0; transform: scale(0.94) translateY(10px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         .modal h3 {
-            margin-bottom: 18px;
-            font-size: 18px;
+            margin-bottom: 14px;
+            font-size: 16px;
             font-weight: 800;
             color: var(--sky);
             display: flex;
@@ -975,397 +552,236 @@
             gap: 8px;
         }
 
-        .modal-field { margin-bottom: 14px; }
-        .modal-field label { display: block; font-size: 11.5px; font-weight: 800; color: #94a3b8; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.6px; }
-        .modal-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 24px; gap: 10px; }
+        .modal-field { margin-bottom: 12px; }
+        .modal-field label { display: block; font-size: 11px; font-weight: 800; color: #94a3b8; margin-bottom: 4px; text-transform: uppercase; }
+        .modal-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 18px; gap: 8px; }
 
         /* ── Toasts ── */
         #toastContainer {
             position: fixed;
-            top: 24px;
-            right: 24px;
+            top: 16px;
+            right: 16px;
             z-index: 9999;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 8px;
             pointer-events: none;
-            max-width: 380px;
-            width: calc(100% - 48px);
+            max-width: 340px;
+            width: calc(100% - 32px);
         }
 
         .custom-toast {
             pointer-events: auto;
-            background: rgba(12, 18, 40, 0.95);
-            backdrop-filter: blur(18px);
-            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: #0d152b;
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: var(--r-md);
-            padding: 14px 18px;
+            padding: 10px 14px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.7);
-            position: relative;
-            overflow: hidden;
-            animation: toastIn 0.35s var(--spring) both;
+            gap: 10px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+            transition: opacity 0.2s;
         }
 
-        .custom-toast.hide { animation: toastOut 0.28s var(--spring) both; }
-        .toast-icon { width: 36px; height: 36px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
-        .toast-msg { font-size: 13.5px; font-weight: 700; color: #f1f5f9; flex: 1; word-break: break-word; line-height: 1.4; }
-        .toast-progress { position: absolute; bottom: 0; left: 0; height: 3px; width: 100%; background: rgba(255, 255, 255, 0.1); }
-        .toast-progress-bar { height: 100%; width: 100%; animation: progressCount 2.5s linear forwards; }
-        .toast-success { border-color: rgba(52, 211, 153, 0.45); box-shadow: 0 10px 30px rgba(16, 185, 129, 0.22); }
-        .toast-success .toast-icon { background: rgba(16, 185, 129, 0.22); color: #34d399; }
-        .toast-success .toast-progress-bar { background: #34d399; }
-        .toast-info { border-color: rgba(56, 189, 248, 0.45); box-shadow: 0 10px 30px rgba(56, 189, 248, 0.22); }
-        .toast-info .toast-icon { background: rgba(6, 182, 212, 0.22); color: var(--sky); }
-        .toast-info .toast-progress-bar { background: var(--sky); }
-        .toast-warn { border-color: rgba(244, 63, 94, 0.45); box-shadow: 0 10px 30px rgba(244, 63, 94, 0.22); }
-        .toast-warn .toast-icon { background: rgba(244, 63, 94, 0.22); color: #fb7185; }
-        .toast-warn .toast-progress-bar { background: #fb7185; }
+        .custom-toast.hide { opacity: 0; }
+        .toast-icon { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+        .toast-msg { font-size: 12.5px; font-weight: 700; color: #f1f5f9; flex: 1; word-break: break-word; }
+        .toast-success { border-color: rgba(52, 211, 153, 0.4); }
+        .toast-success .toast-icon { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+        .toast-info { border-color: rgba(56, 189, 248, 0.4); }
+        .toast-info .toast-icon { background: rgba(6, 182, 212, 0.2); color: var(--sky); }
+        .toast-warn { border-color: rgba(244, 63, 94, 0.4); }
+        .toast-warn .toast-icon { background: rgba(244, 63, 94, 0.2); color: #fb7185; }
 
-        @keyframes toastIn { from { opacity: 0; transform: translateX(28px) scale(0.92); } to { opacity: 1; transform: translateX(0) scale(1); } }
-        @keyframes toastOut { from { opacity: 1; transform: translateX(0) scale(1); } to { opacity: 0; transform: translateX(28px) scale(0.9); } }
-        @keyframes progressCount { from { width: 100%; } to { width: 0%; } }
-
-        /* Desktop helper classes */
         .mobile-card-top { display: none; }
         .desktop-only { display: table-cell; }
 
-        /* ============================================================
-           📱 MOBILE RESPONSIVE POLISH (Clean Liquid Card Layout)
-        ============================================================ */
+        /* ── Mobile Layout ── */
         @media (max-width: 768px) {
-            body { padding: 16px 10px 85px; }
+            body { padding: 12px 10px 70px; }
+            .header { flex-direction: column; align-items: stretch; gap: 10px; margin-bottom: 12px; }
+            .header-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+            .header-actions .btn-config { grid-column: 1 / -1; }
 
-            /* Header: stacked, quick-touch action buttons */
-            .header-bar {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 12px;
-                margin-bottom: 16px;
-            }
-            .header-title-box { text-align: left; }
-            .brand-badge { margin-bottom: 4px; font-size: 10px; }
-            .header-actions {
-                width: 100%;
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 8px;
-            }
-            .header-actions .btn-config-main { grid-column: 1 / -1; }
-            .btn-header { padding: 11px 10px; font-size: 12.5px; border-radius: var(--r-md); justify-content: center; }
+            .stats { grid-template-columns: repeat(2, 1fr); gap: 6px; margin-bottom: 10px; }
+            .stat-card { padding: 10px 12px; }
+            .stat-icon { width: 32px; height: 32px; font-size: 15px; }
 
-            /* Stats Grid: 2 columns */
-            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 14px; }
-            .stat-card { padding: 14px 16px; border-radius: var(--r-lg); }
-            .stat-info span { font-size: 10px; }
-            .stat-info h2 { font-size: 24px; margin-top: 2px; }
-            .stat-icon { width: 40px; height: 40px; font-size: 18px; border-radius: 12px; }
+            .form-card { padding: 12px; margin-bottom: 10px; }
+            .form-grid { grid-template-columns: 1fr; gap: 8px; }
+            .btn-add { width: 100%; }
 
-            /* Form */
-            .card-form { padding: 16px; margin-bottom: 12px; border-radius: var(--r-lg); }
-            .form-grid { grid-template-columns: 1fr; gap: 10px; }
-            .btn-add { width: 100%; height: auto; padding: 13px; font-size: 15px; border-radius: var(--r-md); }
-            textarea#accInfo { min-height: 68px; }
-            .hint-box {
-                padding: 10px 12px;
-                gap: 10px;
-                margin-top: 12px;
-            }
-            .hint-icon {
-                width: 28px;
-                height: 28px;
-                font-size: 13px;
-                border-radius: 8px;
-            }
-            .hint-content {
-                font-size: 11.5px;
-            }
-            .hint-title {
-                font-size: 11px;
-                margin-bottom: 3px;
-            }
-            .hint-code {
-                font-size: 11px;
-                padding: 1px 5px;
-            }
+            .controls { padding: 10px 12px; gap: 8px; margin-bottom: 10px; }
+            .search-row { flex-direction: column; gap: 6px; }
+            .search-box, .sort-select { width: 100%; }
+            .filter-row { flex-direction: column; align-items: stretch; gap: 6px; }
+            .filter-group { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+            .btn-filter { justify-content: center; }
+            .sync-badge { width: 100%; justify-content: center; }
 
-            /* Controls: Search, Sort, Filter */
-            .controls-panel { padding: 14px 16px; gap: 12px; margin-bottom: 12px; border-radius: var(--r-lg); }
-            .search-row { flex-direction: column; gap: 8px; }
-            .search-box { width: 100%; min-width: unset; }
-            .search-box input { height: 44px; font-size: 13.5px; }
-            .sort-select-wrap { width: 100%; }
-            .sort-select-wrap select { width: 100%; height: 44px; font-size: 13px; }
-            .filter-row { flex-direction: column; align-items: stretch; gap: 8px; }
-            .filter-group {
-                width: 100%;
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 4px;
-                padding: 4px;
-            }
-            .btn-filter { padding: 9px 4px; font-size: 12px; text-align: center; }
-            .sync-badge { width: 100%; justify-content: center; font-size: 12px; }
+            .bulk-bar { flex-direction: column; align-items: stretch; padding: 10px; }
+            .bulk-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+            .bulk-btns .btn { justify-content: center; }
 
-            /* Bulk Toolbar */
-            .bulk-bar {
-                flex-direction: column;
-                align-items: stretch;
-                padding: 12px 14px;
-                border-radius: var(--r-lg);
-                gap: 10px;
-            }
-            .bulk-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
-            .btn-bulk { padding: 9px 6px; font-size: 12px; justify-content: center; border-radius: var(--r-sm); }
-
-            /* ── Table converted to Pure Mobile Card List ── */
-            .table-wrap {
-                background: transparent !important;
-                border: none !important;
-                box-shadow: none !important;
-                border-radius: 0 !important;
-                overflow: visible !important;
-            }
-            .table-wrap::before, .table-wrap::after { display: none !important; }
-
+            /* Mobile Card List */
+            .table-wrap { background: transparent !important; border: none !important; box-shadow: none !important; }
             table, thead, tbody, th, td, tr { display: block; width: 100%; }
             thead { display: none; }
+            tbody { display: flex; flex-direction: column; gap: 8px; }
 
-            tbody {
-                display: flex;
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            /* Each table row becomes a modern Glass Card */
             tbody tr {
-                background: rgba(13, 20, 44, 0.85) !important;
-                backdrop-filter: blur(20px) saturate(160%);
-                -webkit-backdrop-filter: blur(20px) saturate(160%);
-                border: 1px solid rgba(255, 255, 255, 0.12) !important;
+                background: #0d152c !important;
+                border: 1px solid rgba(255, 255, 255, 0.09) !important;
                 border-radius: var(--r-lg) !important;
-                padding: 16px !important;
-                box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45) !important;
-                position: relative;
+                padding: 12px !important;
             }
 
-            /* Hide desktop table cells */
-            .desktop-only { display: none !important; }
-            td.col-check { display: none !important; }
+            .desktop-only, td.col-check { display: none !important; }
+            td { padding: 0 !important; border: none !important; }
 
-            /* Cells clean layout */
-            td {
-                padding: 0 !important;
-                border-bottom: none !important;
-                display: block !important;
-                width: 100% !important;
-            }
-
-            /* Mobile Card Top: Checkbox on Left + Status Badge on Right */
             .mobile-card-top {
                 display: flex !important;
                 align-items: center;
                 justify-content: space-between;
-                padding-bottom: 10px;
-                margin-bottom: 10px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+                padding-bottom: 6px;
+                margin-bottom: 6px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             }
 
             .mobile-check-label {
                 display: inline-flex;
                 align-items: center;
-                gap: 8px;
-                font-size: 12px;
+                gap: 6px;
+                font-size: 11.5px;
                 font-weight: 700;
                 color: #94a3b8;
-                cursor: pointer;
             }
 
-            /* Account Text & Badges */
-            td.cell-acc-main {
-                padding-bottom: 8px !important;
-                margin-bottom: 8px;
-            }
-            .acc-name { font-size: 14px; word-break: break-all; }
-            .acc-note { font-size: 11px; }
+            td.cell-acc-main { padding-bottom: 4px !important; }
+            .acc-name { font-size: 13px; }
 
-            /* Date info */
-            td.cell-date-info {
-                padding-bottom: 8px !important;
-                margin-bottom: 4px;
-            }
-
+            td.cell-date-info { padding-bottom: 6px !important; }
             .mobile-date-row {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                flex-wrap: wrap;
-                gap: 6px;
-                font-size: 12px;
+                font-size: 11.5px;
                 color: #94a3b8;
             }
 
-            /* Actions: 3 equal buttons grid */
             td.cell-actions {
-                margin-top: 6px;
-                padding-top: 10px !important;
-                border-top: 1px solid rgba(255, 255, 255, 0.07);
+                margin-top: 4px;
+                padding-top: 8px !important;
+                border-top: 1px solid rgba(255, 255, 255, 0.06);
             }
 
             .actions {
                 display: grid !important;
                 grid-template-columns: 1fr 1fr 1fr;
-                gap: 8px;
-                width: 100%;
-                justify-content: unset;
-            }
-
-            .btn-act {
-                padding: 10px 4px !important;
-                font-size: 13px;
-                font-weight: 700;
-                justify-content: center;
-                text-align: center;
-                border-radius: var(--r-sm);
+                gap: 6px;
                 width: 100%;
             }
 
-            /* Pagination */
-            .pagination-bar {
-                flex-direction: column;
-                align-items: center;
-                gap: 12px;
-                padding: 14px 16px;
-            }
-            .page-info { font-size: 12px; text-align: center; }
-            .page-controls { flex-wrap: wrap; justify-content: center; gap: 5px; }
-            .btn-page { min-width: 34px; height: 34px; font-size: 12px; }
-        }
+            .actions .btn { width: 100%; justify-content: center; padding: 8px 4px; font-size: 12px; }
 
-        @media (max-width: 480px) {
-            body { padding: 12px 8px 85px; }
-            h1 { font-size: 19px; letter-spacing: 0.3px; }
-            .brand-badge { font-size: 9.5px; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-            .stat-card { padding: 12px 14px; }
-            .stat-info h2 { font-size: 22px; }
-            .stat-icon { width: 36px; height: 36px; font-size: 16px; }
-            .modal { padding: 20px; }
-            .bulk-btns { grid-template-columns: 1fr; }
-            .btn-bulk { grid-column: 1 / -1; }
+            .pagination { flex-direction: column; align-items: center; gap: 8px; padding: 10px; }
         }
     </style>
 </head>
 <body>
-
-    <!-- Ambient Dynamic Mesh Aurora Background -->
-    <div class="aurora-bg">
-        <div class="aurora-blob blob-1"></div>
-        <div class="aurora-blob blob-2"></div>
-        <div class="aurora-blob blob-3"></div>
-        <div class="aurora-blob blob-4"></div>
-    </div>
-    <div class="noise-overlay"></div>
 
     <div id="toastContainer"></div>
 
     <div class="container">
         
         <!-- Header -->
-        <div class="header-bar reveal">
-            <div class="header-title-box">
-                <div class="brand-badge"><span class="brand-badge-dot"></span> ULTRA LIQUID SYSTEM</div>
+        <div class="header">
+            <div>
+                <div class="brand-badge" style="display: none;"></div>
                 <h1>QUẢN LÝ ACC VANCAU88</h1>
             </div>
             <div class="header-actions">
-                <button type="button" class="btn-liquid btn-header btn-mask-toggle" id="btnMaskToggle" onclick="toggleMaskMode()">
-                    👁️ Ẩn MK
+                <button type="button" class="btn btn-mask" id="btnMaskToggle" onclick="toggleMaskMode()">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    <span>Ẩn MK</span>
                 </button>
-                <button type="button" class="btn-liquid btn-header" onclick="openImportExportModal()">
-                    📁 Nhập / Xuất
+                <button type="button" class="btn" onclick="openImportExportModal()">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    <span>Nhập / Xuất</span>
                 </button>
-                <button type="button" class="btn-liquid btn-header btn-config-main" onclick="openConfigModal()">
-                    ⚙ Cấu hình GitHub
+                <button type="button" class="btn btn-config" onclick="openConfigModal()">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    <span>Cấu hình GitHub</span>
                 </button>
             </div>
         </div>
 
         <!-- Dashboard Stats -->
-        <div class="stats-grid">
-            <div class="stat-card liquid-glass reveal" onclick="setFilter('all')">
-                <div class="stat-info"><span>Tổng Acc</span><h2 id="cntAll" style="color: #f1f5f9;">0</h2></div>
+        <div class="stats">
+            <div class="stat-card card" onclick="setFilter('all')">
+                <div class="stat-info"><span>Tổng</span><h2 id="cntAll">0</h2></div>
                 <div class="stat-icon">🎮</div>
             </div>
-            <div class="stat-card liquid-glass reveal" onclick="setFilter('sống')" style="transition-delay: 0.05s">
-                <div class="stat-info"><span>Đang Sống</span><h2 id="cntLive" style="color: #34d399;">0</h2></div>
-                <div class="stat-icon" style="background: rgba(16,185,129,0.16); color: #34d399;">⚡</div>
+            <div class="stat-card card" onclick="setFilter('sống')">
+                <div class="stat-info"><span>Sống</span><h2 id="cntLive" style="color: #34d399;">0</h2></div>
+                <div class="stat-icon" style="background: rgba(16,185,129,0.12); color: #34d399;">⚡</div>
             </div>
-            <div class="stat-card liquid-glass reveal" onclick="setFilter('ban')" style="transition-delay: 0.1s">
-                <div class="stat-info"><span>Bị Khóa</span><h2 id="cntBanned" style="color: #fb7185;">0</h2></div>
-                <div class="stat-icon" style="background: rgba(244,63,94,0.16); color: #fb7185;">🔒</div>
+            <div class="stat-card card" onclick="setFilter('ban')">
+                <div class="stat-info"><span>Bị Ban</span><h2 id="cntBanned" style="color: #fb7185;">0</h2></div>
+                <div class="stat-icon" style="background: rgba(244,63,94,0.12); color: #fb7185;">🔒</div>
             </div>
-            <div class="stat-card liquid-glass reveal" onclick="setFilter('today')" style="transition-delay: 0.15s">
+            <div class="stat-card card" onclick="setFilter('today')">
                 <div class="stat-info"><span>Mở Hôm Nay</span><h2 id="cntToday" style="color: var(--sky);">0</h2></div>
-                <div class="stat-icon" style="background: rgba(6,182,212,0.16); color: var(--sky);">✨</div>
+                <div class="stat-icon" style="background: rgba(6,182,212,0.12); color: var(--sky);">✨</div>
             </div>
         </div>
 
         <!-- Form Thêm Acc -->
-        <div class="card-form liquid-glass reveal">
+        <div class="form-card card">
             <form id="accForm" onsubmit="handleAdd(event)">
                 <div class="form-grid">
-                    <textarea id="accInfo" placeholder="Nhập nhiều acc (xuống dòng)&#10;tk1:mk1&#10;tk2:mk2:Acc rank vip" required></textarea>
-                    <input type="text" id="accNote" placeholder="Ghi chú chung (áp dụng cho acc không có ghi chú)" autocomplete="off">
-                    <select id="accStatus" onchange="toggleDateInput('accStatus', 'unbanDate')">
+                    <textarea id="accInfo" placeholder="Nhập tk:mk hoặc tk:mk:ghi_chú (xuống dòng nhiều acc)" required></textarea>
+                    <input type="text" id="accNote" placeholder="Ghi chú (rank, tướng, skin...)" autocomplete="off">
+                    <select id="accStatus" onchange="toggleDateInput('accStatus', 'unbanDateBox')">
                         <option value="sống">Sống</option>
                         <option value="ban">Bị Ban</option>
                     </select>
-                    <input type="text" id="unbanDate" placeholder="Mở ban (vd: 280826)" style="display: none;" onblur="formatDateInput(this)">
-                    <button type="submit" class="btn-liquid btn-primary-liquid btn-add">+ Thêm Acc</button>
-                </div>
-                <div class="hint-box">
-                    <div class="hint-icon">💡</div>
-                    <div class="hint-content">
-                        <div class="hint-title"><span>Mẹo Nhập Liệu</span> Nhanh &amp; Tự Động</div>
-                        <div class="hint-list">
-                            <div class="hint-item">
-                                <span>Định dạng:</span>
-                                <code class="hint-code">tk:mk</code>
-                                <span>hoặc</span>
-                                <code class="hint-code">tk:mk:ghi_chú</code>
-                                <span style="font-size: 11.5px; color: #64748b;">(tự tách rank/ghi chú)</span>
-                            </div>
-                            <div class="hint-item">
-                                <span>Ngày mở ban:</span>
-                                <code class="hint-code">280826</code>
-                                <span class="hint-arrow">➔</span>
-                                <code class="hint-code" style="color: #c084fc; border-color: rgba(192,132,252,0.35); background: rgba(192,132,252,0.14);">28/08/2026</code>
-                            </div>
+                    <div id="unbanDateBox" style="display: none;">
+                        <input type="text" id="unbanDate" placeholder="dd/mm/yyyy hoặc 6 số" onblur="formatDateInput(this)">
+                        <div class="presets-row">
+                            <button type="button" class="btn-preset" onclick="setPresetDate('unbanDate', 1)">1N</button>
+                            <button type="button" class="btn-preset" onclick="setPresetDate('unbanDate', 3)">3N</button>
+                            <button type="button" class="btn-preset" onclick="setPresetDate('unbanDate', 15)">15N</button>
+                            <button type="button" class="btn-preset" onclick="setPresetDate('unbanDate', 0, 1)">1Th</button>
+                            <button type="button" class="btn-preset" onclick="setPresetDate('unbanDate', 0, 0, 1)">1Năm</button>
+                            <button type="button" class="btn-preset" onclick="setPresetDate('unbanDate', 0, 0, 3)">3Năm</button>
                         </div>
                     </div>
+                    <button type="submit" class="btn btn-primary btn-add">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        <span>Thêm Acc</span>
+                    </button>
                 </div>
             </form>
         </div>
 
-        <!-- Controls Panel (Search, Sort, Filter) -->
-        <div class="controls-panel liquid-glass reveal">
+        <!-- Controls Panel -->
+        <div class="controls card">
             <div class="search-row">
                 <div class="search-box">
-                    <span class="search-icon">🔍</span>
-                    <input type="text" id="searchInput" placeholder="Tìm kiếm theo tên tài khoản, mật khẩu, rank, ghi chú..." oninput="handleSearch(this.value)">
+                    <span class="search-icon">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </span>
+                    <input type="text" id="searchInput" placeholder="Tìm kiếm tài khoản, mật khẩu, rank, ghi chú..." oninput="handleSearch(this.value)">
                     <button type="button" class="btn-clear-search" id="btnClearSearch" onclick="clearSearch()">✕</button>
                 </div>
-                <div class="sort-select-wrap">
-                    <select id="sortSelect" onchange="handleSort(this.value)">
-                        <option value="newest">⏱ Mới nhất trước</option>
-                        <option value="oldest">⌛ Cũ nhất trước</option>
-                        <option value="unbanSoon">⏳ Sắp mở ban nhất</option>
-                        <option value="nameAsc">🔤 Tên A → Z</option>
-                        <option value="nameDesc">🔤 Tên Z → A</option>
-                    </select>
-                </div>
+                <select class="sort-select" id="sortSelect" onchange="handleSort(this.value)">
+                    <option value="newest">⏱ Mới nhất</option>
+                    <option value="oldest">⌛ Cũ nhất</option>
+                    <option value="unbanSoon">⏳ Sắp mở ban</option>
+                    <option value="nameAsc">🔤 Tên A → Z</option>
+                    <option value="nameDesc">🔤 Tên Z → A</option>
+                </select>
             </div>
 
             <div class="filter-row">
@@ -1375,33 +791,31 @@
                     <button class="btn-filter" data-filter="ban" onclick="setFilter('ban')">Bị Ban (<span id="btnCntBanned">0</span>)</button>
                     <button class="btn-filter" data-filter="today" onclick="setFilter('today')">Mở Hôm Nay (<span id="btnCntToday">0</span>)</button>
                 </div>
-                <div class="sync-badge" id="syncStatus">
-                    🟢 Tự đồng bộ: Đang chạy
-                </div>
+                <div class="sync-badge" id="syncStatus">🟢 GitHub Sync</div>
             </div>
         </div>
 
         <!-- Bulk Action Bar -->
         <div class="bulk-bar" id="bulkBar">
             <div class="bulk-info">
-                <span>☑️ Đã chọn: <b id="bulkCount">0</b> tài khoản</span>
+                <span>Đã chọn: <b id="bulkCount">0</b></span>
             </div>
             <div class="bulk-btns">
-                <button type="button" class="btn-liquid btn-bulk" onclick="bulkCopy()">📋 Sao chép đã chọn</button>
-                <button type="button" class="btn-liquid btn-bulk" onclick="bulkSetStatus('sống')">⚡ Đặt là Sống</button>
-                <button type="button" class="btn-liquid btn-bulk" onclick="openBulkBanModal()">🔒 Đặt Bị Ban</button>
-                <button type="button" class="btn-liquid btn-bulk" style="color: #fb7185;" onclick="openBulkDeleteModal()">🗑️ Xóa đã chọn</button>
-                <button type="button" class="btn-liquid btn-bulk" onclick="deselectAll()">✕ Bỏ chọn</button>
+                <button type="button" class="btn btn-copy" onclick="bulkCopy()">📋 Sao chép</button>
+                <button type="button" class="btn" style="color:#34d399;" onclick="bulkSetStatus('sống')">⚡ Đặt Sống</button>
+                <button type="button" class="btn" style="color:#fbbf24;" onclick="openBulkBanModal()">🔒 Đặt Khóa</button>
+                <button type="button" class="btn btn-del" onclick="openBulkDeleteModal()">🗑️ Xóa</button>
+                <button type="button" class="btn" onclick="deselectAll()">✕ Bỏ chọn</button>
             </div>
         </div>
 
         <!-- Table Container -->
-        <div class="table-wrap liquid-glass">
+        <div class="table-wrap card">
             <table>
                 <thead>
                     <tr>
                         <th class="col-check">
-                            <input type="checkbox" class="custom-check" id="checkAll" onchange="toggleSelectAll(this.checked)" title="Chọn tất cả">
+                            <input type="checkbox" class="custom-check" id="checkAll" onchange="toggleSelectAll(this.checked)">
                         </th>
                         <th>Tài khoản / Ghi chú</th>
                         <th>Trạng thái</th>
@@ -1412,20 +826,20 @@
                 <tbody id="accList"></tbody>
             </table>
 
-            <!-- Pagination Controls -->
-            <div class="pagination-bar" id="paginationBar">
-                <div class="page-info" id="pageInfo">Đang tải...</div>
-                <div class="page-controls">
-                    <select class="rows-select btn-liquid" id="rowsPerPageSelect" onchange="changeRowsPerPage(this.value)">
-                        <option value="15">15 / trang</option>
-                        <option value="25" selected>25 / trang</option>
-                        <option value="50">50 / trang</option>
-                        <option value="100">100 / trang</option>
+            <!-- Pagination -->
+            <div class="pagination" id="paginationBar">
+                <div class="page-info" id="pageInfo">...</div>
+                <div class="page-ctrls">
+                    <select class="btn" style="padding:4px 8px; font-size:12px;" id="rowsPerPageSelect" onchange="changeRowsPerPage(this.value)">
+                        <option value="15">15</option>
+                        <option value="25" selected>25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
                         <option value="999999">Tất cả</option>
                     </select>
-                    <button class="btn-liquid btn-page" id="btnPrevPage" onclick="prevPage()">‹</button>
-                    <div id="pageNumbers" style="display: inline-flex; gap: 5px;"></div>
-                    <button class="btn-liquid btn-page" id="btnNextPage" onclick="nextPage()">›</button>
+                    <button class="btn btn-page" id="btnPrevPage" onclick="prevPage()">‹</button>
+                    <div id="pageNumbers" style="display:inline-flex; gap:4px;"></div>
+                    <button class="btn btn-page" id="btnNextPage" onclick="nextPage()">›</button>
                 </div>
             </div>
         </div>
@@ -1435,7 +849,7 @@
     <!-- Modal Cấu hình GitHub -->
     <div class="modal-overlay" id="configModal">
         <div class="modal">
-            <h3>⚙️ Cấu hình GitHub (Tự động lưu)</h3>
+            <h3>⚙️ Cấu hình GitHub</h3>
             <div class="modal-field">
                 <label>GitHub Username</label>
                 <input type="text" id="ghUser" placeholder="vd: vancau88" oninput="autoSaveConfig()">
@@ -1446,11 +860,11 @@
             </div>
             <div class="modal-field">
                 <label>Personal Access Token (ghp_...)</label>
-                <input type="password" id="ghToken" placeholder="Dán token vào đây" oninput="autoSaveConfig()">
+                <input type="password" id="ghToken" placeholder="Dán token" oninput="autoSaveConfig()">
             </div>
             <div class="modal-actions">
-                <button type="button" class="btn-liquid btn-act" onclick="testConnection()">🔍 Test Kết Nối</button>
-                <button type="button" class="btn-liquid btn-primary-liquid" style="padding: 8px 18px;" onclick="closeModal('configModal')">Xong</button>
+                <button type="button" class="btn" onclick="testConnection()">Test Kết Nối</button>
+                <button type="button" class="btn btn-primary" onclick="closeModal('configModal')">Xong</button>
             </div>
         </div>
     </div>
@@ -1466,22 +880,30 @@
             </div>
             <div class="modal-field">
                 <label>Ghi chú</label>
-                <input type="text" id="editNote" placeholder="Ghi chú (Rank, Skin, Tướng...)">
+                <input type="text" id="editNote" placeholder="Rank, skin, tướng...">
             </div>
             <div class="modal-field">
                 <label>Trạng thái</label>
-                <select id="editStatus" onchange="toggleDateInput('editStatus', 'editDate')">
+                <select id="editStatus" onchange="toggleDateInput('editStatus', 'editDateField')">
                     <option value="sống">Sống</option>
                     <option value="ban">Bị Ban</option>
                 </select>
             </div>
             <div class="modal-field" id="editDateField">
-                <label>Ngày mở ban (dd/mm/yyyy hoặc 6 số)</label>
+                <label>Ngày mở ban (dd/mm/yyyy hoặc chọn nhanh)</label>
                 <input type="text" id="editDate" placeholder="dd/mm/yyyy" onblur="formatDateInput(this)">
+                <div class="presets-row">
+                    <button type="button" class="btn-preset" onclick="setPresetDate('editDate', 1)">1 ngày</button>
+                    <button type="button" class="btn-preset" onclick="setPresetDate('editDate', 3)">3 ngày</button>
+                    <button type="button" class="btn-preset" onclick="setPresetDate('editDate', 15)">15 ngày</button>
+                    <button type="button" class="btn-preset" onclick="setPresetDate('editDate', 0, 1)">1 tháng</button>
+                    <button type="button" class="btn-preset" onclick="setPresetDate('editDate', 0, 0, 1)">1 năm</button>
+                    <button type="button" class="btn-preset" onclick="setPresetDate('editDate', 0, 0, 3)">3 năm</button>
+                </div>
             </div>
             <div class="modal-actions" style="justify-content: flex-end;">
-                <button type="button" class="btn-liquid btn-act" onclick="closeModal('editModal')">Hủy</button>
-                <button type="button" class="btn-liquid btn-primary-liquid" style="padding: 10px 20px;" onclick="saveEdit()">Lưu lại</button>
+                <button type="button" class="btn" onclick="closeModal('editModal')">Hủy</button>
+                <button type="button" class="btn btn-primary" onclick="saveEdit()">Lưu</button>
             </div>
         </div>
     </div>
@@ -1489,11 +911,11 @@
     <!-- Modal Xác nhận Xóa -->
     <div class="modal-overlay" id="confirmDeleteModal">
         <div class="modal">
-            <h3 style="color: #fb7185;">🗑️ Xác nhận xóa tài khoản</h3>
-            <p id="confirmDeleteMsg" style="font-size: 13.5px; color: #94a3b8; margin-bottom: 20px; line-height: 1.55;">Bạn có chắc chắn muốn xóa tài khoản này?</p>
+            <h3 style="color:#fb7185;">🗑️ Xác nhận xóa</h3>
+            <p id="confirmDeleteMsg" style="font-size:13.5px; color:#94a3b8; margin-bottom:16px;">Bạn có chắc chắn muốn xóa?</p>
             <div class="modal-actions" style="justify-content: flex-end;">
-                <button type="button" class="btn-liquid btn-act" onclick="closeModal('confirmDeleteModal')">Hủy</button>
-                <button type="button" class="btn-liquid btn-danger-liquid" style="padding: 10px 20px;" id="btnConfirmDeleteExec">Xác nhận Xóa</button>
+                <button type="button" class="btn" onclick="closeModal('confirmDeleteModal')">Hủy</button>
+                <button type="button" class="btn btn-danger" id="btnConfirmDeleteExec">Xác nhận Xóa</button>
             </div>
         </div>
     </div>
@@ -1501,54 +923,65 @@
     <!-- Modal Bulk Ban -->
     <div class="modal-overlay" id="bulkBanModal">
         <div class="modal">
-            <h3>🔒 Khóa hàng loạt tài khoản đã chọn</h3>
+            <h3>🔒 Khóa hàng loạt tài khoản</h3>
             <div class="modal-field">
-                <label>Ngày mở ban (Để trống nếu chưa rõ, hoặc nhập 6 số: 280826)</label>
-                <input type="text" id="bulkBanDate" placeholder="dd/mm/yyyy hoặc 280826" onblur="formatDateInput(this)">
+                <label>Thời hạn mở ban</label>
+                <input type="text" id="bulkBanDate" placeholder="dd/mm/yyyy" onblur="formatDateInput(this)">
+                <div class="presets-row">
+                    <button type="button" class="btn-preset" onclick="setPresetDate('bulkBanDate', 1)">1 ngày</button>
+                    <button type="button" class="btn-preset" onclick="setPresetDate('bulkBanDate', 3)">3 ngày</button>
+                    <button type="button" class="btn-preset" onclick="setPresetDate('bulkBanDate', 15)">15 ngày</button>
+                    <button type="button" class="btn-preset" onclick="setPresetDate('bulkBanDate', 0, 1)">1 tháng</button>
+                    <button type="button" class="btn-preset" onclick="setPresetDate('bulkBanDate', 0, 0, 1)">1 năm</button>
+                    <button type="button" class="btn-preset" onclick="setPresetDate('bulkBanDate', 0, 0, 3)">3 năm</button>
+                </div>
             </div>
             <div class="modal-actions" style="justify-content: flex-end;">
-                <button type="button" class="btn-liquid btn-act" onclick="closeModal('bulkBanModal')">Hủy</button>
-                <button type="button" class="btn-liquid btn-danger-liquid" style="padding: 10px 20px;" onclick="executeBulkBan()">Khóa tất cả</button>
+                <button type="button" class="btn" onclick="closeModal('bulkBanModal')">Hủy</button>
+                <button type="button" class="btn btn-danger" onclick="executeBulkBan()">Khóa tất cả</button>
             </div>
         </div>
     </div>
 
     <!-- Modal Nhập / Xuất Dữ Liệu -->
     <div class="modal-overlay" id="importExportModal">
-        <div class="modal" style="max-width: 520px;">
+        <div class="modal">
             <h3>📁 Nhập &amp; Xuất Dữ Liệu</h3>
             
-            <div style="margin-bottom: 18px;">
-                <label style="display: block; font-size: 12px; font-weight: 800; color: var(--sky); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.7px;">📤 Xuất Dữ Liệu (Backup)</label>
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
-                    <button type="button" class="btn-liquid btn-act" onclick="exportData('txt')">📄 data.txt</button>
-                    <button type="button" class="btn-liquid btn-act" onclick="exportData('csv')">📊 Excel (.csv)</button>
-                    <button type="button" class="btn-liquid btn-act" onclick="exportData('json')">📦 JSON Backup</button>
+            <div style="margin-bottom: 14px;">
+                <label style="display:block; font-size:11px; font-weight:800; color:var(--sky); margin-bottom:6px; text-transform:uppercase;">Xuất Dữ Liệu</label>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px;">
+                    <button type="button" class="btn" onclick="exportData('txt')">data.txt</button>
+                    <button type="button" class="btn" onclick="exportData('csv')">Excel</button>
+                    <button type="button" class="btn" onclick="exportData('json')">JSON</button>
                 </div>
             </div>
 
-            <hr style="border: none; border-top: 1px solid rgba(255, 255, 255, 0.08); margin: 16px 0;">
+            <hr style="border:none; border-top:1px solid rgba(255,255,255,0.08); margin:12px 0;">
 
             <div>
-                <label style="display: block; font-size: 12px; font-weight: 800; color: #34d399; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.7px;">📥 Nhập File từ Máy Tính</label>
+                <label style="display:block; font-size:11px; font-weight:800; color:#34d399; margin-bottom:6px; text-transform:uppercase;">Nhập File</label>
                 <input type="file" id="fileInput" accept=".txt,.json,.csv" style="display: none;" onchange="handleFileSelected(event)">
-                <div style="display: flex; gap: 8px;">
-                    <button type="button" class="btn-liquid btn-primary-liquid" style="flex: 1; padding: 12px;" onclick="document.getElementById('fileInput').click()">
-                        📂 Chọn File (.txt / .json)
-                    </button>
-                </div>
-                <div style="margin-top: 8px; font-size: 11.5px; color: #64748b;">
-                    Hỗ trợ định dạng file text gốc (tk:mk|status|unbanDate|note) hoặc tệp sao lưu JSON.
-                </div>
+                <button type="button" class="btn btn-primary" style="width:100%; padding:10px;" onclick="document.getElementById('fileInput').click()">
+                    📂 Chọn File (.txt / .json)
+                </button>
             </div>
 
-            <div class="modal-actions" style="justify-content: flex-end; margin-top: 24px;">
-                <button type="button" class="btn-liquid btn-act" onclick="closeModal('importExportModal')">Đóng</button>
+            <div class="modal-actions" style="justify-content: flex-end; margin-top: 16px;">
+                <button type="button" class="btn" onclick="closeModal('importExportModal')">Đóng</button>
             </div>
         </div>
     </div>
 
     <script>
+        const ICONS = {
+            copy: `<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`,
+            edit: `<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>`,
+            del:  `<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>`,
+            eye:  `<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>`,
+            eyeOff: `<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>`
+        };
+
         // --- DATA & STATE ---
         let accounts = JSON.parse(localStorage.getItem('vancau88_accounts')) || [];
         let ghConfig = JSON.parse(localStorage.getItem('vancau88_gh_config')) || { user: '', repo: '', token: '' };
@@ -1564,7 +997,27 @@
         let isSyncing = false;
         let pendingDeleteAction = null;
 
-        // --- UTILITY FUNCTIONS ---
+        // --- DURATION PRESET CALCULATION ---
+        function calculatePresetDate(days = 0, months = 0, years = 0) {
+            const d = new Date();
+            d.setHours(0,0,0,0);
+            if (days) d.setDate(d.getDate() + days);
+            if (months) d.setMonth(d.getMonth() + months);
+            if (years) d.setFullYear(d.getFullYear() + years);
+
+            const day = String(d.getDate()).padStart(2, '0');
+            const month = String(d.getMonth() + 1).padStart(2, '0');
+            const year = d.getFullYear();
+            return `${day}/${month}/${year}`;
+        }
+
+        function setPresetDate(inputId, days = 0, months = 0, years = 0) {
+            const input = document.getElementById(inputId);
+            if (input) {
+                input.value = calculatePresetDate(days, months, years);
+            }
+        }
+
         function escapeHtml(str) {
             if (!str) return '';
             return String(str)
@@ -1583,17 +1036,14 @@
             toast.innerHTML = `
                 <div class="toast-icon">${icon}</div>
                 <div class="toast-msg">${escapeHtml(message)}</div>
-                <div class="toast-progress"><div class="toast-progress-bar"></div></div>
             `;
             container.appendChild(toast);
-            setTimeout(() => { toast.classList.add('hide'); setTimeout(() => toast.remove(), 300); }, 3000);
+            setTimeout(() => { toast.classList.add('hide'); setTimeout(() => toast.remove(), 200); }, 2200);
         }
 
         function setSyncStatus(text, syncing = false) {
             const el = document.getElementById('syncStatus');
-            if (!el) return;
-            el.innerText = text;
-            if (syncing) el.classList.add('syncing'); else el.classList.remove('syncing');
+            if (el) el.innerText = text;
         }
 
         function utf8ToBase64(str) {
@@ -1624,11 +1074,10 @@
 
         function formatDateInput(input) { input.value = formatRawDate(input.value); }
 
-        function toggleDateInput(selectId, inputId) {
+        function toggleDateInput(selectId, boxId) {
             const status = document.getElementById(selectId).value;
-            const input = document.getElementById(inputId);
-            input.style.display = status === 'ban' ? 'block' : 'none';
-            if (status === 'ban') input.focus(); else input.value = '';
+            const box = document.getElementById(boxId);
+            box.style.display = status === 'ban' ? 'block' : 'none';
         }
 
         function getRemainingDays(dateStr) {
@@ -1643,7 +1092,7 @@
             if (diff === null) return '';
             if (diff === 0) return '<span class="badge badge-today">Mở hôm nay</span>';
             if (diff > 0) return `<span class="badge badge-days">Còn ${diff} ngày</span>`;
-            return '<span class="badge badge-days" style="color: #94a3b8; border-color: rgba(255,255,255,0.12);">Đã quá hạn</span>';
+            return '<span class="badge badge-days" style="color:#94a3b8;">Quá hạn</span>';
         }
 
         function formatAccDisplay(accStr) {
@@ -1652,7 +1101,7 @@
             if (parts.length >= 2) {
                 const user = parts[0];
                 const pass = parts.slice(1).join(':');
-                return `${escapeHtml(user)}:<span style="letter-spacing: 3px; color: #94a3b8;">${'•'.repeat(Math.min(Math.max(pass.length, 6), 12))}</span>`;
+                return `${escapeHtml(user)}:<span style="letter-spacing:2px; color:#94a3b8;">${'•'.repeat(Math.min(Math.max(pass.length, 6), 12))}</span>`;
             }
             return escapeHtml(accStr);
         }
@@ -1671,33 +1120,46 @@
             return `<div class="acc-note ${rankClass}">📝 ${safeNote}</div>`;
         }
 
-        // --- MASK MODE TOGGLE ---
         function toggleMaskMode() {
             isMasked = !isMasked;
             appSettings.maskMode = isMasked;
             localStorage.setItem('vancau88_settings', JSON.stringify(appSettings));
             updateMaskButton();
             render();
-            showCustomToast(isMasked ? 'Đã bật chế độ Ẩn Mật khẩu' : 'Đã hiện Mật khẩu', 'info');
+            showCustomToast(isMasked ? 'Đã ẩn MK' : 'Đã hiện MK', 'info');
         }
 
         function updateMaskButton() {
             const btn = document.getElementById('btnMaskToggle');
             if (!btn) return;
             if (isMasked) {
-                btn.innerHTML = '🔒 Đang Ẩn MK';
+                btn.innerHTML = `${ICONS.eyeOff} <span>Đang Ẩn MK</span>`;
                 btn.classList.add('active');
             } else {
-                btn.innerHTML = '👁️ Ẩn MK';
+                btn.innerHTML = `${ICONS.eye} <span>Ẩn MK</span>`;
                 btn.classList.remove('active');
             }
         }
 
-        // --- COPY FEATURE (GIỮ NGUYÊN TÍNH NĂNG SAO CHÉP CHUẨN XÁC) ---
-        function copyAcc(text) {
+        // --- SMART COPY: ĐƯA ACC VỪA SAO CHÉP LÊN ĐẦU DANH SÁCH ---
+        function copyAcc(text, id = null) {
+            // Push to top of list!
+            let foundIdx = -1;
+            if (id !== null) {
+                foundIdx = accounts.findIndex(a => a.id === id);
+            } else {
+                foundIdx = accounts.findIndex(a => a.acc === text);
+            }
+
+            if (foundIdx > 0) {
+                const [item] = accounts.splice(foundIdx, 1);
+                accounts.unshift(item); // Push to top!
+                saveAndSync();
+            }
+
             if (navigator.clipboard && window.isSecureContext) {
                 navigator.clipboard.writeText(text).then(() => {
-                    showCustomToast('Đã copy: ' + text, 'info');
+                    showCustomToast('Đã copy & đưa lên đầu: ' + text, 'info');
                 }).catch(() => fallbackCopy(text));
             } else {
                 fallbackCopy(text);
@@ -1714,17 +1176,16 @@
             ta.select();
             try {
                 document.execCommand('copy');
-                showCustomToast('Đã copy: ' + text, 'info');
+                showCustomToast('Đã copy & đưa lên đầu: ' + text, 'info');
             } catch (err) {
                 showCustomToast('Không thể sao chép!', 'warn');
             }
             document.body.removeChild(ta);
         }
 
-        // --- SEARCH, FILTER & SORT ---
         function handleSearch(val) {
             searchQuery = val.trim().toLowerCase();
-            document.getElementById('btnClearSearch').style.display = searchQuery ? 'block' : 'none';
+            document.getElementById('btnClearSearch').style.display = searchQuery ? 'flex' : 'none';
             currentPage = 1;
             render();
         }
@@ -1754,7 +1215,6 @@
         function getFilteredAndSortedAccounts() {
             let list = [...accounts];
 
-            // Filter by status/today
             if (currentFilter === 'sống') {
                 list = list.filter(a => a.status === 'sống');
             } else if (currentFilter === 'ban') {
@@ -1763,7 +1223,6 @@
                 list = list.filter(a => a.status === 'ban' && getRemainingDays(a.unbanDate) === 0);
             }
 
-            // Search Filter
             if (searchQuery) {
                 list = list.filter(a => {
                     const accMatch = (a.acc || '').toLowerCase().includes(searchQuery);
@@ -1774,9 +1233,8 @@
                 });
             }
 
-            // Sorting
             list.sort((a, b) => {
-                if (currentSort === 'newest') return (b.id || 0) - (a.id || 0);
+                if (currentSort === 'newest') return 0; // Maintain custom top order!
                 if (currentSort === 'oldest') return (a.id || 0) - (b.id || 0);
                 if (currentSort === 'nameAsc') return (a.acc || '').localeCompare(b.acc || '');
                 if (currentSort === 'nameDesc') return (b.acc || '').localeCompare(a.acc || '');
@@ -1797,7 +1255,6 @@
             return list;
         }
 
-        // --- PAGINATION ---
         function changeRowsPerPage(val) {
             rowsPerPage = parseInt(val);
             appSettings.rowsPerPage = rowsPerPage;
@@ -1806,33 +1263,17 @@
             render();
         }
 
-        function prevPage() {
-            if (currentPage > 1) {
-                currentPage--;
-                render();
-            }
-        }
-
+        function prevPage() { if (currentPage > 1) { currentPage--; render(); } }
         function nextPage() {
-            const filtered = getFilteredAndSortedAccounts();
-            const totalPages = Math.ceil(filtered.length / rowsPerPage) || 1;
-            if (currentPage < totalPages) {
-                currentPage++;
-                render();
-            }
+            const totalPages = Math.ceil(getFilteredAndSortedAccounts().length / rowsPerPage) || 1;
+            if (currentPage < totalPages) { currentPage++; render(); }
         }
+        function goToPage(p) { currentPage = p; render(); }
 
-        function goToPage(p) {
-            currentPage = p;
-            render();
-        }
-
-        // --- SELECTION & BULK ACTIONS ---
         function toggleSelectAll(checked) {
             const filtered = getFilteredAndSortedAccounts();
             const start = (currentPage - 1) * rowsPerPage;
             const pageItems = filtered.slice(start, start + rowsPerPage);
-
             pageItems.forEach(item => {
                 if (checked) selectedIds.add(item.id);
                 else selectedIds.delete(item.id);
@@ -1871,11 +1312,7 @@
             const filtered = getFilteredAndSortedAccounts();
             const start = (currentPage - 1) * rowsPerPage;
             const pageItems = filtered.slice(start, start + rowsPerPage);
-            if (pageItems.length === 0) {
-                chkAll.checked = false;
-                return;
-            }
-            chkAll.checked = pageItems.every(item => selectedIds.has(item.id));
+            chkAll.checked = pageItems.length > 0 && pageItems.every(item => selectedIds.has(item.id));
         }
 
         function bulkCopy() {
@@ -1899,7 +1336,7 @@
             });
             deselectAll();
             saveAndSync();
-            showCustomToast(`Đã chuyển ${count} tài khoản sang Sống!`, 'success');
+            showCustomToast(`Đã chuyển ${count} acc sang Sống!`, 'success');
         }
 
         function openBulkBanModal() {
@@ -1922,22 +1359,21 @@
             closeModal('bulkBanModal');
             deselectAll();
             saveAndSync();
-            showCustomToast(`Đã khóa ${count} tài khoản!`, 'warn');
+            showCustomToast(`Đã khóa ${count} acc!`, 'warn');
         }
 
         function openBulkDeleteModal() {
             const count = selectedIds.size;
-            document.getElementById('confirmDeleteMsg').innerText = `Bạn có chắc chắn muốn xóa vĩnh viễn ${count} tài khoản đã chọn?`;
+            document.getElementById('confirmDeleteMsg').innerText = `Bạn có chắc chắn muốn xóa vĩnh viễn ${count} acc đã chọn?`;
             pendingDeleteAction = () => {
                 accounts = accounts.filter(a => !selectedIds.has(a.id));
                 deselectAll();
                 saveAndSync();
-                showCustomToast(`Đã xóa ${count} tài khoản!`, 'warn');
+                showCustomToast(`Đã xóa ${count} acc!`, 'warn');
             };
             openModal('confirmDeleteModal');
         }
 
-        // --- MODAL CONTROLS ---
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
@@ -1960,27 +1396,23 @@
         async function testConnection() {
             autoSaveConfig();
             if (!ghConfig.user || !ghConfig.repo || !ghConfig.token) {
-                alert('Vui lòng điền đủ 3 ô: Username, Repo, và Token!');
+                alert('Vui lòng điền đủ: Username, Repo, Token!');
                 return;
             }
             const url = `https://api.github.com/repos/${ghConfig.user}/${ghConfig.repo}`;
             try {
                 const res = await fetch(url, { headers: { 'Authorization': `token ${ghConfig.token}` } });
                 if (res.status === 200) alert(' Kết nối GitHub thành công!');
-                else if (res.status === 401) alert('❌ Token sai hoặc hết hạn!');
-                else if (res.status === 404) alert('❌ Sai Username hoặc Repo!');
-                else if (res.status === 403) alert('❌ Token thiếu quyền repo!');
-                else alert(`❌ Lỗi ${res.status}`);
+                else alert(`❌ Lỗi kết nối (${res.status})`);
             } catch (e) {
-                alert('Lỗi mạng: ' + e.message);
+                alert('Lỗi: ' + e.message);
             }
         }
 
-        // --- GITHUB SYNC & AUTO UNBAN ---
         async function syncToGitHub() {
             if (isSyncing || !ghConfig.user || !ghConfig.repo || !ghConfig.token) return;
             isSyncing = true;
-            setSyncStatus('🔄 Đang lưu lên GitHub...', true);
+            setSyncStatus('🔄 Đang lưu...', true);
 
             const textLines = accounts.map(a => `${a.acc}|${a.status}|${a.unbanDate}|${a.note || ''}`).join('\n');
             const encodedContent = utf8ToBase64(textLines);
@@ -2003,17 +1435,14 @@
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        message: 'Auto sync from web app ultra liquid',
+                        message: 'Sync from smart web app',
                         content: encodedContent,
                         sha: sha || undefined
                     })
                 });
 
-                if (putRes.ok) {
-                    setSyncStatus('🟢 Đã lưu vào GitHub');
-                } else {
-                    setSyncStatus('⚠️ Lỗi lưu GitHub');
-                }
+                if (putRes.ok) setSyncStatus('🟢 GitHub Sync');
+                else setSyncStatus('⚠️ Lỗi lưu');
             } catch (err) {
                 setSyncStatus('⚠️ Lỗi kết nối');
             } finally {
@@ -2040,7 +1469,6 @@
 
         async function autoPullData() {
             if (isSyncing) return;
-            
             let dataLoaded = false;
             if (ghConfig.user && ghConfig.repo && ghConfig.token) {
                 const url = `https://api.github.com/repos/${ghConfig.user}/${ghConfig.repo}/contents/data.txt?t=` + Date.now();
@@ -2050,7 +1478,7 @@
                         const data = await res.json();
                         parseAndLoadText(base64ToUtf8(data.content));
                         dataLoaded = true;
-                        setSyncStatus('🟢 Đã đồng bộ mới nhất');
+                        setSyncStatus('🟢 GitHub Sync');
                     }
                 } catch(e) {}
             }
@@ -2064,10 +1492,7 @@
                     }
                 } catch (e) {}
             }
-            
-            if (checkAutoUnban()) {
-                saveAndSync();
-            }
+            if (checkAutoUnban()) saveAndSync();
         }
 
         function parseAndLoadText(text, isAppend = false) {
@@ -2100,7 +1525,6 @@
             return addedCount;
         }
 
-        // --- THÊM / SỬA / XÓA ACC ---
         function handleAdd(e) {
             e.preventDefault();
             const accText = document.getElementById('accInfo').value.trim();
@@ -2143,8 +1567,8 @@
             if (addedCount > 0) {
                 saveAndSync();
                 document.getElementById('accForm').reset();
-                toggleDateInput('accStatus', 'unbanDate');
-                showCustomToast(`Đã lưu ${addedCount} tài khoản!`, 'success');
+                toggleDateInput('accStatus', 'unbanDateBox');
+                showCustomToast(`Đã thêm ${addedCount} acc!`, 'success');
             }
         }
 
@@ -2156,7 +1580,7 @@
             document.getElementById('editNote').value = item.note || '';
             document.getElementById('editStatus').value = item.status;
             document.getElementById('editDate').value = item.unbanDate === '-' ? '' : item.unbanDate;
-            toggleDateInput('editStatus', 'editDate');
+            toggleDateInput('editStatus', 'editDateField');
             openModal('editModal');
         }
 
@@ -2179,19 +1603,19 @@
 
             closeModal('editModal');
             saveAndSync();
-            showCustomToast('Đã cập nhật!', 'success');
+            showCustomToast('Đã lưu cập nhật!', 'success');
         }
 
         function confirmDeleteSingle(id) {
             const item = accounts.find(a => a.id === id);
             if (!item) return;
-            document.getElementById('confirmDeleteMsg').innerText = `Bạn có chắc chắn muốn xóa tài khoản: ${item.acc}?`;
+            document.getElementById('confirmDeleteMsg').innerText = `Xóa tài khoản: ${item.acc}?`;
             pendingDeleteAction = () => {
                 accounts = accounts.filter(a => a.id !== id);
                 selectedIds.delete(id);
                 updateBulkBar();
                 saveAndSync();
-                showCustomToast('Đã xóa tài khoản!', 'warn');
+                showCustomToast('Đã xóa acc!', 'warn');
             };
             openModal('confirmDeleteModal');
         }
@@ -2204,10 +1628,7 @@
             closeModal('confirmDeleteModal');
         });
 
-        // --- IMPORT / EXPORT MODAL ---
-        function openImportExportModal() {
-            openModal('importExportModal');
-        }
+        function openImportExportModal() { openModal('importExportModal'); }
 
         function exportData(type) {
             let dataStr = '';
@@ -2240,7 +1661,7 @@
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
-            showCustomToast(`Đã xuất file ${filename}!`, 'success');
+            showCustomToast(`Đã xuất ${filename}!`, 'success');
         }
 
         function handleFileSelected(e) {
@@ -2257,15 +1678,15 @@
                             accounts = json;
                             localStorage.setItem('vancau88_accounts', JSON.stringify(accounts));
                             saveAndSync();
-                            showCustomToast(`Đã nạp ${accounts.length} acc từ file JSON!`, 'success');
+                            showCustomToast(`Đã nạp ${accounts.length} acc!`, 'success');
                         }
                     } else {
                         const count = parseAndLoadText(content, false);
                         saveAndSync();
-                        showCustomToast(`Đã nạp ${count} tài khoản từ file!`, 'success');
+                        showCustomToast(`Đã nạp ${count} acc!`, 'success');
                     }
                 } catch(err) {
-                    showCustomToast('File không đúng định dạng!', 'warn');
+                    showCustomToast('File sai định dạng!', 'warn');
                 }
                 closeModal('importExportModal');
                 e.target.value = '';
@@ -2280,47 +1701,6 @@
             syncToGitHub();
         }
 
-        // --- INTERSECTION OBSERVER FOR PANELS & ROWS ---
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-
-        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-        let rowObserver = null;
-        function initRowObserver() {
-            if (rowObserver) rowObserver.disconnect();
-            rowObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('row-revealed');
-                        rowObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.04, rootMargin: '0px 0px -20px 0px' });
-
-            document.querySelectorAll('tbody tr.row-animated').forEach(tr => rowObserver.observe(tr));
-        }
-
-        // --- DESKTOP 3D TILT ON STAT CARDS ---
-        document.querySelectorAll('.stat-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const dx = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
-                const dy = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
-                card.style.transform = `perspective(600px) rotateY(${dx * 5}deg) rotateX(${-dy * 5}deg) translateY(-4px) scale(1.01)`;
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = '';
-            });
-        });
-
-        // --- RENDER FUNCTION ---
         function render() {
             const cntLive = accounts.filter(a => a.status === 'sống').length;
             const cntBanned = accounts.filter(a => a.status === 'ban').length;
@@ -2354,82 +1734,82 @@
             tbody.innerHTML = '';
 
             if (totalItems === 0) {
-                tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #64748b; padding: 48px 0; font-weight: 600;">Không tìm thấy tài khoản nào phù hợp</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:#64748b; padding:32px 0;">Không có dữ liệu</td></tr>`;
             } else {
-                pageItems.forEach((item, index) => {
+                const fragment = document.createDocumentFragment();
+
+                pageItems.forEach((item) => {
                     const isBan = item.status === 'ban';
-                    const autoBadge = item.autoUnbanned ? `<span class="badge badge-auto">Vừa Mở</span>` : '';
                     const isChecked = selectedIds.has(item.id);
 
                     const tr = document.createElement('tr');
-                    tr.className = 'row-animated';
-                    tr.style.setProperty('--row-index', index);
 
                     tr.innerHTML = `
-                        <!-- Desktop Checkbox -->
                         <td class="col-check">
                             <input type="checkbox" class="custom-check" ${isChecked ? 'checked' : ''} onchange="toggleSelectRow(${item.id}, this.checked)">
                         </td>
 
-                        <!-- Account & Notes Main Cell -->
                         <td class="cell-acc-main">
-                            <!-- Mobile Card Top: Checkbox on Left + Status Badge on Right -->
                             <div class="mobile-card-top">
                                 <label class="mobile-check-label">
                                     <input type="checkbox" class="custom-check" ${isChecked ? 'checked' : ''} onchange="toggleSelectRow(${item.id}, this.checked)">
                                     <span>Chọn</span>
                                 </label>
-                                <div>
-                                    <span class="badge ${isBan ? 'badge-banned' : 'badge-live'}">${isBan ? '🔒 BAN' : '⚡ SỐNG'}</span>
-                                    ${autoBadge}
-                                </div>
+                                <span class="badge ${isBan ? 'badge-banned' : 'badge-live'}">
+                                    ${isBan ? '🔒 BAN' : '⚡ SỐNG'}
+                                </span>
                             </div>
 
-                            <!-- Account Details -->
                             <div class="acc-text-box">
                                 <div class="acc-name">${formatAccDisplay(item.acc)}</div>
-                                <div class="acc-tags-wrap">${formatNoteBadges(item.note)}</div>
+                                <div class="acc-tags">${formatNoteBadges(item.note)}</div>
                             </div>
                         </td>
 
-                        <!-- Status (Desktop Only) -->
                         <td class="desktop-only">
-                            <span class="badge ${isBan ? 'badge-banned' : 'badge-live'}">${isBan ? '🔒 BAN' : '⚡ SỐNG'}</span>
-                            ${autoBadge}
+                            <span class="badge ${isBan ? 'badge-banned' : 'badge-live'}">
+                                ${isBan ? '🔒 BAN' : '⚡ SỐNG'}
+                            </span>
                         </td>
 
-                        <!-- Expiration Date Cell -->
                         <td class="cell-date-info">
                             <div class="mobile-date-row">
-                                <span>Thời hạn: <b style="color: ${isBan ? '#f1f5f9' : '#64748b'};">${escapeHtml(item.unbanDate)}</b></span>
+                                <span>${isBan ? `Hạn: <b>${escapeHtml(item.unbanDate)}</b>` : '—'}</span>
                                 ${isBan ? getRemainingBadge(item.unbanDate) : ''}
                             </div>
                         </td>
 
-                        <!-- Actions Cell -->
                         <td class="cell-actions">
                             <div class="actions">
-                                <button type="button" class="btn-liquid btn-act btn-act-copy" data-id="${item.id}">Copy</button>
-                                <button type="button" class="btn-liquid btn-act" onclick="openEditModal(${item.id})">Sửa</button>
-                                <button type="button" class="btn-liquid btn-act" onclick="confirmDeleteSingle(${item.id})">Xóa</button>
+                                <button type="button" class="btn btn-copy" data-id="${item.id}" title="Copy & đưa lên đầu">
+                                    ${ICONS.copy}
+                                    <span>Copy</span>
+                                </button>
+                                <button type="button" class="btn btn-edit" onclick="openEditModal(${item.id})">
+                                    ${ICONS.edit}
+                                    <span>Sửa</span>
+                                </button>
+                                <button type="button" class="btn btn-del" onclick="confirmDeleteSingle(${item.id})">
+                                    ${ICONS.del}
+                                    <span>Xóa</span>
+                                </button>
                             </div>
                         </td>
                     `;
 
-                    // Safe Copy listener (1-click copy tk:mk with feedback toast)
-                    const copyBtn = tr.querySelector('.btn-act-copy');
-                    copyBtn.addEventListener('click', () => copyAcc(item.acc));
+                    // Safe Copy Listener (Moves to TOP + Clipboard!)
+                    const copyBtn = tr.querySelector('.btn-copy');
+                    copyBtn.addEventListener('click', () => copyAcc(item.acc, item.id));
 
-                    tbody.appendChild(tr);
+                    fragment.appendChild(tr);
                 });
 
-                requestAnimationFrame(() => initRowObserver());
+                tbody.appendChild(fragment);
             }
 
-            // Pagination info & controls
             const startDisplay = totalItems === 0 ? 0 : startIdx + 1;
             const endDisplay = Math.min(startIdx + rowsPerPage, totalItems);
-            document.getElementById('pageInfo').innerText = `Hiển thị ${startDisplay} - ${endDisplay} trong tổng số ${totalItems} tài khoản`;
+            document.getElementById('pageInfo').innerText = `${startDisplay}-${endDisplay} / ${totalItems}`;
 
             document.getElementById('btnPrevPage').disabled = currentPage <= 1;
             document.getElementById('btnNextPage').disabled = currentPage >= totalPages;
@@ -2443,7 +1823,7 @@
 
             for (let i = pStart; i <= pEnd; i++) {
                 const btn = document.createElement('button');
-                btn.className = `btn-liquid btn-page ${i === currentPage ? 'active' : ''}`;
+                btn.className = `btn btn-page ${i === currentPage ? 'active' : ''}`;
                 btn.innerText = i;
                 btn.onclick = () => goToPage(i);
                 pageNumContainer.appendChild(btn);
@@ -2462,15 +1842,13 @@
 
         document.addEventListener("visibilitychange", () => {
             if (document.visibilityState === "visible") {
-                setSyncStatus('🔄 Đang kiểm tra dữ liệu mới...', true);
+                setSyncStatus('🔄 Đồng bộ...', true);
                 autoPullData();
             }
         });
 
         setInterval(() => {
-            if (document.visibilityState === "visible") {
-                autoPullData();
-            }
+            if (document.visibilityState === "visible") autoPullData();
         }, 60000);
     </script>
 </body>
